@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ATTEND
 
-## Getting Started
+Event management and attendance platform — marketing site built with Next.js from the [Figma design](https://www.figma.com/design/K8A6g0h4I96aytJxqUp1AX/ATTEND).
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS v4**
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Run production server |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # Routes (matches Figma DESIGN frames)
+│   ├── page.tsx            # Home
+│   ├── blog/
+│   ├── agms/
+│   ├── hackathons/
+│   ├── product-launch/
+│   └── gallery/
+├── components/
+│   └── layout/             # Header, footer, page shell
+└── lib/
+    └── site.ts             # Site config, nav, contact info
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design tokens
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Colors are defined in `src/app/globals.css` from the Figma file:
 
-## Deploy on Vercel
+- **Primary** (`Pry 100%`) — dark green brand color
+- **Background** — white
+- **Canvas** — `#444444`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Update the exact primary hex from Figma Dev Mode when available.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment variables
+
+Optional — copy `.env.example` to `.env.local`:
+
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```

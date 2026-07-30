@@ -1,0 +1,202 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { siteConfig } from "@/lib/site";
+
+function NavArrowIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      className={`size-3 shrink-0 opacity-90 ${className ?? ""}`}
+      viewBox="0 0 12 12"
+      fill="none"
+    >
+      <path
+        d="M3 9L9 3M9 3H4M9 3V8"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export type CoverHeaderVariant = "hero" | "solid";
+
+type CoverHeaderProps = {
+  variant?: CoverHeaderVariant;
+  className?: string;
+};
+
+export function CoverHeader({
+  variant = "hero",
+  className = "",
+}: CoverHeaderProps) {
+  const isHero = variant === "hero";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  return (
+    <>
+      <header
+        className={`${
+          isHero
+            ? "relative z-20"
+            : "border-b border-zinc-200/80 bg-white shadow-sm z-20"
+        } ${className}`}
+      >
+      <div className="mx-auto w-full px-6 pt-5 lg:px-8 lg:pt-6">
+        <div className="flex items-center justify-between gap-6">
+          <Link
+            href="/"
+            className={`text-2xl font-bold tracking-tight lg:text-[1.75rem] ${
+              isHero ? "text-white" : "text-primary"
+            }`}
+          >
+            {siteConfig.name}
+          </Link>
+
+          <div className="hidden items-center gap-3 lg:flex">
+            <Link
+              href="/about"
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                isHero
+                  ? "border border-white/25 bg-white/10 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md hover:bg-white/15"
+                  : "bg-[#EAF3EE] text-primary hover:bg-[#dce9e2]"
+              }`}
+            >
+              Contact us
+            </Link>
+            <Link
+              href="/login"
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition-opacity hover:opacity-90 ${
+                isHero
+                  ? "bg-white text-primary"
+                  : "bg-primary text-white"
+              }`}
+            >
+              Login
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            className="flex items-center justify-center p-2 lg:hidden"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open mobile menu"
+          >
+            <svg
+              className={`size-6 ${isHero ? "text-white" : "text-primary"}`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {isHero ? (
+        <>
+          <nav className="mx-auto mt-8 hidden w-full px-6 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-8">
+            {siteConfig.coverNav.map((item) => (
+              <div key={item.href} className="flex min-w-0 flex-col">
+                <div className="h-px w-full bg-white/40" aria-hidden />
+                <Link
+                  href={item.href}
+                  className="group mt-3 inline-flex items-start gap-1.5 text-[13px] leading-snug text-white transition-colors hover:text-white/90"
+                >
+                  <span className="min-w-0">{item.label}</span>
+                  <NavArrowIcon />
+                </Link>
+              </div>
+            ))}
+          </nav>
+        </>
+      ) : (
+        <nav className="mx-auto hidden w-full px-6 pb-4 pt-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-8">
+          {siteConfig.coverNav.map((item) => (
+            <div key={item.href} className="flex min-w-0 flex-col">
+              <div className="h-px w-full bg-zinc-300" aria-hidden />
+              <Link
+                href={item.href}
+                className="group mt-3 inline-flex items-start gap-1.5 text-[13px] leading-snug text-zinc-800 transition-colors hover:text-primary"
+              >
+                <span className="min-w-0">{item.label}</span>
+                <NavArrowIcon />
+              </Link>
+            </div>
+          ))}
+        </nav>
+      )}
+      </header>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col bg-[#f4f7f5] lg:hidden">
+          <div className="flex items-center justify-between px-6 py-6">
+            <Link
+              href="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-xl font-bold tracking-tight text-primary"
+            >
+              {siteConfig.name}
+            </Link>
+            <button
+              type="button"
+              className="flex items-center justify-center p-2 text-zinc-900"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close mobile menu"
+            >
+              <svg
+                className="size-6"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <nav className="flex flex-col px-8 pt-4">
+            {siteConfig.coverNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="py-4 text-[13px] font-medium text-zinc-900 transition-colors hover:text-primary"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="mt-8 flex flex-col gap-4 px-8 pb-10">
+            <Link
+              href="/about"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex w-full items-center justify-center rounded-full bg-[#d0e0d7] py-3 text-[13px] font-semibold text-primary transition-colors hover:bg-[#c2d4cb]"
+            >
+              Contact us
+            </Link>
+            <Link
+              href="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex w-full items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
