@@ -137,7 +137,7 @@ function SectionTwo() {
 
             <div className="relative w-full max-w-2xl flex-1 xl:max-w-[800px]">
               <Image
-                src="/collage.png"
+                src="/collage.webp"
                 alt="Event collage"
                 width={800}
                 height={800}
@@ -264,7 +264,7 @@ function SectionThree() {
       {/* Green Glow (Ellipse) pushed to the very back */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Ellipse 169.png"
+          src="/Ellipse 169.webp"
           alt=""
           fill
           className="object-cover object-bottom opacity-90"
@@ -276,7 +276,7 @@ function SectionThree() {
       <div
         className="absolute inset-0 z-0 opacity-100 mix-blend-multiply"
         style={{
-          backgroundImage: 'url("/Rectangle 229.png")',
+          backgroundImage: 'url("/Rectangle 229.webp")',
           backgroundRepeat: 'repeat-x',
           backgroundSize: 'auto 100%',
         }}
@@ -285,7 +285,7 @@ function SectionThree() {
       {/* Noise Texture */}
       <div className="absolute inset-0 z-0 mix-blend-overlay opacity-50">
         <Image
-          src="/Noise.png"
+          src="/Noise.webp"
           alt=""
           fill
           className="object-cover"

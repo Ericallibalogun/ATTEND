@@ -7,14 +7,14 @@ export function Footer() {
       {/* Background Image & Figma Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/assets1102.png"
+          src="/assets1102.webp"
           alt=""
           fill
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
           quality={100}
         />
         <Image
-          src="/Rectangle 14 (1).png"
+          src="/Rectangle 14 (1).webp"
           alt=""
           fill
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}

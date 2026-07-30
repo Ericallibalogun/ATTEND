@@ -43,7 +43,7 @@ export const heroSlides: HeroSlide[] = [
   {
     label: "Annual General Meetings (AGMs)",
     href: "/agms",
-    image: "/boardroom.png",
+    image: "/boardroom.webp",
     eyebrow: "THE VIRTUAL EVENT PLATFORM FOR EVERY DECISIVE MOMENT",
     headline: "Your next meeting deserves to be an experience",
     description: platformDescription,
@@ -53,7 +53,7 @@ export const heroSlides: HeroSlide[] = [
   {
     label: "Hackathons",
     href: "/hackathons",
-    image: "/boardroom-2.png",
+    image: "/boardroom-2.webp",
     eyebrow: "ATTEND FOR INNOVATION CHALLENGE",
     headline: "Where ideas race\nthe clock.",
     description: platformDescription,
@@ -63,7 +63,7 @@ export const heroSlides: HeroSlide[] = [
   {
     label: "Product Launchs",
     href: "/product-launch",
-    image: "/boardroom3.png",
+    image: "/boardroom3.webp",
     eyebrow: "VIRTUAL PRODUCT LAUNCH AND EVENTS",
     headline: "Give your product the reveal it deserves.",
     description: platformDescription,
