@@ -23,7 +23,7 @@ export function InnovationRunsRoom() {
 
   return (
     <section className="bg-white py-12 lg:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="w-full px-6 lg:px-12">
         <div className="overflow-hidden rounded-3xl bg-[#083827] text-white p-8 sm:p-12 lg:p-16">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
             

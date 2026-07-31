@@ -23,7 +23,7 @@ export function InnovationHero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-32 lg:px-8 lg:pb-28">
+      <div className="relative z-10 w-full px-6 lg:px-12 pb-20 pt-32 lg:pb-28">
         <div className="max-w-2xl">
           <p className="mb-6 flex items-center text-xs font-semibold uppercase tracking-widest text-[#00E58F]">
             <span className="mr-2 inline-block size-1.5 bg-[#00E58F]" aria-hidden />
