@@ -18,19 +18,19 @@ export function FooterCta() {
         />
       </div>
 
-      {/* Even Repeating Vertical Rectangle Bars (Rectangle 229) */}
-      <div
-        className="absolute inset-0 z-0 opacity-100 mix-blend-multiply"
-        style={{
-          backgroundImage: 'url("/Rectangle 229.webp")',
-          backgroundRepeat: 'repeat-x',
-          backgroundSize: 'auto 100%',
-          backgroundPosition: 'center bottom',
-        }}
-      />
+      {/* New Rectangle Image (Frame 1321325422.webp) */}
+      <div className="absolute inset-0 z-0 mix-blend-multiply opacity-100">
+        <Image
+          src="/Frame 1321325422.webp"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
 
-      {/* Noise Texture */}
-      <div className="absolute inset-0 z-0 mix-blend-overlay opacity-40">
+      {/* Noise Texture (Noise.webp) */}
+      <div className="absolute inset-0 z-0 mix-blend-overlay opacity-50">
         <Image
           src="/Noise.webp"
           alt=""
