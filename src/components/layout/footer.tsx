@@ -84,7 +84,7 @@ export function Footer() {
             <div>
               <h4 className="mb-6 text-[11px] font-semibold tracking-wider text-white/50">CONTACT</h4>
               <ul className="flex flex-col gap-5 text-[13px] text-white/90">
-                <li>070063747836,</li>
+                <li>070063747836</li>
                 <li>0800MERISTEM</li>
                 <li className="mt-2">
                   <div className="mb-4 text-[11px] font-semibold tracking-wider text-white/50 uppercase">EMAIL ADDRESS</div>
