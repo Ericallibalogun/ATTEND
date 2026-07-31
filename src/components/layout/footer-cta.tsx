@@ -4,38 +4,14 @@ import Image from "next/image";
 export function FooterCta() {
   return (
     <section className="relative flex min-h-[500px] flex-col items-center justify-center overflow-hidden py-24 lg:py-32">
-      {/* Base Background Color */}
-      <div className="absolute inset-0 bg-[#f8fbf9]" />
-
-      {/* Green Glow (Ellipse) pushed to the very back */}
+      {/* Background Image from Figma */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Ellipse 169.webp"
+          src="/Frame 1321325422.webp"
           alt=""
           fill
-          className="object-cover object-bottom opacity-90"
-          unoptimized
-        />
-      </div>
-
-      {/* Lines (Rectangle) on top of the ellipse, set to multiply so the solid background becomes transparent */}
-      <div
-        className="absolute inset-0 z-0 opacity-100 mix-blend-multiply"
-        style={{
-          backgroundImage: 'url("/Rectangle 229.webp")',
-          backgroundRepeat: 'repeat-x',
-          backgroundSize: 'auto 100%',
-        }}
-      />
-
-      {/* Noise Texture */}
-      <div className="absolute inset-0 z-0 mix-blend-overlay opacity-50">
-        <Image
-          src="/Noise.webp"
-          alt=""
-          fill
-          className="object-cover"
-          unoptimized
+          className="object-cover object-center"
+          priority
         />
       </div>
 
