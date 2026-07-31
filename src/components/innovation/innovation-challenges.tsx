@@ -43,7 +43,7 @@ export function InnovationChallenges() {
         </div>
 
         {/* Large Display Monitor Image - LIVE LEADERBOARD */}
-        <div className="relative h-[340px] sm:h-[480px] lg:h-[560px] w-full overflow-hidden rounded-3xl bg-zinc-900 shadow-2xl">
+        <div className="relative h-[340px] sm:h-[480px] lg:h-[560px] w-full overflow-hidden rounded-none bg-zinc-900 shadow-2xl">
           <Image
             src="/Frame 35776 (1).webp"
             alt="Live Leaderboard Monitor Screen"
