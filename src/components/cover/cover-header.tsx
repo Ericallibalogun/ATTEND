@@ -56,9 +56,9 @@ export function CoverHeader({
             <Image
               src="/Attend-2_logo.webp"
               alt="Attend"
-              width={140}
-              height={40}
-              className={`h-8 lg:h-9 w-auto object-contain ${
+              width={200}
+              height={60}
+              className={`h-11 lg:h-12 w-auto object-contain ${
                 isHero ? "brightness-0 invert" : ""
               }`}
               priority

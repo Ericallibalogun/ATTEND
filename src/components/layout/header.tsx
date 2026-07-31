@@ -10,9 +10,9 @@ export function Header() {
           <Image
             src="/Attend-2_logo.webp"
             alt="Attend"
-            width={120}
-            height={36}
-            className="h-7 w-auto object-contain"
+            width={180}
+            height={54}
+            className="h-10 lg:h-11 w-auto object-contain"
             priority
           />
         </Link>
