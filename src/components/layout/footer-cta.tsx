@@ -4,14 +4,39 @@ import Image from "next/image";
 export function FooterCta() {
   return (
     <section className="relative flex min-h-[500px] flex-col items-center justify-center overflow-hidden py-24 lg:py-32">
-      {/* Background Image from Figma */}
+      {/* Base Background Color */}
+      <div className="absolute inset-0 bg-[#f8fbf9]" />
+
+      {/* Green Glow (Ellipse 169) */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/Frame 1321325422.webp"
+          src="/Ellipse 169.webp"
           alt=""
           fill
-          className="object-cover object-center"
-          priority
+          className="object-cover object-bottom opacity-90"
+          unoptimized
+        />
+      </div>
+
+      {/* Even Repeating Vertical Rectangle Bars (Rectangle 229) */}
+      <div
+        className="absolute inset-0 z-0 opacity-100 mix-blend-multiply"
+        style={{
+          backgroundImage: 'url("/Rectangle 229.webp")',
+          backgroundRepeat: 'repeat-x',
+          backgroundSize: 'auto 100%',
+          backgroundPosition: 'center bottom',
+        }}
+      />
+
+      {/* Noise Texture */}
+      <div className="absolute inset-0 z-0 mix-blend-overlay opacity-40">
+        <Image
+          src="/Noise.webp"
+          alt=""
+          fill
+          className="object-cover"
+          unoptimized
         />
       </div>
 
