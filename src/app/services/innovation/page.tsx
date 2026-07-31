@@ -7,12 +7,12 @@ import { FooterCta } from "@/components/layout/footer-cta";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata = {
-  title: "Innovation Challenge & Hackathons | Attend",
+  title: "Innovation Challenge | Attend",
   description:
     "Power innovation challenges, hackathons, and pitchathons with live leaderboards, mentor desks, and automated scoring rubrics.",
 };
 
-export default function HackathonsPage() {
+export default function InnovationServicesPage() {
   return (
     <main className="min-h-screen bg-white">
       <InnovationHero />

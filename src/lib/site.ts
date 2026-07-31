@@ -9,7 +9,7 @@ export const siteConfig = {
   },
   coverNav: [
     { label: "Annual General Meeting (AGM)", href: "/agms" },
-    { label: "Innovation Challenge", href: "/hackathons" },
+    { label: "Innovation Challenge", href: "/services/innovation" },
     { label: "Launch Event", href: "/product-launch" },
     { label: "Blog", href: "/blog" },
     { label: "Gallery", href: "/gallery" },
@@ -19,7 +19,7 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
     { label: "AGMs", href: "/agms" },
-    { label: "Hackathons", href: "/hackathons" },
+    { label: "Innovation Challenge", href: "/services/innovation" },
     { label: "Product Launch", href: "/product-launch" },
     { label: "Gallery", href: "/gallery" },
   ],
