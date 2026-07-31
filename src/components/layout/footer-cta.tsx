@@ -7,7 +7,7 @@ export function FooterCta() {
       {/* Base Background Color */}
       <div className="absolute inset-0 bg-[#f8fbf9]" />
 
-      {/* Green Glow (Ellipse 169) */}
+      {/* Centered Green Glow (Ellipse 169) for symmetrical glow */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/Ellipse 169.webp"
@@ -18,16 +18,16 @@ export function FooterCta() {
         />
       </div>
 
-      {/* New Rectangle Image (Frame 1321325422.webp) */}
-      <div className="absolute inset-0 z-0 mix-blend-multiply opacity-100">
-        <Image
-          src="/Frame 1321325422.webp"
-          alt=""
-          fill
-          className="object-cover object-center"
-          priority
-        />
-      </div>
+      {/* Perfectly Symmetrical Vertical Bars (Rectangle 229 tiled evenly) */}
+      <div
+        className="absolute inset-0 z-0 opacity-100 mix-blend-multiply"
+        style={{
+          backgroundImage: 'url("/Rectangle 229.webp")',
+          backgroundRepeat: 'repeat-x',
+          backgroundSize: 'auto 100%',
+          backgroundPosition: 'center bottom',
+        }}
+      />
 
       {/* Noise Texture (Noise.webp) */}
       <div className="absolute inset-0 z-0 mix-blend-overlay opacity-50">
