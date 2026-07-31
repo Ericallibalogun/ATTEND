@@ -27,8 +27,14 @@ export function Footer() {
           
           {/* Left Column */}
           <div className="flex flex-col">
-            <Link href="/" className="mb-10 inline-block text-4xl font-bold tracking-tight text-white lg:text-[40px]">
-              Attend
+            <Link href="/" className="mb-10 inline-block transition-opacity hover:opacity-90">
+              <Image
+                src="/Attend-2_logo.webp"
+                alt="Attend"
+                width={140}
+                height={40}
+                className="h-9 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             
             <h3 className="mb-4 text-[17px] font-semibold text-white">Stay ahead of every event</h3>

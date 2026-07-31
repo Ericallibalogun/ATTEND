@@ -27,7 +27,7 @@ const sprintCards = [
 
 export function InnovationSprint() {
   return (
-    <section className="bg-[#F4F9F6] py-20 lg:py-28 text-zinc-900">
+    <section className="bg-[#F4F9F6] py-10 lg:py-14 text-zinc-900">
       <div className="w-full px-6 lg:px-12">
         
         {/* Header */}

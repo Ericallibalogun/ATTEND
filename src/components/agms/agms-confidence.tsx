@@ -33,7 +33,7 @@ export function AgmsConfidence() {
   ];
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-10 lg:py-14 text-zinc-900">
       <div className="mx-auto w-full px-6 lg:px-12">
         <div className="mb-14 text-center">
           <p className="mb-3 flex items-center justify-center text-[11px] font-semibold uppercase tracking-widest text-primary">

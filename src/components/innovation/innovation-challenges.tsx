@@ -14,7 +14,7 @@ const useCaseTags = [
 
 export function InnovationChallenges() {
   return (
-    <section className="bg-white py-20 lg:py-28 text-zinc-900">
+    <section className="bg-white py-10 lg:py-14 text-zinc-900">
       <div className="w-full px-6 lg:px-12">
         
         {/* Header */}

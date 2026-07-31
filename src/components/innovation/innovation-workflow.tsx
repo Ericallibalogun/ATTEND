@@ -41,7 +41,7 @@ const workflowSteps = [
 
 export function InnovationWorkflow() {
   return (
-    <section className="bg-white py-20 lg:py-28 text-zinc-900">
+    <section className="bg-white py-10 lg:py-14 text-zinc-900">
       <div className="w-full px-6 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-start">
           

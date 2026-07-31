@@ -5,12 +5,11 @@ import { FooterCta } from "@/components/layout/footer-cta";
 function SectionOne() {
   return (
     <section
-      className="bg-[#F8FBF9] py-16 lg:py-24"
+      className="bg-[#F8FBF9] py-8 lg:py-12"
       style={{ scrollMarginTop: "var(--home-header-height, 0px)" }}
     >
       <div
         className="mx-auto w-full px-6 lg:px-8"
-        style={{ paddingTop: "calc(var(--home-header-height, 140px) / 2)" }}
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xl">
@@ -118,7 +117,7 @@ function SectionOne() {
 
 function SectionTwo() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-10 lg:py-16">
       <div className="mx-auto w-full px-6 lg:px-8">
         <div className="grid gap-16 lg:grid-cols-[1.2fr_1fr] lg:gap-24 xl:grid-cols-[1.5fr_1fr]">
           <div className="flex flex-col">

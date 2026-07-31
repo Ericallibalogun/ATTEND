@@ -25,7 +25,7 @@ const features = [
 
 export function AgmsBoardroom() {
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-10 lg:py-14">
       <div className="mx-auto w-full px-6 lg:px-8">
         
         <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-8 xl:gap-10 items-stretch">

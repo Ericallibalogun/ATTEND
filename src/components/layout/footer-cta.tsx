@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function FooterCta() {
   return (
-    <section className="relative flex min-h-[500px] flex-col items-center justify-center overflow-hidden py-24 lg:py-32">
+    <section className="relative flex min-h-[380px] flex-col items-center justify-center overflow-hidden py-12 lg:py-16">
       {/* Base Background Color */}
       <div className="absolute inset-0 bg-[#f8fbf9]" />
 
