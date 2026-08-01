@@ -1,18 +1,7 @@
-import {
-  PageShell,
-  createPageMetadata,
-} from "@/components/layout/page-shell";
+import LaunchServicePage, { metadata as launchMetadata } from "@/app/services/launch/page";
 
-export const metadata = createPageMetadata(
-  "Product Launch",
-  "Product launch events — campaigns, highlights, and live reveal experiences.",
-);
+export const metadata = launchMetadata;
 
 export default function ProductLaunchPage() {
-  return (
-    <PageShell
-      title="Product Launch"
-      description="Product launch events — campaigns, highlights, and live reveal experiences."
-    />
-  );
+  return <LaunchServicePage />;
 }
