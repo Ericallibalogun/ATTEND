@@ -18,14 +18,14 @@ export function FooterCta() {
         />
       </div>
 
-      {/* New Rectangle Image (Frame 1321325422.webp) Centered & Tiled */}
+      {/* New Rectangle Image (Frame 1321325422.webp) Full-width background */}
       <div
         className="absolute inset-0 z-0 mix-blend-multiply opacity-100"
         style={{
           backgroundImage: 'url("/Frame 1321325422.webp")',
           backgroundRepeat: 'repeat-x',
-          backgroundSize: 'auto 100%',
-          backgroundPosition: 'center bottom',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
         }}
       />
 
