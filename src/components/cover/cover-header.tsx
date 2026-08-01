@@ -43,11 +43,11 @@ export function CoverHeader({
       <header
         className={`${
           isHero
-            ? "relative z-20"
-            : "border-b border-zinc-200/80 bg-white shadow-sm z-20"
+            ? "relative z-20 py-3 lg:py-4"
+            : "border-b border-zinc-200/80 bg-white/95 backdrop-blur-md shadow-sm z-20 py-3 lg:py-4"
         } ${className}`}
       >
-      <div className="mx-auto w-full px-6 pt-5 lg:px-8 lg:pt-6">
+      <div className="mx-auto w-full px-6 lg:px-8">
         <div className="flex items-center justify-between gap-6">
           <Link
             href="/"
@@ -56,9 +56,9 @@ export function CoverHeader({
             <Image
               src="/Attend-2_logo.webp"
               alt="Attend"
-              width={200}
-              height={60}
-              className={`h-11 lg:h-12 w-auto object-contain ${
+              width={260}
+              height={80}
+              className={`h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all ${
                 isHero ? "brightness-0 invert" : ""
               }`}
               priority

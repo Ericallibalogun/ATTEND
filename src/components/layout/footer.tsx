@@ -31,9 +31,9 @@ export function Footer() {
               <Image
                 src="/Attend-2_logo.webp"
                 alt="Attend"
-                width={200}
-                height={60}
-                className="h-11 lg:h-12 w-auto object-contain brightness-0 invert"
+                width={260}
+                height={80}
+                className="h-12 sm:h-14 lg:h-16 w-auto object-contain brightness-0 invert"
               />
             </Link>
             

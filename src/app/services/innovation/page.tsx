@@ -1,3 +1,4 @@
+import { HomeHeader } from "@/components/cover/home-header";
 import { InnovationHero } from "@/components/innovation/innovation-hero";
 import { InnovationWorkflow } from "@/components/innovation/innovation-workflow";
 import { InnovationRunsRoom } from "@/components/innovation/innovation-runs-room";
@@ -15,6 +16,7 @@ export const metadata = {
 export default function InnovationServicesPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
+      <HomeHeader heroId="hero-section" />
       <main className="flex-1">
         <InnovationHero />
         <InnovationWorkflow />

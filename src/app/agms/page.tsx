@@ -1,3 +1,4 @@
+import { HomeHeader } from "@/components/cover/home-header";
 import { AgmsHero } from "@/components/agms/agms-hero";
 import { AgmsBoardroom } from "@/components/agms/agms-boardroom";
 import { AgmsCarousel } from "@/components/agms/agms-carousel";
@@ -13,6 +14,7 @@ export const metadata = {
 export default function AgmsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white">
+      <HomeHeader heroId="hero-section" />
       <main className="flex-1">
         <AgmsHero />
         <AgmsBoardroom />

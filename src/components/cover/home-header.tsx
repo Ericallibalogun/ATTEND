@@ -4,24 +4,31 @@ import { useEffect, useRef, useState } from "react";
 import { CoverHeader } from "@/components/cover/cover-header";
 
 type HomeHeaderProps = {
-  heroId: string;
+  heroId?: string;
 };
 
-export function HomeHeader({ heroId }: HomeHeaderProps) {
+export function HomeHeader({ heroId = "hero-section" }: HomeHeaderProps) {
   const [isPastHero, setIsPastHero] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const hero = document.getElementById(heroId);
-    if (!hero) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsPastHero(!entry.isIntersecting),
-      { threshold: 0 },
-    );
-
-    observer.observe(hero);
-    return () => observer.disconnect();
+    if (hero) {
+      const observer = new IntersectionObserver(
+        ([entry]) => setIsPastHero(!entry.isIntersecting),
+        { threshold: 0.1 },
+      );
+      observer.observe(hero);
+      return () => observer.disconnect();
+    } else {
+      const handleScroll = () => {
+        setIsPastHero(window.scrollY > 40);
+      };
+      handleScroll();
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, [heroId]);
 
   useEffect(() => {

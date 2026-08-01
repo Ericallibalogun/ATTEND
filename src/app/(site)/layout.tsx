@@ -1,5 +1,5 @@
 import { Footer } from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
+import { HomeHeader } from "@/components/cover/home-header";
 
 export default function SiteLayout({
   children,
@@ -8,7 +8,7 @@ export default function SiteLayout({
 }>) {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <HomeHeader heroId="hero-section" />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>

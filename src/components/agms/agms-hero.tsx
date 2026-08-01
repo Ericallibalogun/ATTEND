@@ -8,8 +8,7 @@ export function AgmsHero() {
   const slide = heroSlides[0]; // AGMs slide
 
   return (
-    <section className="relative flex min-h-screen flex-col overflow-hidden">
-      <CoverHeader variant="hero" />
+    <section id="hero-section" className="relative flex min-h-screen flex-col overflow-hidden">
 
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden z-0">

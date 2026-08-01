@@ -3,7 +3,7 @@ import { CoverHeader } from "@/components/cover/cover-header";
 
 export function InnovationHero() {
   return (
-    <section className="relative flex min-h-[70vh] lg:min-h-[85vh] flex-col justify-between overflow-hidden bg-black text-white">
+    <section id="hero-section" className="relative flex min-h-[70vh] lg:min-h-[85vh] flex-col justify-end overflow-hidden bg-black text-white">
       {/* Background Image with Dark Vignette/Gradient */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -15,11 +15,6 @@ export function InnovationHero() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/80" />
-      </div>
-
-      {/* Header Overlay */}
-      <div className="relative z-20">
-        <CoverHeader />
       </div>
 
       {/* Hero Content */}
