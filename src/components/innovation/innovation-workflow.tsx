@@ -101,7 +101,7 @@ export function InnovationWorkflow() {
               Most hackathons run on six disconnected tools. Attend runs the whole sequence in one place, every stage feeding the next, backed by the same event registration and ticketing engine used for enterprise meetings.
             </p>
 
-            {/* Interactive Stepper Accordion List */}
+            {/* Stepper Table with Active Progress Highlight */}
             <div
               className="flex flex-col border-t border-black/10"
               onMouseEnter={() => setIsPaused(true)}
@@ -113,10 +113,10 @@ export function InnovationWorkflow() {
                   <div
                     key={idx}
                     onClick={() => handleStepClick(idx)}
-                    className={`relative cursor-pointer border-b border-black/10 transition-all duration-300 ${
+                    className={`relative cursor-pointer border-b border-black/10 py-5 px-3 transition-all duration-300 ${
                       isActive
-                        ? "bg-[#EAF3EE]/80 py-5 px-4 shadow-xs"
-                        : "py-4 px-2 opacity-75 hover:opacity-100 hover:bg-black/[0.01]"
+                        ? "bg-[#EAF3EE]/90 shadow-xs"
+                        : "hover:bg-black/[0.015]"
                     }`}
                   >
                     {/* Animated Top Green Progress Line */}
@@ -140,7 +140,7 @@ export function InnovationWorkflow() {
                         </span>
                         <h3
                           className={`text-[16px] transition-colors ${
-                            isActive ? "font-semibold text-zinc-900" : "font-medium text-zinc-800"
+                            isActive ? "font-semibold text-zinc-900" : "font-medium text-zinc-900"
                           }`}
                         >
                           {step.title}
@@ -151,20 +151,14 @@ export function InnovationWorkflow() {
                       </span>
                     </div>
 
-                    {/* Smooth Collapsible Description */}
-                    <div
-                      className={`grid transition-all duration-500 ease-in-out ${
-                        isActive
-                          ? "grid-rows-[1fr] opacity-100 mt-3"
-                          : "grid-rows-[0fr] opacity-0"
+                    {/* Step Description (Always Visible for All 6 Steps) */}
+                    <p
+                      className={`mt-3 pl-8 text-[13.5px] leading-relaxed transition-colors ${
+                        isActive ? "text-zinc-800 font-medium" : "text-zinc-600"
                       }`}
                     >
-                      <div className="overflow-hidden">
-                        <p className="pl-8 text-[13.5px] leading-relaxed text-zinc-600 max-w-lg">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
+                      {step.description}
+                    </p>
 
                   </div>
                 );
