@@ -56,9 +56,9 @@ export function CoverHeader({
             <Image
               src="/Attend-2_logo.webp"
               alt="Attend"
-              width={380}
-              height={114}
-              className={`h-16 sm:h-20 lg:h-24 w-auto object-contain transition-all ${
+              width={320}
+              height={96}
+              className={`h-14 sm:h-16 lg:h-20 w-auto object-contain transition-all ${
                 isHero ? "brightness-0 invert" : ""
               }`}
               priority
@@ -90,17 +90,17 @@ export function CoverHeader({
 
           <button
             type="button"
-            className={`inline-flex items-center justify-center p-2 lg:hidden ${
-              isHero ? "text-white" : "text-zinc-900"
-            }`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            className="flex items-center justify-center p-2 lg:hidden"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open mobile menu"
           >
             <svg
-              className="size-6"
+              className={`size-6 ${isHero ? "text-white" : "text-primary"}`}
+              viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24"
+              strokeWidth="2"
+              strokeLinecap="round"
             >
               <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -110,7 +110,7 @@ export function CoverHeader({
 
       {isHero ? (
         <>
-          <nav className="mx-auto mt-8 hidden w-full px-6 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-12">
+          <nav className="mx-auto mt-8 hidden w-full px-6 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-8">
             {siteConfig.coverNav.map((item) => (
               <div key={item.href} className="flex min-w-0 flex-col">
                 <div className="h-px w-full bg-white/40" aria-hidden />
@@ -126,7 +126,7 @@ export function CoverHeader({
           </nav>
         </>
       ) : (
-        <nav className="mx-auto hidden w-full px-6 pb-4 pt-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-12">
+        <nav className="mx-auto hidden w-full px-6 pb-4 pt-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-8">
           {siteConfig.coverNav.map((item) => (
             <div key={item.href} className="flex min-w-0 flex-col">
               <div className="h-px w-full bg-zinc-300" aria-hidden />
