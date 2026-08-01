@@ -1,4 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
+
+const STEP_DURATION = 5000; // 5 seconds per step
 
 const workflowSteps = [
   {
@@ -46,6 +51,34 @@ const workflowSteps = [
 ];
 
 export function InnovationWorkflow() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const intervalTime = 50; // update progress every 50ms
+    const increment = (intervalTime / STEP_DURATION) * 100;
+
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev + increment >= 100) {
+          setActiveIdx((current) => (current + 1) % workflowSteps.length);
+          return 0;
+        }
+        return prev + increment;
+      });
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, [isPaused, activeIdx]);
+
+  const handleStepClick = (idx: number) => {
+    setActiveIdx(idx);
+    setProgress(0);
+  };
+
   return (
     <section className="bg-[#F8FBF9] py-14 lg:py-20 text-zinc-900">
       <div className="w-full px-6 lg:px-12">
@@ -68,32 +101,74 @@ export function InnovationWorkflow() {
               Most hackathons run on six disconnected tools. Attend runs the whole sequence in one place, every stage feeding the next, backed by the same event registration and ticketing engine used for enterprise meetings.
             </p>
 
-            {/* Stepper Table / Accordion List */}
-            <div className="flex flex-col border-t border-black/10">
-              {workflowSteps.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="border-b border-black/10 py-5 transition-colors hover:bg-black/[0.015]"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <span className="text-[14px] font-medium text-zinc-400 font-mono">
-                        {step.number}
-                      </span>
-                      <h3 className="text-[16px] font-medium text-zinc-900">
-                        {step.title}
-                      </h3>
+            {/* Interactive Stepper Accordion List */}
+            <div
+              className="flex flex-col border-t border-black/10"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {workflowSteps.map((step, idx) => {
+                const isActive = activeIdx === idx;
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => handleStepClick(idx)}
+                    className={`relative cursor-pointer border-b border-black/10 transition-all duration-300 ${
+                      isActive
+                        ? "bg-[#EAF3EE]/80 py-5 px-4 shadow-xs"
+                        : "py-4 px-2 opacity-75 hover:opacity-100 hover:bg-black/[0.01]"
+                    }`}
+                  >
+                    {/* Animated Top Green Progress Line */}
+                    <div className="absolute inset-x-0 top-0 h-[2.5px] bg-black/5 overflow-hidden">
+                      <div
+                        className="h-full bg-[#004D34] transition-all duration-75 ease-linear"
+                        style={{
+                          width: isActive ? `${progress}%` : "0%",
+                        }}
+                      />
                     </div>
-                    <span className="text-[11px] font-semibold tracking-wider text-[#004D34] uppercase shrink-0">
-                      {step.role}
-                    </span>
+
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        <span
+                          className={`text-[14px] font-mono transition-colors ${
+                            isActive ? "font-bold text-[#004D34]" : "font-medium text-zinc-400"
+                          }`}
+                        >
+                          {step.number}
+                        </span>
+                        <h3
+                          className={`text-[16px] transition-colors ${
+                            isActive ? "font-semibold text-zinc-900" : "font-medium text-zinc-800"
+                          }`}
+                        >
+                          {step.title}
+                        </h3>
+                      </div>
+                      <span className="text-[11px] font-semibold tracking-wider text-[#004D34] uppercase shrink-0">
+                        {step.role}
+                      </span>
+                    </div>
+
+                    {/* Smooth Collapsible Description */}
+                    <div
+                      className={`grid transition-all duration-500 ease-in-out ${
+                        isActive
+                          ? "grid-rows-[1fr] opacity-100 mt-3"
+                          : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <p className="pl-8 text-[13.5px] leading-relaxed text-zinc-600 max-w-lg">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
+
                   </div>
-                  
-                  <p className="mt-3 pl-8 text-[13.5px] leading-relaxed text-zinc-600 max-w-lg">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
