@@ -22,7 +22,7 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full px-6 py-16 lg:px-8 xl:py-24">
+      <div className="relative z-10 mx-auto w-full px-6 py-16 lg:px-12 xl:py-24">
         <div className="grid gap-16 lg:grid-cols-[1.2fr_1.5fr] xl:grid-cols-[1fr_1.5fr] lg:gap-24">
           
           {/* Left Column */}
@@ -31,9 +31,9 @@ export function Footer() {
               <Image
                 src="/Attend-2_logo.webp"
                 alt="Attend"
-                width={260}
-                height={80}
-                className="h-12 sm:h-14 lg:h-16 w-auto object-contain brightness-0 invert"
+                width={320}
+                height={96}
+                className="h-14 sm:h-16 lg:h-20 w-auto object-contain brightness-0 invert"
               />
             </Link>
             

@@ -47,7 +47,7 @@ export function CoverHeader({
             : "border-b border-zinc-200/80 bg-white/95 backdrop-blur-md shadow-sm z-20 py-3 lg:py-4"
         } ${className}`}
       >
-      <div className="mx-auto w-full px-6 lg:px-8">
+      <div className="mx-auto w-full px-6 lg:px-12">
         <div className="flex items-center justify-between gap-6">
           <Link
             href="/"
@@ -56,9 +56,9 @@ export function CoverHeader({
             <Image
               src="/Attend-2_logo.webp"
               alt="Attend"
-              width={260}
-              height={80}
-              className={`h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all ${
+              width={320}
+              height={96}
+              className={`h-14 sm:h-16 lg:h-20 w-auto object-contain transition-all ${
                 isHero ? "brightness-0 invert" : ""
               }`}
               priority
