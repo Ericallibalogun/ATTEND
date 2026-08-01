@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function FooterCta() {
   return (
-    <section className="relative flex min-h-[500px] flex-col items-center justify-center overflow-hidden py-24 lg:py-32">
+    <section className="relative flex min-h-[640px] lg:min-h-[760px] flex-col items-center justify-center overflow-hidden py-32 lg:py-44">
       {/* Base Background Color */}
       <div className="absolute inset-0 bg-[#f8fbf9]" />
 
@@ -18,14 +18,14 @@ export function FooterCta() {
         />
       </div>
 
-      {/* New Rectangle Image (Frame 1321325422.webp) Full-width background */}
+      {/* New Rectangle Image (Frame 1321325422.webp) Full vertical height */}
       <div
         className="absolute inset-0 z-0 mix-blend-multiply opacity-100"
         style={{
           backgroundImage: 'url("/Frame 1321325422.webp")',
           backgroundRepeat: 'repeat-x',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center bottom',
         }}
       />
 
