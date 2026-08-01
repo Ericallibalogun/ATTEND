@@ -72,11 +72,17 @@ export function InnovationWorkflow() {
     }, intervalTime);
 
     return () => clearInterval(timer);
-  }, [isPaused, activeIdx]);
+  }, [isPaused]);
 
   const handleStepClick = (idx: number) => {
     setActiveIdx(idx);
     setProgress(0);
+  };
+
+  const getStepProgress = (idx: number) => {
+    if (idx < activeIdx) return 100;
+    if (idx === activeIdx) return progress;
+    return 0;
   };
 
   return (
@@ -109,6 +115,9 @@ export function InnovationWorkflow() {
             >
               {workflowSteps.map((step, idx) => {
                 const isActive = activeIdx === idx;
+                const isCompleted = idx < activeIdx;
+                const stepProgress = getStepProgress(idx);
+
                 return (
                   <div
                     key={idx}
@@ -116,15 +125,17 @@ export function InnovationWorkflow() {
                     className={`relative cursor-pointer border-b border-black/10 py-5 px-3 transition-all duration-300 ${
                       isActive
                         ? "bg-[#EAF3EE]/90 shadow-xs"
+                        : isCompleted
+                        ? "bg-black/[0.01]"
                         : "hover:bg-black/[0.015]"
                     }`}
                   >
-                    {/* Animated Top Green Progress Line */}
-                    <div className="absolute inset-x-0 top-0 h-[2.5px] bg-black/5 overflow-hidden">
+                    {/* Animated Top Green Progress Line for ALL Steps */}
+                    <div className="absolute inset-x-0 top-0 h-[3px] bg-black/5 overflow-hidden">
                       <div
                         className="h-full bg-[#004D34] transition-all duration-75 ease-linear"
                         style={{
-                          width: isActive ? `${progress}%` : "0%",
+                          width: `${stepProgress}%`,
                         }}
                       />
                     </div>
@@ -133,7 +144,7 @@ export function InnovationWorkflow() {
                       <div className="flex items-center gap-4">
                         <span
                           className={`text-[14px] font-mono transition-colors ${
-                            isActive ? "font-bold text-[#004D34]" : "font-medium text-zinc-400"
+                            isActive || isCompleted ? "font-bold text-[#004D34]" : "font-medium text-zinc-400"
                           }`}
                         >
                           {step.number}
@@ -154,7 +165,7 @@ export function InnovationWorkflow() {
                     {/* Step Description (Always Visible for All 6 Steps) */}
                     <p
                       className={`mt-3 pl-8 text-[13.5px] leading-relaxed transition-colors ${
-                        isActive ? "text-zinc-800 font-medium" : "text-zinc-600"
+                        isActive ? "text-zinc-900 font-medium" : "text-zinc-600"
                       }`}
                     >
                       {step.description}
