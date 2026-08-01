@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 const STEP_DURATION = 5000; // 5 seconds per step
@@ -54,35 +54,64 @@ export function InnovationWorkflow() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  
+  const startTimeRef = useRef<number | null>(null);
+  const progressRef = useRef(0);
+  const isPausedRef = useRef(isPaused);
 
   useEffect(() => {
-    if (isPaused) return;
-
-    const intervalTime = 50; // update progress every 50ms
-    const increment = (intervalTime / STEP_DURATION) * 100;
-
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev + increment >= 100) {
-          setActiveIdx((current) => (current + 1) % workflowSteps.length);
-          return 0;
-        }
-        return prev + increment;
-      });
-    }, intervalTime);
-
-    return () => clearInterval(timer);
+    isPausedRef.current = isPaused;
   }, [isPaused]);
 
+  useEffect(() => {
+    let animFrameId: number;
+
+    const animate = (timestamp: number) => {
+      if (isPausedRef.current) {
+        // Pause timer: update start time anchor so progress resumes smoothly when unpaused
+        startTimeRef.current = timestamp - (progressRef.current / 100) * STEP_DURATION;
+        animFrameId = requestAnimationFrame(animate);
+        return;
+      }
+
+      if (startTimeRef.current === null) {
+        startTimeRef.current = timestamp - (progressRef.current / 100) * STEP_DURATION;
+      }
+
+      const elapsed = timestamp - startTimeRef.current;
+      const currentProgress = Math.min((elapsed / STEP_DURATION) * 100, 100);
+
+      progressRef.current = currentProgress;
+      setProgress(currentProgress);
+
+      if (elapsed >= STEP_DURATION) {
+        startTimeRef.current = null;
+        progressRef.current = 0;
+        setProgress(0);
+        setActiveIdx((prev) => (prev + 1) % workflowSteps.length);
+      } else {
+        animFrameId = requestAnimationFrame(animate);
+      }
+    };
+
+    animFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animFrameId);
+    };
+  }, [activeIdx]);
+
   const handleStepClick = (idx: number) => {
-    setActiveIdx(idx);
+    startTimeRef.current = null;
+    progressRef.current = 0;
     setProgress(0);
+    setActiveIdx(idx);
   };
 
-  const getStepProgress = (idx: number) => {
-    if (idx < activeIdx) return 100;
-    if (idx === activeIdx) return progress;
-    return 0;
+  const getStepWidth = (idx: number) => {
+    if (idx < activeIdx) return "100%";
+    if (idx === activeIdx) return `${progress}%`;
+    return "0%";
   };
 
   return (
@@ -116,7 +145,7 @@ export function InnovationWorkflow() {
               {workflowSteps.map((step, idx) => {
                 const isActive = activeIdx === idx;
                 const isCompleted = idx < activeIdx;
-                const stepProgress = getStepProgress(idx);
+                const stepWidth = getStepWidth(idx);
 
                 return (
                   <div
@@ -130,12 +159,12 @@ export function InnovationWorkflow() {
                         : "hover:bg-black/[0.015]"
                     }`}
                   >
-                    {/* Animated Top Green Progress Line for ALL Steps */}
+                    {/* Animated Top Green Progress Line for ALL 6 Steps */}
                     <div className="absolute inset-x-0 top-0 h-[3px] bg-black/5 overflow-hidden">
                       <div
-                        className="h-full bg-[#004D34] transition-all duration-75 ease-linear"
+                        className="h-full bg-[#004D34]"
                         style={{
-                          width: `${stepProgress}%`,
+                          width: stepWidth,
                         }}
                       />
                     </div>
