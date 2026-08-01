@@ -90,7 +90,7 @@ export function InnovationWorkflow() {
           </div>
 
           {/* Right Image */}
-          <div className="relative h-[480px] sm:h-[580px] lg:h-[640px] w-full overflow-hidden rounded-none bg-zinc-100 shadow-xl">
+          <div className="relative h-[280px] sm:h-[480px] lg:h-[640px] w-full overflow-hidden rounded-none bg-zinc-100 shadow-xl">
             <Image
               src="/Frame 35774 (1).webp"
               alt="Hackathon award trophy and certificates"

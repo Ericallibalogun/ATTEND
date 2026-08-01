@@ -28,7 +28,7 @@ export function InnovationRunsRoom() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
             
             {/* Left Image */}
-            <div className="relative h-[340px] sm:h-[420px] lg:h-[480px] w-full overflow-hidden rounded-none">
+            <div className="order-2 lg:order-1 relative h-[260px] sm:h-[420px] lg:h-[480px] w-full overflow-hidden rounded-none">
               <Image
                 src="/Frame 35776.webp"
                 alt="Hackathon team collaborating"
@@ -39,7 +39,7 @@ export function InnovationRunsRoom() {
             </div>
 
             {/* Right Content */}
-            <div className="flex flex-col">
+            <div className="order-1 lg:order-2 flex flex-col">
               <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#00E58F]">
                 <span className="mr-2 inline-block size-1.5 bg-[#00E58F]" aria-hidden />
                 HOST & PARTICIPANT PANELS
