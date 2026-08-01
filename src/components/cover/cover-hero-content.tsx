@@ -101,7 +101,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/25 to-transparent" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col px-6 md:px-10 lg:px-14">
+      <div className="relative z-10 flex flex-1 flex-col px-6 lg:px-12">
         <div className="flex flex-1 flex-col justify-end pb-16 pt-8 lg:pb-24 lg:pt-12">
           <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,814px)_1fr] lg:gap-16">
             <HeroSlideContent
