@@ -14,18 +14,19 @@ const galleryCategories: GalleryCategory[] = [
     id: "agm",
     title: "Annual General Meeting (AGM)",
     images: [
+      { src: "/agm_real_1.webp", alt: "Executive Corporate Boardroom at Dusk" },
+      { src: "/Frame_6086.webp", alt: "Annual General Meeting Keynote Presentation" },
       { src: "/boardroom.webp", alt: "Executive AGM Boardroom Setup" },
-      { src: "/boardroom-2.webp", alt: "Virtual Shareholder Meeting" },
       { src: "/Frame 1321325430.webp", alt: "Verified Access & Voting Interface" },
-      { src: "/Frame 1321325438.webp", alt: "Proxy Lodgement Dashboard" },
     ],
   },
   {
     id: "innovation",
     title: "Innovation Challenge",
     images: [
+      { src: "/innovation_real_1.webp", alt: "Tech Innovation Workshop Room" },
+      { src: "/Frame_6086_1.webp", alt: "Innovation Challenge Pitch Stage" },
       { src: "/Frame 35776 (1).webp", alt: "Innovation Challenge Sprint" },
-      { src: "/Frame 35776.webp", alt: "Live Pitching and Mentor Office Hours" },
       { src: "/Frame 35774 (1).webp", alt: "Judge Scoring and Leaderboard Finale" },
     ],
   },
@@ -33,9 +34,10 @@ const galleryCategories: GalleryCategory[] = [
     id: "hackathons",
     title: "Hackathons",
     images: [
+      { src: "/hackathon_real_1.webp", alt: "Modern Tech Hackathon Architecture" },
+      { src: "/Frame 35776.webp", alt: "Live Pitching and Mentor Office Hours" },
       { src: "/cropped_collage.webp", alt: "Hackathon Builder Collaboration" },
       { src: "/collage.webp", alt: "Hackathon Team Presentation" },
-      { src: "/renewed_collage.webp", alt: "Hackathon Networking & Mentorship" },
     ],
   },
   {
@@ -45,8 +47,6 @@ const galleryCategories: GalleryCategory[] = [
       { src: "/boardroom3.webp", alt: "Product Launch Stage Reveal Platform" },
       { src: "/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.png", alt: "Broadcast Stage Camera & Lights" },
       { src: "/d19a92ced1ad518052748b12f9e464593833f903.png", alt: "Hardware Keynote Presentation" },
-      { src: "/analytics_dashboard.webp", alt: "Post-Event Analytics Dashboard" },
-      { src: "/Frame 35774.webp", alt: "VIP Guest Badges & Lanyards" },
       { src: "/Frame 1321325422.webp", alt: "Registration Check-in Desk" },
     ],
   },
