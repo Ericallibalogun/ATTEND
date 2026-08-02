@@ -22,12 +22,8 @@ export function HomeHeader({ heroId = "hero-section" }: HomeHeaderProps) {
       observer.observe(hero);
       return () => observer.disconnect();
     } else {
-      const handleScroll = () => {
-        setIsPastHero(window.scrollY > 40);
-      };
-      handleScroll();
-      window.addEventListener("scroll", handleScroll, { passive: true });
-      return () => window.removeEventListener("scroll", handleScroll);
+      // No hero section on this page -> show solid header from start of page
+      setIsPastHero(true);
     }
   }, [heroId]);
 
