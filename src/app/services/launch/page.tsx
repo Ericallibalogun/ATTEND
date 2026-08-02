@@ -16,20 +16,13 @@ export const metadata: Metadata = {
 
 export default function LaunchServicePage() {
   return (
-    <div className="relative min-h-screen bg-white font-sans text-zinc-900 selection:bg-[#004D34] selection:text-white">
-      {/* Universal Fixed Sticky Header */}
-      <HomeHeader />
-
-      <main className="relative">
-        <LaunchHero />
-        <LaunchFeatures />
-        <LaunchRunOfShow />
-        <LaunchAllInOne />
-        <LaunchMomentum />
-        <FooterCta />
-      </main>
-
-      <Footer />
-    </div>
+    <main className="relative">
+      <LaunchHero />
+      <LaunchFeatures />
+      <LaunchRunOfShow />
+      <LaunchAllInOne />
+      <LaunchMomentum />
+      <FooterCta />
+    </main>
   );
 }

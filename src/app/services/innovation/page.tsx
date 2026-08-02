@@ -15,17 +15,13 @@ export const metadata = {
 
 export default function InnovationServicesPage() {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <HomeHeader heroId="hero-section" />
-      <main className="flex-1">
-        <InnovationHero />
-        <InnovationWorkflow />
-        <InnovationRunsRoom />
-        <InnovationSprint />
-        <InnovationChallenges />
-        <FooterCta />
-      </main>
-      <Footer />
-    </div>
+    <main className="flex-1">
+      <InnovationHero />
+      <InnovationWorkflow />
+      <InnovationRunsRoom />
+      <InnovationSprint />
+      <InnovationChallenges />
+      <FooterCta />
+    </main>
   );
 }
