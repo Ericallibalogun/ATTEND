@@ -21,13 +21,21 @@ const galleryCategories: GalleryCategory[] = [
     ],
   },
   {
+    id: "innovation",
+    title: "Innovation Challenge",
+    images: [
+      { src: "/Frame 35776 (1).webp", alt: "Innovation Challenge Sprint" },
+      { src: "/Frame 35776.webp", alt: "Live Pitching and Mentor Office Hours" },
+      { src: "/Frame 35774 (1).webp", alt: "Judge Scoring and Leaderboard Finale" },
+    ],
+  },
+  {
     id: "hackathons",
     title: "Hackathons",
     images: [
-      { src: "/Frame 35776 (1).webp", alt: "Hackathon Builder Sprint" },
-      { src: "/Frame 35776.webp", alt: "Live Pitching and Mentor Office Hours" },
-      { src: "/Frame 35774 (1).webp", alt: "Judge Scoring and Leaderboard Finale" },
-      { src: "/cropped_collage.webp", alt: "Attendee Collaboration" },
+      { src: "/cropped_collage.webp", alt: "Hackathon Builder Collaboration" },
+      { src: "/collage.webp", alt: "Hackathon Team Presentation" },
+      { src: "/renewed_collage.webp", alt: "Hackathon Networking & Mentorship" },
     ],
   },
   {
