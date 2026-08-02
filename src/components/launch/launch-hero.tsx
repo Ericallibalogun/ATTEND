@@ -8,8 +8,8 @@ export function LaunchHero() {
       {/* Background Auditorium Stage Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.png"
-          alt="Product Launch Auditorium Stage with Countdown Timer"
+          src="/boardroom3.webp"
+          alt="Product Launch Auditorium Stage"
           fill
           className="object-cover object-center brightness-95 contrast-105"
           priority

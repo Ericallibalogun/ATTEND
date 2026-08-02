@@ -52,7 +52,7 @@ export function LaunchAllInOne() {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const scrollAmount = direction === "left" ? -420 : 420;
+      const scrollAmount = direction === "left" ? -480 : 480;
       scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -92,48 +92,50 @@ export function LaunchAllInOne() {
           </div>
         </div>
 
-        {/* Horizontal Scrolling Cards Container */}
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto pb-8 pt-4 scrollbar-none scroll-smooth"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {allInOneCards.map((card, idx) => (
-            <div
-              key={idx}
-              className="flex w-[320px] sm:w-[380px] lg:w-[420px] shrink-0 flex-col bg-white text-zinc-900 overflow-hidden shadow-2xl"
-            >
-              {/* Card Top Padding & Number */}
-              <div className="p-8 pb-4">
-                <span className="mb-4 block font-mono text-4xl font-light text-zinc-300">
-                  {card.number}
-                </span>
+        {/* Unified White Container Box */}
+        <div className="bg-white p-6 sm:p-8 lg:p-10 text-zinc-900 shadow-2xl overflow-hidden">
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-10 overflow-x-auto pb-4 pt-2 scrollbar-none scroll-smooth"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {allInOneCards.map((card, idx) => (
+              <div
+                key={idx}
+                className="flex w-[440px] sm:w-[480px] lg:w-[520px] shrink-0 gap-6 items-start border-r border-zinc-100 pr-8 last:border-r-0 last:pr-0"
+              >
+                {/* Left Text Column */}
+                <div className="flex flex-1 flex-col justify-start">
+                  <span className="mb-2 block font-mono text-5xl font-light text-zinc-200">
+                    {card.number}
+                  </span>
 
-                <h3 className="mb-3 text-xl font-semibold text-zinc-900">
-                  {card.title}
-                </h3>
-                
-                <p className="text-[13.5px] leading-relaxed text-zinc-600 min-h-[72px]">
-                  {card.description}
-                </p>
-              </div>
+                  <h3 className="mb-3 text-lg font-semibold text-zinc-900 leading-snug">
+                    {card.title}
+                  </h3>
+                  
+                  <p className="text-[13px] leading-relaxed text-zinc-600">
+                    {card.description}
+                  </p>
+                </div>
 
-              {/* Card Image */}
-              <div className="relative h-[220px] sm:h-[260px] w-full bg-zinc-100 mt-auto">
-                <Image
-                  src={card.image}
-                  alt={card.alt}
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 768px) 320px, 420px"
-                />
+                {/* Right Image Column */}
+                <div className="relative h-[240px] sm:h-[280px] w-[180px] sm:w-[220px] shrink-0 overflow-hidden bg-zinc-100">
+                  <Image
+                    src={card.image}
+                    alt={card.alt}
+                    fill
+                    className="object-cover object-center"
+                    sizes="220px"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Bottom Carousel Navigation Buttons */}
-        <div className="mt-6 flex items-center justify-center gap-4">
+        <div className="mt-8 flex items-center justify-center gap-4">
           <button
             type="button"
             onClick={() => scroll("left")}
