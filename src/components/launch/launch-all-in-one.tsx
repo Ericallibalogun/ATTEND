@@ -11,7 +11,7 @@ const allInOneCards = [
     description:
       "Tiered invitations for VIPs, press, partners and public audiences. RSVP tracking, waitlists, reminders and QR check-in for in-room guests.",
     image: "/Frame 1321325422.webp",
-    alt: "Event guest badges and lanyards",
+    alt: "Invitations & guest lists - green lanyards and badges",
   },
   {
     number: "02",
@@ -19,15 +19,15 @@ const allInOneCards = [
     description:
       "Adaptive low-latency streaming built for markets where connectivity varies, rehearsal mode, backstage cueing and multi-camera support so the show runs to the second.",
     image: "/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.png",
-    alt: "Broadcast stage camera setup",
+    alt: "Broadcast-quality staging - camera and stage setup",
   },
   {
     number: "03",
     title: "Live audience energy",
     description:
       "Reactions, applause moments, live polls and moderated Q&A give remote viewers the same electric clarity as the front row.",
-    image: "/collage.webp",
-    alt: "Audience engaging with live event",
+    image: "/cropped_collage.webp",
+    alt: "Live audience energy - attendee with tablet",
   },
   {
     number: "04",
@@ -35,15 +35,15 @@ const allInOneCards = [
     description:
       "Route audiences into product demo rooms, press briefings and partner sessions inside dedicated virtual exhibitor booths, each with its own host, materials and capacity rules.",
     image: "/d19a92ced1ad518052748b12f9e464593833f903.png",
-    alt: "Virtual demo room hardware presentation",
+    alt: "Demos & breakouts - hardware presentation setup",
   },
   {
     number: "05",
     title: "Leads, replay & analytics",
     description:
       "Every registration, question and poll response becomes structured data, letting you measure ROI of virtual events with replay pages and engagement scoring.",
-    image: "/d19a92ced1ad518052748b12f9e464593833f903.png",
-    alt: "Event analytics dashboard on laptop",
+    image: "/Frame 35774 (1).webp",
+    alt: "Leads, replay & analytics - event reporting dashboard",
   },
 ];
 
