@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
-const STEP_DURATION = 5000; // 5 seconds per stage
+const STEP_DURATION = 3000; // 3 seconds per stage
 
 const runOfShowStages = [
   {
@@ -49,30 +49,36 @@ export function LaunchRunOfShow() {
   const [isPaused, setIsPaused] = useState(false);
 
   const startTimeRef = useRef<number | null>(null);
-  const progressRef = useRef(0);
-  const isPausedRef = useRef(isPaused);
 
   useEffect(() => {
-    isPausedRef.current = isPaused;
-  }, [isPaused]);
+    if (isPaused) {
+      startTimeRef.current = null;
+      return;
+    }
 
-  useEffect(() => {
-    if (isPaused) return;
+    if (startTimeRef.current === null) {
+      startTimeRef.current = performance.now();
+    }
 
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          setActiveIdx((current) => (current + 1) % runOfShowStages.length);
-          return 0;
-        }
-        return prev + 2;
-      });
-    }, 100);
+      if (startTimeRef.current === null) return;
+      const elapsed = performance.now() - startTimeRef.current;
+      const currentProgress = Math.min((elapsed / STEP_DURATION) * 100, 100);
+
+      if (elapsed >= STEP_DURATION) {
+        startTimeRef.current = performance.now();
+        setProgress(0);
+        setActiveIdx((prev) => (prev + 1) % runOfShowStages.length);
+      } else {
+        setProgress(currentProgress);
+      }
+    }, 50);
 
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, activeIdx]);
 
   const handleStageClick = (idx: number) => {
+    startTimeRef.current = performance.now();
     setProgress(0);
     setActiveIdx(idx);
   };
