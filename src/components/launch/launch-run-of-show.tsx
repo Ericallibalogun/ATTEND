@@ -57,45 +57,22 @@ export function LaunchRunOfShow() {
   }, [isPaused]);
 
   useEffect(() => {
-    let animFrameId: number;
+    if (isPaused) return;
 
-    const animate = (timestamp: number) => {
-      if (isPausedRef.current) {
-        startTimeRef.current = timestamp - (progressRef.current / 100) * STEP_DURATION;
-        animFrameId = requestAnimationFrame(animate);
-        return;
-      }
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setActiveIdx((current) => (current + 1) % runOfShowStages.length);
+          return 0;
+        }
+        return prev + 2;
+      });
+    }, 100);
 
-      if (startTimeRef.current === null) {
-        startTimeRef.current = timestamp - (progressRef.current / 100) * STEP_DURATION;
-      }
-
-      const elapsed = timestamp - startTimeRef.current;
-      const currentProgress = Math.min((elapsed / STEP_DURATION) * 100, 100);
-
-      progressRef.current = currentProgress;
-      setProgress(currentProgress);
-
-      if (elapsed >= STEP_DURATION) {
-        startTimeRef.current = null;
-        progressRef.current = 0;
-        setProgress(0);
-        setActiveIdx((prev) => (prev + 1) % runOfShowStages.length);
-      } else {
-        animFrameId = requestAnimationFrame(animate);
-      }
-    };
-
-    animFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      cancelAnimationFrame(animFrameId);
-    };
-  }, [activeIdx]);
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   const handleStageClick = (idx: number) => {
-    startTimeRef.current = null;
-    progressRef.current = 0;
     setProgress(0);
     setActiveIdx(idx);
   };
@@ -154,7 +131,7 @@ export function LaunchRunOfShow() {
                     {/* Animated Top Green Progress Line */}
                     <div className="absolute inset-x-0 top-0 h-[3px] bg-black/5 overflow-hidden">
                       <div
-                        className="h-full bg-[#004D34]"
+                        className="h-full bg-[#004D34] transition-all duration-100 ease-linear"
                         style={{
                           width: stageWidth,
                         }}
