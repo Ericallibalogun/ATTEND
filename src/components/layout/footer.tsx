@@ -27,14 +27,14 @@ export function Footer() {
           
           {/* Left Column */}
           <div className="flex flex-col">
-            <Link href="/" className="relative block h-14 sm:h-16 lg:h-20 w-48 sm:w-56 lg:w-64 mb-10 transition-opacity hover:opacity-90 shrink-0">
+            <Link href="/" className="mb-10 inline-block transition-opacity hover:opacity-90">
               <Image
                 src="/Attend-2_logo.webp"
                 alt="Attend"
-                fill
-                className="object-contain object-left brightness-0 invert"
+                width={240}
+                height={72}
+                className="h-14 sm:h-16 lg:h-20 w-auto max-w-[260px] object-contain brightness-0 invert"
                 priority
-                sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 256px"
               />
             </Link>
             

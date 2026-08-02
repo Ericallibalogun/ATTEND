@@ -51,17 +51,17 @@ export function CoverHeader({
         <div className="flex items-center justify-between gap-6">
           <Link
             href="/"
-            className="relative block h-9 sm:h-10 lg:h-11 w-32 sm:w-36 lg:w-40 transition-opacity hover:opacity-90 shrink-0"
+            className="flex items-center transition-opacity hover:opacity-90 shrink-0"
           >
             <Image
               src="/Attend-2_logo.webp"
               alt="Attend"
-              fill
-              className={`object-contain object-left transition-all ${
+              width={160}
+              height={48}
+              className={`h-9 sm:h-10 lg:h-11 w-auto max-w-[160px] object-contain transition-all ${
                 isHero ? "brightness-0 invert" : ""
               }`}
               priority
-              sizes="(max-width: 640px) 128px, (max-width: 1024px) 144px, 160px"
             />
           </Link>
 
