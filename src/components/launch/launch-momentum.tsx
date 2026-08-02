@@ -23,8 +23,8 @@ export function LaunchMomentum() {
         {/* Large Hardware & Analytics Showcase Image */}
         <div className="relative h-[360px] sm:h-[520px] lg:h-[680px] w-full overflow-hidden bg-zinc-900 shadow-2xl">
           <Image
-            src="/d19a92ced1ad518052748b12f9e464593833f903.png"
-            alt="Hardware launch display and analytics dashboard"
+            src="/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.png"
+            alt="Broadcast stage camera and lights"
             fill
             className="object-cover object-center"
             sizes="(max-width: 1280px) 100vw, 1280px"
