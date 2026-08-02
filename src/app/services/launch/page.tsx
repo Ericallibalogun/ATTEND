@@ -16,13 +16,17 @@ export const metadata: Metadata = {
 
 export default function LaunchServicePage() {
   return (
-    <main className="relative">
-      <LaunchHero />
-      <LaunchFeatures />
-      <LaunchRunOfShow />
-      <LaunchAllInOne />
-      <LaunchMomentum />
-      <FooterCta />
-    </main>
+    <div className="relative min-h-screen bg-white font-sans text-zinc-900 selection:bg-[#004D34] selection:text-white">
+      <HomeHeader heroId="hero-section" />
+      <main className="relative">
+        <LaunchHero />
+        <LaunchFeatures />
+        <LaunchRunOfShow />
+        <LaunchAllInOne />
+        <LaunchMomentum />
+        <FooterCta />
+      </main>
+      <Footer />
+    </div>
   );
 }

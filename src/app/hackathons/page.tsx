@@ -15,13 +15,17 @@ export const metadata = {
 
 export default function HackathonsPage() {
   return (
-    <main className="flex-1">
-      <InnovationHero />
-      <InnovationWorkflow />
-      <InnovationRunsRoom />
-      <InnovationSprint />
-      <InnovationChallenges />
-      <FooterCta />
-    </main>
+    <div className="flex min-h-screen flex-col bg-white">
+      <HomeHeader heroId="hero-section" />
+      <main className="flex-1">
+        <InnovationHero />
+        <InnovationWorkflow />
+        <InnovationRunsRoom />
+        <InnovationSprint />
+        <InnovationChallenges />
+        <FooterCta />
+      </main>
+      <Footer />
+    </div>
   );
 }
