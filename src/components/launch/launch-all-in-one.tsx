@@ -52,7 +52,10 @@ export function LaunchAllInOne() {
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const scrollAmount = direction === "left" ? -480 : 480;
+      const scrollAmount =
+        direction === "left"
+          ? -scrollContainerRef.current.clientWidth
+          : scrollContainerRef.current.clientWidth;
       scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -93,16 +96,16 @@ export function LaunchAllInOne() {
         </div>
 
         {/* Unified White Container Box */}
-        <div className="bg-white p-6 sm:p-8 lg:p-10 text-zinc-900 shadow-2xl overflow-hidden">
+        <div className="bg-white p-5 sm:p-8 lg:p-10 text-zinc-900 shadow-2xl overflow-hidden">
           <div
             ref={scrollContainerRef}
-            className="flex gap-10 overflow-x-auto pb-4 pt-2 scrollbar-none scroll-smooth"
+            className="flex gap-6 sm:gap-10 overflow-x-auto pb-4 pt-2 scrollbar-none scroll-smooth snap-x snap-mandatory"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {allInOneCards.map((card, idx) => (
               <div
                 key={idx}
-                className="flex w-[310px] sm:w-[440px] lg:w-[520px] shrink-0 gap-4 sm:gap-6 items-start border-r border-zinc-100 pr-5 sm:pr-8 last:border-r-0 last:pr-0"
+                className="flex w-full sm:w-[440px] lg:w-[520px] shrink-0 snap-center gap-4 sm:gap-6 items-start border-r border-zinc-100 pr-4 sm:pr-8 last:border-r-0 last:pr-0"
               >
                 {/* Left Text Column */}
                 <div className="flex flex-1 flex-col justify-start">
@@ -120,13 +123,13 @@ export function LaunchAllInOne() {
                 </div>
 
                 {/* Right Image Column */}
-                <div className="relative h-[180px] sm:h-[240px] lg:h-[280px] w-[120px] sm:w-[180px] lg:w-[220px] shrink-0 overflow-hidden bg-zinc-100">
+                <div className="relative h-[160px] sm:h-[240px] lg:h-[280px] w-[110px] sm:w-[180px] lg:w-[220px] shrink-0 overflow-hidden bg-zinc-100">
                   <Image
                     src={card.image}
                     alt={card.alt}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 640px) 120px, 220px"
+                    sizes="(max-width: 640px) 110px, 220px"
                   />
                 </div>
               </div>
