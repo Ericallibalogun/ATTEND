@@ -42,25 +42,25 @@ export function LaunchFeatures() {
           </h2>
         </div>
 
-        {/* 6 Grid Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* 6 Value Prop Cards */}
+        <div className="bg-white border border-zinc-200/80 p-6 sm:p-8 lg:p-10 shadow-xs lg:grid lg:grid-cols-3 lg:gap-8 lg:divide-y-0 lg:bg-transparent lg:p-0 lg:border-0 lg:shadow-none divide-y divide-zinc-100">
           {valueProps.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col justify-between bg-white p-8 lg:p-10 border border-black/5 shadow-xs transition-shadow hover:shadow-md"
+              className="py-6 first:pt-0 last:pb-0 lg:flex lg:flex-col lg:justify-between lg:bg-white lg:p-8 lg:border lg:border-black/5 lg:shadow-xs lg:py-8"
             >
               <div>
-                {/* Green Spark Icon */}
-                <div className="mb-8 flex size-10 items-center justify-center bg-[#E2EEE7] text-[#004D34]">
-                  <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {/* Green Icon Circle */}
+                <div className="mb-4 lg:mb-8 flex size-9 lg:size-10 items-center justify-center rounded-full bg-[#E2EEE7] text-[#004D34]">
+                  <svg className="size-4 lg:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
                   </svg>
                 </div>
 
-                <h3 className="mb-3 text-lg font-semibold text-zinc-900">
+                <h3 className="mb-2 text-base font-semibold text-zinc-900 lg:text-lg lg:mb-3">
                   {item.title}
                 </h3>
-                <p className="text-[13.5px] leading-relaxed text-zinc-600">
+                <p className="text-[13px] leading-relaxed text-zinc-600 lg:text-[13.5px]">
                   {item.description}
                 </p>
               </div>

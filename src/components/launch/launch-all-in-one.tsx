@@ -102,31 +102,31 @@ export function LaunchAllInOne() {
             {allInOneCards.map((card, idx) => (
               <div
                 key={idx}
-                className="flex w-[440px] sm:w-[480px] lg:w-[520px] shrink-0 gap-6 items-start border-r border-zinc-100 pr-8 last:border-r-0 last:pr-0"
+                className="flex w-[310px] sm:w-[440px] lg:w-[520px] shrink-0 gap-4 sm:gap-6 items-start border-r border-zinc-100 pr-5 sm:pr-8 last:border-r-0 last:pr-0"
               >
                 {/* Left Text Column */}
                 <div className="flex flex-1 flex-col justify-start">
-                  <span className="mb-2 block font-mono text-5xl font-light text-zinc-200">
+                  <span className="mb-2 block font-mono text-3xl sm:text-5xl font-light text-zinc-200">
                     {card.number}
                   </span>
 
-                  <h3 className="mb-3 text-lg font-semibold text-zinc-900 leading-snug">
+                  <h3 className="mb-2 sm:mb-3 text-base sm:text-lg font-semibold text-zinc-900 leading-snug">
                     {card.title}
                   </h3>
                   
-                  <p className="text-[13px] leading-relaxed text-zinc-600">
+                  <p className="text-[12.5px] sm:text-[13px] leading-relaxed text-zinc-600">
                     {card.description}
                   </p>
                 </div>
 
                 {/* Right Image Column */}
-                <div className="relative h-[240px] sm:h-[280px] w-[180px] sm:w-[220px] shrink-0 overflow-hidden bg-zinc-100">
+                <div className="relative h-[180px] sm:h-[240px] lg:h-[280px] w-[120px] sm:w-[180px] lg:w-[220px] shrink-0 overflow-hidden bg-zinc-100">
                   <Image
                     src={card.image}
                     alt={card.alt}
                     fill
                     className="object-cover object-center"
-                    sizes="220px"
+                    sizes="(max-width: 640px) 120px, 220px"
                   />
                 </div>
               </div>
