@@ -106,18 +106,18 @@ export function CoverCtaButtons({
     <div className="flex flex-wrap items-center gap-4">
       <Link
         href={primaryCta.href}
-        className="inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-2.5 pr-7 text-[15px] font-medium text-zinc-900 transition-opacity hover:opacity-90"
+        className="inline-flex h-[52px] items-center gap-3 rounded-full bg-white pl-2 pr-7 text-[15px] font-medium text-zinc-900 transition-opacity hover:opacity-90"
       >
-        <span className="flex size-10 items-center justify-center rounded-full bg-primary">
+        <span className="flex size-[38px] items-center justify-center rounded-full bg-primary shrink-0">
           <DoubleChevronIcon />
         </span>
-        {primaryCta.label}
+        <span>{primaryCta.label}</span>
       </Link>
       <Link
         href={secondaryCta.href}
-        className="rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15"
+        className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15"
       >
-        {secondaryCta.label}
+        <span>{secondaryCta.label}</span>
       </Link>
     </div>
   );

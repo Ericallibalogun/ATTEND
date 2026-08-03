@@ -47,7 +47,7 @@ export function CoverHeader({
             : "border-b border-zinc-200/80 bg-white/95 backdrop-blur-md shadow-sm z-20 py-3 lg:py-4"
         } ${className}`}
       >
-      <div className="mx-auto w-full px-6 lg:px-12">
+      <div className="mx-auto w-full px-8 sm:px-12 lg:px-16">
         <div className="flex items-center justify-between gap-6">
           <Link
             href="/"
@@ -56,9 +56,9 @@ export function CoverHeader({
             <Image
               src="/Attend-2_logo.webp"
               alt="Attend"
-              width={160}
-              height={48}
-              className={`h-9 sm:h-10 lg:h-11 w-auto max-w-[160px] object-contain transition-all ${
+              width={140}
+              height={40}
+              className={`h-7 sm:h-8 lg:h-8 w-auto max-w-[140px] object-contain transition-all ${
                 isHero ? "brightness-0 invert" : ""
               }`}
               priority
@@ -110,34 +110,38 @@ export function CoverHeader({
 
       {isHero ? (
         <>
-          <nav className="mx-auto mt-8 hidden w-full px-6 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-8">
+          <nav className="mx-auto mt-6 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
             {siteConfig.coverNav.map((item) => (
-              <div key={item.href} className="flex min-w-0 flex-col">
-                <div className="h-px w-full bg-white/40" aria-hidden />
-                <Link
-                  href={item.href}
-                  className="group mt-3 inline-flex items-start gap-1.5 text-[13px] leading-snug text-white transition-colors hover:text-white/90"
-                >
-                  <span className="min-w-0">{item.label}</span>
-                  <NavArrowIcon />
-                </Link>
-              </div>
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex min-w-0 flex-col"
+              >
+                <div className="flex items-center justify-end border-t border-white/20 pt-1.5 text-white/80">
+                  <NavArrowIcon className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </div>
+                <span className="mt-1 text-[12px] sm:text-[13px] font-medium leading-snug text-white transition-colors group-hover:text-white/90">
+                  {item.label}
+                </span>
+              </Link>
             ))}
           </nav>
         </>
       ) : (
-        <nav className="mx-auto hidden w-full px-6 pb-4 pt-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-8">
+        <nav className="mx-auto hidden w-full px-8 sm:px-12 pb-4 pt-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
           {siteConfig.coverNav.map((item) => (
-            <div key={item.href} className="flex min-w-0 flex-col">
-              <div className="h-px w-full bg-zinc-300" aria-hidden />
-              <Link
-                href={item.href}
-                className="group mt-3 inline-flex items-start gap-1.5 text-[13px] leading-snug text-zinc-800 transition-colors hover:text-primary"
-              >
-                <span className="min-w-0">{item.label}</span>
-                <NavArrowIcon />
-              </Link>
-            </div>
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group flex min-w-0 flex-col"
+            >
+              <div className="flex items-center justify-end border-t border-zinc-200/80 pt-1.5 text-zinc-400">
+                <NavArrowIcon className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+              <span className="mt-1 text-[12px] sm:text-[13px] font-medium leading-snug text-zinc-800 transition-colors group-hover:text-primary">
+                {item.label}
+              </span>
+            </Link>
           ))}
         </nav>
       )}

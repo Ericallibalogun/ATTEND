@@ -34,7 +34,7 @@ export function AgmsHero() {
       <div className="relative z-10 flex flex-1 flex-col px-6 md:px-10 lg:px-14">
         <div className="flex flex-1 flex-col justify-end pb-16 pt-8 lg:pb-24 lg:pt-12">
           <div className="max-w-[814px] text-left">
-            <p className="mb-5 flex items-center gap-2.5 text-[11px] font-normal uppercase tracking-[0.22em] text-accent">
+            <p className="mb-5 flex items-center gap-2.5 text-[11px] font-normal uppercase tracking-[-0.02em] text-accent">
               <span
                 className="inline-block size-1.5 shrink-0 rounded-full bg-accent"
                 aria-hidden
