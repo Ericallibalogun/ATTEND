@@ -11,70 +11,51 @@ function DoubleChevronIcon() {
 
 export function FooterCta() {
   return (
-    <section className="relative w-full overflow-hidden bg-primary px-6 sm:px-10 lg:px-16 pt-12 lg:pt-16 pb-0 text-zinc-900">
-      {/* Dark Green Background Textures matching Footer */}
+    <section className="relative w-full overflow-hidden bg-linear-to-r from-white via-[#ebf4ef] to-[#a4ceb7] pt-14 lg:pt-20 pb-0 text-zinc-900">
+      {/* Vertical Column Stripe Grid (Frame 1321325422.webp) */}
+      <div
+        className="absolute inset-0 z-0 opacity-45 mix-blend-multiply pointer-events-none"
+        style={{
+          backgroundImage: 'url("/Frame 1321325422.webp")',
+          backgroundRepeat: 'repeat-x',
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center bottom',
+        }}
+        aria-hidden
+      />
+
+      {/* Green Glow (Ellipse 169) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/assets1102.webp"
+          src="/Ellipse 169.webp"
           alt=""
           fill
-          className="object-cover object-center"
-          quality={100}
-        />
-        <Image
-          src="/Rectangle 14 (1).webp"
-          alt=""
-          fill
-          className="object-cover object-center"
-          quality={100}
+          className="object-cover object-right-bottom opacity-85"
+          unoptimized
         />
       </div>
 
-      {/* Inner Rounded Banner Card */}
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-linear-to-r from-white via-[#ebf4ef] to-[#cbe2d5] shadow-2xl">
-        {/* Vertical Stripe Columns (Frame 1321325422.webp) */}
-        <div
-          className="absolute inset-0 z-0 opacity-45 mix-blend-multiply pointer-events-none"
-          style={{
-            backgroundImage: 'url("/Frame 1321325422.webp")',
-            backgroundRepeat: 'repeat-x',
-            backgroundSize: '100% 100%',
-            backgroundPosition: 'center bottom',
-          }}
-          aria-hidden
+      {/* Noise Grain Overlay (Noise.webp) */}
+      <div className="absolute inset-0 z-0 mix-blend-overlay opacity-40 pointer-events-none">
+        <Image
+          src="/Noise.webp"
+          alt=""
+          fill
+          className="object-cover"
+          unoptimized
         />
+      </div>
 
-        {/* Green Glow (Ellipse 169) */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Image
-            src="/Ellipse 169.webp"
-            alt=""
-            fill
-            className="object-cover object-right-bottom opacity-85"
-            unoptimized
-          />
-        </div>
-
-        {/* Noise Grain Overlay (Noise.webp) */}
-        <div className="absolute inset-0 z-0 mix-blend-overlay opacity-40 pointer-events-none">
-          <Image
-            src="/Noise.webp"
-            alt=""
-            fill
-            className="object-cover"
-            unoptimized
-          />
-        </div>
-
-        {/* Main Content Layout */}
-        <div className="relative z-10 grid items-end gap-8 lg:grid-cols-12 lg:gap-8">
+      {/* Main Content Layout */}
+      <div className="relative z-10 mx-auto w-full px-8 sm:px-12 lg:px-16">
+        <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-8">
           {/* Left Column: Text + Badges */}
-          <div className="flex flex-col items-start lg:col-span-7 p-8 sm:p-12 lg:p-14">
+          <div className="flex flex-col items-start lg:col-span-7 pb-14 lg:pb-20 pt-2">
             <p className="mb-4 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-primary">
               <span className="mr-2 inline-block size-1.5 bg-primary" aria-hidden />
               GET STARTED
             </p>
-            <h2 className="mb-8 text-3xl font-medium leading-[1.15] tracking-tight text-zinc-900 sm:text-4xl lg:text-[42px] max-w-xl">
+            <h2 className="mb-8 text-3xl font-medium leading-[1.15] tracking-tight text-zinc-900 sm:text-4xl lg:text-[44px] max-w-xl">
               Stay connected and in control across mobile or desktop, wherever you are.
             </h2>
 
@@ -123,7 +104,7 @@ export function FooterCta() {
 
           {/* Right Column: Mobile App Mockups Image */}
           <div className="flex items-end justify-center lg:col-span-5 lg:justify-end pr-0 lg:pr-4">
-            <div className="relative h-[320px] sm:h-[400px] lg:h-[440px] w-full max-w-[500px]">
+            <div className="relative h-[340px] sm:h-[420px] lg:h-[465px] w-full max-w-[530px]">
               <Image
                 src="/Group_6093.webp"
                 alt="Attend mobile and desktop app experience"
