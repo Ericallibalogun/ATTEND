@@ -43,8 +43,8 @@ export function CoverHeader({
       <header
         className={`${
           isHero
-            ? "relative z-20 py-3 lg:py-4"
-            : "border-b border-zinc-200/80 bg-white/95 backdrop-blur-md shadow-sm z-20 py-3 lg:py-4"
+            ? "relative z-20 py-2 lg:py-2.5"
+            : "border-b border-zinc-200/80 bg-white/95 backdrop-blur-md shadow-sm z-20 py-2 lg:py-2.5"
         } ${className}`}
       >
       <div className="mx-auto w-full px-8 sm:px-12 lg:px-16">
@@ -56,19 +56,19 @@ export function CoverHeader({
             <Image
               src="/Attend-2_logo.webp"
               alt="Attend"
-              width={140}
-              height={40}
-              className={`h-7 sm:h-8 lg:h-8 w-auto max-w-[140px] object-contain transition-all ${
+              width={120}
+              height={34}
+              className={`h-6 sm:h-7 lg:h-7 w-auto max-w-[125px] object-contain transition-all ${
                 isHero ? "brightness-0 invert" : ""
               }`}
               priority
             />
           </Link>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-2.5 lg:flex">
             <Link
               href="/about"
-              className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+              className={`rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors ${
                 isHero
                   ? "border border-white/25 bg-white/10 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md hover:bg-white/15"
                   : "bg-[#EAF3EE] text-primary hover:bg-[#dce9e2]"
@@ -78,7 +78,7 @@ export function CoverHeader({
             </Link>
             <Link
               href="/login"
-              className={`rounded-full px-5 py-2 text-sm font-semibold transition-opacity hover:opacity-90 ${
+              className={`rounded-full px-4.5 py-1.5 text-xs sm:text-sm font-semibold transition-opacity hover:opacity-90 ${
                 isHero
                   ? "bg-white text-primary"
                   : "bg-primary text-white"
@@ -90,7 +90,7 @@ export function CoverHeader({
 
           <button
             type="button"
-            className="flex items-center justify-center p-2 lg:hidden"
+            className="flex items-center justify-center p-1.5 lg:hidden"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open mobile menu"
           >
@@ -110,17 +110,17 @@ export function CoverHeader({
 
       {isHero ? (
         <>
-          <nav className="mx-auto mt-6 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
+          <nav className="mx-auto mt-2.5 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
             {siteConfig.coverNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="group flex min-w-0 flex-col"
               >
-                <div className="flex items-center justify-end border-t border-white/20 pt-1.5 text-white/80">
-                  <NavArrowIcon className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <div className="flex items-center justify-end border-t border-white/20 pt-1 text-white/80">
+                  <NavArrowIcon className="size-2.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
-                <span className="mt-1 text-[12px] sm:text-[13px] font-medium leading-snug text-white transition-colors group-hover:text-white/90">
+                <span className="mt-0.5 text-[11px] sm:text-[12px] font-medium leading-snug text-white transition-colors group-hover:text-white/90">
                   {item.label}
                 </span>
               </Link>
@@ -128,17 +128,17 @@ export function CoverHeader({
           </nav>
         </>
       ) : (
-        <nav className="mx-auto hidden w-full px-8 sm:px-12 pb-4 pt-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
+        <nav className="mx-auto hidden w-full px-8 sm:px-12 pb-2 pt-1 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
           {siteConfig.coverNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className="group flex min-w-0 flex-col"
             >
-              <div className="flex items-center justify-end border-t border-zinc-200/80 pt-1.5 text-zinc-400">
-                <NavArrowIcon className="size-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <div className="flex items-center justify-end border-t border-zinc-200/80 pt-1 text-zinc-400">
+                <NavArrowIcon className="size-2.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
-              <span className="mt-1 text-[12px] sm:text-[13px] font-medium leading-snug text-zinc-800 transition-colors group-hover:text-primary">
+              <span className="mt-0.5 text-[11px] sm:text-[12px] font-medium leading-snug text-zinc-800 transition-colors group-hover:text-primary">
                 {item.label}
               </span>
             </Link>
