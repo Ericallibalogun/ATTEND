@@ -86,24 +86,24 @@ export default function BlogPage() {
       </section>
 
       {/* Main Content Layout (Sidebar + Blog Posts Grid) */}
-      <section className="w-full px-8 sm:px-12 lg:px-16 pb-20">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
+      <section className="w-full px-6 sm:px-12 lg:px-16 pb-20">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
           
           {/* Left Sidebar: Filter Pills & Newsletter */}
-          <aside className="lg:col-span-3 flex flex-col gap-10">
+          <aside className="lg:col-span-3 flex flex-col gap-8 lg:gap-10">
             {/* Filter Categories */}
             <div>
-              <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                Filter
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                FILTER
               </h3>
-              <div className="flex flex-wrap gap-2 lg:flex-col lg:items-start lg:gap-2">
+              <div className="flex flex-nowrap overflow-x-auto gap-2 pb-2 scrollbar-none -mx-6 px-6 sm:mx-0 sm:px-0 lg:flex-col lg:items-start lg:overflow-visible lg:pb-0">
                 {BLOG_CATEGORIES.map((category) => {
                   const isActive = selectedCategory === category;
                   return (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`rounded-full px-4 py-2 text-xs font-medium transition-colors cursor-pointer text-left ${
+                      className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-colors cursor-pointer text-left ${
                         isActive
                           ? "bg-[#004D34] text-white shadow-xs"
                           : "bg-[#f2f4f3] text-zinc-700 hover:bg-zinc-200"
@@ -116,8 +116,8 @@ export default function BlogPage() {
               </div>
             </div>
 
-            {/* Newsletter Subscription Card */}
-            <div className="rounded-none border border-zinc-200/80 bg-[#f9fbf9] p-5 sm:p-6 shadow-xs">
+            {/* Newsletter Subscription Card (Hidden on Mobile) */}
+            <div className="hidden lg:block rounded-none border border-zinc-200/80 bg-[#f9fbf9] p-5 sm:p-6 shadow-xs">
               <h4 className="mb-2 text-sm font-bold text-zinc-900">
                 Stay ahead of every event
               </h4>
@@ -152,12 +152,12 @@ export default function BlogPage() {
           </aside>
 
           {/* Right Main Column: Featured Post + Post Grid */}
-          <div className="lg:col-span-9 flex flex-col gap-10">
+          <div className="lg:col-span-9 flex flex-col gap-8 lg:gap-10">
             
             {/* Featured Post Card */}
             <div className="group overflow-hidden rounded-none border border-zinc-200/80 bg-white shadow-xs transition-shadow hover:shadow-md">
               <Link href={`/blog/${featuredPost.slug}`} className="block">
-                <div className="relative h-[260px] sm:h-[340px] w-full overflow-hidden bg-zinc-100 rounded-none">
+                <div className="relative h-[200px] sm:h-[340px] w-full overflow-hidden bg-zinc-100 rounded-none">
                   <Image
                     src={featuredPost.image}
                     alt={featuredPost.title}
@@ -166,15 +166,16 @@ export default function BlogPage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6 sm:p-8">
-                  <div className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
-                    <span className="text-[#004D34]">{featuredPost.category}</span>
-                    <span>•</span>
-                    <span>{featuredPost.readTime}</span>
-                    <span>•</span>
+                <div className="p-5 sm:p-8">
+                  <div className="mb-2 flex items-center justify-between text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[#004D34]">{featuredPost.category}</span>
+                      <span>•</span>
+                      <span>{featuredPost.readTime}</span>
+                    </div>
                     <span>{featuredPost.date}</span>
                   </div>
-                  <h2 className="mb-3 text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 group-hover:text-[#004D34] transition-colors leading-snug">
+                  <h2 className="mb-3 text-lg sm:text-2xl font-bold tracking-tight text-zinc-900 group-hover:text-[#004D34] transition-colors leading-snug">
                     {featuredPost.title}
                   </h2>
                   <p className="mb-4 text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-3xl">
@@ -206,11 +207,12 @@ export default function BlogPage() {
                     </div>
                     <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
                       <div>
-                        <div className="mb-2 flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
-                          <span className="text-[#004D34]">{post.category}</span>
-                          <span>•</span>
-                          <span>{post.readTime}</span>
-                          <span>•</span>
+                        <div className="mb-2 flex items-center justify-between text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[#004D34]">{post.category}</span>
+                            <span>•</span>
+                            <span>{post.readTime}</span>
+                          </div>
                           <span>{post.date}</span>
                         </div>
                         <h3 className="mb-3 text-base sm:text-lg font-bold tracking-tight text-zinc-900 group-hover:text-[#004D34] transition-colors leading-snug">

@@ -77,11 +77,11 @@ export default function SingleBlogPostPage() {
       </section>
 
       {/* Main Content Layout (Sidebar + Article Body) */}
-      <section className="w-full px-8 sm:px-12 lg:px-16 pb-20">
+      <section className="w-full px-6 sm:px-12 lg:px-16 pb-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           
-          {/* Left Sidebar: Newsletter Subscription */}
-          <aside className="lg:col-span-4">
+          {/* Left Sidebar: Newsletter Subscription (Hidden on Mobile) */}
+          <aside className="hidden lg:block lg:col-span-4">
             <div className="sticky top-28 rounded-none border border-zinc-200/80 bg-[#f9fbf9] p-6 shadow-xs">
               <h4 className="mb-2 text-sm font-bold text-zinc-900">
                 Stay ahead of every event
@@ -119,16 +119,17 @@ export default function SingleBlogPostPage() {
           {/* Right Column: Main Article Body */}
           <article className="lg:col-span-8 flex flex-col">
             {/* Meta */}
-            <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500">
-              <span className="text-[#004D34]">{post.category}</span>
-              <span>•</span>
-              <span>{post.readTime}</span>
-              <span>•</span>
+            <div className="mb-3 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-zinc-500">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[#004D34]">{post.category}</span>
+                <span>•</span>
+                <span>{post.readTime}</span>
+              </div>
               <span>{post.date}</span>
             </div>
 
             {/* Title */}
-            <h1 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-[42px] leading-[1.18]">
+            <h1 className="mb-6 text-2xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-zinc-900 leading-[1.18]">
               {post.title}
             </h1>
 
@@ -141,14 +142,14 @@ export default function SingleBlogPostPage() {
             <div className="space-y-8 text-sm sm:text-base text-zinc-600 leading-relaxed">
               {post.content?.sections.map((section, idx) => (
                 <div key={idx}>
-                  <h3 className="mb-3 text-lg sm:text-xl font-bold text-zinc-900">
+                  <h3 className="mb-3 text-base sm:text-xl font-bold text-zinc-900">
                     {section.heading}
                   </h3>
                   <p className="font-normal">{section.body}</p>
                 </div>
               )) ?? (
                 <div>
-                  <h3 className="mb-3 text-lg sm:text-xl font-bold text-zinc-900">
+                  <h3 className="mb-3 text-base sm:text-xl font-bold text-zinc-900">
                     1. Not setting a clear budget
                   </h3>
                   <p className="font-normal">
@@ -227,8 +228,8 @@ export default function SingleBlogPostPage() {
       </section>
 
       {/* Related Articles Section */}
-      <section className="border-t border-zinc-200/80 bg-[#f9fbf9] py-16 lg:py-24">
-        <div className="w-full px-8 sm:px-12 lg:px-16">
+      <section className="border-t border-zinc-200/80 bg-[#f9fbf9] py-12 lg:py-24">
+        <div className="w-full px-6 sm:px-12 lg:px-16">
           {/* Top Bar */}
           <div className="mb-2">
             <Link href="/blog" className="inline-flex items-center text-xs font-semibold text-zinc-500 uppercase tracking-wider hover:text-zinc-900 transition-colors">
@@ -236,13 +237,13 @@ export default function SingleBlogPostPage() {
             </Link>
           </div>
 
-          <div className="mb-10 flex items-center justify-between">
+          <div className="mb-8 flex items-center justify-between">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900">
               Related articles
             </h2>
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 rounded-full bg-[#004D34] py-2 pl-2 pr-5 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
+              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#004D34] py-2 pl-2 pr-5 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
             >
               <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
                 <DoubleChevronIcon />
@@ -269,11 +270,12 @@ export default function SingleBlogPostPage() {
                   </div>
                   <div className="flex flex-1 flex-col justify-between p-5">
                     <div>
-                      <div className="mb-2 flex items-center gap-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
-                        <span className="text-[#004D34]">{rPost.category}</span>
-                        <span>•</span>
-                        <span>{rPost.readTime}</span>
-                        <span>•</span>
+                      <div className="mb-2 flex items-center justify-between text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[#004D34]">{rPost.category}</span>
+                          <span>•</span>
+                          <span>{rPost.readTime}</span>
+                        </div>
                         <span>{rPost.date}</span>
                       </div>
                       <h3 className="mb-3 text-sm sm:text-base font-bold tracking-tight text-zinc-900 group-hover:text-[#004D34] transition-colors leading-snug">
@@ -288,6 +290,19 @@ export default function SingleBlogPostPage() {
                 </Link>
               </div>
             ))}
+          </div>
+
+          {/* Mobile All Blogpost Button Below Cards */}
+          <div className="mt-8 flex justify-start sm:hidden">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 rounded-full bg-[#004D34] py-2 pl-2 pr-5 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
+            >
+              <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
+                <DoubleChevronIcon />
+              </span>
+              <span>All Blogpost</span>
+            </Link>
           </div>
         </div>
       </section>
