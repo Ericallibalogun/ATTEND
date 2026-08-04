@@ -29,7 +29,11 @@ export function ContactUsForm() {
   };
 
   return (
-    <section id="contact-form" className="relative w-full overflow-hidden bg-[#f9fbf9] py-16 sm:py-20 lg:py-28">
+    <section
+      id="contact-us"
+      className="relative w-full overflow-hidden bg-[#f9fbf9] py-16 sm:py-20 lg:py-28"
+      style={{ scrollMarginTop: "var(--home-header-height, 80px)" }}
+    >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
           
