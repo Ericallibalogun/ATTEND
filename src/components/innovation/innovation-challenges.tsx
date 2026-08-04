@@ -35,7 +35,7 @@ export function InnovationChallenges() {
           {useCaseTags.map((tag, idx) => (
             <span
               key={idx}
-              className="rounded-full bg-[#F4F9F6] border border-black/5 px-5 py-2.5 text-[13px] font-medium text-zinc-700 transition-colors hover:bg-primary hover:text-white"
+              className="rounded-full bg-[#F4F9F6] border border-black/5 px-5 py-2.5 text-[13px] font-medium text-zinc-700"
             >
               {tag}
             </span>
