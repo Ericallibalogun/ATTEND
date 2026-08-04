@@ -5,7 +5,7 @@ import { LaunchFeatures } from "@/components/launch/launch-features";
 import { LaunchRunOfShow } from "@/components/launch/launch-run-of-show";
 import { LaunchAllInOne } from "@/components/launch/launch-all-in-one";
 import { LaunchMomentum } from "@/components/launch/launch-momentum";
-import { FooterCta } from "@/components/layout/footer-cta";
+import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function LaunchServicePage() {
         <LaunchRunOfShow />
         <LaunchAllInOne />
         <LaunchMomentum />
-        <FooterCta />
+        <TalkToTeamCta />
       </main>
       <Footer />
     </div>

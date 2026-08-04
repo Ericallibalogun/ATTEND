@@ -4,7 +4,7 @@ import { InnovationWorkflow } from "@/components/innovation/innovation-workflow"
 import { InnovationRunsRoom } from "@/components/innovation/innovation-runs-room";
 import { InnovationSprint } from "@/components/innovation/innovation-sprint";
 import { InnovationChallenges } from "@/components/innovation/innovation-challenges";
-import { FooterCta } from "@/components/layout/footer-cta";
+import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata = {
@@ -23,7 +23,7 @@ export default function InnovationServicesPage() {
         <InnovationRunsRoom />
         <InnovationSprint />
         <InnovationChallenges />
-        <FooterCta />
+        <TalkToTeamCta />
       </main>
       <Footer />
     </div>

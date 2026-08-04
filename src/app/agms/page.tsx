@@ -3,7 +3,7 @@ import { AgmsHero } from "@/components/agms/agms-hero";
 import { AgmsBoardroom } from "@/components/agms/agms-boardroom";
 import { AgmsCarousel } from "@/components/agms/agms-carousel";
 import { AgmsConfidence } from "@/components/agms/agms-confidence";
-import { FooterCta } from "@/components/layout/footer-cta";
+import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata = {
@@ -20,7 +20,7 @@ export default function AgmsPage() {
         <AgmsBoardroom />
         <AgmsCarousel />
         <AgmsConfidence />
-        <FooterCta />
+        <TalkToTeamCta />
       </main>
       <Footer />
     </div>

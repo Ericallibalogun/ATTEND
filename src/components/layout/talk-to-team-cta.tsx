@@ -1,9 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
 
+function DoubleChevronIcon() {
+  return (
+    <svg aria-hidden className="size-3.5 text-[#004D34]" viewBox="0 0 16 16" fill="none">
+      <path d="M4 4l4 4-4 4M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export function TalkToTeamCta() {
   return (
-    <section className="relative flex min-h-[640px] lg:min-h-[760px] flex-col items-center justify-center overflow-hidden py-32 lg:py-44">
+    <section className="relative flex min-h-[480px] lg:min-h-[560px] flex-col items-center justify-center overflow-hidden py-20 lg:py-28">
       {/* Base Background Color */}
       <div className="absolute inset-0 bg-[#f8fbf9]" />
 
@@ -42,11 +50,11 @@ export function TalkToTeamCta() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-3xl px-6 text-center md:px-10">
-        <p className="mb-4 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-primary">
-          <span className="mr-2 inline-block size-1.5 bg-primary" aria-hidden />
+        <p className="mb-4 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
+          <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
           GET STARTED
         </p>
-        <h2 className="mb-10 text-3xl font-medium leading-tight tracking-tight text-zinc-900 md:text-5xl">
+        <h2 className="mb-10 text-3xl font-medium leading-tight tracking-tight text-zinc-900 md:text-5xl lg:text-[54px]">
           Talk to our team about
           <br />
           your next event
@@ -54,18 +62,16 @@ export function TalkToTeamCta() {
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/about"
-            className="inline-flex items-center gap-3 rounded-full bg-primary py-2.5 pl-2.5 pr-8 text-[15px] font-medium text-white transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-3 rounded-full bg-[#124b37] py-2.5 pl-2.5 pr-7 text-[15px] font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
           >
-            <span className="flex size-8 items-center justify-center rounded-full bg-white text-primary">
-              <svg className="size-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
-              </svg>
+            <span className="flex size-8 items-center justify-center rounded-full bg-white text-[#004D34]">
+              <DoubleChevronIcon />
             </span>
-            Book a demo
+            <span>Book a demo</span>
           </Link>
           <Link
             href="/about"
-            className="inline-flex items-center justify-center rounded-full border border-black/10 bg-[#8dae9d]/80 px-8 py-3.5 text-[15px] font-medium text-white backdrop-blur-sm transition-colors hover:bg-[#7d9e8d]/90"
+            className="inline-flex items-center justify-center rounded-full border border-[#2d5746]/40 bg-[#729885]/40 px-7 py-3 text-[15px] font-semibold text-[#183a2c] backdrop-blur-xs transition-colors hover:bg-[#729885]/60"
           >
             Talk to an expert
           </Link>
