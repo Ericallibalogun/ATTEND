@@ -11,13 +11,10 @@ export function LaunchHero() {
           src="/boardroom3.webp"
           alt="Product Launch Auditorium Stage"
           fill
-          className="object-cover object-center brightness-95 contrast-105"
+          className="object-cover object-center"
           priority
           quality={100}
         />
-        {/* Subtle Dark Gradient Overlay for Left Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12">

@@ -11,10 +11,9 @@ export function InnovationHero() {
           alt="Hackathon whiteboard ideation"
           fill
           priority
-          className="object-cover object-center opacity-40 mix-blend-luminosity"
+          className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/80" />
       </div>
 
       {/* Hero Content */}

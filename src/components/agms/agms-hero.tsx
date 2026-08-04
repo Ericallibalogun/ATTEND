@@ -22,14 +22,7 @@ export function AgmsHero() {
         />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden>
-        {/* Base scrim — darkens the full image */}
-        <div className="absolute inset-0 bg-black/35" />
-        {/* Left gradient — hero copy readability */}
-        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-black/10" />
-        {/* Top gradient — logo, nav links, and buttons */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/25 to-transparent" />
-      </div>
+      {/* Clean background image with no dark overlays */}
 
       <div className="relative z-10 flex flex-1 flex-col px-6 md:px-10 lg:px-14">
         <div className="flex flex-1 flex-col justify-end pb-16 pt-8 lg:pb-24 lg:pt-12">

@@ -193,17 +193,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
         />
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-0 z-[1]"
-        aria-hidden
-      >
-        {/* Base scrim — darkens the full image for photo slides */}
-        {!slide.isAppButtons && <div className="absolute inset-0 bg-black/35" />}
-        {/* Left gradient — hero copy readability */}
-        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent" />
-        {/* Top gradient — logo, nav links, and buttons */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/25 to-transparent" />
-      </div>
+      {/* Clean background image with no dark overlays */}
 
       {/* Right side Laptop & Mobile Mockup layer for AppButtons slide */}
       {slide.isAppButtons && (
