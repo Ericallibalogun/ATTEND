@@ -159,6 +159,10 @@ function HeroBackgrounds({ activeIndex }: { activeIndex: number }) {
               className="object-cover object-center"
               sizes="100vw"
             />
+            {/* Light dark hue at header area only for photo slides readability */}
+            {!slide.isAppButtons && (
+              <div className="pointer-events-none absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-black/60 via-black/25 to-transparent z-[2]" />
+            )}
           </div>
         );
       })}
