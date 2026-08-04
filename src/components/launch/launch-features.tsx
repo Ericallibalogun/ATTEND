@@ -1,29 +1,36 @@
 import React from "react";
+import Image from "next/image";
 
 const valueProps = [
   {
     title: "Broadcast-quality",
     description: "Tailored HD video streams with sub-second latency and multi-cam switching.",
+    icon: "/Frame.webp",
   },
   {
     title: "Interactive demos",
     description: "Enable 360° product exploration and live feature walk-throughs.",
+    icon: "/Brutalism 74.webp",
   },
   {
     title: "Audience applause",
     description: "Reactions, live polls, and audience voting calculated in real-time.",
+    icon: "/Brutalism 74 (1).webp",
   },
   {
     title: "Segmented access",
     description: "VIP embargo previews, press keynotes, and public livestream tiers.",
+    icon: "/Frame (1).webp",
   },
   {
     title: "Embed & partner",
     description: "Seamlessly embed the launch stream across partner networks & media.",
+    icon: "/Brutalism 16.webp",
   },
   {
     title: "Corporate control",
     description: "Permissions, branded chat moderation, and executive dashboard.",
+    icon: "/Vector.webp",
   },
 ];
 
@@ -51,10 +58,14 @@ export function LaunchFeatures() {
             >
               <div>
                 {/* Green Icon Circle */}
-                <div className="mb-4 lg:mb-8 flex size-9 lg:size-10 items-center justify-center rounded-full bg-[#E2EEE7] text-[#004D34]">
-                  <svg className="size-4 lg:size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-                  </svg>
+                <div className="mb-4 lg:mb-8 flex size-9 lg:size-10 items-center justify-center rounded-full bg-[#E2EEE7]">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={24}
+                    height={24}
+                    className="size-5 lg:size-6 object-contain"
+                  />
                 </div>
 
                 <h3 className="mb-2 text-base font-semibold text-zinc-900 lg:text-lg lg:mb-3">
