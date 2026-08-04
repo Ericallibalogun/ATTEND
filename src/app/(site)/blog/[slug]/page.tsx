@@ -65,7 +65,7 @@ export default function SingleBlogPostPage() {
     <main className="relative min-h-screen bg-white font-sans text-zinc-900 pt-10 sm:pt-14">
       {/* Full-width Top Hero Image */}
       <section className="mx-auto w-full max-w-7xl px-6 lg:px-12 pt-4 pb-10">
-        <div className="relative h-[320px] sm:h-[440px] lg:h-[520px] w-full overflow-hidden rounded-3xl bg-zinc-100 shadow-sm">
+        <div className="relative h-[320px] sm:h-[440px] lg:h-[520px] w-full overflow-hidden rounded-none bg-zinc-100 shadow-sm">
           <Image
             src={post.image}
             alt={post.title}
@@ -82,7 +82,7 @@ export default function SingleBlogPostPage() {
           
           {/* Left Sidebar: Newsletter Subscription */}
           <aside className="lg:col-span-4">
-            <div className="sticky top-28 rounded-2xl border border-zinc-200/80 bg-[#f9fbf9] p-6 shadow-xs">
+            <div className="sticky top-28 rounded-none border border-zinc-200/80 bg-[#f9fbf9] p-6 shadow-xs">
               <h4 className="mb-2 text-sm font-bold text-zinc-900">
                 Stay ahead of every event
               </h4>
@@ -91,7 +91,7 @@ export default function SingleBlogPostPage() {
               </p>
 
               {newsletterSubmitted ? (
-                <div className="rounded-xl bg-[#004D34]/10 p-3 text-center text-xs font-medium text-[#004D34]">
+                <div className="rounded-none bg-[#004D34]/10 p-3 text-center text-xs font-medium text-[#004D34]">
                   Subscribed successfully!
                 </div>
               ) : (
@@ -100,7 +100,7 @@ export default function SingleBlogPostPage() {
                     type="email"
                     required
                     placeholder="Enter email address"
-                    className="w-full rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20"
+                    className="w-full rounded-none border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20"
                   />
                   <button
                     type="submit"
@@ -256,10 +256,10 @@ export default function SingleBlogPostPage() {
             {relatedPosts.map((rPost) => (
               <div
                 key={rPost.id}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-xs transition-all hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-none border border-zinc-200/80 bg-white shadow-xs transition-all hover:shadow-md"
               >
                 <Link href={`/blog/${rPost.slug}`} className="flex flex-col h-full">
-                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 rounded-none">
                     <Image
                       src={rPost.image}
                       alt={rPost.title}

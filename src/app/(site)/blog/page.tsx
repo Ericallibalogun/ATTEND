@@ -78,7 +78,7 @@ export default function BlogPage() {
                 placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl bg-[#f2f4f3] py-2.5 pl-10 pr-4 text-xs sm:text-sm text-zinc-900 outline-none transition-colors focus:bg-white focus:ring-2 focus:ring-[#004D34]/20"
+                className="w-full rounded-none bg-[#f2f4f3] py-2.5 pl-10 pr-4 text-xs sm:text-sm text-zinc-900 outline-none transition-colors focus:bg-white focus:ring-2 focus:ring-[#004D34]/20"
               />
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function BlogPage() {
             </div>
 
             {/* Newsletter Subscription Card */}
-            <div className="rounded-2xl border border-zinc-200/80 bg-[#f9fbf9] p-5 sm:p-6 shadow-xs">
+            <div className="rounded-none border border-zinc-200/80 bg-[#f9fbf9] p-5 sm:p-6 shadow-xs">
               <h4 className="mb-2 text-sm font-bold text-zinc-900">
                 Stay ahead of every event
               </h4>
@@ -126,7 +126,7 @@ export default function BlogPage() {
               </p>
 
               {newsletterSubmitted ? (
-                <div className="rounded-xl bg-[#004D34]/10 p-3 text-center text-xs font-medium text-[#004D34]">
+                <div className="rounded-none bg-[#004D34]/10 p-3 text-center text-xs font-medium text-[#004D34]">
                   Subscribed successfully!
                 </div>
               ) : (
@@ -135,7 +135,7 @@ export default function BlogPage() {
                     type="email"
                     required
                     placeholder="Enter email address"
-                    className="w-full rounded-xl border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20"
+                    className="w-full rounded-none border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20"
                   />
                   <button
                     type="submit"
@@ -155,9 +155,9 @@ export default function BlogPage() {
           <div className="lg:col-span-9 flex flex-col gap-10">
             
             {/* Featured Post Card */}
-            <div className="group overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-xs transition-shadow hover:shadow-md">
+            <div className="group overflow-hidden rounded-none border border-zinc-200/80 bg-white shadow-xs transition-shadow hover:shadow-md">
               <Link href={`/blog/${featuredPost.slug}`} className="block">
-                <div className="relative h-[260px] sm:h-[340px] w-full overflow-hidden bg-zinc-100">
+                <div className="relative h-[260px] sm:h-[340px] w-full overflow-hidden bg-zinc-100 rounded-none">
                   <Image
                     src={featuredPost.image}
                     alt={featuredPost.title}
@@ -193,10 +193,10 @@ export default function BlogPage() {
               {filteredPosts.map((post) => (
                 <div
                   key={post.id}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200/80 bg-white shadow-xs transition-all hover:shadow-md"
+                  className="group flex flex-col overflow-hidden rounded-none border border-zinc-200/80 bg-white shadow-xs transition-all hover:shadow-md"
                 >
                   <Link href={`/blog/${post.slug}`} className="flex flex-col h-full">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100">
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-zinc-100 rounded-none">
                       <Image
                         src={post.image}
                         alt={post.title}
