@@ -69,16 +69,6 @@ export function Footer() {
           {/* Right Column - Straight Vertical Stack on Mobile / Multi-column Grid on Desktop */}
           <div className="flex flex-col gap-8 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:pt-2">
             
-            {/* SERVICES */}
-            <div className="flex flex-col">
-              <h4 className="mb-3 text-[11px] font-semibold tracking-widest text-white/60 uppercase">SERVICES</h4>
-              <ul className="flex flex-col gap-2.5 text-xs sm:text-[13.5px] text-white/90 font-medium">
-                <li><Link href="/agms" className="hover:text-white transition-colors">AGM</Link></li>
-                <li><Link href="/hackathons" className="hover:text-white transition-colors">Innovation Challenge</Link></li>
-                <li><Link href="/product-launch" className="hover:text-white transition-colors">Launch Event</Link></li>
-              </ul>
-            </div>
-
             {/* QUICK LINKS */}
             <div className="flex flex-col">
               <h4 className="mb-3 text-[11px] font-semibold tracking-widest text-white/60 uppercase">QUICK LINKS</h4>
@@ -87,6 +77,16 @@ export function Footer() {
                 <li><Link href="/about" className="hover:text-white transition-colors">About us</Link></li>
                 <li><Link href="/about" className="hover:text-white transition-colors">Contact us</Link></li>
                 <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
+              </ul>
+            </div>
+
+            {/* SERVICES */}
+            <div className="flex flex-col">
+              <h4 className="mb-3 text-[11px] font-semibold tracking-widest text-white/60 uppercase">SERVICES</h4>
+              <ul className="flex flex-col gap-2.5 text-xs sm:text-[13.5px] text-white/90 font-medium">
+                <li><Link href="/agms" className="hover:text-white transition-colors">AGM</Link></li>
+                <li><Link href="/hackathons" className="hover:text-white transition-colors">Innovation Challenge</Link></li>
+                <li><Link href="/product-launch" className="hover:text-white transition-colors">Launch Event</Link></li>
               </ul>
             </div>
 
