@@ -35,8 +35,9 @@ export type HeroSlide = {
   eyebrow: string;
   headline: string;
   description: string;
-  primaryCta: { label: string; href: string };
-  secondaryCta: { label: string; href: string };
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  isAppButtons?: boolean;
 };
 
 export const heroSlides: HeroSlide[] = [
@@ -51,7 +52,7 @@ export const heroSlides: HeroSlide[] = [
     secondaryCta: { label: "Learn More", href: "/agms" },
   },
   {
-    label: "Hackathons",
+    label: "Innovation Challenge",
     href: "/hackathons",
     image: "/boardroom-2.webp",
     eyebrow: "ATTEND FOR INNOVATION CHALLENGE",
@@ -61,7 +62,7 @@ export const heroSlides: HeroSlide[] = [
     secondaryCta: { label: "See how it works", href: "/hackathons" },
   },
   {
-    label: "Product Launchs",
+    label: "Launch Event",
     href: "/product-launch",
     image: "/boardroom3.webp",
     eyebrow: "VIRTUAL PRODUCT LAUNCH AND EVENTS",
@@ -69,6 +70,15 @@ export const heroSlides: HeroSlide[] = [
     description: platformDescription,
     primaryCta: { label: "Plan a launch", href: "/product-launch" },
     secondaryCta: { label: "See the run of show", href: "/product-launch" },
+  },
+  {
+    label: "Get Started",
+    href: "/about",
+    image: "/Group 6095.webp",
+    eyebrow: "GET STARTED",
+    headline: "Stay connected and in control across mobile or desktop, wherever you are.",
+    description: "",
+    isAppButtons: true,
   },
 ];
 

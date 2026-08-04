@@ -43,7 +43,7 @@ export function InnovationSprint() {
   return (
     <section className="bg-white py-12 lg:py-16 px-6 sm:px-10 lg:px-14 text-zinc-900">
       {/* Mint background container - 2cm away from screen edges */}
-      <div className="mx-auto w-full max-w-[1480px] rounded-3xl bg-[#eff5f1] p-8 sm:p-12 lg:p-16">
+      <div className="mx-auto w-full max-w-[1480px] rounded-none bg-[#eff5f1] p-8 sm:p-12 lg:p-16">
         {/* Header */}
         <div className="mb-14 text-center">
           <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
@@ -59,7 +59,7 @@ export function InnovationSprint() {
         </div>
 
         {/* 6 Joined Cards inside Mint Container */}
-        <div className="overflow-hidden rounded-2xl bg-white border border-zinc-200/60 shadow-xs">
+        <div className="overflow-hidden rounded-none bg-white border border-zinc-200/60 shadow-xs">
           <div className="grid grid-cols-1 md:grid-cols-3">
             {sprintCards.map((card, idx) => (
               <div

@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
-const STEP_DURATION = 3000; // 3 seconds per step
+const STEP_DURATION = 5000; // 5 seconds per step
 
 const workflowSteps = [
   {
@@ -173,14 +173,20 @@ export function InnovationWorkflow() {
                       </span>
                     </div>
 
-                    {/* Step Description (Always Visible for All 6 Steps) */}
-                    <p
-                      className={`mt-3 pl-8 text-[13.5px] leading-relaxed transition-colors ${
-                        isActive ? "text-zinc-900 font-medium" : "text-zinc-600"
+                    {/* Step Description Collapsible Drawer */}
+                    <div
+                      className={`grid transition-all duration-300 ease-in-out ${
+                        isActive
+                          ? "grid-rows-[1fr] opacity-100 mt-3"
+                          : "grid-rows-[0fr] opacity-0 mt-0"
                       }`}
                     >
-                      {step.description}
-                    </p>
+                      <div className="overflow-hidden pl-8">
+                        <p className="text-[13.5px] leading-relaxed text-zinc-900 font-medium pb-1">
+                          {step.description}
+                        </p>
+                      </div>
+                    </div>
 
                   </div>
                 );

@@ -3,15 +3,15 @@ import Image from "next/image";
 
 function DoubleChevronIcon() {
   return (
-    <svg aria-hidden className="size-3.5 text-primary" viewBox="0 0 16 16" fill="none">
-      <path d="M4 4l4 4-4 4M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg aria-hidden className="size-3.5 text-white" viewBox="0 0 16 16" fill="none">
+      <path d="M4 4l4 4-4 4M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 export function FooterCta() {
   return (
-    <section className="relative w-full overflow-hidden bg-primary px-6 sm:px-10 lg:px-14 pt-8 lg:pt-12 pb-0 text-zinc-900">
+    <section className="relative w-full overflow-hidden bg-primary px-4 sm:px-6 lg:px-12 pt-6 sm:pt-8 lg:pt-12 pb-0 text-zinc-900">
       {/* Dark Green Background Texture (Rectangle 14 (1).webp) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
@@ -23,8 +23,8 @@ export function FooterCta() {
         />
       </div>
 
-      {/* Inner Rounded Banner Card */}
-      <div className="relative z-10 mx-auto w-full max-w-[1480px] overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-linear-to-r from-white via-[#ebf4ef] to-[#cbe2d5]">
+      {/* Inner Banner Card */}
+      <div className="relative z-10 mx-auto w-full overflow-hidden bg-linear-to-r from-white via-[#ebf4ef] to-[#cbe2d5]">
         {/* Vertical Column Stripe Grid (Frame 1321325422.webp) */}
         <div
           className="absolute inset-0 z-0 opacity-45 mix-blend-multiply pointer-events-none"
@@ -60,27 +60,31 @@ export function FooterCta() {
         </div>
 
         {/* Main Content Layout */}
-        <div className="relative z-10 grid items-end gap-8 lg:grid-cols-12 lg:gap-8">
+        <div className="relative z-10 grid items-end gap-6 lg:grid-cols-12 lg:gap-4">
           {/* Left Column: Text + Badges */}
-          <div className="flex flex-col items-start lg:col-span-7 p-8 sm:p-12 lg:p-14">
-            <p className="mb-4 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-primary">
-              <span className="mr-2 inline-block size-1.5 bg-primary" aria-hidden />
+          <div className="flex flex-col items-start lg:col-span-7 p-6 sm:p-10 lg:py-14 lg:pl-14 lg:pr-4">
+            <p className="mb-3 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-[#004D34]">
+              <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
               GET STARTED
             </p>
-            <h2 className="mb-8 text-3xl font-medium leading-[1.15] tracking-tight text-zinc-900 sm:text-4xl lg:text-[42px] max-w-xl">
+            <h2 className="mb-6 text-2xl font-semibold leading-[1.2] tracking-tight text-zinc-900 sm:text-4xl lg:text-[42px] max-w-xl">
               Stay connected and in control across mobile or desktop, wherever you are.
             </h2>
 
             {/* Buttons Row */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
               {/* Google Play */}
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 py-2 text-zinc-900 shadow-xs transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 py-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 justify-center sm:justify-start"
               >
-                <svg className="size-5 shrink-0 text-zinc-900" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3.609 1.814L13.792 12 3.61 22.186a1.99 1.99 0 0 1-.61-1.424V3.238c0-.545.22-1.042.609-1.424zM15.206 13.414l2.766-2.766-3.805-2.196-2.375 2.375 3.414 2.587zm3.83-3.83c.394.227.636.646.636 1.102 0 .456-.242.875-.636 1.102l-1.921 1.109-2.909-2.909 2.909-2.909 1.921 1.109zM3.609 22.186L13.792 12 11.206 9.414 3.609 22.186z" />
-                </svg>
+                <Image
+                  src="/Google Play logo.webp"
+                  alt="Google Play"
+                  width={20}
+                  height={20}
+                  className="size-5 shrink-0 object-contain"
+                />
                 <span className="flex flex-col text-left leading-none">
                   <span className="text-[8px] uppercase tracking-wider text-zinc-500 font-medium">GET IT ON</span>
                   <span className="text-[12px] font-semibold text-zinc-900">Google Play</span>
@@ -90,11 +94,15 @@ export function FooterCta() {
               {/* App Store */}
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 py-2 text-zinc-900 shadow-xs transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 py-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 justify-center sm:justify-start"
               >
-                <svg className="size-5 shrink-0 text-zinc-900" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.46c.64-.78 1.08-1.85.96-2.93-.93.04-2.07.62-2.74 1.4-.6.69-1.13 1.79-.98 2.86 1.05.08 2.12-.55 2.76-1.33z" />
-                </svg>
+                <Image
+                  src="/Apple logo.webp"
+                  alt="App Store"
+                  width={20}
+                  height={20}
+                  className="size-5 shrink-0 object-contain"
+                />
                 <span className="flex flex-col text-left leading-none">
                   <span className="text-[8px] uppercase tracking-wider text-zinc-500 font-medium">Download on the</span>
                   <span className="text-[12px] font-semibold text-zinc-900">App Store</span>
@@ -104,9 +112,9 @@ export function FooterCta() {
               {/* Launch Web App */}
               <Link
                 href="/about"
-                className="inline-flex h-[42px] items-center gap-2.5 rounded-full border border-primary/40 bg-white px-5 text-sm font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90"
+                className="inline-flex items-center gap-3 rounded-full border border-[#004D34] bg-white py-2 pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 justify-center sm:justify-start"
               >
-                <span className="flex size-6 items-center justify-center rounded-full bg-primary/10">
+                <span className="flex size-8 items-center justify-center rounded-full bg-[#004D34] text-white">
                   <DoubleChevronIcon />
                 </span>
                 <span>Launch Web App</span>
@@ -115,13 +123,13 @@ export function FooterCta() {
           </div>
 
           {/* Right Column: Mobile App Mockups Image */}
-          <div className="flex items-end justify-center lg:col-span-5 lg:justify-end pr-0 lg:pr-4">
-            <div className="relative h-[320px] sm:h-[400px] lg:h-[440px] w-full max-w-[500px]">
+          <div className="flex items-end justify-center lg:col-span-5 lg:justify-start lg:-ml-6 px-4 lg:px-0 lg:pr-4">
+            <div className="relative h-[240px] sm:h-[340px] lg:h-[440px] w-full max-w-[480px]">
               <Image
                 src="/Group_6093.webp"
                 alt="Attend mobile and desktop app experience"
                 fill
-                className="object-contain object-bottom drop-shadow-2xl"
+                className="object-contain object-bottom drop-shadow-xl"
                 priority
               />
             </div>

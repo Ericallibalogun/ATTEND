@@ -94,31 +94,35 @@ export function CoverCarousel({ index, onPrev, onNext }: CoverCarouselProps) {
 }
 
 type CoverCtaButtonsProps = {
-  primaryCta: { label: string; href: string };
-  secondaryCta: { label: string; href: string };
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
 };
 
 export function CoverCtaButtons({
-  primaryCta,
-  secondaryCta,
+  primaryCta = { label: "Launch Web App", href: "/about" },
+  secondaryCta = { label: "Contact Us", href: "/about" },
 }: CoverCtaButtonsProps) {
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <Link
-        href={primaryCta.href}
-        className="inline-flex h-[52px] items-center gap-3 rounded-full bg-white pl-2 pr-7 text-[15px] font-medium text-zinc-900 transition-opacity hover:opacity-90"
-      >
-        <span className="flex size-[38px] items-center justify-center rounded-full bg-primary shrink-0">
-          <DoubleChevronIcon />
-        </span>
-        <span>{primaryCta.label}</span>
-      </Link>
-      <Link
-        href={secondaryCta.href}
-        className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15"
-      >
-        <span>{secondaryCta.label}</span>
-      </Link>
+      {primaryCta && (
+        <Link
+          href={primaryCta.href}
+          className="inline-flex h-[52px] items-center gap-3 rounded-full bg-white pl-2 pr-7 text-[15px] font-medium text-zinc-900 transition-opacity hover:opacity-90"
+        >
+          <span className="flex size-[38px] items-center justify-center rounded-full bg-primary shrink-0">
+            <DoubleChevronIcon />
+          </span>
+          <span>{primaryCta.label}</span>
+        </Link>
+      )}
+      {secondaryCta && (
+        <Link
+          href={secondaryCta.href}
+          className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15"
+        >
+          <span>{secondaryCta.label}</span>
+        </Link>
+      )}
     </div>
   );
 }

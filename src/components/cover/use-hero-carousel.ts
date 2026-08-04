@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { heroSlides } from "@/lib/site";
 
-const AUTO_ADVANCE_MS = 7000;
+const AUTO_ADVANCE_MS = 3000;
 
 export function useHeroCarousel() {
   const [index, setIndex] = useState(0);

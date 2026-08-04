@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
-const STEP_DURATION = 3000; // 3 seconds per stage
+const STEP_DURATION = 5000; // 5 seconds per stage
 
 const runOfShowStages = [
   {
@@ -153,17 +153,29 @@ export function LaunchRunOfShow() {
 
                       {/* Stage Content */}
                       <div>
-                        <h3 className="mb-3 text-[16px] font-semibold text-zinc-900">
+                        <h3 className="text-[16px] font-semibold text-zinc-900">
                           {stage.title}
                         </h3>
-                        <ul className="flex flex-col gap-2 text-[13.5px] text-zinc-600">
-                          {stage.bullets.map((bullet, bIdx) => (
-                            <li key={bIdx} className="flex items-center gap-2">
-                              <span className="size-1 rounded-full bg-zinc-400" />
-                              <span>{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
+
+                        {/* Collapsible Stage Bullets */}
+                        <div
+                          className={`grid transition-all duration-300 ease-in-out ${
+                            isActive
+                              ? "grid-rows-[1fr] opacity-100 mt-3"
+                              : "grid-rows-[0fr] opacity-0 mt-0"
+                          }`}
+                        >
+                          <div className="overflow-hidden">
+                            <ul className="flex flex-col gap-2 text-[13.5px] text-zinc-600 pb-1">
+                              {stage.bullets.map((bullet, bIdx) => (
+                                <li key={bIdx} className="flex items-center gap-2">
+                                  <span className="size-1 rounded-full bg-zinc-400" />
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
