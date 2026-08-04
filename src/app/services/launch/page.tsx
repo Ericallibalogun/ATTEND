@@ -6,6 +6,7 @@ import { LaunchRunOfShow } from "@/components/launch/launch-run-of-show";
 import { LaunchAllInOne } from "@/components/launch/launch-all-in-one";
 import { LaunchMomentum } from "@/components/launch/launch-momentum";
 import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
+import { FooterCta } from "@/components/layout/footer-cta";
 import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function LaunchServicePage() {
         <LaunchAllInOne />
         <LaunchMomentum />
         <TalkToTeamCta />
+        <FooterCta />
       </main>
       <Footer />
     </div>

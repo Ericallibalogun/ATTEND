@@ -4,6 +4,7 @@ import { LaunchRunOfShow } from "@/components/launch/launch-run-of-show";
 import { LaunchAllInOne } from "@/components/launch/launch-all-in-one";
 import { LaunchMomentum } from "@/components/launch/launch-momentum";
 import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
+import { FooterCta } from "@/components/layout/footer-cta";
 
 export const metadata = {
   title: "Product Launch Events | Attend",
@@ -20,6 +21,7 @@ export default function ProductLaunchPage() {
       <LaunchAllInOne />
       <LaunchMomentum />
       <TalkToTeamCta />
+      <FooterCta />
     </main>
   );
 }

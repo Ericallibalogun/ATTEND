@@ -1,5 +1,6 @@
 import { GalleryShowcase } from "@/components/gallery/gallery-showcase";
 import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
+import { FooterCta } from "@/components/layout/footer-cta";
 
 export const metadata = {
   title: "Gallery | Attend",
@@ -11,6 +12,7 @@ export default function GalleryPage() {
     <main className="relative">
       <GalleryShowcase />
       <TalkToTeamCta />
+      <FooterCta />
     </main>
   );
 }
