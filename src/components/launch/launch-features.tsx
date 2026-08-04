@@ -50,21 +50,21 @@ export function LaunchFeatures() {
         </div>
 
         {/* 6 Value Prop Cards */}
-        <div className="bg-white border border-zinc-200/80 p-6 sm:p-8 lg:p-10 shadow-xs lg:grid lg:grid-cols-3 lg:gap-8 lg:divide-y-0 lg:bg-transparent lg:p-0 lg:border-0 lg:shadow-none divide-y divide-zinc-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {valueProps.map((item, idx) => (
             <div
               key={idx}
-              className="py-6 first:pt-0 last:pb-0 lg:flex lg:flex-col lg:justify-between lg:bg-white lg:p-8 lg:border lg:border-black/5 lg:shadow-xs lg:py-8"
+              className="flex flex-col justify-between bg-white p-6 sm:p-8 rounded-none border border-black/5 shadow-xs"
             >
               <div>
-                {/* Green Icon Circle */}
-                <div className="mb-4 lg:mb-8 flex size-9 lg:size-10 items-center justify-center rounded-full bg-[#E2EEE7]">
+                {/* Icon sitting plainly on card */}
+                <div className="mb-5 lg:mb-6 flex items-center h-9">
                   <Image
                     src={item.icon}
                     alt={item.title}
-                    width={24}
-                    height={24}
-                    className="size-5 lg:size-6 object-contain"
+                    width={36}
+                    height={36}
+                    className="h-8 lg:h-9 w-auto object-contain object-left"
                   />
                 </div>
 
