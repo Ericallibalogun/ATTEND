@@ -64,7 +64,7 @@ export default function SingleBlogPostPage() {
   return (
     <main className="relative min-h-screen bg-white font-sans text-zinc-900 pt-10 sm:pt-14">
       {/* Full-width Top Hero Image */}
-      <section className="mx-auto w-full max-w-7xl px-6 lg:px-12 pt-4 pb-10">
+      <section className="w-full px-8 sm:px-12 lg:px-16 pt-4 pb-10">
         <div className="relative h-[320px] sm:h-[440px] lg:h-[520px] w-full overflow-hidden rounded-none bg-zinc-100 shadow-sm">
           <Image
             src={post.image}
@@ -77,7 +77,7 @@ export default function SingleBlogPostPage() {
       </section>
 
       {/* Main Content Layout (Sidebar + Article Body) */}
-      <section className="mx-auto w-full max-w-7xl px-6 lg:px-12 pb-20">
+      <section className="w-full px-8 sm:px-12 lg:px-16 pb-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           
           {/* Left Sidebar: Newsletter Subscription */}
@@ -228,7 +228,7 @@ export default function SingleBlogPostPage() {
 
       {/* Related Articles Section */}
       <section className="border-t border-zinc-200/80 bg-[#f9fbf9] py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-7xl px-6 lg:px-12">
+        <div className="w-full px-8 sm:px-12 lg:px-16">
           {/* Top Bar */}
           <div className="mb-2">
             <Link href="/blog" className="inline-flex items-center text-xs font-semibold text-zinc-500 uppercase tracking-wider hover:text-zinc-900 transition-colors">

@@ -55,7 +55,7 @@ export default function BlogPage() {
   return (
     <main className="relative min-h-screen bg-white font-sans text-zinc-900 pt-10 sm:pt-14">
       {/* Blog Page Hero Header */}
-      <section className="mx-auto w-full max-w-7xl px-6 lg:px-12 pb-12 pt-6">
+      <section className="w-full px-8 sm:px-12 lg:px-16 pb-12 pt-6">
         <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-500">
           BLOG
         </p>
@@ -86,7 +86,7 @@ export default function BlogPage() {
       </section>
 
       {/* Main Content Layout (Sidebar + Blog Posts Grid) */}
-      <section className="mx-auto w-full max-w-7xl px-6 lg:px-12 pb-20">
+      <section className="w-full px-8 sm:px-12 lg:px-16 pb-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
           
           {/* Left Sidebar: Filter Pills & Newsletter */}
