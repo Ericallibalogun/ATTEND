@@ -1,5 +1,7 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
+import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 
 function DoubleChevronIcon() {
   return (
@@ -10,6 +12,8 @@ function DoubleChevronIcon() {
 }
 
 export function TalkToTeamCta() {
+  const { openModal } = useBookDemoModal();
+
   return (
     <section className="relative flex min-h-[480px] lg:min-h-[560px] flex-col items-center justify-center overflow-hidden py-20 lg:py-28">
       {/* Base Background Color */}
@@ -60,21 +64,23 @@ export function TalkToTeamCta() {
           your next event
         </h2>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-3 rounded-full bg-[#124b37] py-2.5 pl-2.5 pr-7 text-[15px] font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
+          <button
+            type="button"
+            onClick={openModal}
+            className="inline-flex items-center gap-3 rounded-full bg-[#124b37] py-2.5 pl-2.5 pr-7 text-[15px] font-semibold text-white shadow-sm transition-opacity hover:opacity-90 cursor-pointer"
           >
             <span className="flex size-8 items-center justify-center rounded-full bg-white text-[#004D34]">
               <DoubleChevronIcon />
             </span>
             <span>Book a demo</span>
-          </Link>
-          <Link
-            href="/about"
-            className="inline-flex items-center justify-center rounded-full border border-[#2d5746]/40 bg-[#729885]/40 px-7 py-3 text-[15px] font-semibold text-[#183a2c] backdrop-blur-xs transition-colors hover:bg-[#729885]/60"
+          </button>
+          <button
+            type="button"
+            onClick={openModal}
+            className="inline-flex items-center justify-center rounded-full border border-[#2d5746]/40 bg-[#729885]/40 px-7 py-3 text-[15px] font-semibold text-[#183a2c] backdrop-blur-xs transition-colors hover:bg-[#729885]/60 cursor-pointer"
           >
             Talk to an expert
-          </Link>
+          </button>
         </div>
       </div>
     </section>

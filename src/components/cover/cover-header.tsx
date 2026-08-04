@@ -67,7 +67,7 @@ export function CoverHeader({
 
           <div className="hidden items-center gap-2.5 lg:flex">
             <Link
-              href="/about"
+              href="/about#contact-form"
               className={`rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors ${
                 isHero
                   ? "border border-white/25 bg-white/10 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md hover:bg-white/15"
