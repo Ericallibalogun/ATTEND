@@ -194,6 +194,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
           fill
           priority
           className="object-contain object-top-left"
+          sizes="(max-width: 640px) 400px, (max-width: 1024px) 500px, 600px"
         />
       </div>
 

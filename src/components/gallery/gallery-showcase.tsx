@@ -46,8 +46,8 @@ const galleryCategories: GalleryCategory[] = [
     title: "Launch Event",
     images: [
       { src: "/boardroom3.webp", alt: "Product Launch Stage Reveal Platform" },
-      { src: "/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.png", alt: "Broadcast Stage Camera & Lights" },
-      { src: "/d19a92ced1ad518052748b12f9e464593833f903.png", alt: "Hardware Keynote Presentation" },
+      { src: "/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.webp", alt: "Broadcast Stage Camera & Lights" },
+      { src: "/d19a92ced1ad518052748b12f9e464593833f903.webp", alt: "Hardware Keynote Presentation" },
       { src: "/Frame 1321325422.webp", alt: "Registration Check-in Desk" },
     ],
   },

@@ -191,7 +191,7 @@ export function LaunchRunOfShow() {
           {/* Right Image */}
           <div className="relative h-[360px] sm:h-[540px] lg:h-full lg:min-h-[720px] w-full overflow-hidden bg-zinc-900 shadow-xl">
             <Image
-              src="/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.png"
+              src="/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.webp"
               alt="Launch Event Camera and Stage Setup"
               fill
               className="object-cover object-center"

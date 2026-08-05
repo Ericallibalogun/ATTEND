@@ -133,6 +133,7 @@ export function FooterCta() {
                 fill
                 className="object-contain object-right-bottom drop-shadow-xl"
                 priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 620px"
               />
             </div>
           </div>

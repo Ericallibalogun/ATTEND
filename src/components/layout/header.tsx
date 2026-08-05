@@ -19,6 +19,7 @@ export function Header() {
             height={48}
             className="h-9 lg:h-11 w-auto max-w-[160px] object-contain"
             priority
+            style={{ width: "auto" }}
           />
         </Link>
         <nav className="hidden gap-6 md:flex">

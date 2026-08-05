@@ -19,7 +19,7 @@ const allInOneCards = [
     title: "Broadcast-quality staging",
     description:
       "Adaptive low-latency streaming built for markets where connectivity varies, rehearsal mode, backstage cueing and multi-camera support so the show runs to the second.",
-    image: "/d19a92ced1ad518052748b12f9e464593833f903.png",
+    image: "/d19a92ced1ad518052748b12f9e464593833f903.webp",
     alt: "Broadcast-quality staging - presentation setup",
   },
   {
@@ -35,7 +35,7 @@ const allInOneCards = [
     title: "Demos & breakouts",
     description:
       "Route audiences into product demo rooms, press briefings and partner sessions inside dedicated virtual exhibitor booths, each with its own host, materials and capacity rules.",
-    image: "/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.png",
+    image: "/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.webp",
     alt: "Demos & breakouts - camera and lights setup",
   },
   {
