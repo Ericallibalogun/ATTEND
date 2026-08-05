@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const features = [
   {
@@ -26,7 +27,8 @@ const features = [
 export function AgmsBoardroom() {
   return (
     <section className="bg-white py-10 lg:py-14">
-      <div className="mx-auto w-full px-6 lg:px-8">
+      <ScrollReveal yOffset={60}>
+        <div className="mx-auto w-full px-6 lg:px-8">
         
         <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-8 xl:gap-10 items-stretch">
           {/* Left Collage - Appears second on mobile, first on desktop */}
@@ -54,7 +56,7 @@ export function AgmsBoardroom() {
                 to the big stage
               </h2>
               <p className="text-[14px] leading-relaxed text-zinc-600 max-w-xl">
-                Attend adapts to the occasion, the same verified access, live engagement and instant results, whether you're passing resolutions or crowning a winning team.
+                Attend adapts to the occasion, the same verified access, live engagement and instant results, whether you&apos;re passing resolutions or crowning a winning team.
               </p>
             </div>
 
@@ -96,6 +98,7 @@ export function AgmsBoardroom() {
           </div>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

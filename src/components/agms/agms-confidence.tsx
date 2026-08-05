@@ -1,3 +1,5 @@
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+
 export function AgmsConfidence() {
   const stages = [
     {
@@ -34,7 +36,8 @@ export function AgmsConfidence() {
 
   return (
     <section className="bg-white py-10 lg:py-14 text-zinc-900">
-      <div className="mx-auto w-full px-6 lg:px-12">
+      <ScrollReveal yOffset={60}>
+        <div className="mx-auto w-full px-6 lg:px-12">
         <div className="mb-14 text-center">
           <p className="mb-3 flex items-center justify-center text-[11px] font-semibold uppercase tracking-widest text-primary">
             <span className="mr-2 inline-block size-1.5 bg-primary" aria-hidden />
@@ -83,6 +86,7 @@ export function AgmsConfidence() {
           })}
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

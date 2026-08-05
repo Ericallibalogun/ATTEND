@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 interface GalleryCategory {
   id: string;
@@ -80,7 +81,8 @@ export function GalleryShowcase() {
 
   return (
     <section className="bg-white py-14 lg:py-20 text-zinc-900">
-      <div className="w-full px-6 lg:px-12">
+      <ScrollReveal yOffset={60}>
+        <div className="w-full px-6 lg:px-12">
         {/* Header */}
         <div className="mb-10">
           <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34]">
@@ -209,6 +211,7 @@ export function GalleryShowcase() {
           })}
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

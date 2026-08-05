@@ -30,6 +30,7 @@ export function BookDemoProvider({ children }: { children: React.ReactNode }) {
 
   // Close modal when navigating to another page
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsOpen(false);
   }, [pathname]);
 
@@ -91,7 +92,7 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/65 backdrop-blur-xs animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/65 backdrop-blur-sm animate-in fade-in duration-300 ease-out">
       {/* Backdrop click area */}
       <div
         className="fixed inset-0"
@@ -100,12 +101,12 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative z-10 w-full max-w-[540px] rounded-3xl bg-white p-6 sm:p-8 shadow-2xl transition-all my-auto">
+      <div className="relative z-10 w-full max-w-[540px] rounded-3xl bg-white p-6 sm:p-8 shadow-2xl transition-all my-auto animate-in zoom-in-95 duration-300 ease-out">
         {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-6 right-6 flex size-8 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-800"
+          className="absolute top-6 right-6 flex size-8 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-all hover:bg-zinc-200 hover:text-zinc-800 active:scale-95 focus-visible:ring outline-none"
           aria-label="Close modal"
         >
           <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -236,7 +237,7 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
               <div className="pt-2 flex justify-end">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2.5 rounded-full bg-[#004D34] py-2 pl-2 pr-6 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 cursor-pointer"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-[#004D34] py-2 pl-2 pr-6 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#003d29] active:scale-95 focus-visible:ring outline-none cursor-pointer"
                 >
                   <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
                     <DoubleChevronIcon />

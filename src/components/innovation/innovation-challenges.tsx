@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const useCaseTags = [
   "Internal AI Hackathons",
@@ -15,7 +16,8 @@ const useCaseTags = [
 export function InnovationChallenges() {
   return (
     <section className="bg-white py-10 lg:py-14 text-zinc-900">
-      <div className="w-full px-6 lg:px-12">
+      <ScrollReveal yOffset={60}>
+        <div className="w-full px-6 lg:px-12">
         
         {/* Header */}
         <div className="mb-12 text-center">
@@ -52,8 +54,8 @@ export function InnovationChallenges() {
             sizes="(max-width: 1280px) 100vw, 1280px"
           />
         </div>
-
       </div>
+      </ScrollReveal>
     </section>
   );
 }

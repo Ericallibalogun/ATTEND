@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const STEP_DURATION = 5000; // 5 seconds per step
 
@@ -85,6 +86,7 @@ export function InnovationWorkflow() {
   }, [isPaused, activeIdx]);
 
   const handleStepClick = (idx: number) => {
+    // eslint-disable-next-line react-hooks/purity
     startTimeRef.current = performance.now();
     setProgress(0);
     setActiveIdx(idx);
@@ -98,7 +100,8 @@ export function InnovationWorkflow() {
 
   return (
     <section className="bg-[#F8FBF9] py-14 lg:py-20 text-zinc-900">
-      <div className="w-full px-6 lg:px-12">
+      <ScrollReveal yOffset={60}>
+        <div className="w-full px-6 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 items-start">
           
           {/* Left Content */}
@@ -208,6 +211,7 @@ export function InnovationWorkflow() {
 
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

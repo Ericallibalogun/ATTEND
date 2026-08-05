@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const allInOneCards = [
   {
@@ -62,106 +63,108 @@ export function LaunchAllInOne() {
 
   return (
     <section className="bg-[#083827] py-16 lg:py-24 text-white overflow-hidden">
-      <div className="w-full px-6 lg:px-12">
-        
-        {/* Header Grid */}
-        <div className="mb-12 grid gap-8 lg:grid-cols-[1fr_1.2fr] items-end">
-          <div>
-            <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#00E58F]">
-              <span className="mr-2 inline-block size-1.5 bg-[#00E58F]" aria-hidden />
-              THE ALL-IN-ONE PLATFORM
-            </p>
-            <h2 className="text-3xl font-medium leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Everything between the invite and the encore
-            </h2>
-          </div>
+      <ScrollReveal yOffset={60}>
+        <div className="mx-auto w-full px-6 lg:px-12">
+          
+          {/* Header Grid */}
+          <div className="mb-12 grid gap-8 lg:grid-cols-[1fr_1.2fr] items-end">
+            <div>
+              <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#00E58F]">
+                <span className="mr-2 inline-block size-1.5 bg-[#00E58F]" aria-hidden />
+                THE ALL-IN-ONE PLATFORM
+              </p>
+              <h2 className="text-3xl font-medium leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+                Everything between the invite and the encore
+              </h2>
+            </div>
 
-          <div className="flex flex-col items-start lg:items-end">
-            <p className="mb-6 text-[14.5px] leading-relaxed text-white/80 max-w-lg lg:text-right">
-              The same vetted success, broadcast streaming and live engagement that powers Attend, tuned for the biggest day on your product calendar, with hands-on executive production and on-call broadcast specialists on roll.
-            </p>
-            
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[14px] font-medium text-[#083827] transition-all hover:bg-zinc-100 shadow-md"
-            >
-              <span className="flex size-7 items-center justify-center rounded-full bg-[#083827] text-white">
-                <svg className="size-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
-                </svg>
-              </span>
-              Plan a launch
-            </Link>
-          </div>
-        </div>
-
-        {/* Unified White Container Box */}
-        <div className="bg-white p-5 sm:p-8 lg:p-10 text-zinc-900 shadow-2xl overflow-hidden">
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-6 sm:gap-10 overflow-x-auto pb-4 pt-2 scrollbar-none scroll-smooth snap-x snap-mandatory"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {allInOneCards.map((card, idx) => (
-              <div
-                key={idx}
-                className="flex w-full sm:w-[440px] lg:w-[520px] shrink-0 snap-center gap-4 sm:gap-6 items-start border-r border-zinc-100 pr-4 sm:pr-8 last:border-r-0 last:pr-0"
+            <div className="flex flex-col items-start lg:items-end">
+              <p className="mb-6 text-[14.5px] leading-relaxed text-white/80 max-w-lg lg:text-right">
+                The same vetted success, broadcast streaming and live engagement that powers Attend, tuned for the biggest day on your product calendar, with hands-on executive production and on-call broadcast specialists on roll.
+              </p>
+              
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-[14px] font-medium text-[#083827] transition-all hover:bg-zinc-100 shadow-md"
               >
-                {/* Left Text Column */}
-                <div className="flex flex-1 flex-col justify-start">
-                  <span className="mb-2 block font-mono text-3xl sm:text-5xl font-light text-zinc-200">
-                    {card.number}
-                  </span>
-
-                  <h3 className="mb-2 sm:mb-3 text-base sm:text-lg font-semibold text-zinc-900 leading-snug">
-                    {card.title}
-                  </h3>
-                  
-                  <p className="text-[12.5px] sm:text-[13px] leading-relaxed text-zinc-600">
-                    {card.description}
-                  </p>
-                </div>
-
-                {/* Right Image Column */}
-                <div className="relative h-[160px] sm:h-[240px] lg:h-[280px] w-[110px] sm:w-[180px] lg:w-[220px] shrink-0 overflow-hidden bg-zinc-100">
-                  <Image
-                    src={card.image}
-                    alt={card.alt}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 640px) 110px, 220px"
-                  />
-                </div>
-              </div>
-            ))}
+                <span className="flex size-7 items-center justify-center rounded-full bg-[#083827] text-white">
+                  <svg className="size-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
+                  </svg>
+                </span>
+                Plan a launch
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Bottom Carousel Navigation Buttons */}
-        <div className="mt-8 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={() => scroll("left")}
-            className="flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 active:scale-95"
-            aria-label="Previous slide"
-          >
-            <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={() => scroll("right")}
-            className="flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 active:scale-95"
-            aria-label="Next slide"
-          >
-            <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
+          {/* Unified White Container Box */}
+          <div className="bg-white p-5 sm:p-8 lg:p-10 text-zinc-900 shadow-2xl overflow-hidden">
+            <div
+              ref={scrollContainerRef}
+              className="flex gap-6 sm:gap-10 overflow-x-auto pb-4 pt-2 scrollbar-none scroll-smooth snap-x snap-mandatory"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {allInOneCards.map((card, idx) => (
+                <div
+                  key={idx}
+                  className="flex w-full sm:w-[440px] lg:w-[520px] shrink-0 snap-center gap-4 sm:gap-6 items-start border-r border-zinc-100 pr-4 sm:pr-8 last:border-r-0 last:pr-0"
+                >
+                  {/* Left Text Column */}
+                  <div className="flex flex-1 flex-col justify-start">
+                    <span className="mb-2 block font-mono text-3xl sm:text-5xl font-light text-zinc-200">
+                      {card.number}
+                    </span>
 
-      </div>
+                    <h3 className="mb-2 sm:mb-3 text-base sm:text-lg font-semibold text-zinc-900 leading-snug">
+                      {card.title}
+                    </h3>
+                    
+                    <p className="text-[12.5px] sm:text-[13px] leading-relaxed text-zinc-600">
+                      {card.description}
+                    </p>
+                  </div>
+
+                  {/* Right Image Column */}
+                  <div className="relative h-[160px] sm:h-[240px] lg:h-[280px] w-[110px] sm:w-[180px] lg:w-[220px] shrink-0 overflow-hidden bg-zinc-100">
+                    <Image
+                      src={card.image}
+                      alt={card.alt}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 640px) 110px, 220px"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom Carousel Navigation Buttons */}
+          <div className="mt-8 flex items-center justify-center gap-4">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              className="flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 active:scale-95"
+              aria-label="Previous slide"
+            >
+              <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              className="flex size-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:bg-white/20 active:scale-95"
+              aria-label="Next slide"
+            >
+              <svg className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

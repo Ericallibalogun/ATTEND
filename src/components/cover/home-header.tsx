@@ -23,6 +23,7 @@ export function HomeHeader({ heroId = "hero-section" }: HomeHeaderProps) {
       return () => observer.disconnect();
     } else {
       // No hero section on this page -> show solid header from start of page
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsPastHero(true);
     }
   }, [heroId]);

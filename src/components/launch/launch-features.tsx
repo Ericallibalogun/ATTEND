@@ -1,84 +1,89 @@
-import React from "react";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const valueProps = [
   {
-    title: "Broadcast-quality",
-    description: "Tailored HD video streams with sub-second latency and multi-cam switching.",
-    icon: "/Frame.webp",
+    title: "Broadcast quality",
+    description: "Adaptive streaming, any bandwidth, powered by our virtual product demo software.",
+    icon: "/Brutalism_16_1.webp",
   },
   {
-    title: "Interactive demos",
-    description: "Enable 360° product exploration and live feature walk-throughs.",
-    icon: "/Brutalism 74.webp",
+    title: "Live reactions",
+    description: "Polls, Q&A, applause in real time, the crowd is in the room.",
+    icon: "/Brutalism_74_1.webp",
   },
   {
-    title: "Audience applause",
-    description: "Reactions, live polls, and audience voting calculated in real-time.",
-    icon: "/Brutalism 74 (1).webp",
+    title: "Leads captured",
+    description: "Every attendee, every signal. No lead left behind.",
+    icon: "/apps_1.webp",
   },
   {
-    title: "Segmented access",
-    description: "VIP embargo previews, press keynotes, and public livestream tiers.",
-    icon: "/Frame (1).webp",
+    title: "Segment strip",
+    description: "Slice your audience and measure what moved them.",
+    icon: "/Brutalism_16_2.webp",
   },
   {
-    title: "Embed & partner",
-    description: "Seamlessly embed the launch stream across partner networks & media.",
-    icon: "/Brutalism 16.webp",
+    title: "Press & partners",
+    description: "Media kits, embargoes and briefings in one place.",
+    icon: "/Brutalism_74_2.webp",
   },
   {
-    title: "Corporate control",
-    description: "Permissions, branded chat moderation, and executive dashboard.",
-    icon: "/Vector.webp",
+    title: "Corporate comms",
+    description: "Rebrands, milestones and announcements, handled.",
+    icon: "/data_check_double_1.webp",
   },
 ];
 
 export function LaunchFeatures() {
   return (
-    <section className="bg-[#F8FBF9] py-16 lg:py-24 text-zinc-900">
-      <div className="w-full px-6 lg:px-12">
-        {/* Header */}
+    <section className="bg-white py-12 lg:py-16 px-6 sm:px-10 lg:px-14 text-zinc-900">
+      {/* Mint Background Container - 2cm away from screen edges */}
+      <ScrollReveal yOffset={60}>
+        <div className="mx-auto w-full max-w-[1480px] rounded-3xl bg-[#eff5f1] p-8 sm:p-12 lg:p-16">
+          {/* Header */}
         <div className="mb-14 text-center">
-          <p className="mb-4 flex items-center justify-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34]">
+          <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
             <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
-            FOR TECH & CONSUMER BRANDS
+            MAKE EVERY LAUNCH COUNT
           </p>
-          <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mb-4 text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
             Deliver a high-impact product reveal
           </h2>
         </div>
 
-        {/* 6 Value Prop Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {valueProps.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col justify-between bg-white p-6 sm:p-8 rounded-none border border-black/5 shadow-xs"
-            >
-              <div>
-                {/* Icon sitting plainly on card */}
-                <div className="mb-5 lg:mb-6 flex items-center h-9">
+        {/* 6 Joined Cards inside Mint Container */}
+        <div className="overflow-hidden rounded-2xl bg-white border border-zinc-200/60 shadow-xs">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {valueProps.map((item, idx) => (
+              <div
+                key={idx}
+                className={`group flex flex-col justify-start p-8 sm:p-10 lg:p-11 bg-linear-to-br from-white via-[#f9fcf9] to-[#ebf5ee] transition-all duration-300 hover:bg-white hover:shadow-sm hover:border-black/5 hover:-translate-y-0.5 relative z-0 hover:z-10 ${
+                  idx < 3 ? "border-b border-zinc-200/60" : ""
+                } ${
+                  idx % 3 !== 2 ? "md:border-r md:border-zinc-200/60" : ""
+                }`}
+              >
+                <div className="mb-8 relative size-10">
                   <Image
                     src={item.icon}
                     alt={item.title}
-                    width={36}
-                    height={36}
-                    className="h-8 lg:h-9 w-auto object-contain object-left"
+                    width={40}
+                    height={40}
+                    className="size-10 object-contain"
                   />
                 </div>
-
-                <h3 className="mb-2 text-base font-semibold text-zinc-900 lg:text-lg lg:mb-3">
+                <h3 className="mb-3 text-lg font-semibold text-zinc-900 tracking-tight group-hover:text-[#1a3d2e] transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-[13px] leading-relaxed text-zinc-600 lg:text-[13.5px]">
+                <p className="text-[13.5px] leading-relaxed text-zinc-600">
                   {item.description}
                 </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

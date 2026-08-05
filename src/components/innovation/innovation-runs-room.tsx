@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const organizerFeatures = [
   "One dashboard for registrations, teams, submissions and scores",
@@ -23,7 +24,8 @@ export function InnovationRunsRoom() {
 
   return (
     <section className="relative w-full overflow-hidden bg-[#083827] py-12 sm:py-16 lg:py-20 text-white">
-      <div className="w-full px-6 sm:px-10 lg:px-14">
+      <ScrollReveal yOffset={60}>
+        <div className="w-full px-6 sm:px-10 lg:px-14">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-14 lg:items-stretch">
           
           {/* Left Column: Image */}
@@ -97,6 +99,7 @@ export function InnovationRunsRoom() {
 
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

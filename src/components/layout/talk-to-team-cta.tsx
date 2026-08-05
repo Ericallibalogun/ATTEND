@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 function DoubleChevronIcon() {
   return (
@@ -15,7 +16,8 @@ export function TalkToTeamCta() {
   const { openModal } = useBookDemoModal();
 
   return (
-    <section className="relative flex min-h-[480px] lg:min-h-[560px] flex-col items-center justify-center overflow-hidden py-20 lg:py-28">
+    <ScrollReveal yOffset={60}>
+      <section className="relative flex min-h-[480px] lg:min-h-[560px] flex-col items-center justify-center overflow-hidden py-20 lg:py-28">
       {/* Base Background Color */}
       <div className="absolute inset-0 bg-[#f8fbf9]" />
 
@@ -67,7 +69,7 @@ export function TalkToTeamCta() {
           <button
             type="button"
             onClick={openModal}
-            className="inline-flex items-center gap-3 rounded-full bg-[#124b37] py-2.5 pl-2.5 pr-7 text-[15px] font-semibold text-white shadow-sm transition-opacity hover:opacity-90 cursor-pointer"
+            className="inline-flex items-center gap-3 rounded-full bg-[#124b37] py-2.5 pl-2.5 pr-7 text-[15px] font-semibold text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#1a5b44] active:scale-95 focus-visible:ring outline-none cursor-pointer"
           >
             <span className="flex size-8 items-center justify-center rounded-full bg-white text-[#004D34]">
               <DoubleChevronIcon />
@@ -77,12 +79,13 @@ export function TalkToTeamCta() {
           <button
             type="button"
             onClick={openModal}
-            className="inline-flex items-center justify-center rounded-full border border-[#2d5746]/40 bg-[#729885]/40 px-7 py-3 text-[15px] font-semibold text-[#183a2c] backdrop-blur-xs transition-colors hover:bg-[#729885]/60 cursor-pointer"
+            className="inline-flex items-center justify-center rounded-full border border-[#3d6657] bg-[#537e6f]/65 px-7 py-3 text-[15px] font-semibold text-white shadow-xs backdrop-blur-xs transition-all duration-300 ease-in-out hover:bg-[#537e6f]/80 active:scale-95 focus-visible:ring outline-none cursor-pointer"
           >
             Talk to an expert
           </button>
         </div>
       </div>
-    </section>
+      </section>
+    </ScrollReveal>
   );
 }

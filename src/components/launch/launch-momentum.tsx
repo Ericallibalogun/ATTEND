@@ -1,9 +1,11 @@
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export function LaunchMomentum() {
   return (
     <section className="bg-white py-16 lg:py-24 text-zinc-900">
-      <div className="w-full px-6 lg:px-12">
+      <ScrollReveal yOffset={60}>
+        <div className="w-full px-6 lg:px-12">
         {/* Header */}
         <div className="mb-12 max-w-4xl">
           <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34]">
@@ -32,6 +34,7 @@ export function LaunchMomentum() {
           />
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

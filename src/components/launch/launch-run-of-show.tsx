@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const STEP_DURATION = 5000; // 5 seconds per stage
 
@@ -78,6 +79,7 @@ export function LaunchRunOfShow() {
   }, [isPaused, activeIdx]);
 
   const handleStageClick = (idx: number) => {
+    // eslint-disable-next-line react-hooks/purity
     startTimeRef.current = performance.now();
     setProgress(0);
     setActiveIdx(idx);
@@ -91,7 +93,8 @@ export function LaunchRunOfShow() {
 
   return (
     <section className="bg-white py-16 lg:py-24 text-zinc-900">
-      <div className="w-full px-6 lg:px-12">
+      <ScrollReveal yOffset={60}>
+        <div className="w-full px-6 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-start">
           
           {/* Left Content */}
@@ -199,6 +202,7 @@ export function LaunchRunOfShow() {
 
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -46,17 +46,17 @@ export function Footer() {
             </p>
             
             {/* Email Subscription Input */}
-            <form className="flex w-full max-w-md items-center rounded-full bg-white/10 p-1 border border-white/20 shadow-sm backdrop-blur-xs">
+            <form className="flex w-full max-w-md items-center rounded-full bg-white p-1 shadow-sm">
               <input 
                 type="email"
                 placeholder="Enter Email Address" 
-                className="w-full bg-transparent px-4 py-2 text-xs sm:text-[13.5px] font-medium text-white outline-none placeholder:text-white/60"
+                className="w-full bg-transparent px-4 py-2 text-xs sm:text-[13.5px] font-medium text-zinc-900 outline-none placeholder:text-zinc-400"
               />
               <button 
                 type="submit"
-                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white py-1.5 pl-1.5 pr-4 text-xs sm:text-[13px] font-bold text-[#004D34] transition-opacity hover:opacity-90 shadow-sm cursor-pointer"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#004D34] py-1.5 pl-1.5 pr-4 text-xs sm:text-[13px] font-bold text-white transition-opacity hover:opacity-90 shadow-sm cursor-pointer"
               >
-                <span className="flex size-6 items-center justify-center rounded-full bg-[#004D34] text-white">
+                <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
                   <svg className="size-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
                   </svg>

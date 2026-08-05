@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const sprintCards = [
   {
@@ -43,8 +44,9 @@ export function InnovationSprint() {
   return (
     <section className="bg-white py-12 lg:py-16 px-6 sm:px-10 lg:px-14 text-zinc-900">
       {/* Mint background container - 2cm away from screen edges */}
-      <div className="mx-auto w-full max-w-[1480px] rounded-none bg-[#eff5f1] p-8 sm:p-12 lg:p-16">
-        {/* Header */}
+      <ScrollReveal yOffset={60}>
+        <div className="mx-auto w-full max-w-[1480px] rounded-none bg-[#eff5f1] p-8 sm:p-12 lg:p-16">
+          {/* Header */}
         <div className="mb-14 text-center">
           <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
             <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
@@ -64,7 +66,7 @@ export function InnovationSprint() {
             {sprintCards.map((card, idx) => (
               <div
                 key={idx}
-                className={`flex flex-col justify-start p-8 sm:p-10 lg:p-11 bg-linear-to-br from-white via-[#f9fcf9] to-[#ebf5ee] transition-colors ${
+                className={`group flex flex-col justify-start p-8 sm:p-10 lg:p-11 bg-linear-to-br from-white via-[#f9fcf9] to-[#ebf5ee] transition-all duration-300 hover:bg-white hover:shadow-sm hover:border-black/5 hover:-translate-y-0.5 relative z-0 hover:z-10 ${
                   idx < 3 ? "border-b border-zinc-200/60" : ""
                 } ${
                   idx % 3 !== 2 ? "md:border-r md:border-zinc-200/60" : ""
@@ -79,7 +81,7 @@ export function InnovationSprint() {
                     className="size-10 object-contain"
                   />
                 </div>
-                <h3 className="mb-3 text-lg font-semibold text-zinc-900 tracking-tight">
+                <h3 className="mb-3 text-lg font-semibold text-zinc-900 tracking-tight group-hover:text-[#1a3d2e] transition-colors">
                   {card.title}
                 </h3>
                 <p className="text-[13.5px] leading-relaxed text-zinc-600">
@@ -90,6 +92,7 @@ export function InnovationSprint() {
           </div>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -74,9 +74,9 @@ export const heroSlides: HeroSlide[] = [
   {
     label: "Get Started",
     href: "/about",
-    image: "/Group 6095.webp",
+    image: "/svg_vector_2026-08-03 (2).webp",
     eyebrow: "GET STARTED",
-    headline: "Stay connected and in control across mobile or desktop, wherever you are.",
+    headline: "Stay connected wherever you are",
     description: "",
     isAppButtons: true,
   },

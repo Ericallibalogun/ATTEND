@@ -23,7 +23,7 @@ function AppStoreHeroButtons() {
       {/* Google Play */}
       <Link
         href="/about"
-        className="inline-flex items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 py-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90"
+        className="inline-flex h-12 items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 text-zinc-900 shadow-xs transition-all duration-300 ease-in-out hover:opacity-90 active:scale-95 focus-visible:ring outline-none"
       >
         <Image
           src="/Google Play logo.webp"
@@ -41,7 +41,7 @@ function AppStoreHeroButtons() {
       {/* App Store */}
       <Link
         href="/about"
-        className="inline-flex items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 py-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90"
+        className="inline-flex h-12 items-center gap-2.5 rounded-full border border-zinc-300/80 bg-white px-4.5 text-zinc-900 shadow-xs transition-all duration-300 ease-in-out hover:opacity-90 active:scale-95 focus-visible:ring outline-none"
       >
         <Image
           src="/Apple logo.webp"
@@ -59,7 +59,7 @@ function AppStoreHeroButtons() {
       {/* Launch Web App */}
       <Link
         href="/about"
-        className="inline-flex items-center gap-3 rounded-full border border-[#004D34] bg-white py-2 pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90"
+        className="inline-flex h-12 items-center gap-3 rounded-full border border-[#004D34] bg-white pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-all duration-300 ease-in-out hover:bg-zinc-50 active:scale-95 focus-visible:ring outline-none"
       >
         <span className="flex size-8 items-center justify-center rounded-full bg-[#004D34] text-white">
           <DoubleChevronIcon />
@@ -201,17 +201,15 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
 
       {/* Right side Laptop & Mobile Mockup layer for AppButtons slide */}
       {slide.isAppButtons && (
-        <div className="pointer-events-none absolute right-0 bottom-0 z-[5] flex items-end justify-end w-full lg:w-[52vw] h-[55vh] sm:h-[65vh] lg:h-[75vh] xl:h-[82vh] pr-4 lg:pr-12 pb-14 lg:pb-18">
-          <div className="relative w-full h-full max-w-[700px] lg:max-w-[800px] xl:max-w-[900px]">
-            <Image
-              src={slide.image}
-              alt="Attend mobile and desktop experience"
-              fill
-              priority
-              className="object-contain object-right-bottom"
-              sizes="(max-width: 1024px) 100vw, 52vw"
-            />
-          </div>
+        <div className="pointer-events-none absolute right-0 bottom-0 z-[5] w-full lg:w-[66vw] xl:w-[68vw] h-[65vh] sm:h-[78vh] lg:h-[88vh] xl:h-[94vh]">
+          <Image
+            src={slide.image}
+            alt="Attend mobile and desktop experience"
+            fill
+            priority
+            className="object-contain object-right-bottom"
+            sizes="(max-width: 1024px) 100vw, 68vw"
+          />
         </div>
       )}
 

@@ -1,43 +1,47 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FooterCta } from "@/components/layout/footer-cta";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 function SectionOne() {
   return (
     <section
-      className="bg-[#F8FBF9] py-8 lg:py-12"
+      className="bg-[#F8FBF9] py-16 lg:py-24"
       style={{ scrollMarginTop: "var(--home-header-height, 0px)" }}
     >
       <div
-        className="mx-auto w-full px-6 lg:px-8"
+        className="mx-auto w-full px-6 lg:px-8 max-w-7xl"
       >
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <div className="max-w-xl">
-            <p className="mb-4 flex items-center text-xs font-semibold uppercase tracking-widest text-primary">
-              <span className="mr-2 inline-block size-1.5 bg-primary" aria-hidden />
-              ABOUT ATTEND
+        <ScrollReveal>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-xl">
+              <p className="mb-4 flex items-center text-xs font-semibold uppercase tracking-widest text-primary">
+                <span className="mr-2 inline-block size-1.5 bg-primary" aria-hidden />
+                ABOUT ATTEND
+              </p>
+              <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
+                One Platform for your
+                <br />
+                Events and Innovation Challenges
+              </h2>
+            </div>
+            <p className="mt-2 max-w-sm text-[15px] leading-relaxed text-zinc-600 lg:mt-10 lg:text-right">
+              Secure, Social, Interactive. Attend powers shareholder meetings,
+              investor events, product launches, hackathons, conferences, and
+              hybrid experiences where every participant can engage with
+              confidence.
             </p>
-            <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
-              One Platform for your
-              <br />
-              Events and Innovation Challenges
-            </h2>
           </div>
-          <p className="mt-2 max-w-sm text-[15px] leading-relaxed text-zinc-600 lg:mt-10 lg:text-right">
-            Secure, Social, Interactive. Attend powers shareholder meetings,
-            investor events, product launches, hackathons, conferences, and
-            hybrid experiences where every participant can engage with
-            confidence.
-          </p>
-        </div>
+        </ScrollReveal>
 
         <div className="mt-12 lg:mt-16 grid gap-6 md:grid-cols-3">
           {/* Card 1 */}
-          <div className="flex flex-col bg-[#F4F9F6] p-6 sm:p-8 rounded-none border border-black/5">
+          <ScrollReveal delay={0.1}>
+          <div className="group flex flex-col bg-[#F4F9F6] p-6 sm:p-8 rounded-none border border-black/5 transition-all duration-300 hover:shadow-md hover:border-black/10 hover:-translate-y-1">
             <div className="mb-6 relative size-10">
-              <Image src="/Brutalism 16.webp" alt="" fill className="object-contain" />
+              <Image src="/Brutalism 16.webp" alt="" fill sizes="40px" className="object-contain" />
             </div>
-            <h3 className="mb-3 text-lg font-semibold text-zinc-900">
+            <h3 className="mb-3 text-lg font-semibold text-zinc-900 group-hover:text-primary transition-colors">
               Annual General Meetings (AGMs)
             </h3>
             <p className="mb-8 flex-1 text-[13px] leading-relaxed text-zinc-600">
@@ -45,21 +49,23 @@ function SectionOne() {
             </p>
             <Link
               href="/agms"
-              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#004D34] hover:opacity-80"
+              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#004D34] transition-all hover:opacity-80 active:scale-95 focus-visible:ring outline-none rounded"
             >
               Learn More
-              <svg className="size-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="size-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
               </svg>
             </Link>
           </div>
+          </ScrollReveal>
 
           {/* Card 2 */}
-          <div className="flex flex-col bg-[#F4F9F6] p-6 sm:p-8 rounded-none border border-black/5">
+          <ScrollReveal delay={0.2}>
+          <div className="group flex flex-col bg-[#F4F9F6] p-6 sm:p-8 rounded-none border border-black/5 transition-all duration-300 hover:shadow-md hover:border-black/10 hover:-translate-y-1">
             <div className="mb-6 relative size-10">
-              <Image src="/Brutalism 74.webp" alt="" fill className="object-contain" />
+              <Image src="/Brutalism 74.webp" alt="" fill sizes="40px" className="object-contain" />
             </div>
-            <h3 className="mb-3 text-lg font-semibold text-zinc-900">
+            <h3 className="mb-3 text-lg font-semibold text-zinc-900 group-hover:text-primary transition-colors">
               Innovation Challenge
             </h3>
             <p className="mb-8 flex-1 text-[13px] leading-relaxed text-zinc-600">
@@ -67,21 +73,23 @@ function SectionOne() {
             </p>
             <Link
               href="/hackathons"
-              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#004D34] hover:opacity-80"
+              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#004D34] transition-all hover:opacity-80 active:scale-95 focus-visible:ring outline-none rounded"
             >
               Learn More
-              <svg className="size-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="size-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
               </svg>
             </Link>
           </div>
+          </ScrollReveal>
 
           {/* Card 3 */}
-          <div className="flex flex-col bg-[#F4F9F6] p-6 sm:p-8 rounded-none border border-black/5">
+          <ScrollReveal delay={0.3}>
+          <div className="group flex flex-col bg-[#F4F9F6] p-6 sm:p-8 rounded-none border border-black/5 transition-all duration-300 hover:shadow-md hover:border-black/10 hover:-translate-y-1">
             <div className="mb-6 relative size-10">
-              <Image src="/data-check-double_1.webp" alt="" fill className="object-contain" />
+              <Image src="/data-check-double_1.webp" alt="" fill sizes="40px" className="object-contain" />
             </div>
-            <h3 className="mb-3 text-lg font-semibold text-zinc-900">
+            <h3 className="mb-3 text-lg font-semibold text-zinc-900 group-hover:text-primary transition-colors">
               Product Launches
             </h3>
             <p className="mb-8 flex-1 text-[13px] leading-relaxed text-zinc-600">
@@ -89,14 +97,15 @@ function SectionOne() {
             </p>
             <Link
               href="/product-launch"
-              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#004D34] hover:opacity-80"
+              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#004D34] transition-all hover:opacity-80 active:scale-95 focus-visible:ring outline-none rounded"
             >
               Learn More
-              <svg className="size-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="size-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
               </svg>
             </Link>
           </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
@@ -106,8 +115,9 @@ function SectionOne() {
 function SectionTwo() {
   return (
     <section className="bg-white py-12 lg:py-20">
-      <div className="mx-auto w-full px-6 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-12 lg:gap-12 items-stretch">
+      <ScrollReveal yOffset={60}>
+        <div className="mx-auto w-full px-6 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-12 items-stretch">
           {/* Left Column: Text + Image matching form height */}
           <div className="flex flex-col items-start lg:col-span-5 h-full">
             <p className="mb-3 flex items-center text-xs font-semibold uppercase tracking-widest text-primary">
@@ -240,6 +250,7 @@ function SectionTwo() {
           </div>
         </div>
       </div>
+      </ScrollReveal>
     </section>
   );
 }
