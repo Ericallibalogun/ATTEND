@@ -42,57 +42,69 @@ const sprintCards = [
 
 export function InnovationSprint() {
   return (
-    <section className="bg-white py-12 lg:py-16 px-6 sm:px-10 lg:px-14 text-zinc-900">
-      {/* Mint background container - 2cm away from screen edges */}
-      <ScrollReveal yOffset={60}>
-        <div className="mx-auto w-full max-w-[1480px] rounded-none bg-[#eff5f1] p-8 sm:p-12 lg:p-16">
-          {/* Header */}
-        <div className="mb-14 text-center">
-          <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
-            <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
-            THE PLATFORM
-          </p>
-          <h2 className="mb-4 text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Built for the pressure of the sprint
-          </h2>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-zinc-600">
-            The same verified access, live engagement and instant, auditable results that power Attend tuned for builders on a secure, purpose-built virtual hackathon platform.
-          </p>
-        </div>
+    <section className="bg-white text-zinc-900">
+      {/* 2cm from screen edges — full width */}
+      <div className="w-full px-8 py-12 sm:px-12 lg:px-16 lg:py-16">
+        <ScrollReveal yOffset={60}>
+          <div className="w-full bg-[#EFF5F3] p-8 sm:p-12 lg:p-16">
+            <div className="mb-14 text-center">
+              <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
+                <span
+                  className="mr-2 inline-block size-1.5 bg-[#004D34]"
+                  aria-hidden
+                />
+                THE PLATFORM
+              </p>
+              <h2 className="mb-4 text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+                Built for the pressure of the sprint
+              </h2>
+              <p className="mx-auto max-w-2xl text-sm leading-relaxed text-zinc-600">
+                The same verified access, live engagement and instant, auditable
+                results that power Attend tuned for builders on a secure,
+                purpose-built virtual hackathon platform.
+              </p>
+            </div>
 
-        {/* 6 Joined Cards inside Mint Container */}
-        <div className="overflow-hidden rounded-none bg-white border border-zinc-200/60 shadow-xs">
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {sprintCards.map((card, idx) => (
-              <div
-                key={idx}
-                className={`group flex flex-col justify-start p-8 sm:p-10 lg:p-11 bg-linear-to-br from-white via-[#f9fcf9] to-[#ebf5ee] transition-all duration-300 hover:bg-white hover:shadow-sm hover:border-black/5 hover:-translate-y-0.5 relative z-0 hover:z-10 ${
-                  idx < 3 ? "border-b border-zinc-200/60" : ""
-                } ${
-                  idx % 3 !== 2 ? "md:border-r md:border-zinc-200/60" : ""
-                }`}
-              >
-                <div className="mb-8 relative size-10">
-                  <Image
-                    src={card.icon}
-                    alt={card.title}
-                    width={40}
-                    height={40}
-                    className="size-10 object-contain"
-                  />
-                </div>
-                <h3 className="mb-3 text-lg font-semibold text-zinc-900 tracking-tight group-hover:text-[#1a3d2e] transition-colors">
-                  {card.title}
-                </h3>
-                <p className="text-[13.5px] leading-relaxed text-zinc-600">
-                  {card.description}
-                </p>
+            {/*
+              Figma cards:
+              - joined 3×2 grid with hairline borders
+              - each cell: soft mint glow from bottom-left → white
+            */}
+            <div className="overflow-hidden border border-[#d7e5df]">
+              <div className="grid grid-cols-1 md:grid-cols-3">
+                {sprintCards.map((card, idx) => (
+                  <article
+                    key={card.title}
+                    className={`flex min-h-[280px] flex-col justify-start p-8 sm:p-10 lg:min-h-[300px] lg:p-11 ${
+                      idx < 3 ? "border-b border-[#d7e5df]" : ""
+                    } ${
+                      idx % 3 !== 2 ? "md:border-r md:border-[#d7e5df]" : ""
+                    }`}
+                    style={{
+                      background:
+                        "radial-gradient(120% 90% at 0% 100%, #E2EEEA 0%, #F7FFFC 42%, #FFFFFF 72%)",
+                    }}
+                  >
+                    <Image
+                      src={card.icon}
+                      alt=""
+                      width={28}
+                      height={28}
+                      className="mb-8 size-7 object-contain object-left"
+                    />
+                    <h3 className="mb-3 text-lg font-semibold tracking-tight text-zinc-900">
+                      {card.title}
+                    </h3>
+                    <p className="text-[13.5px] leading-relaxed text-zinc-600">
+                      {card.description}
+                    </p>
+                  </article>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
-      </ScrollReveal>
     </section>
   );
 }

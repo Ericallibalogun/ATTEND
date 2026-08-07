@@ -69,8 +69,8 @@ export function FooterCta() {
               <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
               GET STARTED
             </p>
-            <h2 className="mb-8 text-2xl font-semibold leading-[1.18] tracking-tight text-zinc-900 sm:text-4xl lg:text-[44px] max-w-xl">
-              Stay connected and <br/>in control across mobile or <br/>desktop, wherever you are.
+            <h2 className="mb-8 max-w-xl whitespace-pre-line text-2xl font-semibold leading-[1.18] tracking-tight text-zinc-900 sm:text-4xl lg:text-[44px]">
+              {"Stay connected\nwherever you are"}
             </h2>
 
             {/* Buttons Row */}
@@ -124,16 +124,17 @@ export function FooterCta() {
             </div>
           </div>
 
-          {/* Right Column: Combined Mockup Image (/svg_vector_2026-08-03.webp) */}
-          <div className="flex items-end justify-end lg:col-span-6 mt-6 lg:mt-0">
-            <div className="relative h-[260px] sm:h-[400px] lg:h-[500px] w-full max-w-[620px]">
+          {/* Right Column: Combined Mockup Image */}
+          <div className="mt-6 flex items-end justify-end lg:col-span-6 lg:mt-0">
+            <div className="relative h-[320px] w-full max-w-[760px] sm:h-[480px] lg:h-[600px] xl:max-w-[840px]">
               <Image
                 src="/svg_vector_2026-08-03.webp"
                 alt="Attend mobile and desktop app experience"
                 fill
                 className="object-contain object-right-bottom drop-shadow-xl"
                 priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 400px, 620px"
+                quality={100}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 560px, 840px"
               />
             </div>
           </div>

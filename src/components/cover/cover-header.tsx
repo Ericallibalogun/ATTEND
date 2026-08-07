@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/lib/site";
+import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 
 function NavArrowIcon({ className }: { className?: string }) {
   return (
@@ -37,6 +38,7 @@ export function CoverHeader({
 }: CoverHeaderProps) {
   const isHero = variant === "hero";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { openModal } = useBookDemoModal();
 
   return (
     <>
@@ -66,16 +68,17 @@ export function CoverHeader({
           </Link>
 
           <div className="hidden items-center gap-2.5 lg:flex">
-            <Link
-              href="/about#contact-form"
+            <button
+              onClick={() => openModal()}
+              type="button"
               className={`rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors ${
                 isHero
                   ? "border border-white/25 bg-white/10 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md hover:bg-white/15"
-                  : "bg-[#EAF3EE] text-primary hover:bg-[#dce9e2]"
+                  : "bg-[#EAF3EE] text-primary hover:bg-[#dce9e2] outline outline-1 outline-primary/10"
               }`}
             >
               Contact us
-            </Link>
+            </button>
             <Link
               href="/login"
               className={`rounded-full px-4.5 py-1.5 text-xs sm:text-sm font-semibold transition-opacity hover:opacity-90 ${
@@ -110,7 +113,7 @@ export function CoverHeader({
 
       {isHero ? (
         <>
-          <nav className="mx-auto mt-2.5 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
+          <nav className="mx-auto mt-4 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
             {siteConfig.coverNav.map((item) => (
               <Link
                 key={item.href}
@@ -128,8 +131,8 @@ export function CoverHeader({
           </nav>
         </>
       ) : (
-        <nav className="mx-auto hidden w-full px-8 sm:px-12 pb-2 pt-1 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
-          {siteConfig.coverNav.map((item) => (
+        <nav className="mx-auto hidden w-full px-8 sm:px-12 mt-4 pb-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
+            {siteConfig.coverNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -192,13 +195,16 @@ export function CoverHeader({
           </nav>
 
           <div className="mt-8 flex flex-col gap-4 px-8 pb-10">
-            <Link
-              href="/about"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                openModal();
+              }}
+              type="button"
               className="flex w-full items-center justify-center rounded-full bg-[#d0e0d7] py-3 text-[13px] font-semibold text-primary transition-colors hover:bg-[#c2d4cb]"
             >
               Contact us
-            </Link>
+            </button>
             <Link
               href="/login"
               onClick={() => setIsMobileMenuOpen(false)}

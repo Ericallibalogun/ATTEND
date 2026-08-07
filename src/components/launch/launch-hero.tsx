@@ -17,6 +17,8 @@ export function LaunchHero() {
         />
         {/* Light dark hue at header area only */}
         <div className="pointer-events-none absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-black/60 via-black/25 to-transparent z-[2]" />
+        {/* Bottom linear gradient for text block readability */}
+        <div className="pointer-events-none absolute bottom-0 inset-x-0 h-[60%] bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent z-[2]" />
       </div>
 
       <div className="relative z-10 w-full px-6 lg:px-12">

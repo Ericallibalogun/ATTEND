@@ -7,17 +7,22 @@ export function LaunchMomentum() {
       <ScrollReveal yOffset={60}>
         <div className="w-full px-6 lg:px-12">
         {/* Header */}
-        <div className="mb-12 max-w-4xl">
+        <div className="mb-12 w-full">
           <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34]">
             <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
             POST-EVENT ANALYTICS
           </p>
-          <div className="grid gap-6 lg:grid-cols-[1fr_1fr] items-start">
-            <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-              The launch ends. The momentum shouldn’t.
+          <div className="grid items-start gap-6 lg:grid-cols-12 lg:gap-12">
+            <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:col-span-6 lg:text-5xl">
+              The launch ends. The
+              <br />
+              <span className="whitespace-nowrap">momentum shouldn&apos;t.</span>
             </h2>
-            <p className="text-[14.5px] leading-relaxed text-zinc-600">
-              Radically clear reports on guest attendance, video watch time, top-asked questions and attendee engagement scores give your marketing and sales team the exact signals they need to follow up with precision.
+            <p className="text-[14.5px] leading-relaxed text-zinc-600 lg:col-span-5 lg:col-start-8">
+              Radically clear reports on guest attendance, video watch time,
+              top-asked questions and attendee engagement scores give your
+              marketing and sales team the exact signals they need to follow up
+              with precision.
             </p>
           </div>
         </div>

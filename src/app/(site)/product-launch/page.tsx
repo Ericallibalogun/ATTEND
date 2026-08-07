@@ -3,7 +3,6 @@ import { LaunchFeatures } from "@/components/launch/launch-features";
 import { LaunchRunOfShow } from "@/components/launch/launch-run-of-show";
 import { LaunchAllInOne } from "@/components/launch/launch-all-in-one";
 import { LaunchMomentum } from "@/components/launch/launch-momentum";
-import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
 import { FooterCta } from "@/components/layout/footer-cta";
 
 export const metadata = {
@@ -20,8 +19,7 @@ export default function ProductLaunchPage() {
       <LaunchRunOfShow />
       <LaunchAllInOne />
       <LaunchMomentum />
-      <TalkToTeamCta />
-      <FooterCta />
+            <FooterCta />
     </main>
   );
 }

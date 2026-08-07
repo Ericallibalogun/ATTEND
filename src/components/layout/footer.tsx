@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 
 export function Footer() {
+  const { openModal } = useBookDemoModal();
+
   return (
     <footer className="relative mt-auto overflow-hidden bg-primary text-white">
       {/* Background Image & Figma Gradient Overlay */}
@@ -75,7 +80,7 @@ export function Footer() {
               <ul className="flex flex-col gap-2.5 text-xs sm:text-[13.5px] text-white/90 font-medium">
                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
                 <li><Link href="/about" className="hover:text-white transition-colors">About us</Link></li>
-                <li><Link href="/about" className="hover:text-white transition-colors">Contact us</Link></li>
+                <li><button type="button" onClick={openModal} className="hover:text-white transition-colors">Contact us</button></li>
                 <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               </ul>
             </div>

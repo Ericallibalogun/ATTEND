@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 import { heroSlides } from "@/lib/site";
 
 function DoubleChevronIcon() {
@@ -102,6 +103,8 @@ export function CoverCtaButtons({
   primaryCta = { label: "Launch Web App", href: "/about" },
   secondaryCta = { label: "Contact Us", href: "/about" },
 }: CoverCtaButtonsProps) {
+  const { openModal } = useBookDemoModal();
+
   return (
     <div className="flex flex-wrap items-center gap-4">
       {primaryCta && (
@@ -116,12 +119,22 @@ export function CoverCtaButtons({
         </Link>
       )}
       {secondaryCta && (
-        <Link
-          href={secondaryCta.href}
-          className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15"
-        >
-          <span>{secondaryCta.label}</span>
-        </Link>
+        secondaryCta.label === "Contact Us" ? (
+          <button
+            type="button"
+            onClick={openModal}
+            className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15"
+          >
+            <span>{secondaryCta.label}</span>
+          </button>
+        ) : (
+          <Link
+            href={secondaryCta.href}
+            className="inline-flex h-[52px] items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15"
+          >
+            <span>{secondaryCta.label}</span>
+          </Link>
+        )
       )}
     </div>
   );

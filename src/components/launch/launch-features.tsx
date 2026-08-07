@@ -4,12 +4,14 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 const valueProps = [
   {
     title: "Broadcast quality",
-    description: "Adaptive streaming, any bandwidth, powered by our virtual product demo software.",
+    description:
+      "Adaptive streaming, any bandwidth, powered by our virtual product demo software.",
     icon: "/Brutalism_16_1.webp",
   },
   {
     title: "Live reactions",
-    description: "Polls, Q&A, applause in real time, the crowd is in the room.",
+    description:
+      "Polls, Q&A, applause in real time, the crowd is in the room.",
     icon: "/Brutalism_74_1.webp",
   },
   {
@@ -36,54 +38,65 @@ const valueProps = [
 
 export function LaunchFeatures() {
   return (
-    <section className="bg-white py-12 lg:py-16 px-6 sm:px-10 lg:px-14 text-zinc-900">
-      {/* Mint Background Container - 2cm away from screen edges */}
-      <ScrollReveal yOffset={60}>
-        <div className="mx-auto w-full max-w-[1480px] rounded-3xl bg-[#eff5f1] p-8 sm:p-12 lg:p-16">
-          {/* Header */}
-        <div className="mb-14 text-center">
-          <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
-            <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
-            MAKE EVERY LAUNCH COUNT
-          </p>
-          <h2 className="mb-4 text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
-            Deliver a high-impact product reveal
-          </h2>
-        </div>
+    <section className="bg-white text-zinc-900">
+      {/* 2cm from screen edges — full width, no max-width, no rounded corners */}
+      <div className="w-full px-8 py-12 sm:px-12 lg:px-16 lg:py-16">
+        <ScrollReveal yOffset={60}>
+          <div className="w-full bg-[#EFF5F3] p-8 sm:p-12 lg:p-14">
+            <div className="mb-12 text-center lg:mb-14">
+              <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
+                <span
+                  className="mr-2 inline-block size-1.5 bg-[#004D34]"
+                  aria-hidden
+                />
+                MAKE EVERY LAUNCH COUNT
+              </p>
+              <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+                Deliver a high-impact product reveal
+              </h2>
+            </div>
 
-        {/* 6 Joined Cards inside Mint Container */}
-        <div className="overflow-hidden rounded-2xl bg-white border border-zinc-200/60 shadow-xs">
-          <div className="grid grid-cols-1 md:grid-cols-3">
-            {valueProps.map((item, idx) => (
-              <div
-                key={idx}
-                className={`group flex flex-col justify-start p-8 sm:p-10 lg:p-11 bg-linear-to-br from-white via-[#f9fcf9] to-[#ebf5ee] transition-all duration-300 hover:bg-white hover:shadow-sm hover:border-black/5 hover:-translate-y-0.5 relative z-0 hover:z-10 ${
-                  idx < 3 ? "border-b border-zinc-200/60" : ""
-                } ${
-                  idx % 3 !== 2 ? "md:border-r md:border-zinc-200/60" : ""
-                }`}
-              >
-                <div className="mb-8 relative size-10">
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    width={40}
-                    height={40}
-                    className="size-10 object-contain"
-                  />
-                </div>
-                <h3 className="mb-3 text-lg font-semibold text-zinc-900 tracking-tight group-hover:text-[#1a3d2e] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-[13.5px] leading-relaxed text-zinc-600">
-                  {item.description}
-                </p>
+            {/*
+              Joined 3×2 grid:
+              - hairline borders
+              - soft mint glow from bottom-left → white
+              - square corners
+            */}
+            <div className="overflow-hidden border border-[#d7e5df]">
+              <div className="grid grid-cols-1 md:grid-cols-3">
+                {valueProps.map((item, idx) => (
+                  <article
+                    key={item.title}
+                    className={`flex min-h-[240px] flex-col justify-start p-8 sm:p-10 lg:min-h-[260px] lg:p-11 ${
+                      idx < 3 ? "border-b border-[#d7e5df]" : ""
+                    } ${
+                      idx % 3 !== 2 ? "md:border-r md:border-[#d7e5df]" : ""
+                    }`}
+                    style={{
+                      background:
+                        "radial-gradient(120% 90% at 0% 100%, #E2EEEA 0%, #F7FFFC 42%, #FFFFFF 72%)",
+                    }}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt=""
+                      width={28}
+                      height={28}
+                      className="mb-8 size-7 object-contain object-left"
+                    />
+                    <h3 className="mb-3 text-lg font-semibold tracking-tight text-zinc-900">
+                      {item.title}
+                    </h3>
+                    <p className="text-[13.5px] leading-relaxed text-zinc-600">
+                      {item.description}
+                    </p>
+                  </article>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
-      </ScrollReveal>
     </section>
   );
 }
