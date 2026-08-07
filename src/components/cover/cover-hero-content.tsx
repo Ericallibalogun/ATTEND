@@ -30,8 +30,8 @@ function DoubleChevronIcon({ className = "text-white" }: { className?: string })
 
 function AppStoreHeroButtons() {
   return (
-    <div className="flex w-full flex-col gap-3">
-      <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
+    <div className="flex w-full flex-col items-stretch gap-3 lg:w-auto lg:flex-row lg:flex-wrap lg:items-center">
+      <div className="grid w-full grid-cols-2 gap-3 lg:contents">
         <Link
           href="/about"
           className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:justify-start sm:px-4.5"
@@ -77,7 +77,7 @@ function AppStoreHeroButtons() {
 
       <Link
         href="/about"
-        className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full border border-white/20 bg-white pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 sm:w-auto sm:justify-start"
+        className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full border border-white/20 bg-white pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 lg:w-fit lg:justify-start"
       >
         <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#004D34]">
           <DoubleChevronIcon className="text-white" />
@@ -266,13 +266,21 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
             isAppButtons={slide.isAppButtons}
           />
 
+          {/* Mobile / tablet carousel — desktop sits on the far right edge */}
           <div
-            className={`flex justify-center lg:justify-end lg:self-end ${
-              isAppSlide ? "mt-auto lg:mt-0" : ""
+            className={`flex justify-center lg:hidden ${
+              isAppSlide ? "mt-auto" : ""
             }`}
           >
             <CoverCarousel index={index} onPrev={prev} onNext={next} />
           </div>
+        </div>
+      </div>
+
+      {/* Desktop: slide controls pinned to the far right edge (Figma) */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden items-end pb-10 pr-6 lg:flex xl:pr-10 xl:pb-12">
+        <div className="pointer-events-auto">
+          <CoverCarousel index={index} onPrev={prev} onNext={next} />
         </div>
       </div>
     </section>

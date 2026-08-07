@@ -69,8 +69,9 @@ export function CoverCarousel({ index, onPrev, onNext }: CoverCarouselProps) {
   const segmentWidth = 100 / heroSlides.length;
 
   return (
-    <div className="flex w-full max-w-[320px] flex-col items-center sm:max-w-none">
-      <div className="relative mb-2 h-px w-full min-w-[180px] max-w-[280px] bg-white/25 sm:mb-2.5 sm:min-w-[220px] sm:max-w-[320px]">
+    /* Fixed footprint so bar + arrows stay the same on every slide */
+    <div className="flex w-[280px] flex-col items-stretch sm:w-[320px] md:w-[360px]">
+      <div className="relative mb-2.5 h-px w-full bg-white/25">
         <div
           className="absolute top-0 h-px bg-white transition-all duration-500 ease-out"
           style={{
@@ -80,13 +81,13 @@ export function CoverCarousel({ index, onPrev, onNext }: CoverCarouselProps) {
         />
       </div>
 
-      <div className="flex items-center gap-3 sm:gap-5 md:gap-8">
+      <div className="flex w-full items-center justify-between gap-3">
         <CarouselArrow direction="prev" onClick={onPrev} />
         <Link
           href={slide.href}
-          className="min-w-[140px] text-center text-sm font-normal leading-snug text-white transition-opacity hover:opacity-80 sm:min-w-[180px] sm:text-base md:min-w-[220px] md:text-[17px]"
+          className="flex h-[2.75rem] min-w-0 flex-1 items-center justify-center px-1 text-center text-sm font-normal leading-snug text-white transition-opacity hover:opacity-80 sm:text-base md:text-[17px]"
         >
-          {slide.label}
+          <span className="line-clamp-2 whitespace-pre-line">{slide.label}</span>
         </Link>
         <CarouselArrow direction="next" onClick={onNext} />
       </div>

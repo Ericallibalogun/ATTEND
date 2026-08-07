@@ -42,7 +42,7 @@ export type HeroSlide = {
 
 export const heroSlides: HeroSlide[] = [
   {
-    label: "Annual General Meetings (AGMs)",
+    label: "Annual General Meetings\n(AGMs)",
     href: "/agms",
     image: "/boardroom.webp",
     eyebrow: "THE VIRTUAL EVENT PLATFORM FOR EVERY DECISIVE MOMENT",
