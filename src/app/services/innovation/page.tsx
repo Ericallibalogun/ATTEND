@@ -23,7 +23,7 @@ export default function InnovationServicesPage() {
         <InnovationRunsRoom />
         <InnovationSprint />
         <InnovationChallenges />
-                <FooterCta />
+        <FooterCta />
       </main>
       <Footer />
     </div>

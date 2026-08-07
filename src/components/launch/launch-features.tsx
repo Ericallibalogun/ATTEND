@@ -39,37 +39,32 @@ const valueProps = [
 export function LaunchFeatures() {
   return (
     <section className="bg-white text-zinc-900">
-      {/* 2cm from screen edges — full width, no max-width, no rounded corners */}
-      <div className="w-full px-8 py-12 sm:px-12 lg:px-16 lg:py-16">
+      <div className="w-full px-4 py-8 sm:px-8 sm:py-12 lg:px-16 lg:py-16">
         <ScrollReveal yOffset={60}>
-          <div className="w-full bg-[#EFF5F3] p-8 sm:p-12 lg:p-14">
-            <div className="mb-12 text-center lg:mb-14">
-              <p className="mb-3 flex items-center justify-center text-xs font-semibold uppercase tracking-widest text-[#004D34]">
+          <div className="w-full bg-[#EFF5F3] p-5 sm:p-10 lg:p-14">
+            <div className="mb-8 text-left sm:mb-12 sm:text-center lg:mb-14">
+              <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34] sm:justify-center sm:text-xs">
                 <span
                   className="mr-2 inline-block size-1.5 bg-[#004D34]"
                   aria-hidden
                 />
                 MAKE EVERY LAUNCH COUNT
               </p>
-              <h2 className="text-3xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+              <h2 className="text-[1.75rem] font-medium leading-tight tracking-tight text-zinc-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 Deliver a high-impact product reveal
               </h2>
             </div>
 
-            {/*
-              Joined 3×2 grid:
-              - hairline borders
-              - soft mint glow from bottom-left → white
-              - square corners
-            */}
             <div className="overflow-hidden border border-[#d7e5df]">
               <div className="grid grid-cols-1 md:grid-cols-3">
                 {valueProps.map((item, idx) => (
                   <article
                     key={item.title}
-                    className={`flex min-h-[240px] flex-col justify-start p-8 sm:p-10 lg:min-h-[260px] lg:p-11 ${
-                      idx < 3 ? "border-b border-[#d7e5df]" : ""
-                    } ${
+                    className={`flex min-h-0 flex-col justify-start p-5 sm:min-h-[240px] sm:p-8 lg:min-h-[260px] lg:p-11 ${
+                      idx < valueProps.length - 1
+                        ? "border-b border-[#d7e5df] md:border-b-0"
+                        : ""
+                    } ${idx < 3 ? "md:border-b md:border-[#d7e5df]" : ""} ${
                       idx % 3 !== 2 ? "md:border-r md:border-[#d7e5df]" : ""
                     }`}
                     style={{
@@ -82,12 +77,12 @@ export function LaunchFeatures() {
                       alt=""
                       width={28}
                       height={28}
-                      className="mb-8 size-7 object-contain object-left"
+                      className="mb-5 size-7 object-contain object-left sm:mb-8"
                     />
-                    <h3 className="mb-3 text-lg font-semibold tracking-tight text-zinc-900">
+                    <h3 className="mb-2 text-[15px] font-semibold tracking-tight text-zinc-900 sm:mb-3 sm:text-lg">
                       {item.title}
                     </h3>
-                    <p className="text-[13.5px] leading-relaxed text-zinc-600">
+                    <p className="text-[12.5px] leading-relaxed text-zinc-600 sm:text-[13.5px]">
                       {item.description}
                     </p>
                   </article>

@@ -99,25 +99,25 @@ export function InnovationWorkflow() {
   };
 
   return (
-    <section className="bg-[#F8FBF9] py-14 lg:py-20 text-zinc-900">
+    <section className="bg-[#F8FBF9] py-10 text-zinc-900 sm:py-14 lg:py-20">
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-6 lg:px-12">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 items-start">
+        <div className="w-full px-4 sm:px-6 lg:px-12">
+        <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           
           {/* Left Content */}
           <div className="flex flex-col">
-            <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34]">
+            <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34] sm:mb-4">
               <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
               THE CHALLENGE LIFECYCLE
             </p>
             
-            <h2 className="mb-6 text-3xl font-medium leading-[1.15] tracking-tight text-zinc-900 sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="mb-4 text-[1.75rem] font-medium leading-[1.15] tracking-tight text-zinc-900 sm:mb-6 sm:text-3xl md:text-4xl lg:text-[2.75rem]">
               From open call to demo day,
               <br />
               without the duct tape
             </h2>
 
-            <p className="mb-10 text-[14px] leading-relaxed text-zinc-600 max-w-xl">
+            <p className="mb-8 max-w-xl text-[13.5px] leading-relaxed text-zinc-600 sm:mb-10 sm:text-[14px]">
               Most hackathons run on six disconnected tools. Attend runs the whole sequence in one place, every stage feeding the next, backed by the same event registration and ticketing engine used for enterprise meetings.
             </p>
 
@@ -136,7 +136,7 @@ export function InnovationWorkflow() {
                   <div
                     key={idx}
                     onClick={() => handleStepClick(idx)}
-                    className={`relative cursor-pointer border-b border-black/10 py-5 px-3 transition-all duration-300 ${
+                    className={`relative cursor-pointer border-b border-black/10 px-2 py-4 transition-all duration-300 sm:px-3 sm:py-5 ${
                       isActive
                         ? "bg-[#EAF3EE]/90 shadow-xs"
                         : isCompleted
@@ -154,24 +154,24 @@ export function InnovationWorkflow() {
                       />
                     </div>
 
-                    <div className="flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-between gap-3 sm:gap-4">
+                      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                         <span
-                          className={`text-[14px] font-mono transition-colors ${
+                          className={`shrink-0 font-mono text-[13px] transition-colors sm:text-[14px] ${
                             isActive || isCompleted ? "font-bold text-[#004D34]" : "font-medium text-zinc-400"
                           }`}
                         >
                           {step.number}
                         </span>
                         <h3
-                          className={`text-[16px] transition-colors ${
+                          className={`text-[15px] transition-colors sm:text-[16px] ${
                             isActive ? "font-semibold text-zinc-900" : "font-medium text-zinc-900"
                           }`}
                         >
                           {step.title}
                         </h3>
                       </div>
-                      <span className="text-[11px] font-semibold tracking-wider text-[#004D34] uppercase shrink-0">
+                      <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wider text-[#004D34] sm:text-[11px]">
                         {step.role}
                       </span>
                     </div>
@@ -184,8 +184,8 @@ export function InnovationWorkflow() {
                           : "grid-rows-[0fr] opacity-0 mt-0"
                       }`}
                     >
-                      <div className="overflow-hidden pl-8">
-                        <p className="text-[13.5px] leading-relaxed text-zinc-900 font-medium pb-1">
+                      <div className="overflow-hidden pl-7 sm:pl-8">
+                        <p className="pb-1 text-[13px] font-medium leading-relaxed text-zinc-900 sm:text-[13.5px]">
                           {step.description}
                         </p>
                       </div>
@@ -197,8 +197,8 @@ export function InnovationWorkflow() {
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="relative h-[340px] sm:h-[520px] lg:h-full lg:min-h-[780px] w-full overflow-hidden rounded-none bg-zinc-900 shadow-xl">
+          {/* Right Image — below steps on mobile */}
+          <div className="relative h-[260px] w-full overflow-hidden bg-zinc-900 shadow-xl sm:h-[420px] lg:h-full lg:min-h-[780px]">
             <Image
               src="/Frame 35774 (1).webp"
               alt="Hackathon award trophy and certificates"
