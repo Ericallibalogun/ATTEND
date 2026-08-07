@@ -73,8 +73,8 @@ export function CoverHeader({
               type="button"
               className={`rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors ${
                 isHero
-                  ? "border border-white/25 bg-white/10 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md hover:bg-white/15"
-                  : "bg-[#EAF3EE] text-primary hover:bg-[#dce9e2] outline outline-1 outline-primary/10"
+                  ? "border border-white/40 bg-transparent text-white hover:bg-white/10"
+                  : "border border-primary/25 bg-transparent text-primary hover:bg-primary/5"
               }`}
             >
               Contact us
@@ -201,7 +201,7 @@ export function CoverHeader({
                 openModal();
               }}
               type="button"
-              className="flex w-full items-center justify-center rounded-full bg-[#d0e0d7] py-3 text-[13px] font-semibold text-primary transition-colors hover:bg-[#c2d4cb]"
+              className="flex w-full items-center justify-center rounded-full border border-primary/25 bg-transparent py-3 text-[13px] font-semibold text-primary transition-colors hover:bg-primary/5"
             >
               Contact us
             </button>
