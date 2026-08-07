@@ -24,7 +24,7 @@ export default function LaunchServicePage() {
         <LaunchRunOfShow />
         <LaunchAllInOne />
         <LaunchMomentum />
-                <FooterCta />
+        <FooterCta />
       </main>
       <Footer />
     </div>

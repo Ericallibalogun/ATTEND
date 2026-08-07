@@ -13,13 +13,13 @@ export const metadata = {
 
 export default function ProductLaunchPage() {
   return (
-    <main className="relative">
+    <>
       <LaunchHero />
       <LaunchFeatures />
       <LaunchRunOfShow />
       <LaunchAllInOne />
       <LaunchMomentum />
-            <FooterCta />
-    </main>
+      <FooterCta />
+    </>
   );
 }

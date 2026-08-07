@@ -23,7 +23,7 @@ export default function HackathonsPage() {
         <InnovationRunsRoom />
         <InnovationSprint />
         <InnovationChallenges />
-                <FooterCta />
+        <FooterCta />
       </main>
       <Footer />
     </div>

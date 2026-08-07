@@ -47,31 +47,25 @@ function SectionOne() {
       className="bg-white"
       style={{ scrollMarginTop: "var(--home-header-height, 0px)" }}
     >
-      {/* 2cm from screen edges — same padding used across the site */}
-      <div className="w-full px-8 pb-16 pt-8 sm:px-12 lg:px-16 lg:pb-24 lg:pt-10">
-        {/*
-          Outer container (#EFF5F3):
-          holds the header text AND the card row.
-          Uniform padding so heading edge = card edge (Figma).
-        */}
-        <div className="w-full bg-[#EFF5F3] p-8 sm:p-12 lg:p-16">
+      <div className="w-full px-4 pb-12 pt-6 sm:px-8 sm:pb-16 sm:pt-8 lg:px-16 lg:pb-24 lg:pt-10">
+        <div className="w-full bg-[#EFF5F3] p-5 sm:p-10 lg:p-16">
           <ScrollReveal>
-            <div className="grid gap-8 lg:grid-cols-12 lg:gap-12 lg:items-start">
+            <div className="grid gap-5 lg:grid-cols-12 lg:items-start lg:gap-12">
               <div className="lg:col-span-7">
-                <p className="mb-5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#1E392A]">
+                <p className="mb-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#1E392A] sm:mb-5">
                   <span
                     className="inline-block size-1.5 shrink-0 rounded-full bg-[#1E392A]"
                     aria-hidden
                   />
                   ABOUT ATTEND
                 </p>
-                <h2 className="max-w-[640px] text-[2rem] font-normal leading-[1.12] tracking-[-0.03em] text-[#1A1A1A] sm:text-[2.5rem] lg:text-[3.25rem]">
+                <h2 className="max-w-[640px] text-[1.75rem] font-normal leading-[1.15] tracking-[-0.03em] text-[#1A1A1A] sm:text-[2.5rem] lg:text-[3.25rem]">
                   One Platform for your Events and Innovation Challenges
                 </h2>
               </div>
 
               <div className="flex items-start lg:col-span-5 lg:pt-10">
-                <p className="max-w-[360px] text-[15px] leading-[1.75] text-[#4A4A4A] lg:ml-auto lg:text-right">
+                <p className="max-w-[360px] text-[14px] leading-[1.7] text-[#4A4A4A] sm:text-[15px] sm:leading-[1.75] lg:ml-auto lg:text-right">
                   Secure. Social. Interactive. Attend powers shareholder
                   meetings, investor events, product launches, hackathons,
                   conferences, and hybrid experiences where every participant
@@ -81,36 +75,44 @@ function SectionOne() {
             </div>
           </ScrollReveal>
 
-          {/*
-            Cards sit on the mint container.
-            Each card owns its own gradient only.
-            Joined: no gap, no margin between columns.
-          */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 lg:mt-16">
-            {aboutCards.map((card) => (
-              <article
-                key={card.title}
-                className="flex min-h-[340px] flex-col bg-[linear-gradient(180deg,#F7FFFC_0%,#E2EEEA_100%)] p-7 sm:p-8 lg:min-h-[380px] lg:p-10"
-              >
-                <Image
-                  src={card.icon}
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="mb-8 size-7 object-contain object-left"
-                />
+          {/* Mobile: stacked with hairline borders; desktop: joined 3-col */}
+          <div className="mt-8 overflow-hidden border border-[#d7e5df] sm:mt-12 lg:mt-16 lg:border-0">
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              {aboutCards.map((card, idx) => (
+                <article
+                  key={card.title}
+                  className={`flex min-h-0 flex-col p-6 sm:min-h-[340px] sm:p-8 lg:min-h-[380px] lg:p-10 ${
+                    idx < aboutCards.length - 1
+                      ? "border-b border-[#d7e5df] md:border-b-0"
+                      : ""
+                  } ${
+                    idx % 3 !== 2 ? "md:border-r md:border-[#d7e5df]" : ""
+                  }`}
+                  style={{
+                    background:
+                      "radial-gradient(120% 90% at 0% 100%, #E2EEEA 0%, #F7FFFC 42%, #FFFFFF 72%)",
+                  }}
+                >
+                  <Image
+                    src={card.icon}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="mb-5 size-7 object-contain object-left sm:mb-8"
+                  />
 
-                <h3 className="mb-4 text-[17px] font-semibold leading-snug text-[#1A1A1A]">
-                  {card.title}
-                </h3>
+                  <h3 className="mb-3 text-[16px] font-semibold leading-snug text-[#1A1A1A] sm:mb-4 sm:text-[17px]">
+                    {card.title}
+                  </h3>
 
-                <p className="mb-10 flex-1 text-[13.5px] leading-[1.7] text-[#4A4A4A]">
-                  {card.description}
-                </p>
+                  <p className="mb-6 flex-1 text-[13px] leading-[1.65] text-[#4A4A4A] sm:mb-10 sm:text-[13.5px] sm:leading-[1.7]">
+                    {card.description}
+                  </p>
 
-                <LearnMoreLink href={card.href} />
-              </article>
-            ))}
+                  <LearnMoreLink href={card.href} />
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -120,9 +122,9 @@ function SectionOne() {
 
 function SectionTwo() {
   return (
-    <section className="bg-white py-12 lg:py-20">
+    <section className="bg-white py-10 sm:py-12 lg:py-20">
       <ScrollReveal yOffset={60}>
-        <div className="mx-auto w-full px-6 lg:px-12">
+        <div className="mx-auto w-full px-4 sm:px-6 lg:px-12">
           <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
             <div className="flex h-full flex-col items-start lg:col-span-5">
               <p className="mb-3 flex items-center text-xs font-semibold uppercase tracking-widest text-primary">
@@ -132,7 +134,7 @@ function SectionTwo() {
                 />
                 CONTACT US
               </p>
-              <h2 className="mb-3 text-3xl font-medium leading-tight tracking-tight text-zinc-900 md:text-4xl lg:text-[40px]">
+              <h2 className="mb-3 text-[1.75rem] font-medium leading-tight tracking-tight text-zinc-900 sm:text-3xl md:text-4xl lg:text-[40px]">
                 Let&apos;s help
                 <br />
                 you get started
@@ -142,7 +144,7 @@ function SectionTwo() {
                 plan, set up, and run your events seamlessly.
               </p>
 
-              <div className="relative min-h-[260px] w-full flex-1 overflow-hidden rounded-lg sm:min-h-[360px] lg:min-h-[460px]">
+              <div className="relative mb-2 aspect-[4/3] w-full overflow-hidden sm:mb-0 sm:min-h-[360px] sm:flex-1 sm:aspect-auto lg:min-h-[460px]">
                 <Image
                   src="/collage.webp"
                   alt="Event collage"
@@ -155,8 +157,8 @@ function SectionTwo() {
             </div>
 
             <div className="flex h-full justify-start lg:col-span-7 lg:justify-end">
-              <div className="flex w-full max-w-[660px] flex-col justify-center bg-[#849b96] p-6 sm:p-8">
-                <div className="bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+              <div className="flex w-full max-w-[660px] flex-col justify-center bg-[#849b96] p-4 sm:p-8">
+                <div className="bg-white p-5 shadow-sm sm:p-8 lg:p-10">
                   <form className="flex flex-col gap-5">
                     <div>
                       <label

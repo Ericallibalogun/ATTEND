@@ -13,7 +13,7 @@ function DoubleChevronIcon() {
 export function FooterCta() {
   return (
     <ScrollReveal yOffset={60}>
-      <section className="relative w-full overflow-hidden bg-primary px-4 sm:px-6 lg:px-12 pt-6 sm:pt-8 lg:pt-12 pb-0 text-zinc-900">
+      <section className="relative w-full overflow-hidden bg-primary px-3 pb-0 pt-4 text-zinc-900 sm:px-6 sm:pt-8 lg:px-12 lg:pt-12">
       {/* Dark Green Background Texture (Rectangle 14 (1).webp) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
@@ -61,62 +61,70 @@ export function FooterCta() {
           />
         </div>
 
-        {/* Main Content Layout */}
-        <div className="relative z-10 grid items-end gap-6 lg:grid-cols-12 lg:gap-2">
-          {/* Left Column: Text + Badges */}
-          <div className="flex flex-col items-start lg:col-span-6 p-6 sm:p-10 lg:py-16 lg:pl-16 lg:pr-4">
-            <p className="mb-3.5 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-[#004D34]">
-              <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
+        {/* Main Content Layout — mobile: tight stack text → buttons → mockups */}
+        <div className="relative z-10 grid items-end gap-0 lg:grid-cols-12 lg:gap-2">
+          <div className="flex flex-col items-start px-5 pb-2 pt-5 sm:p-10 lg:col-span-6 lg:py-16 lg:pl-16 lg:pr-4">
+            <p className="mb-2.5 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-[#004D34] sm:mb-3.5">
+              <span
+                className="mr-2 inline-block size-1.5 bg-[#004D34]"
+                aria-hidden
+              />
               GET STARTED
             </p>
-            <h2 className="mb-8 max-w-xl whitespace-pre-line text-2xl font-semibold leading-[1.18] tracking-tight text-zinc-900 sm:text-4xl lg:text-[44px]">
+            <h2 className="mb-4 max-w-xl whitespace-pre-line text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-zinc-900 sm:mb-8 sm:text-4xl lg:text-[44px]">
               {"Stay connected\nwherever you are"}
             </h2>
 
-            {/* Buttons Row */}
-            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
-              {/* Google Play */}
-              <Link
-                href="/about"
-                className="inline-flex h-12 items-center gap-2.5 rounded-full border border-[#004D34] bg-white px-5 text-zinc-900 shadow-xs transition-all duration-300 ease-in-out hover:opacity-90 active:scale-95 focus-visible:ring outline-none justify-center sm:justify-start"
-              >
-                <Image
-                  src="/Google Play logo.webp"
-                  alt="Google Play"
-                  width={22}
-                  height={22}
-                  className="size-5.5 shrink-0 object-contain"
-                />
-                <span className="flex flex-col text-left leading-none">
-                  <span className="text-[8.5px] uppercase tracking-wider text-zinc-600 font-medium">GET IT ON</span>
-                  <span className="text-[13px] font-semibold text-zinc-900">Google Play</span>
-                </span>
-              </Link>
+            <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <div className="grid w-full grid-cols-2 gap-2.5 sm:contents">
+                <Link
+                  href="/about"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-[#004D34] bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-12 sm:justify-start sm:gap-2.5 sm:px-5"
+                >
+                  <Image
+                    src="/Google Play logo.webp"
+                    alt="Google Play"
+                    width={22}
+                    height={22}
+                    className="size-5 shrink-0 object-contain sm:size-5.5"
+                  />
+                  <span className="flex flex-col text-left leading-none">
+                    <span className="text-[7.5px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[8.5px]">
+                      GET IT ON
+                    </span>
+                    <span className="text-[11px] font-semibold text-zinc-900 sm:text-[13px]">
+                      Google Play
+                    </span>
+                  </span>
+                </Link>
 
-              {/* App Store */}
-              <Link
-                href="/about"
-                className="inline-flex h-12 items-center gap-2.5 rounded-full border border-[#004D34] bg-white px-5 text-zinc-900 shadow-xs transition-all duration-300 ease-in-out hover:opacity-90 active:scale-95 focus-visible:ring outline-none justify-center sm:justify-start"
-              >
-                <Image
-                  src="/Apple logo.webp"
-                  alt="App Store"
-                  width={22}
-                  height={22}
-                  className="size-5.5 shrink-0 object-contain"
-                />
-                <span className="flex flex-col text-left leading-none">
-                  <span className="text-[8.5px] uppercase tracking-wider text-zinc-600 font-medium">Download on the</span>
-                  <span className="text-[13px] font-semibold text-zinc-900">App Store</span>
-                </span>
-              </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-[#004D34] bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-12 sm:justify-start sm:gap-2.5 sm:px-5"
+                >
+                  <Image
+                    src="/Apple logo.webp"
+                    alt="App Store"
+                    width={22}
+                    height={22}
+                    className="size-5 shrink-0 object-contain sm:size-5.5"
+                  />
+                  <span className="flex flex-col text-left leading-none">
+                    <span className="text-[7.5px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[8.5px]">
+                      Download on the
+                    </span>
+                    <span className="text-[11px] font-semibold text-zinc-900 sm:text-[13px]">
+                      App Store
+                    </span>
+                  </span>
+                </Link>
+              </div>
 
-              {/* Launch Web App */}
               <Link
                 href="/about"
-                className="inline-flex h-12 items-center gap-3 rounded-full border border-[#004D34] bg-white pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-all duration-300 ease-in-out hover:bg-zinc-50 active:scale-95 focus-visible:ring outline-none justify-center sm:justify-start"
+                className="inline-flex h-11 w-full items-center justify-center gap-3 rounded-full border border-[#004D34] bg-white pl-2 pr-6 text-[14px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 sm:h-12 sm:w-auto sm:justify-start sm:text-[15px]"
               >
-                <span className="flex size-8 items-center justify-center rounded-full bg-[#004D34] text-white">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#004D34] text-white sm:size-8">
                   <DoubleChevronIcon />
                 </span>
                 <span>Launch Web App</span>
@@ -124,14 +132,13 @@ export function FooterCta() {
             </div>
           </div>
 
-          {/* Right Column: Combined Mockup Image */}
-          <div className="mt-6 flex items-end justify-end lg:col-span-6 lg:mt-0">
-            <div className="relative h-[320px] w-full max-w-[760px] sm:h-[480px] lg:h-[600px] xl:max-w-[840px]">
+          <div className="flex items-end justify-center lg:col-span-6 lg:justify-end">
+            <div className="relative -mt-1 h-[260px] w-full sm:mt-0 sm:h-[400px] sm:max-w-[620px] lg:h-[600px] lg:max-w-[840px]">
               <Image
                 src="/svg_vector_2026-08-03.webp"
                 alt="Attend mobile and desktop app experience"
                 fill
-                className="object-contain object-right-bottom drop-shadow-xl"
+                className="scale-[1.08] object-contain object-bottom drop-shadow-xl sm:scale-100 sm:object-right-bottom"
                 priority
                 quality={100}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 560px, 840px"

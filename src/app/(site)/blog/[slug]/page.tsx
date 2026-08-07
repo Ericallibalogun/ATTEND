@@ -61,27 +61,28 @@ export default function SingleBlogPostPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-white font-sans text-zinc-900">
+    <>
       {/* Full-width Top Hero Image — clear fixed header */}
       <section
-        className="w-full px-8 pb-10 sm:px-12 lg:px-16"
+        className="w-full px-4 pb-6 sm:px-8 sm:pb-10 lg:px-16"
         style={{
-          paddingTop: "calc(var(--home-header-height, 140px) + 1.5rem)",
+          paddingTop: "calc(var(--home-header-height, 72px) + 1.25rem)",
         }}
       >
-        <div className="relative h-[320px] sm:h-[440px] lg:h-[520px] w-full overflow-hidden rounded-none bg-zinc-100 shadow-sm">
+        <div className="relative h-[200px] w-full overflow-hidden bg-zinc-100 shadow-sm sm:h-[440px] lg:h-[520px]">
           <Image
             src={post.image}
             alt={post.title}
             fill
             priority
             className="object-cover"
+            sizes="100vw"
           />
         </div>
       </section>
 
       {/* Main Content Layout (Sidebar + Article Body) */}
-      <section className="w-full px-6 sm:px-12 lg:px-16 pb-20">
+      <section className="w-full px-4 pb-14 sm:px-8 sm:pb-20 lg:px-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           
           {/* Left Sidebar: Newsletter Subscription (Hidden on Mobile) */}
@@ -133,12 +134,12 @@ export default function SingleBlogPostPage() {
             </div>
 
             {/* Title */}
-            <h1 className="mb-6 text-2xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-zinc-900 leading-[1.18]">
+            <h1 className="mb-4 text-[1.65rem] font-bold leading-[1.18] tracking-tight text-zinc-900 sm:mb-6 sm:text-4xl lg:text-[42px]">
               {post.title}
             </h1>
 
             {/* Intro Paragraph */}
-            <p className="mb-8 text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
+            <p className="mb-6 text-[13.5px] font-normal leading-relaxed text-zinc-600 sm:mb-8 sm:text-base">
               {post.content?.intro ?? post.excerpt}
             </p>
 
@@ -311,8 +312,7 @@ export default function SingleBlogPostPage() {
         </div>
       </section>
 
-      {/* Bottom Stacked CTAs */}
-            <FooterCta />
-    </main>
+      <FooterCta />
+    </>
   );
 }

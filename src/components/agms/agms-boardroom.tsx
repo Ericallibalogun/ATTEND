@@ -31,17 +31,12 @@ const features = [
 export function AgmsBoardroom() {
   return (
     <section className="bg-white">
-      {/* 2cm from screen edges */}
-      <div className="w-full px-8 py-10 sm:px-12 lg:px-16 lg:py-14">
-        {/*
-          Outer container (#EFF5F3):
-          collage + heading + joined gradient cards — same pattern as About Attend.
-        */}
-        <div className="w-full bg-[#EFF5F3] p-8 sm:p-10 lg:p-14">
+      <div className="w-full px-4 py-8 sm:px-8 sm:py-10 lg:px-16 lg:py-14">
+        <div className="w-full bg-[#EFF5F3] p-5 sm:p-10 lg:p-14">
           <ScrollReveal yOffset={60}>
-            <div className="grid items-stretch gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-10 xl:gap-12">
-              {/* Left collage */}
-              <div className="relative order-2 min-h-[350px] w-full sm:min-h-[400px] lg:order-1 lg:h-full lg:min-h-[580px]">
+            <div className="grid items-stretch gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-10 xl:gap-12">
+              {/* Collage — below content on mobile (Figma) */}
+              <div className="relative order-2 aspect-[4/3] w-full sm:min-h-[400px] sm:aspect-auto lg:order-1 lg:h-full lg:min-h-[580px]">
                 <Image
                   src="/renewed_collage.webp"
                   alt="Events collage"
@@ -51,40 +46,38 @@ export function AgmsBoardroom() {
                 />
               </div>
 
-              {/* Right content */}
               <div className="order-1 flex flex-col lg:order-2">
-                <div className="mb-10">
-                  <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-widest text-primary">
+                <div className="mb-6 sm:mb-10">
+                  <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-primary sm:mb-4">
                     <span
                       className="mr-2 inline-block size-1.5 bg-primary"
                       aria-hidden
                     />
                     ONE PLATFORM, EVERY GATHERING
                   </p>
-                  <h2 className="mb-5 text-3xl font-medium leading-tight tracking-tight text-zinc-900 md:text-4xl lg:text-5xl">
+                  <h2 className="mb-3 text-[1.75rem] font-medium leading-tight tracking-tight text-zinc-900 sm:mb-5 sm:text-3xl md:text-4xl lg:text-5xl">
                     From the boardroom
                     <br />
                     to the big stage
                   </h2>
-                  <p className="max-w-xl text-[14px] leading-relaxed text-zinc-600">
+                  <p className="max-w-xl text-[13.5px] leading-relaxed text-zinc-600 sm:text-[14px]">
                     Attend adapts to the occasion, the same verified access,
                     live engagement and instant results, whether you&apos;re
                     passing resolutions or crowning a winning team.
                   </p>
                 </div>
 
-                {/*
-                  Figma cards:
-                  - joined 2×2 grid with hairline borders
-                  - each cell: soft mint glow from bottom-left → white
-                */}
                 <div className="overflow-hidden border border-[#d7e5df]">
                   <div className="grid grid-cols-1 sm:grid-cols-2">
                     {features.map((feature, idx) => (
                       <article
                         key={feature.title}
-                        className={`flex min-h-[220px] flex-col justify-start p-6 lg:min-h-[240px] lg:p-8 ${
-                          idx < 2 ? "border-b border-[#d7e5df]" : ""
+                        className={`flex min-h-0 flex-col justify-start p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px] lg:p-8 ${
+                          idx < features.length - 1
+                            ? "border-b border-[#d7e5df] sm:border-b-0"
+                            : ""
+                        } ${
+                          idx < 2 ? "sm:border-b sm:border-[#d7e5df]" : ""
                         } ${
                           idx % 2 === 0
                             ? "sm:border-r sm:border-[#d7e5df]"
@@ -100,12 +93,12 @@ export function AgmsBoardroom() {
                           alt=""
                           width={28}
                           height={28}
-                          className="mb-8 size-7 object-contain object-left"
+                          className="mb-5 size-7 object-contain object-left sm:mb-8"
                         />
-                        <h3 className="mb-3 text-[16px] font-semibold text-zinc-900">
+                        <h3 className="mb-2 text-[15px] font-semibold text-zinc-900 sm:mb-3 sm:text-[16px]">
                           {feature.title}
                         </h3>
-                        <p className="text-[13px] leading-relaxed text-zinc-600">
+                        <p className="text-[12.5px] leading-relaxed text-zinc-600 sm:text-[13px]">
                           {feature.description}
                         </p>
                       </article>

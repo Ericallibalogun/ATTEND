@@ -18,87 +18,114 @@ const participantFeatures = [
   "Live leaderboard tracking and interactive milestone updates",
 ];
 
+function CheckIcon() {
+  return (
+    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border border-[#00E58F]/50 bg-[#00E58F]/15 text-[#00E58F]">
+      <svg className="size-3" viewBox="0 0 16 16" fill="none" aria-hidden>
+        <path
+          d="M3.5 8.5l3 3 6-6.5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
 export function InnovationRunsRoom() {
-  const [activeTab, setActiveTab] = useState<"organizers" | "participants">("organizers");
-  const currentFeatures = activeTab === "organizers" ? organizerFeatures : participantFeatures;
+  const [activeTab, setActiveTab] = useState<"organizers" | "participants">(
+    "organizers",
+  );
+  const currentFeatures =
+    activeTab === "organizers" ? organizerFeatures : participantFeatures;
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#083827] py-12 sm:py-16 lg:py-20 text-white">
+    <section className="relative w-full overflow-hidden bg-[#083827] py-10 text-white sm:py-16 lg:py-20">
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-6 sm:px-10 lg:px-14">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14 lg:items-stretch">
-          
-          {/* Left Column: Image */}
-          <div className="order-2 lg:order-1 lg:col-span-6 relative min-h-[380px] sm:min-h-[480px] lg:min-h-[560px] h-full w-full overflow-hidden rounded-none shadow-xl">
-            <Image
-              src="/Frame 35776.webp"
-              alt="Hackathon team collaborating around table"
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-          </div>
+        <div className="w-full px-4 sm:px-10 lg:px-14">
+          <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-14">
+            {/* Image — below content on mobile (Figma) */}
+            <div className="relative order-2 h-[240px] w-full overflow-hidden shadow-xl sm:min-h-[380px] sm:h-auto lg:order-1 lg:col-span-6 lg:min-h-[560px]">
+              <Image
+                src="/Frame 35776.webp"
+                alt="Hackathon team collaborating around table"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+            </div>
 
-          {/* Right Column: Content starting and ending flush with Image */}
-          <div className="order-1 lg:order-2 lg:col-span-6 flex flex-col justify-between h-full pl-0 lg:pl-4">
-            <div>
-              <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#00E58F]">
-                <span className="mr-2 inline-block size-1.5 bg-[#00E58F]" aria-hidden />
-                BUILT FOR BOTH SIDES
-              </p>
+            <div className="order-1 flex h-full flex-col justify-between lg:order-2 lg:col-span-6 lg:pl-4">
+              <div>
+                <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#00E58F]">
+                  <span
+                    className="mr-2 inline-block size-1.5 bg-[#00E58F]"
+                    aria-hidden
+                  />
+                  BUILT FOR BOTH SIDES
+                </p>
 
-              <h2 className="mb-4 text-3xl font-medium leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[46px]">
-                Runs the room.
-                <br />
-                Empowers the builder.
-              </h2>
+                <h2 className="mb-3 text-[1.75rem] font-medium leading-[1.1] tracking-tight text-white sm:mb-4 sm:text-3xl md:text-4xl lg:text-[46px]">
+                  Runs the room.
+                  <br />
+                  Empowers the builder.
+                </h2>
 
-              <p className="mb-6 text-[14px] leading-relaxed text-white/80 max-w-lg">
-                Organisers get full control. Participants get total clarity. No one <br /> is left guessing.
-              </p>
+                <p className="mb-5 max-w-lg text-[13.5px] leading-relaxed text-white/80 sm:mb-6 sm:text-[14px]">
+                  Organisers get full control. Participants get total clarity. No
+                  one is left guessing.
+                </p>
 
-              {/* Tab Toggle Pill */}
-              <div className="mb-6 lg:mb-8 inline-flex self-start rounded-full bg-white/10 p-1 border border-white/15 backdrop-blur-xs">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("organizers")}
-                  className={`rounded-full px-6 py-2 text-[13px] font-medium transition-all ${
-                    activeTab === "organizers"
-                      ? "bg-white text-[#083827] font-semibold shadow-xs"
-                      : "text-white/80 hover:text-white"
-                  }`}
-                >
-                  For Organizers
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("participants")}
-                  className={`rounded-full px-6 py-2 text-[13px] font-medium transition-all ${
-                    activeTab === "participants"
-                      ? "bg-white text-[#083827] font-semibold shadow-xs"
-                      : "text-white/80 hover:text-white"
-                  }`}
-                >
-                  For Participants
-                </button>
+                {/* Tab Toggle */}
+                <div className="mb-5 inline-flex self-start rounded-full border border-white/15 bg-white/10 p-1 backdrop-blur-xs sm:mb-6 lg:mb-8">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("organizers")}
+                    className={`rounded-full px-4 py-2 text-[12.5px] font-medium transition-all sm:px-6 sm:text-[13px] ${
+                      activeTab === "organizers"
+                        ? "bg-white font-semibold text-[#083827] shadow-xs"
+                        : "text-white/80 hover:text-white"
+                    }`}
+                  >
+                    For Organizers
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("participants")}
+                    className={`rounded-full px-4 py-2 text-[12.5px] font-medium transition-all sm:px-6 sm:text-[13px] ${
+                      activeTab === "participants"
+                        ? "bg-white font-semibold text-[#083827] shadow-xs"
+                        : "text-white/80 hover:text-white"
+                    }`}
+                  >
+                    For Participants
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-2 flex flex-col divide-y divide-white/10 border-b border-t border-white/10 text-[13px] text-white/90 sm:text-[13.5px]">
+                {currentFeatures.map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex items-start gap-3 py-3.5 sm:py-5"
+                  >
+                    <span className="lg:hidden">
+                      <CheckIcon />
+                    </span>
+                    <span
+                      className="mt-1.5 hidden size-1.5 shrink-0 bg-white lg:inline-block"
+                      aria-hidden
+                    />
+                    <span className="leading-snug">{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Feature List with Generous Padding taking up the vertical space */}
-            <div className="flex flex-col text-[13.5px] text-white/90 divide-y divide-white/10 border-t border-b border-white/10 mt-2">
-              {currentFeatures.map((feature, idx) => (
-                <div key={idx} className="py-4.5 sm:py-5 lg:py-5.5 flex items-start gap-3">
-                  <span className="mt-1.5 inline-block size-1.5 shrink-0 bg-white font-bold" aria-hidden />
-                  <span className="leading-snug">{feature}</span>
-                </div>
-              ))}
-            </div>
-
           </div>
-
         </div>
-      </div>
       </ScrollReveal>
     </section>
   );

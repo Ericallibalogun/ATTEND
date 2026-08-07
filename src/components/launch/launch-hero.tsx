@@ -4,8 +4,10 @@ import Image from "next/image";
 
 export function LaunchHero() {
   return (
-    <section id="hero-section" className="relative min-h-[85vh] lg:min-h-screen w-full bg-zinc-950 text-white flex flex-col justify-end overflow-hidden pb-16 pt-32 lg:pb-24 lg:pt-40">
-      {/* Background Auditorium Stage Image */}
+    <section
+      id="hero-section"
+      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-zinc-950 text-white lg:min-h-screen"
+    >
       <div className="absolute inset-0 z-0">
         <Image
           src="/boardroom3.webp"
@@ -15,26 +17,28 @@ export function LaunchHero() {
           priority
           quality={100}
         />
-        {/* Light dark hue at header area only */}
-        <div className="pointer-events-none absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-black/60 via-black/25 to-transparent z-[2]" />
-        {/* Bottom linear gradient for text block readability */}
-        <div className="pointer-events-none absolute bottom-0 inset-x-0 h-[60%] bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent z-[2]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-black/70 via-black/30 to-transparent sm:h-44" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[55%] bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-transparent lg:h-[60%] lg:via-zinc-950/60" />
       </div>
 
-      <div className="relative z-10 w-full px-6 lg:px-12">
-        <div className="max-w-3xl">
-          {/* Eyebrow */}
-          <p className="mb-4 flex items-center text-[11px] font-semibold uppercase tracking-[-0.02em] text-[#00E58F]">
-            <span className="mr-2 inline-block size-1.5 bg-[#00E58F]" aria-hidden />
-            VIRTUAL PRODUCT LAUNCH AND EVENTS
-          </p>
+      <div className="relative z-10 flex flex-1 flex-col px-5 sm:px-8 lg:px-12">
+        {/* Mobile: mid-viewport, left-aligned; desktop: bottom-anchored */}
+        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height,72px)+1.5rem)] lg:justify-end lg:pb-24 lg:pt-40">
+          <div className="max-w-3xl text-left">
+            <p className="mb-3 flex items-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00E58F] sm:mb-4 sm:text-[11px] sm:tracking-[-0.02em]">
+              <span
+                className="mr-2 inline-block size-1.5 bg-[#00E58F]"
+                aria-hidden
+              />
+              VIRTUAL PRODUCT LAUNCH AND EVENTS
+            </p>
 
-          {/* Main Headline */}
-          <h1 className="mb-4 text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl max-w-2xl">
-            Give your product
-            <br />
-            the reveal it deserves.
-          </h1>
+            <h1 className="max-w-2xl text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+              Give your product
+              <br />
+              the reveal it deserves.
+            </h1>
+          </div>
         </div>
       </div>
     </section>
