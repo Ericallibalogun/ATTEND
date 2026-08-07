@@ -3,7 +3,6 @@ import { AgmsHero } from "@/components/agms/agms-hero";
 import { AgmsBoardroom } from "@/components/agms/agms-boardroom";
 import { AgmsCarousel } from "@/components/agms/agms-carousel";
 import { AgmsConfidence } from "@/components/agms/agms-confidence";
-import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
 import { FooterCta } from "@/components/layout/footer-cta";
 import { Footer } from "@/components/layout/footer";
 
@@ -21,8 +20,7 @@ export default function AgmsPage() {
         <AgmsBoardroom />
         <AgmsCarousel />
         <AgmsConfidence />
-        <TalkToTeamCta />
-        <FooterCta />
+                <FooterCta />
       </main>
       <Footer />
     </div>

@@ -80,14 +80,19 @@ export function GalleryShowcase() {
   };
 
   return (
-    <section className="bg-white py-14 lg:py-20 text-zinc-900">
+    <section
+      className="bg-white pb-14 text-zinc-900 lg:pb-20"
+      style={{
+        paddingTop: "calc(var(--home-header-height, 140px) + 2.5rem)",
+      }}
+    >
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-6 lg:px-12">
+        <div className="w-full px-8 sm:px-12 lg:px-16">
         {/* Header */}
         <div className="mb-10">
           <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34]">
             <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
-            GALLERY
+            VISUAL STORIES
           </p>
           <h1 className="text-4xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl">
             Gallery

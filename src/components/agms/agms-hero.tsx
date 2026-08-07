@@ -25,6 +25,9 @@ export function AgmsHero() {
       {/* Light dark hue at header area only */}
       <div className="pointer-events-none absolute top-0 inset-x-0 h-44 bg-gradient-to-b from-black/60 via-black/25 to-transparent z-[2]" />
 
+      {/* Bottom linear gradient for text block readability */}
+      <div className="pointer-events-none absolute bottom-0 inset-x-0 h-[60%] bg-gradient-to-t from-black/90 via-black/40 to-transparent z-[2]" />
+
       <div className="relative z-10 flex flex-1 flex-col px-6 md:px-10 lg:px-14">
         <div className="flex flex-1 flex-col justify-end pb-16 pt-8 lg:pb-24 lg:pt-12">
           <div className="max-w-[814px] text-left">

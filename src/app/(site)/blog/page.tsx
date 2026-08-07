@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BLOG_CATEGORIES, sampleBlogPosts } from "@/lib/blog-data";
-import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
 import { FooterCta } from "@/components/layout/footer-cta";
 
 function DoubleChevronIcon() {
@@ -53,14 +52,23 @@ export default function BlogPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-white font-sans text-zinc-900 pt-10 sm:pt-14">
-      {/* Blog Page Hero Header */}
-      <section className="w-full px-8 sm:px-12 lg:px-16 pb-12 pt-6">
-        <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-500">
+    <main className="relative min-h-screen bg-white font-sans text-zinc-900">
+      {/* Blog Page Hero Header — clear fixed header so green tagline shows */}
+      <section
+        className="w-full px-8 pb-12 sm:px-12 lg:px-16"
+        style={{
+          paddingTop: "calc(var(--home-header-height, 140px) + 2.5rem)",
+        }}
+      >
+        <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34]">
+          <span
+            className="mr-2 inline-block size-1.5 bg-[#004D34]"
+            aria-hidden
+          />
           BLOG
         </p>
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl max-w-xl leading-[1.15]">
+          <h1 className="max-w-xl text-3xl font-bold leading-[1.15] tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
             Insights that move you forward
           </h1>
           <div className="flex flex-col items-start lg:items-end gap-4">
@@ -87,26 +95,28 @@ export default function BlogPage() {
 
       {/* Main Content Layout (Sidebar + Blog Posts Grid) */}
       <section className="w-full px-6 sm:px-12 lg:px-16 pb-20">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
           
-          {/* Left Sidebar: Filter Pills & Newsletter */}
-          <aside className="lg:col-span-3 flex flex-col gap-8 lg:gap-10">
+          {/* Left Sidebar: sticky while blog content scrolls */}
+          <aside
+            className="flex flex-col gap-8 lg:col-span-3 lg:sticky lg:top-[calc(var(--home-header-height,120px)+1rem)] lg:gap-10 lg:self-start"
+          >
             {/* Filter Categories */}
             <div>
-              <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                FILTER
+              <h3 className="mb-3 text-sm font-bold tracking-tight text-zinc-900">
+                Filter
               </h3>
-              <div className="flex flex-nowrap overflow-x-auto gap-2 pb-2 scrollbar-none -mx-6 px-6 sm:mx-0 sm:px-0 lg:flex-col lg:items-start lg:overflow-visible lg:pb-0">
+              <div className="-mx-6 flex flex-nowrap gap-2 overflow-x-auto px-6 pb-2 scrollbar-none sm:mx-0 sm:px-0 lg:flex-col lg:items-start lg:overflow-visible lg:pb-0">
                 {BLOG_CATEGORIES.map((category) => {
                   const isActive = selectedCategory === category;
                   return (
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-colors cursor-pointer text-left ${
+                      className={`shrink-0 cursor-pointer whitespace-nowrap rounded-full px-4 py-2 text-left text-xs font-medium transition-colors ${
                         isActive
                           ? "bg-[#004D34] text-white shadow-xs"
-                          : "bg-[#f2f4f3] text-zinc-700 hover:bg-zinc-200"
+                          : "border border-zinc-200/80 bg-[#f2f4f3] text-zinc-700 hover:bg-zinc-200"
                       }`}
                     >
                       {category}
@@ -117,12 +127,13 @@ export default function BlogPage() {
             </div>
 
             {/* Newsletter Subscription Card (Hidden on Mobile) */}
-            <div className="hidden lg:block rounded-none border border-zinc-200/80 bg-[#f9fbf9] p-5 sm:p-6 shadow-xs">
+            <div className="hidden rounded-none border border-zinc-200/80 bg-[#f9fbf9] p-5 shadow-xs sm:p-6 lg:block">
               <h4 className="mb-2 text-sm font-bold text-zinc-900">
                 Stay ahead of every event
               </h4>
-              <p className="mb-4 text-xs text-zinc-500 leading-relaxed">
-                Get insights, tips, and updates to help you plan and deliver better virtual and hybrid events.
+              <p className="mb-4 text-xs leading-relaxed text-zinc-500">
+                Get insights, tips, and updates to help you plan and deliver
+                better virtual and hybrid events.
               </p>
 
               {newsletterSubmitted ? (
@@ -134,12 +145,12 @@ export default function BlogPage() {
                   <input
                     type="email"
                     required
-                    placeholder="Enter email address"
-                    className="w-full rounded-none border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20"
+                    placeholder="Enter Email Address"
+                    className="w-full rounded-full border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20"
                   />
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-full bg-[#004D34] py-1.5 pl-1.5 pr-4 text-xs font-semibold text-white transition-opacity hover:opacity-90 shadow-xs cursor-pointer"
+                    className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#004D34] py-1.5 pl-1.5 pr-4 text-xs font-semibold text-white shadow-xs transition-opacity hover:opacity-90"
                   >
                     <span className="flex size-5 items-center justify-center rounded-full bg-white text-[#004D34]">
                       <DoubleChevronIcon />
@@ -276,8 +287,7 @@ export default function BlogPage() {
       </section>
 
       {/* Bottom Stacked CTAs */}
-      <TalkToTeamCta />
-      <FooterCta />
+            <FooterCta />
     </main>
   );
 }

@@ -17,7 +17,7 @@ export function HomeHeader({ heroId = "hero-section" }: HomeHeaderProps) {
     if (hero) {
       const observer = new IntersectionObserver(
         ([entry]) => setIsPastHero(!entry.isIntersecting),
-        { threshold: 0.1 },
+        { threshold: 0 },
       );
       observer.observe(hero);
       return () => observer.disconnect();

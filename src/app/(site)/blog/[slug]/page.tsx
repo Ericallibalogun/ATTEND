@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
 import { sampleBlogPosts } from "@/lib/blog-data";
-import { TalkToTeamCta } from "@/components/layout/talk-to-team-cta";
 import { FooterCta } from "@/components/layout/footer-cta";
 
 function DoubleChevronIcon() {
@@ -62,9 +61,14 @@ export default function SingleBlogPostPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-white font-sans text-zinc-900 pt-10 sm:pt-14">
-      {/* Full-width Top Hero Image */}
-      <section className="w-full px-8 sm:px-12 lg:px-16 pt-4 pb-10">
+    <main className="relative min-h-screen bg-white font-sans text-zinc-900">
+      {/* Full-width Top Hero Image — clear fixed header */}
+      <section
+        className="w-full px-8 pb-10 sm:px-12 lg:px-16"
+        style={{
+          paddingTop: "calc(var(--home-header-height, 140px) + 1.5rem)",
+        }}
+      >
         <div className="relative h-[320px] sm:h-[440px] lg:h-[520px] w-full overflow-hidden rounded-none bg-zinc-100 shadow-sm">
           <Image
             src={post.image}
@@ -308,8 +312,7 @@ export default function SingleBlogPostPage() {
       </section>
 
       {/* Bottom Stacked CTAs */}
-      <TalkToTeamCta />
-      <FooterCta />
+            <FooterCta />
     </main>
   );
 }
