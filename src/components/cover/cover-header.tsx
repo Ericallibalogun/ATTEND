@@ -84,7 +84,7 @@ export function CoverHeader({
               disabled
               aria-disabled="true"
               title="Coming soon"
-              className={`cursor-not-allowed rounded-full px-4.5 py-1.5 text-xs font-semibold opacity-50 sm:text-sm ${
+              className={`cursor-not-allowed rounded-full px-4.5 py-1.5 text-xs font-semibold disabled:opacity-100 sm:text-sm ${
                 isHero
                   ? "bg-white text-primary"
                   : "bg-primary text-white"
@@ -213,7 +213,7 @@ export function CoverHeader({
               disabled
               aria-disabled="true"
               title="Coming soon"
-              className="flex w-full cursor-not-allowed items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white opacity-50"
+              className="flex w-full cursor-not-allowed items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white disabled:opacity-100"
             >
               Login
             </button>
