@@ -13,7 +13,6 @@ export const siteConfig = {
     { label: "Launch Event", href: "/product-launch" },
     { label: "Blog", href: "/blog" },
     { label: "Gallery", href: "/gallery" },
-    { label: "About Us", href: "/about" },
   ],
   nav: [
     { label: "Home", href: "/" },

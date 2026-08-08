@@ -19,12 +19,7 @@ export function BookDemoProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const openModal = () => {
-    // Open modal on all pages except homepage ("/")
-    if (pathname !== "/") {
-      setIsOpen(true);
-    }
-  };
+  const openModal = () => setIsOpen(true);
 
   const closeModal = () => setIsOpen(false);
 
@@ -208,10 +203,22 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                     <option value="" disabled>
                       Select option
                     </option>
-                    <option value="agm">Annual General Meeting (AGM)</option>
-                    <option value="hackathon">Innovation Challenge / Hackathon</option>
-                    <option value="launch">Product Launch Event</option>
-                    <option value="other">Other Event Services</option>
+                    <option value="host-agm">
+                      I want to host an Annual General Meeting
+                    </option>
+                    <option value="join-agm">
+                      I want to join an Annual General Meeting
+                    </option>
+                    <option value="setup-innovation">
+                      I want to setup an Innovation Challenge
+                    </option>
+                    <option value="join-innovation">
+                      I want to participate in an Innovation Challenge
+                    </option>
+                    <option value="launch-product">
+                      I want to launch a new Product
+                    </option>
+                    <option value="others">Others</option>
                   </select>
                   <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500">
                     <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

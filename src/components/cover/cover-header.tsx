@@ -79,16 +79,19 @@ export function CoverHeader({
             >
               Contact us
             </button>
-            <Link
-              href="/login"
-              className={`rounded-full px-4.5 py-1.5 text-xs sm:text-sm font-semibold transition-opacity hover:opacity-90 ${
+            <button
+              type="button"
+              disabled
+              aria-disabled="true"
+              title="Coming soon"
+              className={`cursor-not-allowed rounded-full px-4.5 py-1.5 text-xs font-semibold opacity-50 sm:text-sm ${
                 isHero
                   ? "bg-white text-primary"
                   : "bg-primary text-white"
               }`}
             >
               Login
-            </Link>
+            </button>
           </div>
 
           <button
@@ -113,7 +116,7 @@ export function CoverHeader({
 
       {isHero ? (
         <>
-          <nav className="mx-auto mt-4 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
+          <nav className="mx-auto mt-4 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-5 lg:gap-6 lg:px-16">
             {siteConfig.coverNav.map((item) => (
               <Link
                 key={item.href}
@@ -131,7 +134,7 @@ export function CoverHeader({
           </nav>
         </>
       ) : (
-        <nav className="mx-auto hidden w-full px-8 sm:px-12 mt-4 pb-2 lg:grid lg:grid-cols-6 lg:gap-6 lg:px-16">
+        <nav className="mx-auto hidden w-full px-8 sm:px-12 mt-4 pb-2 lg:grid lg:grid-cols-5 lg:gap-6 lg:px-16">
             {siteConfig.coverNav.map((item) => (
             <Link
               key={item.href}
@@ -205,13 +208,15 @@ export function CoverHeader({
             >
               Contact us
             </button>
-            <Link
-              href="/login"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex w-full items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+            <button
+              type="button"
+              disabled
+              aria-disabled="true"
+              title="Coming soon"
+              className="flex w-full cursor-not-allowed items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white opacity-50"
             >
               Login
-            </Link>
+            </button>
           </div>
         </div>
       )}
