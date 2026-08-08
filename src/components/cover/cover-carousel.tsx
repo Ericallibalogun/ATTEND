@@ -108,17 +108,29 @@ export function CoverCtaButtons({
 
   return (
     <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-      {primaryCta && (
-        <Link
-          href={primaryCta.href}
-          className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
-        >
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
-            <DoubleChevronIcon />
-          </span>
-          <span>{primaryCta.label}</span>
-        </Link>
-      )}
+      {primaryCta &&
+        (primaryCta.label === "Plan a launch" ? (
+          <button
+            type="button"
+            onClick={openModal}
+            className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
+          >
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
+              <DoubleChevronIcon />
+            </span>
+            <span>{primaryCta.label}</span>
+          </button>
+        ) : (
+          <Link
+            href={primaryCta.href}
+            className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
+          >
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
+              <DoubleChevronIcon />
+            </span>
+            <span>{primaryCta.label}</span>
+          </Link>
+        ))}
       {secondaryCta &&
         (secondaryCta.label === "Contact Us" ? (
           <button

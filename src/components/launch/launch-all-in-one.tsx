@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 
 const allInOneCards = [
   {
@@ -49,6 +49,7 @@ const allInOneCards = [
 ];
 
 export function LaunchAllInOne() {
+  const { openModal } = useBookDemoModal();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -85,8 +86,9 @@ export function LaunchAllInOne() {
                 that powers Attend, tuned for the biggest day on your product
                 calendar.
               </p>
-              <Link
-                href="/about"
+              <button
+                type="button"
+                onClick={openModal}
                 className="mt-5 inline-flex h-11 items-center gap-3 rounded-full bg-white py-2 pl-2 pr-5 text-[13.5px] font-medium text-[#083827] transition-opacity hover:opacity-90 lg:hidden"
               >
                 <span className="flex size-7 items-center justify-center rounded-full bg-[#083827] text-white">
@@ -103,7 +105,7 @@ export function LaunchAllInOne() {
                   </svg>
                 </span>
                 Plan a launch
-              </Link>
+              </button>
             </div>
 
             <div className="hidden flex-col items-start lg:col-span-6 lg:flex lg:items-end">
@@ -113,8 +115,9 @@ export function LaunchAllInOne() {
                 calendar.
               </p>
 
-              <Link
-                href="/about"
+              <button
+                type="button"
+                onClick={openModal}
                 className="inline-flex items-center gap-3 rounded-full bg-white py-2.5 pl-2.5 pr-7 text-[15px] font-medium text-[#083827] transition-opacity hover:opacity-90"
               >
                 <span className="flex size-9 items-center justify-center rounded-full bg-[#083827] text-white">
@@ -131,7 +134,7 @@ export function LaunchAllInOne() {
                   </svg>
                 </span>
                 Plan a launch
-              </Link>
+              </button>
             </div>
           </div>
         </div>
