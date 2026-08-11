@@ -31,6 +31,7 @@ export const galleryItemType = defineType({
       type: 'array',
       of: [
         {
+          name: 'image',
           type: 'image',
           options: { hotspot: true },
           fields: [
