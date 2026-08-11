@@ -3,93 +3,20 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { defaultGalleryCategories, type GalleryCategory } from "@/lib/sanity-gallery-service";
 
-interface GalleryCategory {
-  id: string;
-  title: string;
-  images: { src: string; alt: string }[];
-}
-
-const galleryCategories: GalleryCategory[] = [
-  {
-    id: "agm",
-    title: "Annual General Meeting (AGM)",
-    images: [
-      { src: "/agm_real_1.webp", alt: "Executive Corporate Boardroom at Dusk" },
-      {
-        src: "/Frame_6086.webp",
-        alt: "Annual General Meeting Keynote Presentation",
-      },
-      { src: "/boardroom.webp", alt: "Executive AGM Boardroom Setup" },
-      {
-        src: "/Frame 1321325430.webp",
-        alt: "Verified Access & Voting Interface",
-      },
-    ],
-  },
-  {
-    id: "innovation",
-    title: "Innovation Challenge",
-    images: [
-      { src: "/innovation_real_1.webp", alt: "Tech Innovation Workshop Room" },
-      {
-        src: "/Frame_6086_1.webp",
-        alt: "Innovation Challenge Pitch Stage",
-      },
-      { src: "/Frame 35776 (1).webp", alt: "Innovation Challenge Sprint" },
-      {
-        src: "/Frame 35774 (1).webp",
-        alt: "Judge Scoring and Leaderboard Finale",
-      },
-    ],
-  },
-  {
-    id: "hackathons",
-    title: "Hackathons",
-    images: [
-      {
-        src: "/hackathon_real_1.webp",
-        alt: "Modern Tech Hackathon Architecture",
-      },
-      {
-        src: "/Frame 35776.webp",
-        alt: "Live Pitching and Mentor Office Hours",
-      },
-      { src: "/cropped_collage.webp", alt: "Hackathon Builder Collaboration" },
-      { src: "/collage.webp", alt: "Hackathon Team Presentation" },
-    ],
-  },
-  {
-    id: "launch",
-    title: "Launch Event",
-    images: [
-      {
-        src: "/boardroom3.webp",
-        alt: "Product Launch Stage Reveal Platform",
-      },
-      {
-        src: "/3a18b6d36eead1a8f298c36a398284fd06d5b1c0.webp",
-        alt: "Broadcast Stage Camera & Lights",
-      },
-      {
-        src: "/d19a92ced1ad518052748b12f9e464593833f903.webp",
-        alt: "Hardware Keynote Presentation",
-      },
-      { src: "/Frame 1321325422.webp", alt: "Registration Check-in Desk" },
-    ],
-  },
-];
-
-export function GalleryShowcase() {
-  const [openCategory, setOpenCategory] = useState<string | null>("launch");
+export function GalleryShowcase({
+  initialCategories = defaultGalleryCategories,
+}: {
+  initialCategories?: GalleryCategory[];
+}) {
+  const galleryCategories = initialCategories.length > 0 ? initialCategories : defaultGalleryCategories;
+  const [openCategory, setOpenCategory] = useState<string | null>(
+    galleryCategories[0]?.id || "launch"
+  );
   const [activeImageIndices, setActiveImageIndices] = useState<
     Record<string, number>
-  >({
-    agm: 0,
-    innovation: 0,
-    hackathons: 0,
-    launch: 0,
-  });
+  >({});
 
   const toggleCategory = (id: string) => {
     setOpenCategory((prev) => (prev === id ? null : id));

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,6 +8,7 @@ import {
   sampleBlogPosts,
   type BlogPost,
 } from "@/lib/blog-data";
+import { fetchBlogPosts } from "@/lib/sanity-blog-service";
 import { FooterCta } from "@/components/layout/footer-cta";
 
 function DoubleChevronIcon() {
@@ -88,18 +89,27 @@ function postMatchesFilters(
 }
 
 export default function BlogPage() {
+  const [posts, setPosts] = useState<BlogPost[]>(sampleBlogPosts);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    fetchBlogPosts().then((fetched) => {
+      if (fetched && fetched.length > 0) {
+        setPosts(fetched);
+      }
+    });
+  }, []);
+
   const filteredPosts = useMemo(
     () =>
-      sampleBlogPosts.filter((post) =>
+      posts.filter((post) =>
         postMatchesFilters(post, selectedCategory, searchQuery),
       ),
-    [selectedCategory, searchQuery],
+    [posts, selectedCategory, searchQuery],
   );
 
   const featuredPost = filteredPosts[0] ?? sampleBlogPosts[0];

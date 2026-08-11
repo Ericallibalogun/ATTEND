@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { sampleBlogPosts } from "@/lib/blog-data";
+import { sampleBlogPosts, type BlogPost } from "@/lib/blog-data";
+import { fetchBlogPosts, fetchBlogPostBySlug } from "@/lib/sanity-blog-service";
 import { FooterCta } from "@/components/layout/footer-cta";
 
 function DoubleChevronIcon() {
@@ -32,18 +33,30 @@ function ArrowRightIcon() {
 export default function SingleBlogPostPage() {
   const params = useParams();
   const slug = params?.slug as string;
+  const [post, setPost] = useState<BlogPost | null>(
+    sampleBlogPosts.find((p) => p.slug === slug) ?? sampleBlogPosts[0]
+  );
+  const [allPosts, setAllPosts] = useState<BlogPost[]>(sampleBlogPosts);
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const post =
-    sampleBlogPosts.find((p) => p.slug === slug) ?? sampleBlogPosts[0];
+  useEffect(() => {
+    if (slug) {
+      fetchBlogPostBySlug(slug).then((fetched) => {
+        if (fetched) setPost(fetched);
+      });
+      fetchBlogPosts().then((posts) => {
+        if (posts && posts.length > 0) setAllPosts(posts);
+      });
+    }
+  }, [slug]);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = sampleBlogPosts
-    .filter((p) => p.id !== post.id)
+  const relatedPosts = allPosts
+    .filter((p) => p.id !== post.id && p.slug !== post.slug)
     .slice(0, 3);
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {

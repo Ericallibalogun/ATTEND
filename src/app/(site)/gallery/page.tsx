@@ -1,5 +1,6 @@
 import { GalleryShowcase } from "@/components/gallery/gallery-showcase";
 import { FooterCta } from "@/components/layout/footer-cta";
+import { fetchGalleryCategories } from "@/lib/sanity-gallery-service";
 
 export const metadata = {
   title: "Gallery | Attend",
@@ -7,10 +8,12 @@ export const metadata = {
     "Photo and media gallery from past ATTEND events including AGMs, Hackathons, and Product Launches.",
 };
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const categories = await fetchGalleryCategories();
+
   return (
     <>
-      <GalleryShowcase />
+      <GalleryShowcase initialCategories={categories} />
       <FooterCta />
     </>
   );
