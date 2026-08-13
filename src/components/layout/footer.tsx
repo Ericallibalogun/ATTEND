@@ -99,8 +99,18 @@ export function Footer() {
               <div>
                 <h4 className="mb-2 text-[11px] font-semibold tracking-widest text-white/60 uppercase">CONTACT</h4>
                 <p className="text-xs sm:text-[13.5px] font-medium text-white/90 leading-tight">
-                  070063747836,<br />
-                  0800MERISTEM
+                  <a
+                    href="tel:+23470063747836"
+                    className="block underline-offset-4 hover:text-white hover:underline transition-colors"
+                  >
+                    070063747836
+                  </a>
+                  <a
+                    href="tel:080063747836"
+                    className="mt-1 block underline-offset-4 hover:text-white hover:underline transition-colors"
+                  >
+                    0800MERISTEM
+                  </a>
                 </p>
               </div>
 

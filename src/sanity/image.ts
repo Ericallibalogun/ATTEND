@@ -1,9 +1,35 @@
-import imageUrlBuilder from '@sanity/image-url'
-import { client } from './client'
+import { createImageUrlBuilder, type SanityImageSource } from '@sanity/image-url'
+import { dataset, projectId } from './env'
 
-const builder = client ? imageUrlBuilder(client) : null
+export const SANITY_CDN_HOST = 'cdn.sanity.io'
 
-export function urlForImage(source: any) {
+export function isSanityCdnUrl(url: string) {
+  return url.includes(SANITY_CDN_HOST)
+}
+
+const builder = projectId
+  ? createImageUrlBuilder({ projectId, dataset })
+  : null
+
+type ImageUrlOptions = {
+  width?: number
+  quality?: number
+}
+
+export function urlForImage(
+  source: SanityImageSource,
+  options: number | ImageUrlOptions = {},
+) {
   if (!builder || !source) return ''
-  return builder.image(source).format('webp').fit('max').url()
+
+  const { width = 1920, quality = 80 } =
+    typeof options === 'number' ? { width: options, quality: 80 } : options
+
+  return builder
+    .image(source)
+    .width(width)
+    .fit('max')
+    .auto('format')
+    .quality(quality)
+    .url()
 }

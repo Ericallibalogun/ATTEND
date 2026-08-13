@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { SanityImage } from "@/components/sanity/sanity-image";
 import { defaultGalleryCategories, type GalleryCategory } from "@/lib/sanity-gallery-service";
 
 export function GalleryShowcase({
@@ -94,12 +94,12 @@ export function GalleryShowcase({
                   {isOpen && (
                     <div className="pb-7 pt-1 sm:pb-10 sm:pt-2">
                       <div className="relative h-[220px] w-full overflow-hidden bg-zinc-950 shadow-2xl sm:h-[500px] lg:h-[620px]">
-                        <Image
+                        <SanityImage
                           src={currentImg.src}
                           alt={currentImg.alt}
                           fill
                           className="object-cover object-center transition-all duration-500 ease-out"
-                          sizes="100vw"
+                          sizes="(max-width: 1024px) 100vw, 1280px"
                           priority
                         />
 

@@ -8,8 +8,8 @@ export const metadata = {
     "Photo and media gallery from past ATTEND events including AGMs, Hackathons, and Product Launches.",
 };
 
-// Refetch gallery from Sanity at most every 60s instead of baking in at build time.
-export const revalidate = 60;
+// Always fetch fresh gallery content from Sanity on each request.
+export const dynamic = 'force-dynamic';
 
 export default async function GalleryPage() {
   const categories = await fetchGalleryCategories();

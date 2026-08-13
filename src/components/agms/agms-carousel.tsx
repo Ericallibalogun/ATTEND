@@ -18,7 +18,7 @@ const carouselCards = [
       "Role-based rights",
       "Quorum monitor",
     ],
-    image: "/Frame 1321325430.webp",
+    image: "/Frame 35774.webp",
   },
   {
     number: "02",
@@ -31,7 +31,7 @@ const carouselCards = [
       "Instant tallies",
       "Exportable results",
     ],
-    image: "/Frame 1321325438.webp",
+    image: "/Frame 1321325430.webp",
   },
   {
     number: "03",
@@ -39,7 +39,7 @@ const carouselCards = [
     description:
       "Ultra-HD video, adaptive bitrates, and low latency streaming built for real-time interactions and global audiences.",
     tags: ["Adaptive streaming", "Ultra HD", "Low-latency streaming"],
-    image: "/Frame 35774.webp",
+    image: "/Frame 1321325438.webp",
   },
   {
     number: "04",
@@ -47,7 +47,7 @@ const carouselCards = [
     description:
       "Moderated Q&A, live polls, chat, and virtual networking tools that give remote participants the same standing as room attendees.",
     tags: ["Moderated Q&A", "Live polls", "Virtual networking"],
-    image: "/boardroom-2.webp",
+    image: "/customer_service.png",
   },
   {
     number: "05",
@@ -55,7 +55,7 @@ const carouselCards = [
     description:
       "Full audit trails, regulatory-ready reports, and robust event analytics delivered instantly post-event.",
     tags: ["Audit trail", "Regulatory reports", "Actionable insights"],
-    image: "/boardroom3.webp",
+    image: "/analytics_dashboard.webp",
   },
 ];
 
@@ -182,7 +182,7 @@ export function AgmsCarousel() {
                     <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
                   </svg>
                 </span>
-                <span className="truncate">Book virtual event demo</span>
+                <span className="truncate">Book a demo</span>
               </button>
             </div>
           </div>
@@ -211,7 +211,7 @@ export function AgmsCarousel() {
                     <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
                   </svg>
                 </span>
-                Book virtual event demo
+                Book a demo
               </button>
             </div>
           </div>

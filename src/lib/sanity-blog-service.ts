@@ -1,6 +1,62 @@
 import { client } from '@/sanity/client'
 import { urlForImage } from '@/sanity/image'
+import { sanityBlogFetchOptions } from '@/lib/sanity-fetch-options'
 import { sampleBlogPosts, type BlogPost } from './blog-data'
+
+const blogQuery = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
+  _id,
+  "slug": slug.current,
+  title,
+  excerpt,
+  category,
+  readTime,
+  "date": publishedAt,
+  coverImage,
+  featured,
+  intro,
+  sections
+}`
+
+function mapSanityPost(post: {
+  _id: string
+  slug?: string
+  title: string
+  excerpt: string
+  category?: string
+  readTime?: string
+  date?: string
+  coverImage?: unknown
+  featured?: boolean
+  intro?: string
+  sections?: Array<{ heading?: string; body?: string }>
+}): BlogPost {
+  return {
+    id: post._id,
+    slug: post.slug || post._id,
+    title: post.title,
+    excerpt: post.excerpt,
+    category: post.category || 'General',
+    readTime: post.readTime || '5 min read',
+    date: post.date
+      ? new Date(post.date).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        })
+      : 'Recently',
+    image: post.coverImage
+      ? urlForImage(post.coverImage, { width: 1400, quality: 80 })
+      : '/boardroom-2.webp',
+    featured: Boolean(post.featured),
+    content: {
+      intro: post.intro || post.excerpt,
+      sections: (post.sections || []).map((sec) => ({
+        heading: sec.heading || '',
+        body: sec.body || '',
+      })),
+    },
+  }
+}
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   if (!client) {
@@ -8,7 +64,26 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
   }
 
   try {
-    const query = `*[_type == "post"] | order(publishedAt desc) {
+    const rawPosts = await client.fetch(blogQuery, {}, sanityBlogFetchOptions)
+
+    if (!rawPosts || rawPosts.length === 0) {
+      return sampleBlogPosts
+    }
+
+    return rawPosts.map(mapSanityPost)
+  } catch (error) {
+    console.warn('Sanity fetch error, using static blog posts fallback:', error)
+    return sampleBlogPosts
+  }
+}
+
+export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  if (!client) {
+    return sampleBlogPosts.find((p) => p.slug === slug) ?? null
+  }
+
+  try {
+    const query = `*[_type == "post" && !(_id in path("drafts.**")) && slug.current == $slug][0] {
       _id,
       "slug": slug.current,
       title,
@@ -22,37 +97,10 @@ export async function fetchBlogPosts(): Promise<BlogPost[]> {
       sections
     }`
 
-    const rawPosts = await client.fetch(query)
-
-    if (!rawPosts || rawPosts.length === 0) {
-      return sampleBlogPosts
-    }
-
-    return rawPosts.map((post: any) => ({
-      id: post._id,
-      slug: post.slug || post._id,
-      title: post.title,
-      excerpt: post.excerpt,
-      category: post.category || 'General',
-      readTime: post.readTime || '5 min read',
-      date: post.date ? new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently',
-      image: post.coverImage ? urlForImage(post.coverImage) : '/boardroom-2.webp',
-      featured: Boolean(post.featured),
-      content: {
-        intro: post.intro || post.excerpt,
-        sections: (post.sections || []).map((sec: any) => ({
-          heading: sec.heading || '',
-          body: sec.body || '',
-        })),
-      },
-    }))
+    const post = await client.fetch(query, { slug }, sanityBlogFetchOptions)
+    return post ? mapSanityPost(post) : null
   } catch (error) {
-    console.warn('Sanity fetch error, using static blog posts fallback:', error)
-    return sampleBlogPosts
+    console.warn('Sanity fetch error for blog slug, using fallback lookup:', error)
+    return sampleBlogPosts.find((p) => p.slug === slug) ?? null
   }
-}
-
-export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
-  const posts = await fetchBlogPosts()
-  return posts.find((p) => p.slug === slug) || posts[0] || null
 }

@@ -20,6 +20,15 @@ export async function POST(req: NextRequest) {
       revalidatePath('/gallery')
     }
 
+    if (body?._type === 'post') {
+      revalidateTag('blog', 'max')
+      revalidatePath('/blog')
+      const slug = (body as { slug?: { current?: string } }).slug?.current
+      if (slug) {
+        revalidatePath(`/blog/${slug}`)
+      }
+    }
+
     return NextResponse.json({ revalidated: true, now: Date.now() })
   } catch (error) {
     console.error('Sanity revalidation error:', error)
