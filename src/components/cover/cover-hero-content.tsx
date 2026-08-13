@@ -76,7 +76,7 @@ function AppStoreHeroButtons() {
       </div>
 
       <Link
-        href="/about"
+        href="https://app.experienceattend.com"
         className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full border border-white/20 bg-white pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 lg:w-fit lg:justify-start"
       >
         <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#004D34]">

@@ -88,7 +88,7 @@ export function TalkToTeamCta() {
               </button>
 
               <Link
-                href="/about"
+                href="https://app.experienceattend.com"
                 className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[#004D34]/40 bg-white/40 px-6 text-[14px] font-medium text-[#004D34] backdrop-blur-sm transition-colors hover:bg-white/60 sm:h-[52px] sm:w-auto sm:px-7 sm:text-[15px]"
               >
                 Launch Web App

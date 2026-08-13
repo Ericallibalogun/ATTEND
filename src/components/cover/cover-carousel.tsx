@@ -101,7 +101,7 @@ type CoverCtaButtonsProps = {
 };
 
 export function CoverCtaButtons({
-  primaryCta = { label: "Launch Web App", href: "/about" },
+  primaryCta = { label: "Launch Web App", href: "https://app.experienceattend.com" },
   secondaryCta = { label: "Contact Us", href: "/about" },
 }: CoverCtaButtonsProps) {
   const { openModal } = useBookDemoModal();

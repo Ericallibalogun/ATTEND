@@ -184,12 +184,6 @@ export function AgmsCarousel() {
                 </span>
                 <span className="truncate">Book virtual event demo</span>
               </button>
-              <Link
-                href="#confidence"
-                className="inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-white/10 px-4 text-[12px] font-medium text-white transition-colors hover:bg-white/15 sm:px-5 sm:text-[13.5px]"
-              >
-                Learn More
-              </Link>
             </div>
           </div>
 
@@ -219,12 +213,6 @@ export function AgmsCarousel() {
                 </span>
                 Book virtual event demo
               </button>
-              <Link
-                href="#confidence"
-                className="inline-flex h-11 items-center justify-center rounded-full bg-white/10 px-5 text-[13.5px] font-medium text-white transition-colors hover:bg-white/15"
-              >
-                Learn More
-              </Link>
             </div>
           </div>
         </div>

@@ -79,19 +79,16 @@ export function CoverHeader({
             >
               Contact us
             </button>
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              title="Coming soon"
-              className={`cursor-not-allowed rounded-full px-4.5 py-1.5 text-xs font-semibold disabled:opacity-100 sm:text-sm ${
+            <Link
+              href="https://app.experienceattend.com"
+              className={`rounded-full px-4.5 py-1.5 text-xs font-semibold transition-opacity hover:opacity-90 sm:text-sm ${
                 isHero
                   ? "bg-white text-primary"
                   : "bg-primary text-white"
               }`}
             >
               Login
-            </button>
+            </Link>
           </div>
 
           <button
@@ -208,15 +205,12 @@ export function CoverHeader({
             >
               Contact us
             </button>
-            <button
-              type="button"
-              disabled
-              aria-disabled="true"
-              title="Coming soon"
-              className="flex w-full cursor-not-allowed items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white disabled:opacity-100"
+            <Link
+              href="https://app.experienceattend.com"
+              className="flex w-full items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
             >
               Login
-            </button>
+            </Link>
           </div>
         </div>
       )}

@@ -79,7 +79,6 @@ export function Footer() {
               <h4 className="mb-3 text-[11px] font-semibold tracking-widest text-white/60 uppercase">QUICK LINKS</h4>
               <ul className="flex flex-col gap-2.5 text-xs sm:text-[13.5px] text-white/90 font-medium">
                 <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                <li><Link href="/about" className="hover:text-white transition-colors">About us</Link></li>
                 <li><button type="button" onClick={openModal} className="hover:text-white transition-colors">Contact us</button></li>
                 <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
               </ul>
@@ -157,14 +156,14 @@ export function Footer() {
         </div>
         
         {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-start gap-4 border-t border-white/10 pt-8 text-xs sm:text-[13px] text-white/80">
-          <div className="flex gap-5 sm:gap-6">
-            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 sm:flex-row border-t border-white/10 pt-8 text-xs sm:text-[13px] text-white/80">
+          <div className="order-2 sm:order-1">
+            <p className="text-white/70">© 2026 Meristem Securities Limited. All rights reserved.</p>
+          </div>
+          <div className="order-1 flex gap-5 sm:order-2 sm:gap-6">
+            <Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link>
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
-          </div>
-          <div>
-            <p className="text-white/70">© 2026 Meristem Securities Limited. All rights reserved.</p>
           </div>
         </div>
       </div>
