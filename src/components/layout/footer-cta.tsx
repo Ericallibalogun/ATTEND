@@ -81,7 +81,7 @@ export function FooterCta() {
                         className="size-4 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
-                        <span className="text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
+                        <span className="whitespace-nowrap text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
                           GET IT ON
                         </span>
                         <span className="text-[11px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">
@@ -102,7 +102,7 @@ export function FooterCta() {
                         className="size-4 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
-                        <span className="text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
+                        <span className="whitespace-nowrap text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
                           Download on the
                         </span>
                         <span className="text-[11px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">

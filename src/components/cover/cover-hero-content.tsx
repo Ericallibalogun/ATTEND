@@ -44,7 +44,7 @@ function AppStoreHeroButtons() {
             className="size-5 shrink-0 object-contain"
           />
           <span className="flex flex-col text-left leading-none">
-            <span className="text-[7.5px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[8px]">
+            <span className="whitespace-nowrap text-[7.5px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[8px]">
               GET IT ON
             </span>
             <span className="text-[11px] font-semibold text-zinc-900 sm:text-[12px]">
@@ -65,7 +65,7 @@ function AppStoreHeroButtons() {
             className="size-5 shrink-0 object-contain"
           />
           <span className="flex flex-col text-left leading-none">
-            <span className="text-[7.5px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[8px]">
+            <span className="whitespace-nowrap text-[7.5px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[8px]">
               Download on the
             </span>
             <span className="text-[11px] font-semibold text-zinc-900 sm:text-[12px]">
