@@ -52,8 +52,8 @@ export function FooterCta() {
 
           {/* Main Content Layout */}
           <div className="relative z-10 mx-auto w-full px-4 sm:px-8 lg:px-16 pt-12 pb-0 sm:pt-20 sm:pb-0">
-            <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-2">
-              <div className="flex flex-col items-start pb-8 lg:col-span-6 lg:pb-24">
+            <div className="grid items-end gap-4 sm:gap-8 lg:grid-cols-12 lg:gap-2">
+              <div className="flex flex-col items-start pb-2 sm:pb-8 lg:col-span-6 lg:pb-24">
                 <p className="mb-2.5 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-[#004D34] sm:mb-3.5">
                   <span
                     className="mr-2 inline-block size-1.5 bg-[#004D34]"
@@ -67,24 +67,24 @@ export function FooterCta() {
                 desktop, wherever you are.
               </h2>
 
-                <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-                  <div className="grid w-full grid-cols-2 gap-2.5 sm:contents">
+                <div className="flex w-fit flex-col items-stretch gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+                  <div className="flex flex-row items-center gap-2 sm:contents">
                     <Link
                       href="https://app.experienceattend.com"
-                      className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#004D34] bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:justify-start sm:gap-2.5 sm:px-6"
+                      className="inline-flex h-12 flex-1 items-center justify-center gap-1.5 rounded-full border border-[#004D34] bg-white px-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:px-6"
                     >
                       <Image
                         src="/Google Play logo.webp"
                         alt="Google Play"
                         width={24}
                         height={24}
-                        className="size-5 shrink-0 object-contain sm:size-6"
+                        className="size-4 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
-                        <span className="text-[8px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
+                        <span className="text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
                           GET IT ON
                         </span>
-                        <span className="text-[12px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">
+                        <span className="text-[11px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">
                           Google Play
                         </span>
                       </span>
@@ -92,20 +92,20 @@ export function FooterCta() {
 
                     <Link
                       href="https://app.experienceattend.com"
-                      className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#004D34] bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:justify-start sm:gap-2.5 sm:px-6"
+                      className="inline-flex h-12 flex-1 items-center justify-center gap-1.5 rounded-full border border-[#004D34] bg-white px-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:px-6"
                     >
                       <Image
                         src="/Apple logo.webp"
                         alt="App Store"
                         width={24}
                         height={24}
-                        className="size-5 shrink-0 object-contain sm:size-6"
+                        className="size-4 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
-                        <span className="text-[8px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
+                        <span className="text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
                           Download on the
                         </span>
-                        <span className="text-[12px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">
+                        <span className="text-[11px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">
                           App Store
                         </span>
                       </span>
