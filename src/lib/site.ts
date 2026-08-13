@@ -47,7 +47,7 @@ export const heroSlides: HeroSlide[] = [
     eyebrow: "THE VIRTUAL EVENT PLATFORM FOR EVERY DECISIVE MOMENT",
     headline: "Your next meeting\ndeserves to be an experience",
     description: platformDescription,
-    primaryCta: { label: "Book a demo", href: "/about" },
+    primaryCta: { label: "Book a demo", href: "#" },
     secondaryCta: { label: "Learn More", href: "/agms" },
   },
   {
@@ -72,7 +72,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     label: "Get Started",
-    href: "/about",
+    href: "https://app.experienceattend.com",
     image: "/svg_vector_2026-08-03 (2).webp",
     eyebrow: "GET STARTED",
     headline: "Stay connected\nwherever you are",

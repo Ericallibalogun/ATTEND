@@ -70,7 +70,7 @@ export function FooterCta() {
                 <div className="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                   <div className="grid w-full grid-cols-2 gap-2.5 sm:contents">
                     <Link
-                      href="/about"
+                      href="https://app.experienceattend.com"
                       className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#004D34] bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:justify-start sm:gap-2.5 sm:px-6"
                     >
                       <Image
@@ -91,7 +91,7 @@ export function FooterCta() {
                     </Link>
 
                     <Link
-                      href="/about"
+                      href="https://app.experienceattend.com"
                       className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#004D34] bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:justify-start sm:gap-2.5 sm:px-6"
                     >
                       <Image

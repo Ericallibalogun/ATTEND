@@ -33,7 +33,7 @@ function AppStoreHeroButtons() {
     <div className="flex w-full flex-col items-stretch gap-3 lg:w-auto lg:flex-row lg:flex-wrap lg:items-center">
       <div className="grid w-full grid-cols-2 gap-3 lg:contents">
         <Link
-          href="/about"
+          href="https://app.experienceattend.com"
           className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:justify-start sm:px-4.5"
         >
           <Image
@@ -54,7 +54,7 @@ function AppStoreHeroButtons() {
         </Link>
 
         <Link
-          href="/about"
+          href="https://app.experienceattend.com"
           className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:justify-start sm:px-4.5"
         >
           <Image
