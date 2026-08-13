@@ -50,8 +50,23 @@ export const defaultGalleryCategories: GalleryCategory[] = [
   },
 ]
 
+function mergeSanityIntoDefaults(
+  sanityImagesByCategory: Record<string, { src: string; alt: string }[]>,
+): GalleryCategory[] {
+  return defaultGalleryCategories.map((category) => {
+    const sanityImages = sanityImagesByCategory[category.id]
+    if (sanityImages && sanityImages.length > 0) {
+      return { ...category, images: sanityImages }
+    }
+    return category
+  })
+}
+
 export async function fetchGalleryCategories(): Promise<GalleryCategory[]> {
   if (!client) {
+    console.warn(
+      'Sanity client unavailable (missing NEXT_PUBLIC_SANITY_PROJECT_ID). Using static gallery images.',
+    )
     return defaultGalleryCategories
   }
 
@@ -64,56 +79,48 @@ export async function fetchGalleryCategories(): Promise<GalleryCategory[]> {
       image
     }`
 
-    const rawItems = await client.fetch(query)
+    const rawItems = await client.fetch(
+      query,
+      {},
+      { next: { revalidate: 60, tags: ['gallery'] } },
+    )
 
     if (!rawItems || rawItems.length === 0) {
       return defaultGalleryCategories
     }
 
-    const categoriesMap: Record<string, { title: string; images: { src: string; alt: string }[] }> = {
-      agm: { title: "Annual General Meeting (AGM)", images: [] },
-      innovation: { title: "Innovation Challenge", images: [] },
-      hackathons: { title: "Hackathons", images: [] },
-      launch: { title: "Launch Event", images: [] },
-    }
+    const sanityImagesByCategory: Record<string, { src: string; alt: string }[]> = {}
 
     rawItems.forEach((item: any) => {
       const catKey = (item.category || 'agm').toLowerCase()
-      if (!categoriesMap[catKey]) {
-        categoriesMap[catKey] = {
-          title: item.category.charAt(0).toUpperCase() + item.category.slice(1),
-          images: [],
+      if (!sanityImagesByCategory[catKey]) {
+        sanityImagesByCategory[catKey] = []
+      }
+
+      if (item.image) {
+        const src = urlForImage(item.image)
+        if (src) {
+          sanityImagesByCategory[catKey].push({
+            src,
+            alt: item.title || 'Event photo',
+          })
         }
       }
 
-      // Handle the legacy single image field
-      if (item.image) {
-        categoriesMap[catKey].images.push({
-          src: urlForImage(item.image),
-          alt: item.title || 'Event photo',
-        })
-      }
-
-      // Handle the new bulk images array field
       if (item.images && Array.isArray(item.images)) {
         item.images.forEach((img: any) => {
-          categoriesMap[catKey].images.push({
-            src: urlForImage(img),
-            alt: img.alt || item.title || 'Event photo',
-          })
+          const src = urlForImage(img)
+          if (src) {
+            sanityImagesByCategory[catKey].push({
+              src,
+              alt: img.alt || item.title || 'Event photo',
+            })
+          }
         })
       }
     })
 
-    const result = Object.entries(categoriesMap)
-      .filter(([_, cat]) => cat.images.length > 0)
-      .map(([id, cat]) => ({
-        id,
-        title: cat.title,
-        images: cat.images,
-      }))
-
-    return result.length > 0 ? result : defaultGalleryCategories
+    return mergeSanityIntoDefaults(sanityImagesByCategory)
   } catch (error) {
     console.warn('Sanity fetch error, using static gallery categories fallback:', error)
     return defaultGalleryCategories
