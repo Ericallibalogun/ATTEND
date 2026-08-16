@@ -105,11 +105,13 @@ export function CoverCtaButtons({
   secondaryCta = { label: "Contact Us", href: "#" },
 }: CoverCtaButtonsProps) {
   const { openModal } = useBookDemoModal();
+  const opensDemoModal = (label: string) =>
+    label === "Book a demo" || label === "Plan a launch";
 
   return (
     <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
       {primaryCta &&
-        (primaryCta.label === "Plan a launch" ? (
+        (opensDemoModal(primaryCta.label) ? (
           <button
             type="button"
             onClick={openModal}
