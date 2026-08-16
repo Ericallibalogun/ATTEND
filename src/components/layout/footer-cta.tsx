@@ -61,11 +61,10 @@ export function FooterCta() {
                   />
                   GET STARTED
                 </p>
-                <h2 className="mb-6 max-w-none text-[2rem] font-semibold leading-[1.1] tracking-tight text-zinc-900 sm:mb-8 sm:text-4xl md:text-5xl lg:text-[52px]">
-                Stay connected and <br className="hidden sm:block" />
-                in control across mobile or <br className="hidden sm:block" />
-                desktop, wherever you are.
-              </h2>
+                <h2 className="mb-6 max-w-none text-[2.25rem] font-semibold leading-[1.1] tracking-tight text-zinc-900 sm:mb-8 sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.5rem]">
+                  Stay connected <br className="hidden sm:block" />
+                  wherever you are
+                </h2>
 
                 <div className="flex w-fit flex-col items-stretch gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                   <div className="flex flex-row items-center gap-2 sm:contents">
