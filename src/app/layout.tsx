@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { siteConfig } from "@/lib/site";
 import { BookDemoProvider } from "@/components/layout/book-demo-modal";
+import { ComingSoonProvider } from "@/components/layout/coming-soon-modal";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -26,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="min-h-full font-sans">
-        <BookDemoProvider>{children}</BookDemoProvider>
+        <BookDemoProvider>
+          <ComingSoonProvider>{children}</ComingSoonProvider>
+        </BookDemoProvider>
       </body>
     </html>
   );

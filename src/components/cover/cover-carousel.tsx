@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
+import { useComingSoonModal } from "@/components/layout/coming-soon-modal";
 import { heroSlides } from "@/lib/site";
 
 function DoubleChevronIcon() {
@@ -105,8 +106,10 @@ export function CoverCtaButtons({
   secondaryCta = { label: "Contact Us", href: "#" },
 }: CoverCtaButtonsProps) {
   const { openModal } = useBookDemoModal();
+  const { openModal: openComingSoonModal } = useComingSoonModal();
   const opensDemoModal = (label: string) =>
     label === "Book a demo" || label === "Plan a launch";
+  const opensComingSoonModal = (label: string) => label === "Launch Web App";
 
   return (
     <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
@@ -115,6 +118,17 @@ export function CoverCtaButtons({
           <button
             type="button"
             onClick={openModal}
+            className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
+          >
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
+              <DoubleChevronIcon />
+            </span>
+            <span>{primaryCta.label}</span>
+          </button>
+        ) : opensComingSoonModal(primaryCta.label) ? (
+          <button
+            type="button"
+            onClick={openComingSoonModal}
             className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
           >
             <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">

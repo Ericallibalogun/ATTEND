@@ -47,7 +47,7 @@ const carouselCards = [
     description:
       "Moderated Q&A, live polls, chat, and virtual networking tools that give remote participants the same standing as room attendees.",
     tags: ["Moderated Q&A", "Live polls", "Virtual networking"],
-    image: "/customer_service.png",
+    image: "/customer_service.webp",
   },
   {
     number: "05",

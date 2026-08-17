@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
+import { useComingSoonModal } from "@/components/layout/coming-soon-modal";
 
 function DoubleChevronIcon() {
   return (
@@ -26,6 +26,7 @@ function DoubleChevronIcon() {
 
 export function TalkToTeamCta() {
   const { openModal } = useBookDemoModal();
+  const { openModal: openComingSoonModal } = useComingSoonModal();
 
   return (
     <ScrollReveal yOffset={40}>
@@ -87,12 +88,13 @@ export function TalkToTeamCta() {
                 <span>Talk to an expert</span>
               </button>
 
-              <Link
-                href="https://app.experienceattend.com"
+              <button
+                type="button"
+                onClick={openComingSoonModal}
                 className="inline-flex h-12 w-full items-center justify-center rounded-full border border-[#004D34]/40 bg-white/40 px-6 text-[14px] font-medium text-[#004D34] backdrop-blur-sm transition-colors hover:bg-white/60 sm:h-[52px] sm:w-auto sm:px-7 sm:text-[15px]"
               >
                 Launch Web App
-              </Link>
+              </button>
             </div>
           </div>
         </div>

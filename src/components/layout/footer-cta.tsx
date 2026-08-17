@@ -1,6 +1,8 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { useComingSoonModal } from "@/components/layout/coming-soon-modal";
 
 function DoubleChevronIcon() {
   return (
@@ -11,6 +13,8 @@ function DoubleChevronIcon() {
 }
 
 export function FooterCta() {
+  const { openModal } = useComingSoonModal();
+
   return (
     <ScrollReveal yOffset={60}>
       <section className="relative w-full overflow-hidden bg-[#0A2518] px-3 pb-0 pt-4 text-zinc-900 sm:px-6 sm:pt-8 lg:px-12 lg:pt-16">
@@ -68,8 +72,9 @@ export function FooterCta() {
 
                 <div className="flex w-fit flex-col items-stretch gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                   <div className="flex flex-row items-center gap-2 sm:contents">
-                    <Link
-                      href="https://app.experienceattend.com"
+                    <button
+                      type="button"
+                      onClick={openModal}
                       className="inline-flex h-12 flex-1 items-center justify-center gap-1.5 rounded-full border border-[#004D34] bg-white px-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:px-6"
                     >
                       <Image
@@ -87,10 +92,11 @@ export function FooterCta() {
                           Google Play
                         </span>
                       </span>
-                    </Link>
+                    </button>
 
-                    <Link
-                      href="https://app.experienceattend.com"
+                    <button
+                      type="button"
+                      onClick={openModal}
                       className="inline-flex h-12 flex-1 items-center justify-center gap-1.5 rounded-full border border-[#004D34] bg-white px-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:flex-none sm:justify-start sm:gap-2.5 sm:px-6"
                     >
                       <Image
@@ -108,18 +114,19 @@ export function FooterCta() {
                           App Store
                         </span>
                       </span>
-                    </Link>
+                    </button>
                   </div>
 
-                  <Link
-                    href="https://app.experienceattend.com"
+                  <button
+                    type="button"
+                    onClick={openModal}
                     className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full border border-[#004D34] bg-white pl-2 pr-6 text-[14px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:w-auto sm:justify-start sm:text-[16px]"
                   >
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#004D34] text-white sm:size-10">
                       <DoubleChevronIcon />
                     </span>
                     <span>Launch Web App</span>
-                  </Link>
+                  </button>
                 </div>
               </div>
 

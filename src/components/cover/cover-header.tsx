@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/lib/site";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
+import { useComingSoonModal } from "@/components/layout/coming-soon-modal";
 
 function NavArrowIcon({ className }: { className?: string }) {
   return (
@@ -39,6 +40,7 @@ export function CoverHeader({
   const isHero = variant === "hero";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openModal } = useBookDemoModal();
+  const { openModal: openComingSoonModal } = useComingSoonModal();
 
   return (
     <>
@@ -79,8 +81,9 @@ export function CoverHeader({
             >
               Contact us
             </button>
-            <Link
-              href="https://app.experienceattend.com"
+            <button
+              type="button"
+              onClick={openComingSoonModal}
               className={`rounded-full px-4.5 py-1.5 text-xs font-semibold transition-opacity hover:opacity-90 sm:text-sm ${
                 isHero
                   ? "bg-white text-primary"
@@ -88,7 +91,7 @@ export function CoverHeader({
               }`}
             >
               Login
-            </Link>
+            </button>
           </div>
 
           <button
@@ -205,12 +208,16 @@ export function CoverHeader({
             >
               Contact us
             </button>
-            <Link
-              href="https://app.experienceattend.com"
+            <button
+              type="button"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                openComingSoonModal();
+              }}
               className="flex w-full items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
             >
               Login
-            </Link>
+            </button>
           </div>
         </div>
       )}

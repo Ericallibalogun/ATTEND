@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import {
   CoverCarousel,
   CoverCtaButtons,
   useHeroCarousel,
 } from "@/components/cover/cover-carousel";
+import { useComingSoonModal } from "@/components/layout/coming-soon-modal";
 import { heroSlides } from "@/lib/site";
 
 function DoubleChevronIcon({ className = "text-white" }: { className?: string }) {
@@ -29,11 +29,14 @@ function DoubleChevronIcon({ className = "text-white" }: { className?: string })
 }
 
 function AppStoreHeroButtons() {
+  const { openModal } = useComingSoonModal();
+
   return (
     <div className="flex w-full flex-col items-stretch gap-3 lg:w-auto lg:flex-row lg:flex-wrap lg:items-center">
       <div className="grid w-full grid-cols-2 gap-3 lg:contents">
-        <Link
-          href="https://app.experienceattend.com"
+        <button
+          type="button"
+          onClick={openModal}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:justify-start sm:px-4.5"
         >
           <Image
@@ -51,10 +54,11 @@ function AppStoreHeroButtons() {
               Google Play
             </span>
           </span>
-        </Link>
+        </button>
 
-        <Link
-          href="https://app.experienceattend.com"
+        <button
+          type="button"
+          onClick={openModal}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:justify-start sm:px-4.5"
         >
           <Image
@@ -72,18 +76,19 @@ function AppStoreHeroButtons() {
               App Store
             </span>
           </span>
-        </Link>
+        </button>
       </div>
 
-      <Link
-        href="https://app.experienceattend.com"
+      <button
+        type="button"
+        onClick={openModal}
         className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full border border-white/20 bg-white pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 lg:w-fit lg:justify-start"
       >
         <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#004D34]">
           <DoubleChevronIcon className="text-white" />
         </span>
         <span>Launch Web App</span>
-      </Link>
+      </button>
     </div>
   );
 }
