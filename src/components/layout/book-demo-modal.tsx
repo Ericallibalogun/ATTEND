@@ -173,6 +173,7 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                   </label>
                   <input
                     type="tel"
+                    required
                     placeholder=""
                     className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                   />
@@ -183,6 +184,7 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                   </label>
                   <input
                     type="text"
+                    required
                     placeholder=""
                     className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                   />
