@@ -76,14 +76,54 @@ type BookDemoModalProps = {
 
 export function BookDemoModal({ onClose }: BookDemoModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-    }, 2500);
+    setErrorMessage("");
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.get("fullName"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          organization: formData.get("organization"),
+          intent: formData.get("intent"),
+          additionalInfo: formData.get("additionalInfo"),
+        }),
+      });
+
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setErrorMessage(
+          result.error ??
+            "We couldn't send your message. Please try again in a moment.",
+        );
+        return;
+      }
+
+      setSubmitted(true);
+      form.reset();
+      setTimeout(() => {
+        setSubmitted(false);
+        onClose();
+      }, 2500);
+    } catch {
+      setErrorMessage(
+        "We couldn't send your message. Please check your connection and try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -139,14 +179,23 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
+              {errorMessage && (
+                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  {errorMessage}
+                </div>
+              )}
+
               {/* Full Name */}
               <div>
-                <label className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
+                <label htmlFor="contact-full-name" className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
                   Full Name
                 </label>
                 <input
+                  id="contact-full-name"
+                  name="fullName"
                   type="text"
                   required
+                  disabled={isSubmitting}
                   placeholder=""
                   className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                 />
@@ -154,12 +203,15 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
 
               {/* Email Address */}
               <div>
-                <label className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
+                <label htmlFor="contact-email" className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
                   Email Address
                 </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
                   required
+                  disabled={isSubmitting}
                   placeholder=""
                   className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                 />
@@ -168,23 +220,29 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
               {/* Two Column Row: Phone Number & Organization */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
+                  <label htmlFor="contact-phone" className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
                     Phone Number
                   </label>
                   <input
+                    id="contact-phone"
+                    name="phone"
                     type="tel"
                     required
+                    disabled={isSubmitting}
                     placeholder=""
                     className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                   />
                 </div>
                 <div>
-                  <label className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
+                  <label htmlFor="contact-organization" className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
                     Organization
                   </label>
                   <input
+                    id="contact-organization"
+                    name="organization"
                     type="text"
                     required
+                    disabled={isSubmitting}
                     placeholder=""
                     className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                   />
@@ -193,14 +251,17 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
 
               {/* Select Option */}
               <div>
-                <label className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
+                <label htmlFor="contact-intent" className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
                   What do you want to do?
                 </label>
                 <div className="relative">
                   <select
+                    id="contact-intent"
+                    name="intent"
                     defaultValue=""
                     required
-                    className="w-full appearance-none rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-700 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full appearance-none rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-700 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     <option value="" disabled>
                       Select option
@@ -232,13 +293,16 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
 
               {/* Additional Info */}
               <div>
-                <label className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
+                <label htmlFor="contact-additional-info" className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
                   Additional Info
                 </label>
                 <textarea
+                  id="contact-additional-info"
+                  name="additionalInfo"
                   rows={3}
+                  disabled={isSubmitting}
                   placeholder=""
-                  className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] resize-none"
+                  className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] resize-none disabled:cursor-not-allowed disabled:opacity-70"
                 ></textarea>
               </div>
 
@@ -246,12 +310,13 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
               <div className="pt-2 flex justify-end">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2.5 rounded-full bg-[#004D34] py-2 pl-2 pr-6 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#003d29] active:scale-95 focus-visible:ring outline-none cursor-pointer"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center gap-2.5 rounded-full bg-[#004D34] py-2 pl-2 pr-6 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#003d29] active:scale-95 focus-visible:ring outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
                     <DoubleChevronIcon />
                   </span>
-                  <span>Submit</span>
+                  <span>{isSubmitting ? "Sending..." : "Submit"}</span>
                 </button>
               </div>
             </form>
