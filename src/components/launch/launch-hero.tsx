@@ -21,9 +21,9 @@ export function LaunchHero() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[55%] bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-transparent lg:h-[60%] lg:via-zinc-950/60" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col px-5 sm:px-8 lg:px-12">
+      <div className="relative z-10 flex flex-1 flex-col px-5 sm:px-8 lg:px-16">
         {/* Mobile: mid-viewport, left-aligned; desktop: bottom-anchored */}
-        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height,72px)+1.5rem)] lg:justify-end lg:pb-24 lg:pt-40">
+        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height,72px)+1.5rem)] lg:justify-end lg:pb-24 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]">
           <div className="max-w-3xl text-left">
             <p className="mb-3 flex items-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00E58F] sm:mb-4 sm:text-[11px] sm:tracking-[-0.02em]">
               <span
@@ -33,7 +33,7 @@ export function LaunchHero() {
               VIRTUAL PRODUCT LAUNCH AND EVENTS
             </p>
 
-            <h1 className="max-w-2xl text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="max-w-2xl text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[clamp(2.75rem,2.2vw+1.5rem,3.75rem)]">
               Give your product
               <br />
               the reveal it deserves.

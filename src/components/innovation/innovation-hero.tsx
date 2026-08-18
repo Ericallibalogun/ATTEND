@@ -31,7 +31,7 @@ export function InnovationHero() {
       </div>
 
       <div className="relative z-10 flex flex-1 flex-col px-5 sm:px-8 lg:px-12">
-        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height,72px)+1.5rem)] lg:justify-end lg:pb-28 lg:pt-32">
+        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height,72px)+1.5rem)] lg:justify-end lg:pb-28 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]">
           <div className="max-w-2xl text-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             <p className="mb-3 flex items-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00E58F] sm:mb-6 sm:text-xs sm:tracking-[-0.02em]">
               <span

@@ -122,7 +122,7 @@ function HeroSlideContent({
         />
         {eyebrow}
       </p>
-      <h1 className="max-w-[814px] whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-[2.25rem] md:text-[3rem] lg:text-[4.25rem]">
+      <h1 className="max-w-[814px] whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-[2.25rem] md:text-[3rem] lg:text-[clamp(2.75rem,2.2vw+1.5rem,4.25rem)]">
         {headline}
       </h1>
       {description ? (
@@ -227,7 +227,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
 
       {/* Desktop mockup overlay for Get Started */}
       {isAppSlide && (
-        <div className="pointer-events-none absolute bottom-0 right-0 z-[5] hidden h-[88vh] w-[66vw] lg:block xl:h-[94vh] xl:w-[68vw]">
+        <div className="pointer-events-none absolute bottom-0 right-0 z-[5] hidden h-[min(88vh,820px)] w-[min(66vw,920px)] lg:block xl:h-[min(94vh,860px)] xl:w-[min(62vw,960px)]">
           <Image
             src={slide.image}
             alt=""
@@ -240,10 +240,10 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       )}
 
       <div
-        className={`relative z-10 flex flex-1 flex-col px-5 sm:px-8 md:px-10 lg:px-14 ${
+        className={`relative z-10 flex flex-1 flex-col px-5 sm:px-8 md:px-10 lg:px-16 ${
           isAppSlide
-            ? "pb-8 pt-[calc(var(--home-header-height,72px)+0.75rem)] lg:justify-end lg:pb-24 lg:pt-12"
-            : "justify-end pb-10 pt-[calc(var(--home-header-height,72px)+1rem)] sm:pb-16 lg:pb-24 lg:pt-12"
+            ? "pb-8 pt-[calc(var(--home-header-height,72px)+0.75rem)] sm:pb-16 lg:justify-end lg:pb-24 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]"
+            : "justify-end pb-10 pt-[calc(var(--home-header-height,72px)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]"
         }`}
       >
         {/* Mobile Get Started: full-width mockups above copy (Figma) */}

@@ -22,7 +22,7 @@ export function AgmsHero() {
 
       <div className="relative z-10 flex flex-1 flex-col px-5 sm:px-8 md:px-10 lg:px-14">
         {/* Mobile: vertically centered copy (Figma). Desktop: bottom-anchored. */}
-        <div className="flex flex-1 flex-col justify-center pt-[var(--home-header-height,72px)] pb-8 sm:pb-12 lg:justify-end lg:pb-24 lg:pt-12">
+        <div className="flex flex-1 flex-col justify-center pt-[var(--home-header-height,72px)] pb-8 sm:pb-12 lg:justify-end lg:pb-24 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]">
           <div className="max-w-[814px] text-left">
             <p className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-accent sm:mb-5 sm:gap-2.5 sm:text-[11px] sm:tracking-[-0.02em]">
               <span
