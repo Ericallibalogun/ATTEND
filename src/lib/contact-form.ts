@@ -6,7 +6,7 @@ const EVENTS_CONTACT_TO =
 
 const CONTACT_FROM =
   process.env.CONTACT_FORM_FROM_EMAIL ??
-  'Attend Contact <notifications@experienceattend.com>'
+  'Attend Contact <contact@experienceattend.com>'
 
 const AGM_INTENTS = new Set(['host-agm', 'join-agm'])
 
