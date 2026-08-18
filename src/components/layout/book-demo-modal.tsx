@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { sendContactForm } from "@/lib/contact-form";
 
 type BookDemoContextType = {
   isOpen: boolean;
@@ -83,18 +84,16 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Always show success for now; send email in the background when configured.
-    void fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        fullName: formData.get("fullName"),
-        email: formData.get("email"),
-        phone: formData.get("phone"),
-        organization: formData.get("organization"),
-        intent: formData.get("intent"),
-        additionalInfo: formData.get("additionalInfo"),
-      }),
+    const intent = String(formData.get("intent") ?? "");
+
+    // FormSubmit must be called from the browser — it rejects server-side requests.
+    void sendContactForm({
+      fullName: String(formData.get("fullName") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      phone: String(formData.get("phone") ?? ""),
+      organization: String(formData.get("organization") ?? ""),
+      intent,
+      additionalInfo: String(formData.get("additionalInfo") ?? ""),
     }).catch(() => {});
 
     setSubmitted(true);
