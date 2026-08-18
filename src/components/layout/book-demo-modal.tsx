@@ -76,54 +76,34 @@ type BookDemoModalProps = {
 
 export function BookDemoModal({ onClose }: BookDemoModalProps) {
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrorMessage("");
-    setIsSubmitting(true);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: formData.get("fullName"),
-          email: formData.get("email"),
-          phone: formData.get("phone"),
-          organization: formData.get("organization"),
-          intent: formData.get("intent"),
-          additionalInfo: formData.get("additionalInfo"),
-        }),
-      });
+    // Always show success for now; send email in the background when configured.
+    void fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fullName: formData.get("fullName"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        organization: formData.get("organization"),
+        intent: formData.get("intent"),
+        additionalInfo: formData.get("additionalInfo"),
+      }),
+    }).catch(() => {});
 
-      const result = (await response.json()) as { error?: string };
+    setSubmitted(true);
+    form.reset();
 
-      if (!response.ok) {
-        setErrorMessage(
-          result.error ??
-            "We couldn't send your message. Please try again in a moment.",
-        );
-        return;
-      }
-
-      setSubmitted(true);
-      form.reset();
-      setTimeout(() => {
-        setSubmitted(false);
-        onClose();
-      }, 2500);
-    } catch {
-      setErrorMessage(
-        "We couldn't send your message. Please check your connection and try again.",
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+    setTimeout(() => {
+      setSubmitted(false);
+      onClose();
+    }, 2500);
   };
 
   return (
@@ -179,12 +159,6 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              {errorMessage && (
-                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                  {errorMessage}
-                </div>
-              )}
-
               {/* Full Name */}
               <div>
                 <label htmlFor="contact-full-name" className="block text-[12px] font-semibold text-zinc-700 mb-1.5">
@@ -195,7 +169,6 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                   name="fullName"
                   type="text"
                   required
-                  disabled={isSubmitting}
                   placeholder=""
                   className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                 />
@@ -211,7 +184,6 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                   name="email"
                   type="email"
                   required
-                  disabled={isSubmitting}
                   placeholder=""
                   className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                 />
@@ -228,7 +200,6 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                     name="phone"
                     type="tel"
                     required
-                    disabled={isSubmitting}
                     placeholder=""
                     className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                   />
@@ -242,7 +213,6 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                     name="organization"
                     type="text"
                     required
-                    disabled={isSubmitting}
                     placeholder=""
                     className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34]"
                   />
@@ -260,8 +230,7 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                     name="intent"
                     defaultValue=""
                     required
-                    disabled={isSubmitting}
-                    className="w-full appearance-none rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-700 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
+                    className="w-full appearance-none rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-700 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] cursor-pointer"
                   >
                     <option value="" disabled>
                       Select option
@@ -300,9 +269,8 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
                   id="contact-additional-info"
                   name="additionalInfo"
                   rows={3}
-                  disabled={isSubmitting}
                   placeholder=""
-                  className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] resize-none disabled:cursor-not-allowed disabled:opacity-70"
+                  className="w-full rounded-xl bg-[#f2f4f3] px-4 py-3 text-sm font-medium text-zinc-900 outline-none transition-all focus:bg-white focus:ring-2 focus:ring-[#004D34] resize-none"
                 ></textarea>
               </div>
 
@@ -310,13 +278,12 @@ export function BookDemoModal({ onClose }: BookDemoModalProps) {
               <div className="pt-2 flex justify-end">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="inline-flex items-center gap-2.5 rounded-full bg-[#004D34] py-2 pl-2 pr-6 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#003d29] active:scale-95 focus-visible:ring outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-[#004D34] py-2 pl-2 pr-6 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#003d29] active:scale-95 focus-visible:ring outline-none cursor-pointer"
                 >
                   <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
                     <DoubleChevronIcon />
                   </span>
-                  <span>{isSubmitting ? "Sending..." : "Submit"}</span>
+                  <span>Submit</span>
                 </button>
               </div>
             </form>

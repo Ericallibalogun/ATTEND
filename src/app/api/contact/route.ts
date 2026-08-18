@@ -79,11 +79,8 @@ export async function POST(req: NextRequest) {
 
     const apiKey = process.env.RESEND_API_KEY
     if (!apiKey) {
-      console.error('RESEND_API_KEY is not configured')
-      return NextResponse.json(
-        { error: 'Email service is not configured yet.' },
-        { status: 503 },
-      )
+      console.warn('RESEND_API_KEY is not configured - skipping email send')
+      return NextResponse.json({ success: true, emailSkipped: true })
     }
 
     const { text, html } = buildEmailContent({
