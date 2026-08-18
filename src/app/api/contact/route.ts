@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 })
     }
 
-    const { ok, result } = await sendContactForm({
+    const result = await sendContactForm({
       fullName,
       email,
       phone,
@@ -32,15 +32,18 @@ export async function POST(req: NextRequest) {
       additionalInfo: body.additionalInfo?.trim(),
     })
 
-    if (!ok) {
-      console.error('FormSubmit error:', result)
+    if (!result.ok) {
+      console.error('Postmark error:', result.error)
       return NextResponse.json(
         { error: 'Unable to send your message right now.' },
         { status: 502 },
       )
     }
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({
+      success: true,
+      ...(result.skipped ? { emailSkipped: true } : {}),
+    })
   } catch (error) {
     console.error('Contact form error:', error)
     return NextResponse.json({ error: 'Something went wrong.' }, { status: 500 })
