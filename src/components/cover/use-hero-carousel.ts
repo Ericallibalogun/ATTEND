@@ -1,32 +1,33 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { heroSlides } from "@/lib/site";
 
 const AUTO_ADVANCE_MS = 3000;
 
 export function useHeroCarousel() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
   const total = heroSlides.length;
 
-  const goTo = useCallback(
-    (nextIndex: number) => {
-      setIndex((nextIndex + total) % total);
-    },
-    [total],
-  );
+  const prev = useCallback(() => {
+    setIndex((current) => (current - 1 + total) % total);
+  }, [total]);
 
-  const prev = useCallback(() => goTo(index - 1), [goTo, index]);
-  const next = useCallback(() => goTo(index + 1), [goTo, index]);
+  const next = useCallback(() => {
+    setIndex((current) => (current + 1) % total);
+  }, [total]);
 
   useEffect(() => {
-    if (paused) return;
-    const timer = window.setInterval(() => {
+    const tick = () => {
+      if (pausedRef.current || document.hidden) return;
       setIndex((current) => (current + 1) % total);
-    }, AUTO_ADVANCE_MS);
+    };
+
+    const timer = window.setInterval(tick, AUTO_ADVANCE_MS);
+
     return () => window.clearInterval(timer);
-  }, [paused, total]);
+  }, [total]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -42,7 +43,11 @@ export function useHeroCarousel() {
     slide: heroSlides[index],
     prev,
     next,
-    pause: () => setPaused(true),
-    resume: () => setPaused(false),
+    pause: () => {
+      pausedRef.current = true;
+    },
+    resume: () => {
+      pausedRef.current = false;
+    },
   };
 }

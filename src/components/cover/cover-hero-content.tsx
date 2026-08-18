@@ -202,15 +202,13 @@ type CoverHeroContentProps = {
 };
 
 export function CoverHeroContent({ id }: CoverHeroContentProps) {
-  const { index, slide, prev, next, pause, resume } = useHeroCarousel();
+  const { index, slide, prev, next } = useHeroCarousel();
   const isAppSlide = Boolean(slide.isAppButtons);
 
   return (
     <section
       id={id}
       className="relative flex min-h-[100svh] flex-col overflow-hidden"
-      onMouseEnter={pause}
-      onMouseLeave={resume}
     >
       <HeroBackgrounds activeIndex={index} />
 
