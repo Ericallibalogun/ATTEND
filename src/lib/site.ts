@@ -31,6 +31,7 @@ export type HeroSlide = {
   label: string;
   href: string;
   image: string;
+  backgroundImage?: string;
   eyebrow: string;
   headline: string;
   description: string;
@@ -74,6 +75,7 @@ export const heroSlides: HeroSlide[] = [
     label: "Get Started",
     href: "https://app.experienceattend.com",
     image: "/svg_vector_2026-08-03 (2).webp",
+    backgroundImage: "/HERO SECTION VARIANTS.webp",
     eyebrow: "GET STARTED",
     headline: "Stay connected\nwherever you are",
     description: "",

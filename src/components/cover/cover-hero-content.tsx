@@ -9,6 +9,9 @@ import {
 import { useComingSoonModal } from "@/components/layout/coming-soon-modal";
 import { heroSlides } from "@/lib/site";
 
+const HERO_APP_BG_WIDTH = 1440;
+const HERO_APP_BG_HEIGHT = 810;
+
 function DoubleChevronIcon({ className = "text-white" }: { className?: string }) {
   return (
     <svg
@@ -148,17 +151,19 @@ function HeroBackgrounds({ activeIndex }: { activeIndex: number }) {
           return (
             <div
               key={slide.image}
-              className="hero-bg-layer absolute inset-0 bg-[#062419]"
+              className="hero-bg-layer absolute inset-0"
               data-active={isActive}
               style={{ zIndex: isActive ? 1 : 0 }}
               aria-hidden={!isActive}
             >
               <Image
-                src="/Rectangle 14 (1).webp"
+                src={slide.backgroundImage ?? "/Rectangle 14 (1).webp"}
                 alt=""
-                fill
+                width={HERO_APP_BG_WIDTH}
+                height={HERO_APP_BG_HEIGHT}
                 priority={isActive}
-                className="object-cover object-center"
+                quality={100}
+                className="absolute left-1/2 top-1/2 h-auto w-auto min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 object-cover object-center"
                 sizes="100vw"
               />
             </div>
@@ -209,16 +214,18 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
     >
       <HeroBackgrounds activeIndex={index} />
 
-      <div className="pointer-events-none absolute -left-16 -top-16 z-[2] size-[280px] opacity-85 mix-blend-screen sm:size-[400px] lg:size-[600px]">
-        <Image
-          src="/Ellipse 433.webp"
-          alt=""
-          fill
-          priority
-          className="object-contain object-top-left"
-          sizes="(max-width: 640px) 280px, 600px"
-        />
-      </div>
+      {!isAppSlide && (
+        <div className="pointer-events-none absolute -left-16 -top-16 z-[2] size-[280px] opacity-85 mix-blend-screen sm:size-[400px] lg:size-[600px]">
+          <Image
+            src="/Ellipse 433.webp"
+            alt=""
+            fill
+            priority
+            className="object-contain object-top-left"
+            sizes="(max-width: 640px) 280px, 600px"
+          />
+        </div>
+      )}
 
       {/* Desktop mockup overlay for Get Started */}
       {isAppSlide && (
