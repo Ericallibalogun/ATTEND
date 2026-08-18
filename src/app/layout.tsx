@@ -17,10 +17,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  icons: {
-    icon: [{ url: "/Favicon.png", type: "image/png" }],
-    apple: "/Favicon.png",
-  },
 };
 
 export default function RootLayout({
