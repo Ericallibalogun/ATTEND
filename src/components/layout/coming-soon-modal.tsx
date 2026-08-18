@@ -99,24 +99,29 @@ export function ComingSoonModal({ onClose }: ComingSoonModalProps) {
             <span className="mr-2 inline-block size-1.5 bg-[#004D34]" aria-hidden />
             Coming Soon
           </p>
-          <h2 className="mx-auto max-w-md text-[1.75rem] font-bold leading-tight tracking-tight text-zinc-900 sm:text-[2rem]">
-            The Attend App is Coming Soon
+          <h2 className="mx-auto max-w-[308px] text-[2.5rem] font-medium leading-[1.1] tracking-[-0.02em] text-zinc-900">
+            The Attend App is
+            <br />
+            Coming Soon
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-zinc-600 sm:text-[15px]">
             We&apos;re putting the finishing touches on the Attend app. You&apos;ll
-            soon be able to participate in AGMs, hackathons and events right from
-            your device.
+            <br />
+            soon be able to participate in AGMs, hackathons and
+            <br />
+            events right from your device.
           </p>
 
-          <div className="relative mx-auto mt-6 h-[220px] w-full max-w-[420px] sm:mt-8 sm:h-[260px]">
+          <div className="relative mx-auto mt-2 w-full max-w-[420px] sm:mt-3">
             <Image
               src="/Group 6102.webp"
               alt="Attend app preview on mobile devices"
-              fill
-              className="object-contain object-bottom"
+              width={482}
+              height={235}
+              className="h-auto w-full object-contain"
               priority
               quality={100}
-              sizes="(max-width: 640px) 90vw, 420px"
+              unoptimized
             />
           </div>
         </div>
