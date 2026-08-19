@@ -30,8 +30,8 @@ export function InnovationHero() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[55%] bg-gradient-to-t from-black/80 via-black/35 to-transparent lg:h-[65%] lg:from-black/90 lg:via-black/45" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col px-5 sm:px-8 lg:px-12">
-        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height,72px)+1.5rem)] lg:justify-end lg:pb-28 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]">
+      <div className="section-x relative z-10 flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height)+1.5rem)] lg:justify-end lg:pb-28 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
           <div className="max-w-2xl text-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             <p className="mb-3 flex items-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00E58F] sm:mb-6 sm:text-xs sm:tracking-[-0.02em]">
               <span
@@ -40,7 +40,7 @@ export function InnovationHero() {
               />
               INNOVATION CHALLENGES & HACKATHONS
             </p>
-            <h1 className="text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[clamp(2.75rem,2.2vw+1.5rem,3.75rem)]">
               Where ideas race
               <br />
               the clock.

@@ -31,7 +31,7 @@ const features = [
 export function AgmsBoardroom() {
   return (
     <section className="bg-white">
-      <div className="w-full px-4 py-8 sm:px-8 sm:py-10 lg:px-16 lg:py-14">
+      <div className="section-x w-full py-8 sm:py-10 lg:py-14">
         <div className="w-full bg-[#EFF5F3] p-5 sm:p-10 lg:p-14">
           <ScrollReveal yOffset={60}>
             <div className="grid items-stretch gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-10 xl:gap-12">

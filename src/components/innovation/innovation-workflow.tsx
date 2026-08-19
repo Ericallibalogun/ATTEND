@@ -101,7 +101,7 @@ export function InnovationWorkflow() {
   return (
     <section className="bg-[#F8FBF9] py-10 text-zinc-900 sm:py-14 lg:py-20">
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-4 sm:px-6 lg:px-12">
+        <div className="section-x w-full">
         <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           
           {/* Left Content */}

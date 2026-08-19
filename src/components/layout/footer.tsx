@@ -30,7 +30,7 @@ export function Footer() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto w-full px-6 py-14 sm:py-16 lg:px-12 xl:py-20">
+      <div className="section-x relative z-10 mx-auto w-full py-14 sm:py-16 xl:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1.5fr] xl:grid-cols-[1fr_1.5fr] lg:gap-20">
           
           {/* Left / Top Column */}

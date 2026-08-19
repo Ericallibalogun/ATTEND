@@ -56,7 +56,7 @@ function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
             className="size-5 shrink-0 object-contain"
           />
           <span className="flex flex-col text-left leading-none">
-            <span className="whitespace-nowrap text-[7.5px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[8px]">
+            <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[11px]">
               GET IT ON
             </span>
             <span className="text-[11px] font-semibold text-zinc-900 sm:text-[12px]">
@@ -78,7 +78,7 @@ function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
             className="size-5 shrink-0 object-contain"
           />
           <span className="flex flex-col text-left leading-none">
-            <span className="whitespace-nowrap text-[7.5px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[8px]">
+            <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[11px]">
               Download on the
             </span>
             <span className="text-[11px] font-semibold text-zinc-900 sm:text-[12px]">
@@ -122,7 +122,7 @@ function HeroSlideContent({
   return (
     <div
       key={slideKey}
-      className={`hero-slide-animate w-full max-w-[814px] ${
+      className={`hero-slide-animate w-full content-max ${
         isAppButtons ? "text-center" : "text-left"
       }`}
     >
@@ -141,7 +141,7 @@ function HeroSlideContent({
         className={
           isAppButtons
             ? "max-w-[814px] whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white lowercase sm:text-[2.25rem] md:text-[3rem] lg:normal-case lg:text-[clamp(3rem,2.8vw+1.25rem,4.75rem)] lg:leading-[1.1]"
-            : "max-w-[814px] whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-[2.25rem] md:text-[3rem] lg:text-[clamp(2.75rem,2.2vw+1.5rem,4.25rem)]"
+            : "content-max whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-[2.25rem] md:text-[3rem] lg:text-[clamp(2.75rem,2.2vw+1.5rem,4.25rem)]"
         }
       >
         {headline}
@@ -270,15 +270,15 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       )}
 
       <div
-        className={`relative z-10 flex flex-1 flex-col px-5 sm:px-8 md:px-10 lg:px-16 ${
+        className={`relative z-10 flex flex-1 flex-col section-x ${
           isAppSlide
-            ? "items-center pb-8 pt-[calc(var(--home-header-height,72px)+0.75rem)] lg:pb-0 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]"
-            : "justify-end pb-10 pt-[calc(var(--home-header-height,72px)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height,72px)+1.5rem)]"
+            ? "items-center pb-8 pt-[calc(var(--home-header-height)+0.75rem)] lg:pb-0 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
+            : "justify-end pb-10 pt-[calc(var(--home-header-height)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
         }`}
       >
         {isAppSlide ? (
           <>
-            <div className="order-2 flex w-full max-w-[814px] flex-col items-center lg:order-none lg:pt-4 xl:pt-6">
+            <div className="order-2 flex w-full content-max flex-col items-center lg:order-none lg:pt-4 xl:pt-6">
               <HeroSlideContent
                 slideKey={index}
                 eyebrow={slide.eyebrow}
@@ -308,7 +308,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
             </div>
           </>
         ) : (
-          <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,750px)_1fr] lg:gap-12">
+          <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
             <HeroSlideContent
               slideKey={index}
               eyebrow={slide.eyebrow}

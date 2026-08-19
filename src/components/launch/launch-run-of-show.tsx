@@ -94,7 +94,7 @@ export function LaunchRunOfShow() {
   return (
     <section className="bg-white py-10 text-zinc-900 sm:py-16 lg:py-24">
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-4 sm:px-6 lg:px-12">
+        <div className="section-x w-full">
         <div className="grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           
           {/* Left Content */}

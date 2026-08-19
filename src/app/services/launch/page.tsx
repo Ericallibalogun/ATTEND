@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function LaunchServicePage() {
   return (
-    <div className="relative min-h-screen bg-white font-sans text-zinc-900 selection:bg-[#004D34] selection:text-white">
+    <div className="relative min-h-screen overflow-x-clip bg-white font-sans text-zinc-900 selection:bg-[#004D34] selection:text-white">
       <HomeHeader heroId="hero-section" />
       <main className="relative">
         <LaunchHero />

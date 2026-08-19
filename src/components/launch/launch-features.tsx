@@ -39,7 +39,7 @@ const valueProps = [
 export function LaunchFeatures() {
   return (
     <section className="bg-white text-zinc-900">
-      <div className="w-full px-4 py-8 sm:px-8 sm:py-12 lg:px-16 lg:py-16">
+      <div className="section-x w-full py-8 sm:py-12 lg:py-16">
         <ScrollReveal yOffset={60}>
           <div className="w-full bg-[#EFF5F3] p-5 sm:p-10 lg:p-14">
             <div className="mb-8 text-left sm:mb-12 sm:text-center lg:mb-14">

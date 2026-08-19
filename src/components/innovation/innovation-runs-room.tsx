@@ -44,7 +44,7 @@ export function InnovationRunsRoom() {
   return (
     <section className="relative w-full overflow-hidden bg-[#083827] py-10 text-white sm:py-16 lg:py-20">
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-4 sm:px-10 lg:px-14">
+        <div className="section-x w-full">
           <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-14">
             {/* Image — below content on mobile (Figma) */}
             <div className="relative order-2 h-[240px] w-full overflow-hidden shadow-xl sm:min-h-[380px] sm:h-auto lg:order-1 lg:col-span-6 lg:min-h-[560px]">

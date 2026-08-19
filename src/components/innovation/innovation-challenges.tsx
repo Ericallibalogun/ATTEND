@@ -17,7 +17,7 @@ export function InnovationChallenges() {
   return (
     <section className="bg-white py-8 text-zinc-900 sm:py-10 lg:py-14">
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-4 sm:px-6 lg:px-12">
+        <div className="section-x w-full">
           <div className="mb-8 text-center sm:mb-12">
             <p className="mb-3 flex items-center justify-center text-[11px] font-semibold uppercase tracking-widest text-primary sm:mb-4">
               <span

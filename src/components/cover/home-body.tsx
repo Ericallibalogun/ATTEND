@@ -47,7 +47,7 @@ function SectionOne() {
       className="bg-white"
       style={{ scrollMarginTop: "var(--home-header-height, 0px)" }}
     >
-      <div className="w-full px-4 pb-12 pt-6 sm:px-8 sm:pb-16 sm:pt-8 lg:px-16 lg:pb-24 lg:pt-10">
+      <div className="section-x w-full pb-12 pt-6 sm:pb-16 sm:pt-8 lg:pb-24 lg:pt-10">
         <div className="w-full bg-[#EFF5F3] p-5 sm:p-10 lg:p-16">
           <ScrollReveal>
             <div className="grid gap-5 lg:grid-cols-12 lg:items-start lg:gap-12">
@@ -124,7 +124,7 @@ function SectionTwo() {
   return (
     <section className="bg-white py-10 sm:py-12 lg:py-20">
       <ScrollReveal yOffset={60}>
-        <div className="mx-auto w-full px-4 sm:px-6 lg:px-12">
+        <div className="section-x mx-auto w-full">
           <div className="grid items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
             <div className="flex h-full flex-col items-start lg:col-span-5">
               <p className="mb-3 flex items-center text-xs font-semibold uppercase tracking-widest text-primary">

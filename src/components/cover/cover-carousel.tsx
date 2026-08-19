@@ -71,7 +71,7 @@ export function CoverCarousel({ index, onPrev, onNext }: CoverCarouselProps) {
 
   return (
     /* Fixed footprint so bar + arrows stay the same on every slide */
-    <div className="flex w-[clamp(280px,28vw,360px)] flex-col items-stretch">
+    <div className="flex w-full max-w-[min(100%,360px)] flex-col items-stretch">
       <div className="relative mb-2.5 h-px w-full bg-white/25">
         <div
           className="absolute top-0 h-px bg-white transition-all duration-500 ease-out"

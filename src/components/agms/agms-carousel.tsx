@@ -3,7 +3,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 
 const carouselCards = [
@@ -64,20 +63,23 @@ export function AgmsCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const scrollDistanceRef = useRef(0);
   const [scrollDistance, setScrollDistance] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["start start", "end end"],
   });
+
+  scrollDistanceRef.current = scrollDistance;
 
   const measure = useCallback(() => {
     const viewport = viewportRef.current;
     const track = trackRef.current;
     if (!viewport || !track) return;
 
-    // Distance so the last card ends flush with the right edge of the mint container
     const distance = Math.max(0, track.scrollWidth - viewport.clientWidth);
-    setScrollDistance(distance);
+    setScrollDistance((prev) => (prev === distance ? prev : distance));
   }, []);
 
   useEffect(() => {
@@ -96,7 +98,9 @@ export function AgmsCarousel() {
     };
   }, [measure]);
 
-  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
+  const x = useTransform(scrollYProgress, (progress) => {
+    return -progress * scrollDistanceRef.current;
+  });
 
   const goToCard = (targetIdx: number) => {
     if (!containerRef.current) return;

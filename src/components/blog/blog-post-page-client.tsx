@@ -60,7 +60,7 @@ export function BlogPostPageClient({
     <>
       {/* Full-width Top Hero Image — clear fixed header */}
       <section
-        className="w-full px-4 pb-6 sm:px-8 sm:pb-10 lg:px-16"
+        className="section-x w-full pb-6 sm:pb-10"
         style={{
           paddingTop: "calc(var(--home-header-height, 72px) + 1.25rem)",
         }}
@@ -78,7 +78,7 @@ export function BlogPostPageClient({
       </section>
 
       {/* Main Content Layout (Sidebar + Article Body) */}
-      <section className="w-full px-4 pb-14 sm:px-8 sm:pb-20 lg:px-16">
+      <section className="section-x w-full pb-14 sm:pb-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           
           {/* Left Sidebar: Newsletter Subscription (Hidden on Mobile) */}

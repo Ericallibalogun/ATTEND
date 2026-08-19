@@ -36,7 +36,7 @@ const stages = [
 export function AgmsConfidence() {
   return (
     <section id="confidence" className="bg-white text-zinc-900">
-      <div className="w-full px-4 py-10 sm:px-8 sm:py-12 lg:px-16 lg:py-16">
+      <div className="section-x w-full py-10 sm:py-12 lg:py-16">
         <ScrollReveal yOffset={60}>
           <div className="mb-8 text-center sm:mb-12 lg:mb-14">
             <p className="mb-3 flex items-center justify-center text-[11px] font-semibold uppercase tracking-widest text-primary">

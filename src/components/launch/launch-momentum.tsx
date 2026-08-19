@@ -5,7 +5,7 @@ export function LaunchMomentum() {
   return (
     <section className="bg-white py-10 text-zinc-900 sm:py-16 lg:py-24">
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-4 sm:px-6 lg:px-12">
+        <div className="section-x w-full">
           <div className="mb-8 w-full sm:mb-12">
             <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34] sm:mb-4">
               <span
@@ -18,7 +18,7 @@ export function LaunchMomentum() {
               <h2 className="text-[1.75rem] font-medium leading-tight tracking-tight text-zinc-900 sm:text-3xl md:text-4xl lg:col-span-6 lg:text-5xl">
                 The launch ends. The
                 <br />
-                <span className="whitespace-nowrap">
+                <span className="sm:whitespace-nowrap">
                   momentum shouldn&apos;t.
                 </span>
               </h2>

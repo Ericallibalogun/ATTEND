@@ -55,7 +55,7 @@ export function FooterCta() {
           </div>
 
           {/* Main Content Layout */}
-          <div className="relative z-10 mx-auto w-full px-4 sm:px-8 lg:px-16 pt-12 pb-0 sm:pt-20 sm:pb-0">
+          <div className="section-x relative z-10 mx-auto w-full pt-12 pb-0 sm:pt-20 sm:pb-0">
             <div className="grid items-end gap-4 sm:gap-8 lg:grid-cols-12 lg:gap-2">
               <div className="flex flex-col items-start pb-2 sm:pb-8 lg:col-span-6 lg:pb-24">
                 <p className="mb-2.5 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-[#004D34] sm:mb-3.5">
@@ -85,7 +85,7 @@ export function FooterCta() {
                         className="size-4 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
-                        <span className="whitespace-nowrap text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
+                        <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[11px]">
                           GET IT ON
                         </span>
                         <span className="text-[11px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">
@@ -107,7 +107,7 @@ export function FooterCta() {
                         className="size-4 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
-                        <span className="whitespace-nowrap text-[7px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[9px]">
+                        <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[11px]">
                           Download on the
                         </span>
                         <span className="text-[11px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">

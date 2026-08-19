@@ -44,7 +44,7 @@ export function GalleryShowcase({
       }}
     >
       <ScrollReveal yOffset={60}>
-        <div className="w-full px-4 sm:px-8 lg:px-16">
+        <div className="section-x w-full">
           <div className="mb-7 sm:mb-10">
             <p className="mb-2.5 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#004D34] sm:mb-3">
               <span

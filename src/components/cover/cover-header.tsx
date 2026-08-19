@@ -51,7 +51,7 @@ export function CoverHeader({
             : "border-b border-zinc-200/80 bg-white/95 backdrop-blur-md shadow-sm z-20 py-2 lg:py-2.5"
         } ${className}`}
       >
-      <div className="mx-auto w-full px-8 sm:px-12 lg:px-16">
+      <div className="section-x mx-auto w-full">
         <div className="flex items-center justify-between gap-6">
           <Link
             href="/"
@@ -96,7 +96,7 @@ export function CoverHeader({
 
           <button
             type="button"
-            className="flex items-center justify-center p-1.5 lg:hidden"
+            className="flex size-11 items-center justify-center lg:hidden"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open mobile menu"
           >
@@ -116,7 +116,7 @@ export function CoverHeader({
 
       {isHero ? (
         <>
-          <nav className="mx-auto mt-4 hidden w-full px-8 sm:px-12 lg:grid lg:grid-cols-5 lg:gap-6 lg:px-16">
+          <nav className="section-x mx-auto mt-4 hidden w-full lg:grid lg:grid-cols-5 lg:gap-6">
             {siteConfig.coverNav.map((item) => (
               <Link
                 key={item.href}
@@ -134,7 +134,7 @@ export function CoverHeader({
           </nav>
         </>
       ) : (
-        <nav className="mx-auto hidden w-full px-8 sm:px-12 mt-4 pb-2 lg:grid lg:grid-cols-5 lg:gap-6 lg:px-16">
+        <nav className="section-x mx-auto mt-4 hidden w-full pb-2 lg:grid lg:grid-cols-5 lg:gap-6">
             {siteConfig.coverNav.map((item) => (
             <Link
               key={item.href}
@@ -166,7 +166,7 @@ export function CoverHeader({
             </Link>
             <button
               type="button"
-              className="flex items-center justify-center p-2 text-zinc-900"
+              className="flex size-11 items-center justify-center text-zinc-900"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Close mobile menu"
             >
@@ -204,7 +204,7 @@ export function CoverHeader({
                 openModal();
               }}
               type="button"
-              className="flex w-full items-center justify-center rounded-full border border-primary/25 bg-transparent py-3 text-[13px] font-semibold text-primary transition-colors hover:bg-primary/5"
+              className="flex min-h-11 w-full items-center justify-center rounded-full border border-primary/25 bg-transparent py-3 text-[13px] font-semibold text-primary transition-colors hover:bg-primary/5"
             >
               Contact us
             </button>
@@ -214,7 +214,7 @@ export function CoverHeader({
                 setIsMobileMenuOpen(false);
                 openComingSoonModal();
               }}
-              className="flex w-full items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
+              className="flex min-h-11 w-full items-center justify-center rounded-full bg-primary py-3 text-[13px] font-semibold text-white transition-opacity hover:opacity-90"
             >
               Login
             </button>

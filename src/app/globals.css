@@ -12,6 +12,35 @@
   --muted-foreground: #71717a;
   --border: rgba(255, 255, 255, 0.1);
   --radius: 2px;
+
+  /* Layout — JS may override header height via ResizeObserver */
+  --home-header-height: 72px;
+  --content-max: 814px;
+  --section-px: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-px: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-px: 4rem;
+  }
+}
+
+html {
+  overflow-x: clip;
+}
+
+.section-x {
+  padding-inline: var(--section-px);
+}
+
+.content-max {
+  max-width: var(--content-max);
 }
 
 @theme inline {

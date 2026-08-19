@@ -131,7 +131,7 @@ export function BlogPageClient({
     <>
       {/* Hero */}
       <section
-        className="w-full px-4 pb-5 sm:px-8 sm:pb-10 lg:px-16"
+        className="section-x w-full pb-5 sm:pb-10"
         style={{
           paddingTop: "calc(var(--home-header-height, 72px) + 1.5rem)",
         }}
@@ -233,7 +233,7 @@ export function BlogPageClient({
         </div>
       </div>
 
-      <section className="w-full px-4 pb-14 pt-6 sm:px-8 sm:pb-20 lg:px-16 lg:pt-0">
+      <section className="section-x w-full pb-14 pt-6 sm:pb-20 lg:pt-0">
         {/* Mobile feed */}
         <div className="flex flex-col gap-10 lg:hidden">
           {filteredPosts.length === 0 ? (
@@ -415,7 +415,7 @@ export function BlogPageClient({
               <>
                 <div className="group overflow-hidden border border-zinc-200/80 bg-white shadow-xs transition-shadow hover:shadow-md">
                   <Link href={`/blog/${featuredPost.slug}`} className="block">
-                    <div className="relative h-[340px] w-full overflow-hidden bg-zinc-100">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100 sm:aspect-[21/9] lg:h-[340px] lg:aspect-auto">
                       <SanityImage
                         src={featuredPost.image}
                         alt={featuredPost.title}

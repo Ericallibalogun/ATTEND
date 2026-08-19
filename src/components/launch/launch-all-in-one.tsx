@@ -68,7 +68,7 @@ export function LaunchAllInOne() {
   return (
     <section className="overflow-hidden bg-[#083827] py-10 text-white sm:py-16 lg:py-24">
       <ScrollReveal yOffset={60}>
-        <div className="mb-8 w-full px-4 sm:mb-12 sm:px-8 lg:mb-14 lg:px-16">
+        <div className="section-x mb-8 w-full sm:mb-12 lg:mb-14">
           <div className="grid items-end gap-5 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-6">
               <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#00E58F] sm:mb-4">
