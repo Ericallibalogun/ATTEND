@@ -4,7 +4,7 @@ export function InnovationHero() {
   return (
     <section
       id="hero-section"
-      className="relative flex h-[450px] flex-col overflow-hidden bg-black text-white lg:min-h-[85vh] lg:h-auto"
+      className="relative flex flex-col overflow-hidden bg-black text-white max-lg:h-[450px] lg:min-h-[100svh]"
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -28,7 +28,7 @@ export function InnovationHero() {
       </div>
 
       <div className="section-x relative z-10 flex flex-1 flex-col">
-        <div className="flex flex-1 flex-col justify-end pb-[60px] pt-[var(--home-header-height)] lg:pb-28 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
+        <div className="flex flex-1 flex-col justify-end max-lg:pb-[60px] max-lg:pt-[var(--home-header-height)] lg:pb-28 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
           <div className="max-w-2xl text-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             <p className="mb-3 flex items-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00E58F] sm:mb-6 sm:text-xs sm:tracking-[-0.02em]">
               <span

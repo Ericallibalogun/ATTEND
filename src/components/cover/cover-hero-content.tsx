@@ -140,7 +140,7 @@ function HeroSlideContent({
       <h1
         className={
           isAppButtons
-            ? "max-w-[814px] whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white lowercase sm:text-[2.25rem] md:text-[3rem] lg:normal-case lg:text-[clamp(3rem,2.8vw+1.25rem,4.75rem)] lg:leading-[1.1]"
+            ? "max-w-[814px] whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white lowercase sm:text-[2.25rem] md:text-[3rem] lg:normal-case lg:text-[clamp(2.25rem,2.4vw+1rem,4.75rem)] lg:leading-[1.1] [@media(max-height:820px)_and_(min-width:1024px)]:lg:text-[clamp(2rem,2vw+0.75rem,3.25rem)]"
             : "content-max whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-[2.25rem] md:text-[3rem] lg:text-[clamp(2.75rem,2.2vw+1.5rem,4.25rem)]"
         }
       >
@@ -156,7 +156,7 @@ function HeroSlideContent({
         </p>
       ) : null}
       <div
-        className={`mt-6 sm:mt-8 ${isAppButtons ? "flex justify-center lg:mt-8" : "text-left"}`}
+        className={`mt-6 sm:mt-8 ${isAppButtons ? "flex justify-center lg:mt-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-4" : "text-left"}`}
       >
         {isAppButtons ? (
           <AppStoreHeroButtons centered />
@@ -252,7 +252,11 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
   return (
     <section
       id={id}
-      className="relative flex min-h-[100svh] flex-col overflow-hidden"
+      className={`relative flex flex-col overflow-hidden ${
+        isAppSlide
+          ? "h-[100svh] max-h-[100svh] min-h-0"
+          : "min-h-[100svh]"
+      }`}
     >
       <HeroBackgrounds activeIndex={index} />
 
@@ -270,15 +274,15 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       )}
 
       <div
-        className={`relative z-10 flex flex-1 flex-col section-x ${
+        className={`relative z-10 flex min-h-0 flex-1 flex-col section-x ${
           isAppSlide
-            ? "items-center pb-8 pt-[calc(var(--home-header-height)+0.75rem)] lg:min-h-[calc(100svh-var(--home-header-height))] lg:justify-between lg:pb-0 lg:pt-[calc(var(--home-header-height)+1rem)]"
+            ? "items-center pb-8 pt-[calc(var(--home-header-height)+0.75rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-[calc(var(--home-header-height)+0.5rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
             : "justify-end pb-10 pt-[calc(var(--home-header-height)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
         }`}
       >
         {isAppSlide ? (
           <>
-            <div className="order-2 flex w-full shrink-0 content-max flex-col items-center lg:order-none lg:pt-2 xl:pt-4">
+            <div className="order-2 flex w-full shrink-0 content-max flex-col items-center lg:order-none">
               <HeroSlideContent
                 slideKey={index}
                 eyebrow={slide.eyebrow}
@@ -303,8 +307,8 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
               />
             </div>
 
-            {/* Desktop mockups — in document flow so copy never overlaps phones */}
-            <div className="order-3 mt-6 hidden w-full shrink-0 justify-center lg:order-none lg:mt-0 lg:flex lg:items-end">
+            {/* Desktop mockups — flex to remaining height so short laptops never clip */}
+            <div className="order-3 mt-6 hidden min-h-0 w-full flex-1 items-end justify-center overflow-hidden lg:order-none lg:mt-0 lg:flex">
               <Image
                 src={slide.image}
                 alt=""
@@ -312,7 +316,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
                 height={HERO_APP_MOCKUP_HEIGHT}
                 priority
                 quality={100}
-                className="h-auto w-[min(720px,78vw)] max-h-[min(40vh,420px)] object-contain object-bottom xl:w-[min(960px,90vw)] xl:max-h-[min(48vh,480px)]"
+                className="h-auto max-h-full w-auto max-w-[min(720px,78vw)] object-contain object-bottom xl:max-w-[min(960px,90vw)]"
                 sizes="(max-width: 1280px) 78vw, 960px"
               />
             </div>

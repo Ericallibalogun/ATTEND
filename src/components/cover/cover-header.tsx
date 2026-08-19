@@ -47,7 +47,7 @@ export function CoverHeader({
       <header
         className={`${
           isHero
-            ? "relative z-20 py-2 lg:py-2.5"
+            ? "relative z-20 py-2 lg:py-2.5 [@media(max-height:820px)_and_(min-width:1024px)]:lg:py-1.5"
             : "border-b border-zinc-200/80 bg-white/95 backdrop-blur-md shadow-sm z-20 py-2 lg:py-2.5"
         } ${className}`}
       >
@@ -116,7 +116,7 @@ export function CoverHeader({
 
       {isHero ? (
         <>
-          <nav className="section-x mx-auto mt-4 hidden w-full lg:grid lg:grid-cols-5 lg:gap-6">
+          <nav className="section-x mx-auto mt-4 hidden w-full lg:grid lg:grid-cols-5 lg:gap-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-4">
             {siteConfig.coverNav.map((item) => (
               <Link
                 key={item.href}

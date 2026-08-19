@@ -4,7 +4,7 @@ export function AgmsHero() {
   return (
     <section
       id="hero-section"
-      className="relative flex h-[450px] flex-col overflow-hidden lg:min-h-[100svh] lg:h-auto"
+      className="relative flex flex-col overflow-hidden max-lg:h-[450px] lg:min-h-[100svh]"
     >
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
@@ -22,7 +22,7 @@ export function AgmsHero() {
 
       <div className="relative z-10 flex flex-1 flex-col section-x">
         {/* Mobile: 450px frame, 60px below copy; desktop: bottom-anchored. */}
-        <div className="flex flex-1 flex-col justify-end pb-[60px] pt-[var(--home-header-height)] lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
+        <div className="flex flex-1 flex-col justify-end max-lg:pb-[60px] max-lg:pt-[var(--home-header-height)] lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
           <div className="content-max text-left">
             <p className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-accent sm:mb-5 sm:gap-2.5 sm:text-[11px] sm:tracking-[-0.02em]">
               <span
