@@ -6,7 +6,7 @@ export function LaunchHero() {
   return (
     <section
       id="hero-section"
-      className="relative flex min-h-[100svh] w-full flex-col overflow-hidden bg-zinc-950 text-white lg:min-h-screen"
+      className="relative flex h-[450px] w-full flex-col overflow-hidden bg-zinc-950 text-white lg:min-h-screen lg:h-auto"
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -22,8 +22,8 @@ export function LaunchHero() {
       </div>
 
       <div className="section-x relative z-10 flex flex-1 flex-col">
-        {/* Mobile: mid-viewport, left-aligned; desktop: bottom-anchored */}
-        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height)+1.5rem)] lg:justify-end lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
+        {/* Mobile: 450px frame, 60px below copy; desktop: bottom-anchored */}
+        <div className="flex flex-1 flex-col justify-end pb-[60px] pt-[var(--home-header-height)] lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
           <div className="max-w-3xl text-left">
             <p className="mb-3 flex items-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00E58F] sm:mb-4 sm:text-[11px] sm:tracking-[-0.02em]">
               <span

@@ -4,7 +4,7 @@ export function InnovationHero() {
   return (
     <section
       id="hero-section"
-      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black text-white lg:min-h-[85vh]"
+      className="relative flex h-[450px] flex-col overflow-hidden bg-black text-white lg:min-h-[85vh] lg:h-auto"
     >
       <div className="absolute inset-0 z-0">
         <Image
@@ -23,15 +23,12 @@ export function InnovationHero() {
         {/* Logo + hamburger readability */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-48 bg-gradient-to-b from-black/80 via-black/45 to-transparent sm:h-56" />
 
-        {/* Mid band for centered mobile copy */}
-        <div className="pointer-events-none absolute inset-x-0 top-[28%] z-[2] h-[50%] bg-gradient-to-b from-transparent via-black/50 to-transparent lg:hidden" />
-
-        {/* Bottom / desktop text anchor */}
+        {/* Bottom text readability */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[55%] bg-gradient-to-t from-black/80 via-black/35 to-transparent lg:h-[65%] lg:from-black/90 lg:via-black/45" />
       </div>
 
       <div className="section-x relative z-10 flex flex-1 flex-col">
-        <div className="flex flex-1 flex-col justify-center pb-10 pt-[calc(var(--home-header-height)+1.5rem)] lg:justify-end lg:pb-28 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
+        <div className="flex flex-1 flex-col justify-end pb-[60px] pt-[var(--home-header-height)] lg:pb-28 lg:pt-[calc(var(--home-header-height)+1.5rem)]">
           <div className="max-w-2xl text-left drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
             <p className="mb-3 flex items-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00E58F] sm:mb-6 sm:text-xs sm:tracking-[-0.02em]">
               <span
