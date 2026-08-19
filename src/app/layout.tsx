@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   icons: {
     icon: [{ url: "/icon.png", type: "image/png", sizes: "32x32" }],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.webp", sizes: "180x180", type: "image/webp" }],
   },
 };
 
