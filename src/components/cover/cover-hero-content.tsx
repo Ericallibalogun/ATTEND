@@ -272,13 +272,13 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       <div
         className={`relative z-10 flex flex-1 flex-col section-x ${
           isAppSlide
-            ? "items-center pb-8 pt-[calc(var(--home-header-height)+0.75rem)] lg:pb-0 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
+            ? "items-center pb-8 pt-[calc(var(--home-header-height)+0.75rem)] lg:min-h-[calc(100svh-var(--home-header-height))] lg:justify-between lg:pb-0 lg:pt-[calc(var(--home-header-height)+1rem)]"
             : "justify-end pb-10 pt-[calc(var(--home-header-height)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
         }`}
       >
         {isAppSlide ? (
           <>
-            <div className="order-2 flex w-full content-max flex-col items-center lg:order-none lg:pt-4 xl:pt-6">
+            <div className="order-2 flex w-full shrink-0 content-max flex-col items-center lg:order-none lg:pt-2 xl:pt-4">
               <HeroSlideContent
                 slideKey={index}
                 eyebrow={slide.eyebrow}
@@ -290,8 +290,8 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
               />
             </div>
 
-            {/* Mobile mockups */}
-            <div className="order-1 relative mx-auto mb-5 h-[42svh] min-h-[280px] w-full max-w-[min(960px,90vw)] sm:mb-6 sm:h-[46svh] lg:hidden">
+            {/* Mobile / tablet mockups */}
+            <div className="order-1 relative mx-auto mb-5 h-[38svh] min-h-[240px] w-full max-w-[min(960px,90vw)] sm:mb-6 sm:h-[42svh] sm:min-h-[260px] lg:hidden">
               <Image
                 src={slide.image}
                 alt="Attend mobile and desktop experience"
@@ -303,7 +303,21 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
               />
             </div>
 
-            <div className="order-3 mt-8 flex justify-center lg:hidden">
+            {/* Desktop mockups — in document flow so copy never overlaps phones */}
+            <div className="order-3 mt-6 hidden w-full shrink-0 justify-center lg:order-none lg:mt-0 lg:flex lg:items-end">
+              <Image
+                src={slide.image}
+                alt=""
+                width={HERO_APP_MOCKUP_WIDTH}
+                height={HERO_APP_MOCKUP_HEIGHT}
+                priority
+                quality={100}
+                className="h-auto w-[min(720px,78vw)] max-h-[min(40vh,420px)] object-contain object-bottom xl:w-[min(960px,90vw)] xl:max-h-[min(48vh,480px)]"
+                sizes="(max-width: 1280px) 78vw, 960px"
+              />
+            </div>
+
+            <div className="order-4 mt-8 flex shrink-0 justify-center lg:hidden">
               <CoverCarousel index={index} onPrev={prev} onNext={next} />
             </div>
           </>
@@ -325,22 +339,6 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
           </div>
         )}
       </div>
-
-      {/* Desktop mockups — pinned flush to the bottom edge (Figma) */}
-      {isAppSlide && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] hidden items-end justify-center lg:flex">
-          <Image
-            src={slide.image}
-            alt=""
-            width={HERO_APP_MOCKUP_WIDTH}
-            height={HERO_APP_MOCKUP_HEIGHT}
-            priority
-            quality={100}
-            className="h-auto w-[min(960px,90vw)]"
-            sizes="(max-width: 1024px) 90vw, 960px"
-          />
-        </div>
-      )}
 
       {/* Desktop: slide controls pinned to the far right edge (Figma) */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden items-end pb-10 pr-6 lg:flex xl:pr-10 xl:pb-12">
