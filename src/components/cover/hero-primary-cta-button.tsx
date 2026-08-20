@@ -11,6 +11,7 @@ type HeroPrimaryCtaButtonProps = {
   onClick?: () => void;
   href?: string;
   className?: string;
+  hideIconOnMobile?: boolean;
 };
 
 export function HeroPrimaryCtaButton({
@@ -18,17 +19,28 @@ export function HeroPrimaryCtaButton({
   onClick,
   href,
   className = "",
+  hideIconOnMobile = false,
 }: HeroPrimaryCtaButtonProps) {
   const content = (
     <>
-      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
+      <span
+        className={`flex size-8 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px] ${
+          hideIconOnMobile ? "hidden lg:flex" : ""
+        }`}
+      >
         <HeroCtaChevronIcon />
       </span>
       <span className="whitespace-nowrap">{label}</span>
     </>
   );
 
-  const classes = `${primaryCtaClassName} ${className}`.trim();
+  const classes = [
+    primaryCtaClassName,
+    hideIconOnMobile ? "max-lg:px-6" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   if (onClick) {
     return (

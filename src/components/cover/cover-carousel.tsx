@@ -75,6 +75,7 @@ type CoverCtaButtonsProps = {
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   centered?: boolean;
+  hidePrimaryIconOnMobile?: boolean;
 };
 
 const secondaryCtaClassName =
@@ -84,6 +85,7 @@ export function CoverCtaButtons({
   primaryCta,
   secondaryCta,
   centered = false,
+  hidePrimaryIconOnMobile = false,
 }: CoverCtaButtonsProps) {
   const { openModal } = useBookDemoModal();
   const { openModal: openComingSoonModal } = useComingSoonModal();
@@ -99,14 +101,23 @@ export function CoverCtaButtons({
     >
       {primaryCta &&
         (opensDemoModal(primaryCta.label) ? (
-          <HeroPrimaryCtaButton label={primaryCta.label} onClick={openModal} />
+          <HeroPrimaryCtaButton
+            label={primaryCta.label}
+            onClick={openModal}
+            hideIconOnMobile={hidePrimaryIconOnMobile}
+          />
         ) : opensComingSoonModal(primaryCta.label) ? (
           <HeroPrimaryCtaButton
             label={primaryCta.label}
             onClick={openComingSoonModal}
+            hideIconOnMobile={hidePrimaryIconOnMobile}
           />
         ) : (
-          <HeroPrimaryCtaButton label={primaryCta.label} href={primaryCta.href} />
+          <HeroPrimaryCtaButton
+            label={primaryCta.label}
+            href={primaryCta.href}
+            hideIconOnMobile={hidePrimaryIconOnMobile}
+          />
         ))}
       {secondaryCta &&
         (secondaryCta.label === "Contact Us" ? (

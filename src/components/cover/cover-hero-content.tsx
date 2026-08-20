@@ -21,7 +21,7 @@ function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
 
   return (
     <div
-      className={`flex w-full max-w-[361px] flex-col items-center gap-8 lg:max-w-none lg:w-auto lg:flex-row lg:flex-wrap lg:items-center lg:gap-3 ${
+      className={`flex w-full max-w-[361px] flex-col items-center gap-5 lg:max-w-none lg:w-auto lg:flex-row lg:flex-wrap lg:items-center lg:gap-3 ${
         centered ? "lg:justify-center" : ""
       }`}
     >
@@ -133,15 +133,19 @@ function HeroSlideContent({
       <div
         className={`${
           isAppButtons
-            ? "mt-8 flex w-full justify-center lg:mt-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-4"
+            ? "mt-6 flex w-full justify-center max-lg:mt-4 lg:mt-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-4"
             : "mt-6 text-left sm:mt-8"
         }`}
       >
         {isAppButtons ? (
-          <div className="flex w-full max-w-[361px] flex-col items-center gap-8 lg:max-w-none lg:gap-3">
+          <div className="flex w-full max-w-[361px] flex-col items-center gap-5 max-lg:gap-5 lg:max-w-none lg:gap-3">
             <AppStoreHeroButtons centered />
             {primaryCta ? (
-              <CoverCtaButtons primaryCta={primaryCta} centered />
+              <CoverCtaButtons
+                primaryCta={primaryCta}
+                centered
+                hidePrimaryIconOnMobile
+              />
             ) : null}
           </div>
         ) : primaryCta && secondaryCta ? (
@@ -238,7 +242,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       id={id}
       className={`relative flex flex-col overflow-hidden ${
         isAppSlide
-          ? "h-[100svh] max-h-[100svh] min-h-0"
+          ? "min-h-0 max-lg:h-[640px] max-lg:max-h-[640px] lg:min-h-[100svh]"
           : "min-h-[100svh]"
       }`}
     >
@@ -260,39 +264,39 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       <div
         className={`relative z-10 flex min-h-0 flex-1 flex-col section-x ${
           isAppSlide
-            ? "items-center pb-8 pt-[calc(var(--home-header-height)+0.75rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-[calc(var(--home-header-height)+0.5rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
+            ? "items-center max-lg:pb-4 max-lg:pt-[calc(var(--home-header-height)+0.5rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-[calc(var(--home-header-height)+0.5rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
             : "justify-end pb-10 pt-[calc(var(--home-header-height)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
         }`}
       >
         {isAppSlide ? (
           <>
-            {/* Mobile: copy + mockups grouped near bottom; desktop: contents for justify-between */}
-            <div className="mt-auto flex w-full flex-col items-center gap-4 lg:mt-0 lg:contents lg:gap-0">
-              <div className="flex w-full shrink-0 flex-col items-center gap-4 content-max lg:gap-0">
-                <HeroSlideContent
-                  slideKey={index}
-                  eyebrow={slide.eyebrow}
-                  headline={slide.headline}
-                  description={slide.description}
-                  primaryCta={slide.primaryCta}
-                  secondaryCta={slide.secondaryCta}
-                  isAppButtons={slide.isAppButtons}
-                />
-              </div>
+            {/* Mobile: copy top, mockups bottom; desktop: contents for justify-between */}
+            <div className="flex w-full shrink-0 flex-col items-center content-max lg:contents">
+              <HeroSlideContent
+                slideKey={index}
+                eyebrow={slide.eyebrow}
+                headline={slide.headline}
+                description={slide.description}
+                primaryCta={slide.primaryCta}
+                secondaryCta={slide.secondaryCta}
+                isAppButtons={slide.isAppButtons}
+              />
+            </div>
 
-              {/* Mobile mockups — full height, no crop */}
-              <div className="mx-auto w-full max-w-[361px] shrink-0 lg:hidden">
-                <Image
-                  src={slide.mobileMockupImage ?? slide.image}
-                  alt="Attend mobile and desktop experience"
-                  width={HERO_APP_MOBILE_MOCKUP_WIDTH}
-                  height={HERO_APP_MOBILE_MOCKUP_HEIGHT}
-                  priority
-                  quality={100}
-                  className="h-auto w-full object-contain"
-                  sizes="361px"
-                />
-              </div>
+            <div className="min-h-0 flex-1 lg:hidden" aria-hidden />
+
+            {/* Mobile mockups — pinned to bottom of 640px frame */}
+            <div className="mx-auto w-full max-w-[361px] shrink-0 lg:hidden">
+              <Image
+                src={slide.mobileMockupImage ?? slide.image}
+                alt="Attend mobile and desktop experience"
+                width={HERO_APP_MOBILE_MOCKUP_WIDTH}
+                height={HERO_APP_MOBILE_MOCKUP_HEIGHT}
+                priority
+                quality={100}
+                className="h-auto w-full object-contain object-bottom"
+                sizes="361px"
+              />
             </div>
 
             {/* Desktop mockups — flex to remaining height so short laptops never clip */}
@@ -309,7 +313,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
               />
             </div>
 
-            <div className="mt-3 flex shrink-0 justify-center pb-2 lg:hidden">
+            <div className="mt-2 flex shrink-0 justify-center pb-1 lg:hidden">
               <CoverCarousel index={index} onPrev={prev} onNext={next} />
             </div>
           </>
