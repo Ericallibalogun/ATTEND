@@ -49,7 +49,7 @@ export function CoverCarousel({ index, onPrev, onNext }: CoverCarouselProps) {
     <div className="flex w-full max-w-[min(100%,360px)] flex-col items-stretch">
       <div className="relative mb-2.5 h-px w-full bg-white/25">
         <div
-          className="absolute top-0 h-px bg-white transition-all duration-500 ease-out"
+          className="absolute top-0 h-px bg-white transition-all duration-[4000ms] ease-out"
           style={{
             left: `${index * segmentWidth}%`,
             width: `${segmentWidth}%`,
@@ -94,9 +94,7 @@ export function CoverCtaButtons({
   return (
     <div
       className={`flex flex-row flex-wrap items-center gap-3 sm:gap-4 ${
-        centered
-          ? "w-auto justify-start lg:justify-center"
-          : "w-full max-w-full"
+        centered ? "w-full justify-center" : "w-full max-w-full"
       }`}
     >
       {primaryCta &&
@@ -107,7 +105,7 @@ export function CoverCtaButtons({
             label={primaryCta.label}
             onClick={openComingSoonModal}
             variant="brand"
-            className="max-lg:w-fit max-lg:max-w-[220px] max-lg:justify-start max-lg:gap-1.5 max-lg:pl-1.5 max-lg:pr-4"
+            className="max-lg:w-fit max-lg:max-w-[220px] max-lg:justify-center max-lg:gap-1.5 max-lg:pl-1.5 max-lg:pr-4"
           />
         ) : (
           <HeroPrimaryCtaButton label={primaryCta.label} href={primaryCta.href} />

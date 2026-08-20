@@ -56,8 +56,8 @@ export function FooterCta() {
 
           {/* Main Content Layout */}
           <div className="section-x relative z-10 mx-auto w-full pt-12 pb-0 sm:pt-20 sm:pb-0">
-            <div className="grid items-end gap-4 sm:gap-8 lg:grid-cols-12 lg:gap-2">
-              <div className="flex flex-col items-start pb-2 sm:pb-8 lg:col-span-6 lg:pb-24">
+            <div className="grid items-end gap-2 sm:gap-8 lg:grid-cols-12 lg:gap-2">
+              <div className="flex flex-col items-start pb-0 sm:pb-8 lg:col-span-6 lg:pb-24">
                 <p className="mb-2.5 flex items-center text-xs font-semibold uppercase tracking-[-0.02em] text-[#004D34] sm:mb-3.5">
                   <span
                     className="mr-2 inline-block size-1.5 bg-[#004D34]"
@@ -65,7 +65,7 @@ export function FooterCta() {
                   />
                   GET STARTED
                 </p>
-                <h2 className="mb-6 max-w-none text-[2.25rem] font-semibold leading-[1.1] tracking-tight text-zinc-900 sm:mb-8 sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.5rem]">
+                <h2 className="mb-4 max-w-none text-[2.25rem] font-semibold leading-[1.1] tracking-tight text-zinc-900 sm:mb-8 sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.5rem]">
                   Stay connected <br className="hidden sm:block" />
                   wherever you are
                 </h2>
@@ -82,7 +82,7 @@ export function FooterCta() {
                         alt="Google Play"
                         width={24}
                         height={24}
-                        className="size-4 shrink-0 object-contain sm:size-6"
+                        className="size-3.5 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
                         <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[11px]">
@@ -107,7 +107,7 @@ export function FooterCta() {
                         className="size-4 shrink-0 object-contain sm:size-6"
                       />
                       <span className="flex flex-col text-left leading-none">
-                        <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-600 sm:text-[11px]">
+                        <span className="whitespace-nowrap text-[10px] font-medium tracking-wide text-zinc-600 sm:text-[11px]">
                           Download on the
                         </span>
                         <span className="text-[11px] font-semibold text-zinc-900 sm:text-[14px] mt-0.5">
@@ -131,7 +131,7 @@ export function FooterCta() {
               </div>
 
               <div className="flex items-end justify-center lg:col-span-6 lg:justify-end">
-                <div className="relative w-full h-[280px] sm:h-[400px] lg:h-[500px]">
+                <div className="relative -mt-1 h-[240px] w-full sm:mt-0 sm:h-[400px] lg:h-[500px]">
                   <Image
                     src="/Group_6099.webp"
                     alt="Attend mobile and desktop app experience"

@@ -18,6 +18,8 @@ const HERO_APP_MOBILE_MOCKUP_HEIGHT = 195;
 
 function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
   const { openModal } = useComingSoonModal();
+  const storeButtonClassName =
+    "inline-flex h-12 w-full min-w-0 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-2.5 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 lg:w-auto lg:justify-start lg:px-4.5";
 
   return (
     <div
@@ -25,20 +27,20 @@ function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
         centered ? "lg:justify-center" : ""
       }`}
     >
-      <div className="flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:contents">
+      <div className="grid w-full grid-cols-2 gap-3 lg:flex lg:w-auto lg:flex-wrap lg:items-center lg:justify-center lg:gap-3">
         <button
           type="button"
           onClick={openModal}
-          className="inline-flex h-12 min-w-[143px] flex-1 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:max-w-[161px] sm:flex-none sm:justify-start sm:px-4.5 lg:min-w-0"
+          className={storeButtonClassName}
         >
           <Image
             src="/Google Play logo.webp"
             alt="Google Play"
-            width={20}
-            height={20}
-            className="size-5 shrink-0 object-contain"
+            width={18}
+            height={18}
+            className="size-[18px] shrink-0 object-contain"
           />
-          <span className="flex flex-col text-left leading-none">
+          <span className="flex min-w-0 flex-col text-left leading-none">
             <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[11px]">
               GET IT ON
             </span>
@@ -51,17 +53,17 @@ function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
         <button
           type="button"
           onClick={openModal}
-          className="inline-flex h-12 min-w-[143px] flex-1 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:max-w-[161px] sm:flex-none sm:justify-start sm:px-4.5 lg:min-w-0"
+          className={storeButtonClassName}
         >
           <Image
             src="/Apple logo.webp"
             alt="App Store"
-            width={20}
-            height={20}
-            className="size-5 shrink-0 object-contain"
+            width={18}
+            height={18}
+            className="size-[18px] shrink-0 object-contain"
           />
-          <span className="flex flex-col text-left leading-none">
-            <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-wider text-zinc-500 sm:text-[11px]">
+          <span className="flex min-w-0 flex-col text-left leading-none">
+            <span className="whitespace-nowrap text-[10px] font-medium tracking-wide text-zinc-500 sm:text-[11px]">
               Download on the
             </span>
             <span className="text-[11px] font-semibold text-zinc-900 sm:text-[12px]">
@@ -115,7 +117,7 @@ function HeroSlideContent({
       <h1
         className={
           isAppButtons
-            ? "max-w-[814px] whitespace-pre-line text-[2.5rem] font-normal leading-[1.2] tracking-[-0.04em] text-white lowercase sm:text-[2.5rem] lg:normal-case lg:text-[clamp(2.25rem,2.4vw+1rem,4.75rem)] lg:font-medium lg:leading-[1.1] lg:tracking-tight [@media(max-height:820px)_and_(min-width:1024px)]:lg:text-[clamp(2rem,2vw+0.75rem,3.25rem)]"
+            ? "max-w-[814px] whitespace-pre-line text-[2.5rem] font-normal leading-[1.2] tracking-[-0.04em] text-white sm:text-[2.5rem] lg:text-[clamp(2.25rem,2.4vw+1rem,4.75rem)] lg:font-medium lg:leading-[1.1] lg:tracking-tight [@media(max-height:820px)_and_(min-width:1024px)]:lg:text-[clamp(2rem,2vw+0.75rem,3.25rem)]"
             : "content-max whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-[2.25rem] md:text-[3rem] lg:text-[clamp(2.75rem,2.2vw+1.5rem,4.25rem)]"
         }
       >
@@ -133,12 +135,12 @@ function HeroSlideContent({
       <div
         className={`${
           isAppButtons
-            ? "mt-6 flex w-full justify-center max-lg:mt-4 lg:mt-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-4"
+            ? "mt-6 flex w-full justify-center max-lg:mt-3 lg:mt-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-4"
             : "mt-6 text-left sm:mt-8"
         }`}
       >
         {isAppButtons ? (
-          <div className="flex w-full max-w-[361px] flex-col items-start gap-5 max-lg:gap-5 lg:max-w-none lg:items-center lg:gap-3">
+          <div className="flex w-full max-w-[361px] flex-col items-center gap-4 max-lg:gap-4 lg:max-w-none lg:gap-3">
             <AppStoreHeroButtons centered />
             {primaryCta ? (
               <CoverCtaButtons primaryCta={primaryCta} centered />
@@ -260,7 +262,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       <div
         className={`relative z-10 flex min-h-0 flex-1 flex-col section-x ${
           isAppSlide
-            ? "items-center max-lg:pb-0 max-lg:pt-[calc(var(--home-header-height)+0.5rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-[calc(var(--home-header-height)+0.5rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
+            ? "items-center max-lg:justify-end max-lg:pb-[calc(195px+0.75rem)] max-lg:pt-[calc(var(--home-header-height)+0.25rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-[calc(var(--home-header-height)+0.5rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
             : "justify-end pb-10 pt-[calc(var(--home-header-height)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
         }`}
       >

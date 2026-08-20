@@ -80,7 +80,7 @@ body {
 
 .hero-bg-layer {
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
+  transition: opacity 4s ease-in-out;
 }
 
 .hero-bg-layer[data-active="true"] {
