@@ -94,7 +94,9 @@ export function CoverCtaButtons({
   return (
     <div
       className={`flex flex-row flex-wrap items-center gap-3 sm:gap-4 ${
-        centered ? "justify-center" : "w-full max-w-full"
+        centered
+          ? "w-auto justify-start lg:justify-center"
+          : "w-full max-w-full"
       }`}
     >
       {primaryCta &&
@@ -105,6 +107,7 @@ export function CoverCtaButtons({
             label={primaryCta.label}
             onClick={openComingSoonModal}
             variant="brand"
+            className="max-lg:w-fit max-lg:max-w-[220px] max-lg:justify-start max-lg:gap-1.5 max-lg:pl-1.5 max-lg:pr-4"
           />
         ) : (
           <HeroPrimaryCtaButton label={primaryCta.label} href={primaryCta.href} />

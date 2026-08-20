@@ -120,9 +120,9 @@ export function FooterCta() {
                   <button
                     type="button"
                     onClick={openModal}
-                    className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full border border-[#004D34] bg-white pl-2 pr-6 text-[14px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:w-auto sm:justify-start sm:text-[16px]"
+                    className="inline-flex h-12 w-fit max-w-[220px] self-start items-center justify-start gap-1.5 rounded-full border border-[#004D34] bg-white pl-1.5 pr-4 text-[14px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 sm:h-14 sm:w-auto sm:max-w-none sm:justify-start sm:gap-3 sm:pl-2 sm:pr-6 sm:text-[16px]"
                   >
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#004D34] text-white sm:size-10">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#004D34] text-white sm:size-10">
                       <DoubleChevronIcon />
                     </span>
                     <span>Launch Web App</span>

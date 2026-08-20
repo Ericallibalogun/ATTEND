@@ -26,7 +26,7 @@ export function HeroPrimaryCtaButton({
   const content = (
     <>
       <span
-        className={`flex size-8 shrink-0 items-center justify-center rounded-full sm:size-[38px] ${
+        className={`flex size-7 shrink-0 items-center justify-center rounded-full sm:size-[38px] ${
           isBrand ? "bg-[#004D34]" : "bg-primary"
         }`}
       >

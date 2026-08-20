@@ -138,7 +138,7 @@ function HeroSlideContent({
         }`}
       >
         {isAppButtons ? (
-          <div className="flex w-full max-w-[361px] flex-col items-center gap-5 max-lg:gap-5 lg:max-w-none lg:gap-3">
+          <div className="flex w-full max-w-[361px] flex-col items-start gap-5 max-lg:gap-5 lg:max-w-none lg:items-center lg:gap-3">
             <AppStoreHeroButtons centered />
             {primaryCta ? (
               <CoverCtaButtons primaryCta={primaryCta} centered />
