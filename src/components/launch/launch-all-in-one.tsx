@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 
 const allInOneCards = [
@@ -50,25 +50,96 @@ const allInOneCards = [
 
 export function LaunchAllInOne() {
   const { openModal } = useBookDemoModal();
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const scrollDistanceRef = useRef(0);
+  const [scrollDistance, setScrollDistance] = useState(0);
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount =
-        direction === "left"
-          ? -scrollContainerRef.current.clientWidth * 0.85
-          : scrollContainerRef.current.clientWidth * 0.85;
-      scrollContainerRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  scrollDistanceRef.current = scrollDistance;
+
+  const measure = useCallback(() => {
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    if (!viewport || !track) return;
+
+    const distance = Math.max(0, track.scrollWidth - viewport.clientWidth);
+    setScrollDistance((prev) => (prev === distance ? prev : distance));
+  }, []);
+
+  useEffect(() => {
+    measure();
+    window.addEventListener("resize", measure);
+
+    const viewport = viewportRef.current;
+    const track = trackRef.current;
+    const resizeObserver = new ResizeObserver(measure);
+    if (viewport) resizeObserver.observe(viewport);
+    if (track) resizeObserver.observe(track);
+
+    return () => {
+      window.removeEventListener("resize", measure);
+      resizeObserver.disconnect();
+    };
+  }, [measure]);
+
+  const x = useTransform(scrollYProgress, (progress) => {
+    return -progress * scrollDistanceRef.current;
+  });
+
+  const goToCard = (targetIdx: number) => {
+    if (!containerRef.current) return;
+    const clamped = Math.max(
+      0,
+      Math.min(allInOneCards.length - 1, targetIdx),
+    );
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const containerTop = rect.top + scrollTop;
+    const containerHeight = containerRef.current.offsetHeight;
+    const scrollableDistance = Math.max(
+      0,
+      containerHeight - window.innerHeight,
+    );
+
+    const targetScrollY =
+      containerTop +
+      (clamped / (allInOneCards.length - 1)) * scrollableDistance;
+
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: "smooth",
+    });
+  };
+
+  const handlePrev = () => {
+    const currentCardIdx = Math.round(
+      scrollYProgress.get() * (allInOneCards.length - 1),
+    );
+    goToCard(currentCardIdx - 1);
+  };
+
+  const handleNext = () => {
+    const currentCardIdx = Math.round(
+      scrollYProgress.get() * (allInOneCards.length - 1),
+    );
+    goToCard(currentCardIdx + 1);
   };
 
   return (
-    <section className="overflow-hidden bg-[#083827] py-10 text-white sm:py-16 lg:py-24">
-      <ScrollReveal yOffset={60}>
-        <div className="section-x mb-8 w-full sm:mb-12 lg:mb-14">
+    <section
+      ref={containerRef}
+      className="relative h-[220vh] bg-[#083827] sm:h-[280vh] lg:h-[300vh]"
+    >
+      <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden pb-4 pt-5 sm:pb-5 sm:pt-6 lg:pb-6 lg:pt-8">
+        {/* Header */}
+        <div className="section-x mb-3 w-full shrink-0 sm:mb-4 lg:mb-6">
           <div className="grid items-end gap-5 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-6">
               <p className="mb-3 flex items-center text-[11px] font-semibold uppercase tracking-widest text-[#00E58F] sm:mb-4">
@@ -139,86 +210,94 @@ export function LaunchAllInOne() {
           </div>
         </div>
 
-        <div className="bg-white text-zinc-900">
-          <div
-            ref={scrollContainerRef}
-            className="flex overflow-x-auto scroll-smooth scrollbar-none"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {allInOneCards.map((card) => (
-              <div
-                key={card.number}
-                className="flex h-[300px] w-[min(100vw,440px)] shrink-0 sm:h-[420px] sm:w-[620px] lg:h-[480px] lg:w-[680px]"
+        {/* Mobile: inset mint card + tight controls. Desktop: full-bleed white strip. */}
+        <div className="flex min-h-0 flex-1 flex-col lg:shrink-0 lg:flex-none">
+          <div className="section-x flex min-h-0 w-full flex-1 items-center lg:block lg:flex-none lg:px-0">
+            <div
+              ref={viewportRef}
+              className="relative w-full overflow-hidden bg-[#EFF5F3] lg:bg-white"
+            >
+              <motion.div
+                ref={trackRef}
+                style={{ x }}
+                className="flex items-stretch lg:items-end"
               >
-                <div className="flex min-w-0 flex-1 flex-col justify-between px-4 py-6 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-                  <span className="block text-[3.25rem] font-light leading-none tracking-tight text-zinc-200 sm:text-[5.5rem] lg:text-[6.5rem]">
-                    {card.number}
-                  </span>
+                {allInOneCards.map((card) => (
+                  <div
+                    key={card.number}
+                    className="flex h-[280px] w-full shrink-0 items-stretch gap-3 border border-black/5 bg-white p-3 sm:h-[300px] sm:gap-4 sm:p-4 lg:h-[480px] lg:w-[680px] lg:gap-0 lg:border-0 lg:bg-transparent lg:p-0"
+                  >
+                    <div className="flex min-w-0 flex-1 flex-col justify-between lg:px-10 lg:py-12">
+                      <span className="block text-[2.75rem] font-light leading-none tracking-tight text-[#5c8a74]/40 sm:text-[3.25rem] lg:text-[6.5rem] lg:text-zinc-200">
+                        {card.number}
+                      </span>
 
-                  <div>
-                    <h3 className="mb-2 text-base font-semibold leading-snug text-zinc-900 sm:mb-3 sm:text-xl lg:text-[1.35rem]">
-                      {card.title}
-                    </h3>
-                    <p className="line-clamp-4 max-w-[34ch] text-[12.5px] leading-relaxed text-zinc-600 sm:line-clamp-none sm:text-[14.5px]">
-                      {card.description}
-                    </p>
+                      <div>
+                        <h3 className="mb-1.5 text-[15px] font-semibold leading-snug text-zinc-900 sm:mb-2 sm:text-base lg:mb-3 lg:text-[1.35rem]">
+                          {card.title}
+                        </h3>
+                        <p className="line-clamp-4 text-[12px] leading-relaxed text-zinc-600 sm:line-clamp-none sm:text-[12.5px] lg:max-w-[34ch] lg:text-[14.5px]">
+                          {card.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="relative h-full w-[38%] max-w-[132px] shrink-0 overflow-hidden sm:w-[42%] sm:max-w-[160px] lg:w-[300px] lg:max-w-none">
+                      <Image
+                        src={card.image}
+                        alt={card.alt}
+                        fill
+                        quality={100}
+                        className="object-cover object-center"
+                        sizes="(max-width: 640px) 38vw, (max-width: 1024px) 160px, 300px"
+                      />
+                    </div>
                   </div>
-                </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
 
-                <div className="relative h-full w-[42%] max-w-[200px] shrink-0 sm:w-[240px] sm:max-w-none lg:w-[300px]">
-                  <Image
-                    src={card.image}
-                    alt={card.alt}
-                    fill
-                    quality={100}
-                    className="object-cover object-center"
-                    sizes="(max-width: 640px) 42vw, (max-width: 1024px) 240px, 300px"
-                  />
-                </div>
-              </div>
-            ))}
+          <div className="mt-4 flex shrink-0 items-center justify-center gap-3 lg:mt-5">
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous slide"
+              className="flex size-10 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition-colors hover:bg-white/20 active:scale-95 sm:size-12"
+            >
+              <svg
+                className="size-4 sm:size-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next slide"
+              className="flex size-10 cursor-pointer items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition-colors hover:bg-white/20 active:scale-95 sm:size-12"
+            >
+              <svg
+                className="size-4 sm:size-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
           </div>
         </div>
-
-        <div className="mt-6 flex items-center justify-center gap-3 sm:mt-10">
-          <button
-            type="button"
-            onClick={() => scroll("left")}
-            className="flex size-10 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition-colors hover:bg-white/20 active:scale-95 sm:size-12"
-            aria-label="Previous slide"
-          >
-            <svg
-              className="size-4 sm:size-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={() => scroll("right")}
-            className="flex size-10 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white transition-colors hover:bg-white/20 active:scale-95 sm:size-12"
-            aria-label="Next slide"
-          >
-            <svg
-              className="size-4 sm:size-5"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-      </ScrollReveal>
+      </div>
     </section>
   );
 }

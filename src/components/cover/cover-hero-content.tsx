@@ -141,11 +141,7 @@ function HeroSlideContent({
           <div className="flex w-full max-w-[361px] flex-col items-center gap-5 max-lg:gap-5 lg:max-w-none lg:gap-3">
             <AppStoreHeroButtons centered />
             {primaryCta ? (
-              <CoverCtaButtons
-                primaryCta={primaryCta}
-                centered
-                hidePrimaryIconOnMobile
-              />
+              <CoverCtaButtons primaryCta={primaryCta} centered />
             ) : null}
           </div>
         ) : primaryCta && secondaryCta ? (
@@ -264,7 +260,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       <div
         className={`relative z-10 flex min-h-0 flex-1 flex-col section-x ${
           isAppSlide
-            ? "items-center max-lg:pb-4 max-lg:pt-[calc(var(--home-header-height)+0.5rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-[calc(var(--home-header-height)+0.5rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
+            ? "items-center max-lg:pb-0 max-lg:pt-[calc(var(--home-header-height)+0.5rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-[calc(var(--home-header-height)+0.5rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
             : "justify-end pb-10 pt-[calc(var(--home-header-height)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
         }`}
       >
@@ -283,10 +279,8 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
               />
             </div>
 
-            <div className="min-h-0 flex-1 lg:hidden" aria-hidden />
-
-            {/* Mobile mockups — pinned to bottom of 640px frame */}
-            <div className="mx-auto w-full max-w-[361px] shrink-0 lg:hidden">
+            {/* Mobile mockups — flush to bottom of 640px frame */}
+            <div className="absolute inset-x-0 bottom-0 z-10 flex justify-center section-x lg:hidden">
               <Image
                 src={slide.mobileMockupImage ?? slide.image}
                 alt="Attend mobile and desktop experience"
@@ -294,7 +288,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
                 height={HERO_APP_MOBILE_MOCKUP_HEIGHT}
                 priority
                 quality={100}
-                className="h-auto w-full object-contain object-bottom"
+                className="block h-auto w-full max-w-[361px] object-contain object-bottom"
                 sizes="361px"
               />
             </div>
@@ -311,10 +305,6 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
                 className="h-auto max-h-full w-auto max-w-[min(720px,78vw)] object-contain object-bottom xl:max-w-[min(960px,90vw)]"
                 sizes="(max-width: 1280px) 78vw, 960px"
               />
-            </div>
-
-            <div className="mt-2 flex shrink-0 justify-center pb-1 lg:hidden">
-              <CoverCarousel index={index} onPrev={prev} onNext={next} />
             </div>
           </>
         ) : (
