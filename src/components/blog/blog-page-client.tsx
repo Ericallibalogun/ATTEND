@@ -2,11 +2,7 @@
 
 import React, { useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import {
-  BLOG_CATEGORIES,
-  sampleBlogPosts,
-  type BlogPost,
-} from "@/lib/blog-data";
+import { BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
 import { SanityImage } from "@/components/sanity/sanity-image";
 import { FooterCta } from "@/components/layout/footer-cta";
 
@@ -88,13 +84,11 @@ function postMatchesFilters(
 }
 
 export function BlogPageClient({
-  initialPosts = sampleBlogPosts,
+  initialPosts = [],
 }: {
   initialPosts?: BlogPost[];
 }) {
-  const [posts] = useState<BlogPost[]>(
-    initialPosts.length > 0 ? initialPosts : sampleBlogPosts,
-  );
+  const [posts] = useState<BlogPost[]>(initialPosts);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -109,8 +103,13 @@ export function BlogPageClient({
     [posts, selectedCategory, searchQuery],
   );
 
-  const featuredPost = filteredPosts[0] ?? sampleBlogPosts[0];
-  const gridPosts = filteredPosts.slice(1);
+  const featuredPost =
+    filteredPosts.find((post) => post.featured) ?? filteredPosts[0];
+  const gridPosts = filteredPosts.filter((post) => post !== featuredPost);
+  const emptyMessage =
+    posts.length === 0
+      ? "No blog posts published yet."
+      : "No posts match this filter. Try another category or clear search.";
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -238,7 +237,7 @@ export function BlogPageClient({
         <div className="flex flex-col gap-10 lg:hidden">
           {filteredPosts.length === 0 ? (
             <p className="py-10 text-center text-[14px] text-zinc-500">
-              No posts match this filter. Try another category or clear search.
+              {emptyMessage}
             </p>
           ) : (
             filteredPosts.map((post) => (
@@ -408,8 +407,7 @@ export function BlogPageClient({
           <div className="flex flex-col gap-8 lg:col-span-9 lg:gap-10">
             {filteredPosts.length === 0 ? (
               <p className="py-16 text-center text-sm text-zinc-500">
-                No posts match this filter. Try another category or clear
-                search.
+                {emptyMessage}
               </p>
             ) : (
               <>

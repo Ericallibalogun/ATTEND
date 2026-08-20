@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { SanityImage } from "@/components/sanity/sanity-image";
-import { defaultGalleryCategories, type GalleryCategory } from "@/lib/sanity-gallery-service";
+import { type GalleryCategory } from "@/lib/sanity-gallery-service";
 
 export function GalleryShowcase({
-  initialCategories = defaultGalleryCategories,
+  initialCategories = [],
 }: {
   initialCategories?: GalleryCategory[];
 }) {
-  const galleryCategories = initialCategories.length > 0 ? initialCategories : defaultGalleryCategories;
+  const galleryCategories = initialCategories;
   const [openCategory, setOpenCategory] = useState<string | null>(
-    galleryCategories[0]?.id || "launch"
+    galleryCategories[0]?.id ?? null,
   );
   const [activeImageIndices, setActiveImageIndices] = useState<
     Record<string, number>
@@ -59,10 +59,16 @@ export function GalleryShowcase({
           </div>
 
           <div className="flex flex-col border-t border-zinc-200">
+            {galleryCategories.length === 0 ? (
+              <p className="py-16 text-center text-sm text-zinc-500">
+                No gallery images published yet.
+              </p>
+            ) : null}
             {galleryCategories.map((cat) => {
               const isOpen = openCategory === cat.id;
               const currentIdx = activeImageIndices[cat.id] || 0;
               const currentImg = cat.images[currentIdx];
+              if (!currentImg) return null;
 
               return (
                 <div key={cat.id} className="border-b border-zinc-200">

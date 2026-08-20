@@ -1,7 +1,7 @@
 import { client } from '@/sanity/client'
 import { urlForImage } from '@/sanity/image'
 import { sanityBlogFetchOptions } from '@/lib/sanity-fetch-options'
-import { sampleBlogPosts, type BlogPost } from './blog-data'
+import { type BlogPost } from './blog-data'
 
 const blogQuery = `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
   _id,
@@ -60,26 +60,32 @@ function mapSanityPost(post: {
 
 export async function fetchBlogPosts(): Promise<BlogPost[]> {
   if (!client) {
-    return sampleBlogPosts
+    console.warn(
+      'Sanity client unavailable (missing NEXT_PUBLIC_SANITY_PROJECT_ID). Returning no blog posts.',
+    )
+    return []
   }
 
   try {
     const rawPosts = await client.fetch(blogQuery, {}, sanityBlogFetchOptions)
 
     if (!rawPosts || rawPosts.length === 0) {
-      return sampleBlogPosts
+      return []
     }
 
     return rawPosts.map(mapSanityPost)
   } catch (error) {
-    console.warn('Sanity fetch error, using static blog posts fallback:', error)
-    return sampleBlogPosts
+    console.warn('Sanity fetch error, returning no blog posts:', error)
+    return []
   }
 }
 
 export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   if (!client) {
-    return sampleBlogPosts.find((p) => p.slug === slug) ?? null
+    console.warn(
+      'Sanity client unavailable (missing NEXT_PUBLIC_SANITY_PROJECT_ID). Returning no blog post.',
+    )
+    return null
   }
 
   try {
@@ -100,7 +106,7 @@ export async function fetchBlogPostBySlug(slug: string): Promise<BlogPost | null
     const post = await client.fetch(query, { slug }, sanityBlogFetchOptions)
     return post ? mapSanityPost(post) : null
   } catch (error) {
-    console.warn('Sanity fetch error for blog slug, using fallback lookup:', error)
-    return sampleBlogPosts.find((p) => p.slug === slug) ?? null
+    console.warn('Sanity fetch error for blog slug, returning no blog post:', error)
+    return null
   }
 }
