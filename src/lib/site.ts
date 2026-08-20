@@ -33,6 +33,7 @@ export type HeroSlide = {
   image: string;
   backgroundImage?: string;
   mobileBackgroundImage?: string;
+  mobileMockupImage?: string;
   eyebrow: string;
   headline: string;
   description: string;
@@ -76,12 +77,14 @@ export const heroSlides: HeroSlide[] = [
     label: "Get Started",
     href: "https://app.experienceattend.com",
     image: "/Frame 1707482482 (1).webp",
+    mobileMockupImage: "/Frame 1707482483.webp",
     backgroundImage: "/HERO SECTION VARIANTS (1).webp",
     mobileBackgroundImage: "/iPhone 14 & 15 Pro - 1.webp",
     eyebrow: "GET STARTED",
     headline: "Stay connected\nwherever you are.",
     description: "",
     isAppButtons: true,
+    primaryCta: { label: "Launch Web App", href: "https://app.experienceattend.com" },
   },
 ];
 

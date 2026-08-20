@@ -13,40 +13,23 @@ const HERO_APP_BG_WIDTH = 1440;
 const HERO_APP_BG_HEIGHT = 810;
 const HERO_APP_MOCKUP_WIDTH = 3368;
 const HERO_APP_MOCKUP_HEIGHT = 1556;
-
-function DoubleChevronIcon({ className = "text-white" }: { className?: string }) {
-  return (
-    <svg
-      aria-hidden
-      className={`size-3.5 ${className}`}
-      viewBox="0 0 16 16"
-      fill="none"
-    >
-      <path
-        d="M4 4l4 4-4 4M9 4l4 4-4 4"
-        stroke="currentColor"
-        strokeWidth="2.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+const HERO_APP_MOBILE_MOCKUP_WIDTH = 361;
+const HERO_APP_MOBILE_MOCKUP_HEIGHT = 195;
 
 function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
   const { openModal } = useComingSoonModal();
 
   return (
     <div
-      className={`flex w-full flex-col items-stretch gap-3 lg:w-auto lg:flex-row lg:flex-wrap lg:items-center ${
+      className={`flex w-full max-w-[361px] flex-col items-center gap-8 lg:max-w-none lg:w-auto lg:flex-row lg:flex-wrap lg:items-center lg:gap-3 ${
         centered ? "lg:justify-center" : ""
       }`}
     >
-      <div className="grid w-full grid-cols-2 gap-3 lg:contents">
+      <div className="flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-3 lg:contents">
         <button
           type="button"
           onClick={openModal}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:justify-start sm:px-4.5"
+          className="inline-flex h-12 min-w-[143px] flex-1 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:max-w-[161px] sm:flex-none sm:justify-start sm:px-4.5 lg:min-w-0"
         >
           <Image
             src="/Google Play logo.webp"
@@ -68,7 +51,7 @@ function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
         <button
           type="button"
           onClick={openModal}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:justify-start sm:px-4.5"
+          className="inline-flex h-12 min-w-[143px] flex-1 items-center justify-center gap-2 rounded-full border border-white/20 bg-white px-3 text-zinc-900 shadow-xs transition-opacity hover:opacity-90 sm:max-w-[161px] sm:flex-none sm:justify-start sm:px-4.5 lg:min-w-0"
         >
           <Image
             src="/Apple logo.webp"
@@ -88,16 +71,6 @@ function AppStoreHeroButtons({ centered = false }: { centered?: boolean }) {
         </button>
       </div>
 
-      <button
-        type="button"
-        onClick={openModal}
-        className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full border border-white/20 bg-white pl-2 pr-6 text-[15px] font-semibold text-[#004D34] shadow-xs transition-opacity hover:opacity-90 lg:w-fit lg:justify-start"
-      >
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#004D34]">
-          <DoubleChevronIcon className="text-white" />
-        </span>
-        <span>Launch Web App</span>
-      </button>
     </div>
   );
 }
@@ -127,12 +100,14 @@ function HeroSlideContent({
       }`}
     >
       <p
-        className={`mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#00FF85] sm:mb-5 sm:gap-2.5 sm:text-[11px] sm:tracking-[-0.02em] ${
-          isAppButtons ? "justify-center" : ""
-        }`}
+        className={`flex items-center gap-1.5 text-[10px] font-light uppercase tracking-[-0.02em] text-[#00FF85] sm:gap-2.5 sm:text-[11px] ${
+          isAppButtons ? "mb-0 justify-center" : "mb-3 sm:mb-5"
+        } ${!isAppButtons ? "font-semibold tracking-[0.14em]" : ""}`}
       >
         <span
-          className="inline-block size-1.5 shrink-0 rounded-full bg-[#00FF85]"
+          className={`inline-block shrink-0 bg-[#00FF85] ${
+            isAppButtons ? "size-1" : "size-1.5 rounded-full"
+          }`}
           aria-hidden
         />
         {eyebrow}
@@ -140,7 +115,7 @@ function HeroSlideContent({
       <h1
         className={
           isAppButtons
-            ? "max-w-[814px] whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white lowercase sm:text-[2.25rem] md:text-[3rem] lg:normal-case lg:text-[clamp(2.25rem,2.4vw+1rem,4.75rem)] lg:leading-[1.1] [@media(max-height:820px)_and_(min-width:1024px)]:lg:text-[clamp(2rem,2vw+0.75rem,3.25rem)]"
+            ? "max-w-[814px] whitespace-pre-line text-[2.5rem] font-normal leading-[1.2] tracking-[-0.04em] text-white lowercase sm:text-[2.5rem] lg:normal-case lg:text-[clamp(2.25rem,2.4vw+1rem,4.75rem)] lg:font-medium lg:leading-[1.1] lg:tracking-tight [@media(max-height:820px)_and_(min-width:1024px)]:lg:text-[clamp(2rem,2vw+0.75rem,3.25rem)]"
             : "content-max whitespace-pre-line text-[2rem] font-medium leading-[1.15] tracking-tight text-white sm:text-[2.25rem] md:text-[3rem] lg:text-[clamp(2.75rem,2.2vw+1.5rem,4.25rem)]"
         }
       >
@@ -156,10 +131,19 @@ function HeroSlideContent({
         </p>
       ) : null}
       <div
-        className={`mt-6 sm:mt-8 ${isAppButtons ? "flex justify-center lg:mt-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-4" : "text-left"}`}
+        className={`${
+          isAppButtons
+            ? "mt-8 flex w-full justify-center lg:mt-6 [@media(max-height:820px)_and_(min-width:1024px)]:lg:mt-4"
+            : "mt-6 text-left sm:mt-8"
+        }`}
       >
         {isAppButtons ? (
-          <AppStoreHeroButtons centered />
+          <div className="flex w-full max-w-[361px] flex-col items-center gap-8 lg:max-w-none lg:gap-3">
+            <AppStoreHeroButtons centered />
+            {primaryCta ? (
+              <CoverCtaButtons primaryCta={primaryCta} centered />
+            ) : null}
+          </div>
         ) : primaryCta && secondaryCta ? (
           <CoverCtaButtons primaryCta={primaryCta} secondaryCta={secondaryCta} />
         ) : null}
@@ -282,33 +266,37 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       >
         {isAppSlide ? (
           <>
-            <div className="order-2 flex w-full shrink-0 content-max flex-col items-center lg:order-none">
-              <HeroSlideContent
-                slideKey={index}
-                eyebrow={slide.eyebrow}
-                headline={slide.headline}
-                description={slide.description}
-                primaryCta={slide.primaryCta}
-                secondaryCta={slide.secondaryCta}
-                isAppButtons={slide.isAppButtons}
-              />
-            </div>
+            {/* Mobile: copy + mockups grouped near bottom; desktop: contents for justify-between */}
+            <div className="mt-auto flex w-full flex-col items-center gap-4 lg:mt-0 lg:contents lg:gap-0">
+              <div className="flex w-full shrink-0 flex-col items-center gap-4 content-max lg:gap-0">
+                <HeroSlideContent
+                  slideKey={index}
+                  eyebrow={slide.eyebrow}
+                  headline={slide.headline}
+                  description={slide.description}
+                  primaryCta={slide.primaryCta}
+                  secondaryCta={slide.secondaryCta}
+                  isAppButtons={slide.isAppButtons}
+                />
+              </div>
 
-            {/* Mobile / tablet mockups */}
-            <div className="order-1 relative mx-auto mb-5 h-[38svh] min-h-[240px] w-full max-w-[min(960px,90vw)] sm:mb-6 sm:h-[42svh] sm:min-h-[260px] lg:hidden">
-              <Image
-                src={slide.image}
-                alt="Attend mobile and desktop experience"
-                fill
-                priority
-                quality={100}
-                className="object-contain object-bottom"
-                sizes="(max-width: 1024px) 90vw, 960px"
-              />
+              {/* Mobile mockups — full height, no crop */}
+              <div className="mx-auto w-full max-w-[361px] shrink-0 lg:hidden">
+                <Image
+                  src={slide.mobileMockupImage ?? slide.image}
+                  alt="Attend mobile and desktop experience"
+                  width={HERO_APP_MOBILE_MOCKUP_WIDTH}
+                  height={HERO_APP_MOBILE_MOCKUP_HEIGHT}
+                  priority
+                  quality={100}
+                  className="h-auto w-full object-contain"
+                  sizes="361px"
+                />
+              </div>
             </div>
 
             {/* Desktop mockups — flex to remaining height so short laptops never clip */}
-            <div className="order-3 mt-6 hidden min-h-0 w-full flex-1 items-end justify-center overflow-hidden lg:order-none lg:mt-0 lg:flex">
+            <div className="hidden min-h-0 w-full flex-1 items-end justify-center overflow-hidden lg:flex">
               <Image
                 src={slide.image}
                 alt=""
@@ -321,7 +309,7 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
               />
             </div>
 
-            <div className="order-4 mt-8 flex shrink-0 justify-center lg:hidden">
+            <div className="mt-3 flex shrink-0 justify-center pb-2 lg:hidden">
               <CoverCarousel index={index} onPrev={prev} onNext={next} />
             </div>
           </>

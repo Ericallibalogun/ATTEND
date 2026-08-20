@@ -2,35 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { HeroPrimaryCtaButton } from "@/components/cover/hero-primary-cta-button";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
 import { useComingSoonModal } from "@/components/layout/coming-soon-modal";
 import { heroSlides } from "@/lib/site";
-
-function DoubleChevronIcon() {
-  return (
-    <svg
-      aria-hidden
-      className="size-4 text-white"
-      viewBox="0 0 16 16"
-      fill="none"
-    >
-      <path
-        d="M5 4L9 8L5 12"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M9 4L13 8L9 12"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 function CarouselArrow({
   direction,
@@ -99,11 +74,16 @@ export function CoverCarousel({ index, onPrev, onNext }: CoverCarouselProps) {
 type CoverCtaButtonsProps = {
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  centered?: boolean;
 };
 
+const secondaryCtaClassName =
+  "inline-flex h-12 w-auto max-w-full shrink-0 items-center justify-center rounded-full border border-white/25 bg-white/10 px-4 text-[13px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15 sm:h-[52px] sm:px-7 sm:text-[15px]";
+
 export function CoverCtaButtons({
-  primaryCta = { label: "Launch Web App", href: "https://app.experienceattend.com" },
-  secondaryCta = { label: "Contact Us", href: "#" },
+  primaryCta,
+  secondaryCta,
+  centered = false,
 }: CoverCtaButtonsProps) {
   const { openModal } = useBookDemoModal();
   const { openModal: openComingSoonModal } = useComingSoonModal();
@@ -112,56 +92,34 @@ export function CoverCtaButtons({
   const opensComingSoonModal = (label: string) => label === "Launch Web App";
 
   return (
-    <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+    <div
+      className={`flex flex-row flex-wrap items-center gap-3 sm:gap-4 ${
+        centered ? "justify-center" : "w-full max-w-full"
+      }`}
+    >
       {primaryCta &&
         (opensDemoModal(primaryCta.label) ? (
-          <button
-            type="button"
-            onClick={openModal}
-            className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
-          >
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
-              <DoubleChevronIcon />
-            </span>
-            <span>{primaryCta.label}</span>
-          </button>
+          <HeroPrimaryCtaButton label={primaryCta.label} onClick={openModal} />
         ) : opensComingSoonModal(primaryCta.label) ? (
-          <button
-            type="button"
+          <HeroPrimaryCtaButton
+            label={primaryCta.label}
             onClick={openComingSoonModal}
-            className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
-          >
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
-              <DoubleChevronIcon />
-            </span>
-            <span>{primaryCta.label}</span>
-          </button>
+          />
         ) : (
-          <Link
-            href={primaryCta.href}
-            className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-white pl-2 pr-6 text-[14px] font-medium text-zinc-900 transition-opacity hover:opacity-90 sm:h-[52px] sm:w-auto sm:justify-start sm:pr-7 sm:text-[15px]"
-          >
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary sm:size-[38px]">
-              <DoubleChevronIcon />
-            </span>
-            <span>{primaryCta.label}</span>
-          </Link>
+          <HeroPrimaryCtaButton label={primaryCta.label} href={primaryCta.href} />
         ))}
       {secondaryCta &&
         (secondaryCta.label === "Contact Us" ? (
           <button
             type="button"
             onClick={openModal}
-            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 text-[14px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15 sm:h-[52px] sm:w-auto sm:px-7 sm:text-[15px]"
+            className={secondaryCtaClassName}
           >
-            <span>{secondaryCta.label}</span>
+            <span className="whitespace-nowrap">{secondaryCta.label}</span>
           </button>
         ) : (
-          <Link
-            href={secondaryCta.href}
-            className="inline-flex h-12 w-full items-center justify-center rounded-full border border-white/25 bg-white/10 px-6 text-[14px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/15 sm:h-[52px] sm:w-auto sm:px-7 sm:text-[15px]"
-          >
-            <span>{secondaryCta.label}</span>
+          <Link href={secondaryCta.href} className={secondaryCtaClassName}>
+            <span className="whitespace-nowrap">{secondaryCta.label}</span>
           </Link>
         ))}
     </div>
