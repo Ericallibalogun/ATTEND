@@ -1,8 +1,8 @@
 const AGM_CONTACT_TO =
-  process.env.CONTACT_FORM_AGM_EMAIL ?? 'agms@experienceattend.com'
+  process.env.CONTACT_FORM_AGM_EMAIL ?? 'ogechiumeh@meristemng.com'
 
 const EVENTS_CONTACT_TO =
-  process.env.CONTACT_FORM_EVENTS_EMAIL ?? 'events@experienceattend.com'
+  process.env.CONTACT_FORM_EVENTS_EMAIL ?? 'ogechiumeh@meristemng.com'
 
 const CONTACT_FROM =
   process.env.CONTACT_FORM_FROM_EMAIL ??
