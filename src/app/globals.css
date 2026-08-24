@@ -30,6 +30,7 @@
 @media (min-width: 1024px) {
   :root {
     --section-px: 4rem;
+    --home-header-height: 128px;
   }
 }
 

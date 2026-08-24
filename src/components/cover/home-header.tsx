@@ -40,9 +40,13 @@ export function HomeHeader({ heroId = "hero-section" }: HomeHeaderProps) {
     };
 
     syncHeight();
+    window.addEventListener("load", syncHeight);
     const observer = new ResizeObserver(syncHeight);
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("load", syncHeight);
+      observer.disconnect();
+    };
   }, [isPastHero]);
 
   return (

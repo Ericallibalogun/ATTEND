@@ -179,7 +179,7 @@ function HeroAppMockups({ activeIndex }: { activeIndex: number }) {
         </div>
       </div>
 
-      <div className="relative hidden w-full lg:mt-3 lg:block xl:mt-4">
+      <div className="relative hidden min-h-0 w-full flex-1 items-end justify-center overflow-hidden lg:flex">
         <div className="relative flex w-full justify-center">
           {appSlides.map(({ slide, slideIndex }) => (
             <div
@@ -198,7 +198,7 @@ function HeroAppMockups({ activeIndex }: { activeIndex: number }) {
                 height={HERO_APP_MOCKUP_HEIGHT}
                 priority={slideIndex === activeIndex}
                 quality={100}
-                className="h-auto max-h-[min(38vh,420px)] w-auto max-w-[min(720px,78vw)] object-contain object-bottom xl:max-h-[min(42vh,460px)] xl:max-w-[min(960px,90vw)]"
+                className="h-auto max-h-full w-auto max-w-[min(720px,78vw)] object-contain object-bottom xl:max-w-[min(960px,90vw)]"
                 sizes="(max-width: 1280px) 78vw, 960px"
               />
             </div>
@@ -371,15 +371,21 @@ export function CoverHeroContent({ id }: CoverHeroContentProps) {
       <div
         className={`relative z-10 flex min-h-0 flex-1 flex-col section-x ${
           isAppSlide
-            ? "items-center max-lg:justify-end max-lg:pb-[calc(195px+0.125rem)] max-lg:pt-[calc(var(--home-header-height)+1rem)] lg:justify-start lg:pb-8 lg:pt-[calc(var(--home-header-height)+2rem)] [@media(max-height:820px)_and_(min-width:1024px)]:lg:pt-[calc(var(--home-header-height)+1.75rem)]"
+            ? "items-center max-lg:justify-end max-lg:pb-[calc(195px+0.125rem)] max-lg:pt-[calc(var(--home-header-height)+1rem)] lg:justify-between lg:gap-3 lg:pb-3 lg:pt-0 [@media(max-height:820px)_and_(min-width:1024px)]:lg:gap-2 [@media(max-height:820px)_and_(min-width:1024px)]:lg:pb-2"
             : "justify-end pb-10 pt-[calc(var(--home-header-height)+1rem)] sm:pb-16 lg:pb-24 lg:pt-[calc(var(--home-header-height)+1.5rem)]"
         }`}
       >
         {isAppSlide ? (
-          <div className="flex w-full flex-col items-center">
-            <HeroAppSlideCopy activeIndex={index} />
+          <>
+            <div
+              aria-hidden
+              className="hidden w-full shrink-0 lg:block lg:h-[var(--home-header-height)]"
+            />
+            <div className="flex w-full shrink-0 flex-col items-center content-max lg:pt-5 xl:pt-6">
+              <HeroAppSlideCopy activeIndex={index} />
+            </div>
             <HeroAppMockups activeIndex={index} />
-          </div>
+          </>
         ) : (
           <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
             <HeroStandardSlides activeIndex={index} />

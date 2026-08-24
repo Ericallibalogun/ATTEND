@@ -3,12 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
+import { useNewsletterSubscribe } from "@/hooks/use-newsletter-subscribe";
 
 const socialIconClassName =
   "flex size-9 items-center justify-center rounded-full border border-white/20 bg-white/10 transition-colors hover:bg-white/20";
 
 export function Footer() {
   const { openModal } = useBookDemoModal();
+  const {
+    email,
+    setEmail,
+    status,
+    errorMessage,
+    handleSubmit,
+    isSubmitting,
+  } = useNewsletterSubscribe("footer");
 
   return (
     <footer className="relative mt-auto overflow-hidden bg-primary text-white">
@@ -53,25 +62,43 @@ export function Footer() {
               Get insights, tips, and updates to help you plan and deliver better virtual and hybrid events.
             </p>
             
-            {/* Email Subscription Input */}
-            <form className="flex w-full max-w-md items-center rounded-full bg-white p-1 shadow-sm">
-              <input 
-                type="email"
-                placeholder="Enter Email Address" 
-                className="w-full bg-transparent px-4 py-2 text-xs sm:text-[13.5px] font-medium text-zinc-900 outline-none placeholder:text-zinc-400"
-              />
-              <button 
-                type="submit"
-                className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#004D34] py-1.5 pl-1.5 pr-4 text-xs sm:text-[13px] font-bold text-white transition-opacity hover:opacity-90 shadow-sm cursor-pointer"
+            {status === "success" ? (
+              <div className="max-w-md rounded-full bg-white/15 px-4 py-3 text-center text-xs sm:text-[13.5px] font-medium text-white">
+                Subscribed successfully!
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="flex w-full max-w-md flex-col gap-2"
               >
-                <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
-                  <svg className="size-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
-                  </svg>
-                </span>
-                <span>Submit</span>
-              </button>
-            </form>
+                <div className="flex w-full items-center rounded-full bg-white p-1 shadow-sm">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="Enter Email Address"
+                    disabled={isSubmitting}
+                    className="w-full bg-transparent px-4 py-2 text-xs sm:text-[13.5px] font-medium text-zinc-900 outline-none placeholder:text-zinc-400 disabled:opacity-60"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#004D34] py-1.5 pl-1.5 pr-4 text-xs sm:text-[13px] font-bold text-white transition-opacity hover:opacity-90 shadow-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
+                  >
+                    <span className="flex size-6 items-center justify-center rounded-full bg-white text-[#004D34]">
+                      <svg className="size-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 4l4 4-4 4M9 4l4 4-4 4" />
+                      </svg>
+                    </span>
+                    <span>{isSubmitting ? "Submitting..." : "Submit"}</span>
+                  </button>
+                </div>
+                {status === "error" ? (
+                  <p className="px-2 text-xs text-red-200">{errorMessage}</p>
+                ) : null}
+              </form>
+            )}
           </div>
 
           {/* Right Column - Straight Vertical Stack on Mobile / Multi-column Grid on Desktop */}

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { type BlogPost } from "@/lib/blog-data";
+import { useNewsletterSubscribe } from "@/hooks/use-newsletter-subscribe";
 import { SanityImage } from "@/components/sanity/sanity-image";
 import { FooterCta } from "@/components/layout/footer-cta";
 
@@ -35,18 +36,19 @@ export function BlogPostPageClient({
   post: BlogPost;
   allPosts: BlogPost[];
 }) {
-  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const {
+    email: newsletterEmail,
+    setEmail: setNewsletterEmail,
+    status: newsletterStatus,
+    errorMessage: newsletterError,
+    handleSubmit: handleNewsletterSubmit,
+    isSubmitting: isNewsletterSubmitting,
+  } = useNewsletterSubscribe("blog-post");
 
   const relatedPosts = allPosts
     .filter((p) => p.id !== post.id && p.slug !== post.slug)
     .slice(0, 3);
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setNewsletterSubmitted(true);
-    setTimeout(() => setNewsletterSubmitted(false), 3500);
-  };
 
   const handleCopyLink = () => {
     if (typeof window !== "undefined") {
@@ -91,7 +93,7 @@ export function BlogPostPageClient({
                 Get insights, tips, and updates to help you plan and deliver better virtual and hybrid events.
               </p>
 
-              {newsletterSubmitted ? (
+              {newsletterStatus === "success" ? (
                 <div className="rounded-none bg-[#004D34]/10 p-3 text-center text-xs font-medium text-[#004D34]">
                   Subscribed successfully!
                 </div>
@@ -100,18 +102,25 @@ export function BlogPostPageClient({
                   <input
                     type="email"
                     required
+                    value={newsletterEmail}
+                    onChange={(event) => setNewsletterEmail(event.target.value)}
                     placeholder="Enter email address"
-                    className="w-full rounded-none border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20"
+                    disabled={isNewsletterSubmitting}
+                    className="w-full rounded-none border border-zinc-200 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:ring-2 focus:ring-[#004D34]/20 disabled:opacity-60"
                   />
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-full bg-[#004D34] py-1.5 pl-1.5 pr-4 text-xs font-semibold text-white transition-opacity hover:opacity-90 shadow-xs cursor-pointer"
+                    disabled={isNewsletterSubmitting}
+                    className="inline-flex items-center gap-2 rounded-full bg-[#004D34] py-1.5 pl-1.5 pr-4 text-xs font-semibold text-white transition-opacity hover:opacity-90 shadow-xs cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     <span className="flex size-5 items-center justify-center rounded-full bg-white text-[#004D34]">
                       <DoubleChevronIcon />
                     </span>
-                    <span>Submit</span>
+                    <span>{isNewsletterSubmitting ? "Submitting..." : "Submit"}</span>
                   </button>
+                  {newsletterStatus === "error" ? (
+                    <p className="text-xs text-red-600">{newsletterError}</p>
+                  ) : null}
                 </form>
               )}
             </div>
