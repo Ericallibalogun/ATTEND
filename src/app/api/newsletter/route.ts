@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      ...(result.skipped ? { sheetSkipped: true } : {}),
+      ...('skipped' in result && result.skipped ? { sheetSkipped: true } : {}),
     })
   } catch (error) {
     console.error('Newsletter subscription error:', error)
