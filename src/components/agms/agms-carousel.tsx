@@ -38,7 +38,7 @@ const carouselCards = [
     description:
       "Ultra-HD video, adaptive bitrates, and low latency streaming built for real-time interactions and global audiences.",
     tags: ["Adaptive streaming", "Ultra HD", "Low-latency streaming"],
-    image: "/Frame 1321325438.webp",
+    image: "/demo-room.webp",
   },
   {
     number: "04",
@@ -46,7 +46,7 @@ const carouselCards = [
     description:
       "Moderated Q&A, live polls, chat, and virtual networking tools that give remote participants the same standing as room attendees.",
     tags: ["Moderated Q&A", "Live polls", "Virtual networking"],
-    image: "/customer_service.webp",
+    image: "/customer-support-2.webp",
   },
   {
     number: "05",

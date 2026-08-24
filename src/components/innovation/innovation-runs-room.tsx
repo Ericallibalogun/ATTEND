@@ -49,7 +49,7 @@ export function InnovationRunsRoom() {
             {/* Image — below content on mobile (Figma) */}
             <div className="relative order-2 h-[240px] w-full overflow-hidden shadow-xl sm:min-h-[380px] sm:h-auto lg:order-1 lg:col-span-6 lg:min-h-[560px]">
               <Image
-                src="/Frame 35776.webp"
+                src="/brainstorming-team.webp"
                 alt="Hackathon team collaborating around table"
                 fill
                 className="object-cover object-center"
