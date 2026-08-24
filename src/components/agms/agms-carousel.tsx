@@ -2,8 +2,8 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
+import { CarouselCardImage } from "@/components/ui/carousel-card-image";
 
 const carouselCards = [
   {
@@ -229,9 +229,9 @@ export function AgmsCarousel() {
           <motion.div
             ref={trackRef}
             style={{ x }}
-            className="flex items-center gap-3 py-4 pl-4 sm:gap-5 sm:py-6 sm:pl-8 lg:gap-6 lg:py-8 lg:pl-10"
+            className="flex items-center gap-3 py-4 pl-4 will-change-transform [transform:translateZ(0)] sm:gap-5 sm:py-6 sm:pl-8 lg:gap-6 lg:py-8 lg:pl-10"
           >
-            {carouselCards.map((card) => (
+            {carouselCards.map((card, cardIndex) => (
               <div
                 key={card.number}
                 className="flex shrink-0 items-stretch gap-3 border border-black/5 bg-white p-3 shadow-xs sm:gap-6 sm:p-5 lg:gap-8 lg:p-6"
@@ -261,13 +261,12 @@ export function AgmsCarousel() {
                   </div>
                 </div>
 
-                <div className="relative h-[240px] w-[min(38vw,140px)] shrink-0 overflow-hidden sm:h-[340px] sm:w-[280px] lg:h-[370px] lg:w-[320px]">
-                  <Image
+                <div className="relative isolate h-[240px] w-[min(38vw,140px)] shrink-0 overflow-hidden sm:h-[340px] sm:w-[280px] lg:h-[370px] lg:w-[320px]">
+                  <CarouselCardImage
                     src={card.image}
                     alt={card.title}
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 640px) 140px, 320px"
+                    maxDisplayWidth={320}
+                    priority={cardIndex < 2}
                   />
                 </div>
               </div>

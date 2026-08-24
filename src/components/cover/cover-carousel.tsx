@@ -49,10 +49,11 @@ export function CoverCarousel({ index, onPrev, onNext }: CoverCarouselProps) {
     <div className="flex w-full max-w-[min(100%,360px)] flex-col items-stretch">
       <div className="relative mb-2.5 h-px w-full bg-white/25">
         <div
-          className="absolute top-0 h-px bg-white transition-all duration-[4000ms] ease-out"
+          className="absolute top-0 h-px bg-white ease-out transition-all"
           style={{
             left: `${index * segmentWidth}%`,
             width: `${segmentWidth}%`,
+            transitionDuration: "var(--hero-slide-dwell)",
           }}
         />
       </div>
@@ -94,7 +95,7 @@ export function CoverCtaButtons({
   return (
     <div
       className={`flex flex-row flex-wrap items-center gap-3 sm:gap-4 ${
-        centered ? "w-full justify-center" : "w-full max-w-full"
+        centered ? "w-full justify-center lg:w-auto lg:shrink-0" : "w-full max-w-full"
       }`}
     >
       {primaryCta &&

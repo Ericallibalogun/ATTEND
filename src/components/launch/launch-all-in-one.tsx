@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { useBookDemoModal } from "@/components/layout/book-demo-modal";
+import { CarouselCardImage } from "@/components/ui/carousel-card-image";
 
 const allInOneCards = [
   {
@@ -220,9 +220,9 @@ export function LaunchAllInOne() {
               <motion.div
                 ref={trackRef}
                 style={{ x }}
-                className="flex items-stretch lg:items-end"
+                className="flex items-stretch will-change-transform [transform:translateZ(0)] lg:items-end"
               >
-                {allInOneCards.map((card) => (
+                {allInOneCards.map((card, cardIndex) => (
                   <div
                     key={card.number}
                     className="flex h-[280px] w-full shrink-0 items-stretch gap-3 border border-black/5 bg-white p-3 sm:h-[300px] sm:gap-4 sm:p-4 lg:h-[480px] lg:w-[680px] lg:gap-0 lg:border-0 lg:bg-transparent lg:p-0"
@@ -242,14 +242,12 @@ export function LaunchAllInOne() {
                       </div>
                     </div>
 
-                    <div className="relative h-full w-[38%] max-w-[132px] shrink-0 overflow-hidden sm:w-[42%] sm:max-w-[160px] lg:w-[300px] lg:max-w-none">
-                      <Image
+                    <div className="relative isolate h-full w-[38%] max-w-[132px] shrink-0 overflow-hidden sm:w-[42%] sm:max-w-[160px] lg:w-[300px] lg:max-w-none">
+                      <CarouselCardImage
                         src={card.image}
                         alt={card.alt}
-                        fill
-                        quality={100}
-                        className="object-cover object-center"
-                        sizes="(max-width: 640px) 38vw, (max-width: 1024px) 160px, 300px"
+                        maxDisplayWidth={300}
+                        priority={cardIndex < 2}
                       />
                     </div>
                   </div>

@@ -35,13 +35,14 @@ export function AgmsBoardroom() {
         <div className="w-full bg-[#EFF5F3] p-5 sm:p-10 lg:p-14">
           <ScrollReveal yOffset={60}>
             <div className="grid items-stretch gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-10 xl:gap-12">
-              {/* Collage — below content on mobile (Figma) */}
-              <div className="relative order-2 aspect-[4/3] w-full sm:min-h-[400px] sm:aspect-auto lg:order-1 lg:h-full lg:min-h-[580px]">
+              {/* Collage — full height of right column on desktop, top-aligned with header */}
+              <div className="relative order-2 aspect-[4/3] w-full min-h-0 sm:min-h-[400px] sm:aspect-auto lg:order-1 lg:flex lg:aspect-auto lg:h-full lg:min-h-0 lg:items-start">
                 <Image
                   src="/renewed_collage.webp"
                   alt="Events collage"
-                  fill
-                  className="object-contain object-center lg:object-left"
+                  width={1024}
+                  height={1024}
+                  className="h-full w-full object-contain object-left-top lg:w-auto lg:max-w-full"
                   sizes="(max-width: 1024px) 100vw, 55vw"
                 />
               </div>
@@ -67,12 +68,12 @@ export function AgmsBoardroom() {
                   </p>
                 </div>
 
-                <div className="overflow-hidden border border-[#d7e5df]">
-                  <div className="grid grid-cols-1 sm:grid-cols-2">
+                <div className="min-h-0 flex-1 overflow-hidden border border-[#d7e5df]">
+                  <div className="grid h-full min-h-[440px] grid-cols-1 sm:min-h-[440px] sm:grid-cols-2 sm:grid-rows-2 sm:auto-rows-fr">
                     {features.map((feature, idx) => (
                       <article
                         key={feature.title}
-                        className={`flex min-h-0 flex-col justify-start p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px] lg:p-8 ${
+                        className={`flex h-full min-h-0 flex-col justify-start p-5 sm:min-h-[220px] sm:p-6 lg:min-h-[240px] lg:p-8 ${
                           idx < features.length - 1
                             ? "border-b border-[#d7e5df] sm:border-b-0"
                             : ""

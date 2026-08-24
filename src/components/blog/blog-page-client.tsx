@@ -1,8 +1,12 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { BLOG_CATEGORIES, type BlogPost } from "@/lib/blog-data";
+import {
+  BLOG_CATEGORIES,
+  BLOG_POSTS_PER_PAGE,
+  type BlogPost,
+} from "@/lib/blog-data";
 import { SanityImage } from "@/components/sanity/sanity-image";
 import { FooterCta } from "@/components/layout/footer-cta";
 
@@ -83,6 +87,138 @@ function postMatchesFilters(
   return matchesCategory && matchesSearch;
 }
 
+function getVisiblePages(
+  currentPage: number,
+  totalPages: number,
+): Array<number | "ellipsis"> {
+  if (totalPages <= 5) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
+
+  if (currentPage <= 3) {
+    return [1, 2, 3, "ellipsis", totalPages];
+  }
+
+  if (currentPage >= totalPages - 2) {
+    return [1, "ellipsis", totalPages - 2, totalPages - 1, totalPages];
+  }
+
+  return [
+    1,
+    "ellipsis",
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    "ellipsis",
+    totalPages,
+  ];
+}
+
+function BlogPagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  className = "",
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  className?: string;
+}) {
+  const showFullPagination = totalPages > 1;
+  const visiblePages = getVisiblePages(currentPage, totalPages);
+
+  return (
+    <div className={`flex items-center justify-center gap-2 ${className}`}>
+      {showFullPagination && (
+        <button
+          type="button"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage <= 1}
+          className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40"
+          aria-label="Previous page"
+        >
+          <svg
+            className="size-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+      )}
+
+      {showFullPagination
+        ? visiblePages.map((page, index) =>
+            page === "ellipsis" ? (
+              <span
+                key={`ellipsis-${index}`}
+                className="px-1 text-xs text-zinc-400"
+                aria-hidden
+              >
+                ...
+              </span>
+            ) : (
+              <button
+                key={page}
+                type="button"
+                onClick={() => onPageChange(page)}
+                aria-current={page === currentPage ? "page" : undefined}
+                className={`flex size-9 cursor-pointer items-center justify-center rounded-full text-xs font-bold transition-colors ${
+                  page === currentPage
+                    ? "bg-[#004D34] text-white shadow-xs"
+                    : "border border-zinc-200 bg-white font-medium text-zinc-700 hover:bg-zinc-100"
+                }`}
+              >
+                {page}
+              </button>
+            ),
+          )
+        : (
+          <button
+            type="button"
+            aria-current="page"
+            className="flex size-9 cursor-default items-center justify-center rounded-full bg-[#004D34] text-xs font-bold text-white shadow-xs"
+          >
+            1
+          </button>
+        )}
+
+      {showFullPagination && (
+        <button
+          type="button"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage >= totalPages}
+          className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-40"
+          aria-label="Next page"
+        >
+          <svg
+            className="size-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
+}
+
 export function BlogPageClient({
   initialPosts = [],
 }: {
@@ -93,6 +229,7 @@ export function BlogPageClient({
   const [searchQuery, setSearchQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const filteredPosts = useMemo(
@@ -103,9 +240,33 @@ export function BlogPageClient({
     [posts, selectedCategory, searchQuery],
   );
 
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredPosts.length / BLOG_POSTS_PER_PAGE),
+  );
+  const activePage = Math.min(currentPage, totalPages);
+  const pageStart = (activePage - 1) * BLOG_POSTS_PER_PAGE;
+  const pagePosts = filteredPosts.slice(
+    pageStart,
+    pageStart + BLOG_POSTS_PER_PAGE,
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, searchQuery]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
   const featuredPost =
-    filteredPosts.find((post) => post.featured) ?? filteredPosts[0];
-  const gridPosts = filteredPosts.filter((post) => post !== featuredPost);
+    pagePosts.find((post) => post.featured) ?? pagePosts[0];
+  const gridPosts =
+    activePage === 1
+      ? pagePosts.filter((post) => post !== featuredPost)
+      : pagePosts;
   const emptyMessage =
     posts.length === 0
       ? "No blog posts published yet."
@@ -124,6 +285,10 @@ export function BlogPageClient({
 
   const selectCategory = (category: string) => {
     setSelectedCategory(category);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
   };
 
   return (
@@ -240,7 +405,7 @@ export function BlogPageClient({
               {emptyMessage}
             </p>
           ) : (
-            filteredPosts.map((post) => (
+            pagePosts.map((post) => (
               <article key={post.id} className="group">
                 <Link href={`/blog/${post.slug}`} className="block">
                   <div className="relative mb-3 aspect-[16/10] w-full overflow-hidden bg-zinc-100">
@@ -279,65 +444,12 @@ export function BlogPageClient({
           )}
 
           {filteredPosts.length > 0 && (
-            <div className="mt-2 flex items-center justify-center gap-2 pt-2">
-              <button
-                type="button"
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:bg-zinc-100"
-                aria-label="Previous page"
-              >
-                <svg
-                  className="size-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </button>
-              <button
-                type="button"
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full bg-zinc-900 text-xs font-bold text-white shadow-xs"
-              >
-                1
-              </button>
-              <button
-                type="button"
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-100"
-              >
-                2
-              </button>
-              <button
-                type="button"
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-100"
-              >
-                3
-              </button>
-              <span className="px-1 text-xs text-zinc-400">...</span>
-              <button
-                type="button"
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:bg-zinc-100"
-                aria-label="Next page"
-              >
-                <svg
-                  className="size-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            </div>
+            <BlogPagination
+              currentPage={activePage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+              className="mt-2 pt-2"
+            />
           )}
         </div>
 
@@ -411,41 +523,43 @@ export function BlogPageClient({
               </p>
             ) : (
               <>
-                <div className="group overflow-hidden border border-zinc-200/80 bg-white shadow-xs transition-shadow hover:shadow-md">
-                  <Link href={`/blog/${featuredPost.slug}`} className="block">
-                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100 sm:aspect-[21/9] lg:h-[340px] lg:aspect-auto">
-                      <SanityImage
-                        src={featuredPost.image}
-                        alt={featuredPost.title}
-                        fill
-                        priority
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-8">
-                      <div className="mb-2 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-[#004D34]">
-                            {featuredPost.category}
-                          </span>
-                          <span>•</span>
-                          <span>{featuredPost.readTime}</span>
+                {activePage === 1 && featuredPost && (
+                  <div className="group overflow-hidden border border-zinc-200/80 bg-white shadow-xs transition-shadow hover:shadow-md">
+                    <Link href={`/blog/${featuredPost.slug}`} className="block">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-100 sm:aspect-[21/9] lg:h-[340px] lg:aspect-auto">
+                        <SanityImage
+                          src={featuredPost.image}
+                          alt={featuredPost.title}
+                          fill
+                          priority
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-8">
+                        <div className="mb-2 flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[#004D34]">
+                              {featuredPost.category}
+                            </span>
+                            <span>•</span>
+                            <span>{featuredPost.readTime}</span>
+                          </div>
+                          <span>{featuredPost.date}</span>
                         </div>
-                        <span>{featuredPost.date}</span>
+                        <h2 className="mb-3 text-2xl font-bold leading-snug tracking-tight text-zinc-900 transition-colors group-hover:text-[#004D34]">
+                          {featuredPost.title}
+                        </h2>
+                        <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-600">
+                          {featuredPost.excerpt}
+                        </p>
+                        <div className="inline-flex items-center text-xs font-semibold text-[#004D34]">
+                          <span>Read Article</span>
+                          <ArrowRightIcon />
+                        </div>
                       </div>
-                      <h2 className="mb-3 text-2xl font-bold leading-snug tracking-tight text-zinc-900 transition-colors group-hover:text-[#004D34]">
-                        {featuredPost.title}
-                      </h2>
-                      <p className="mb-4 max-w-3xl text-sm leading-relaxed text-zinc-600">
-                        {featuredPost.excerpt}
-                      </p>
-                      <div className="inline-flex items-center text-xs font-semibold text-[#004D34]">
-                        <span>Read Article</span>
-                        <ArrowRightIcon />
-                      </div>
-                    </div>
-                  </Link>
-                </div>
+                    </Link>
+                  </div>
+                )}
 
                 {gridPosts.length > 0 && (
                   <div className="grid grid-cols-2 gap-6">
@@ -493,65 +607,12 @@ export function BlogPageClient({
                   </div>
                 )}
 
-                <div className="mt-6 flex items-center justify-center gap-2 pt-4">
-                  <button
-                    type="button"
-                    className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:bg-zinc-100"
-                    aria-label="Previous page"
-                  >
-                    <svg
-                      className="size-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    className="flex size-9 cursor-pointer items-center justify-center rounded-full bg-[#004D34] text-xs font-bold text-white shadow-xs"
-                  >
-                    1
-                  </button>
-                  <button
-                    type="button"
-                    className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-100"
-                  >
-                    2
-                  </button>
-                  <button
-                    type="button"
-                    className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-100"
-                  >
-                    3
-                  </button>
-                  <span className="px-1 text-xs text-zinc-400">...</span>
-                  <button
-                    type="button"
-                    className="flex size-9 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:bg-zinc-100"
-                    aria-label="Next page"
-                  >
-                    <svg
-                      className="size-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                <BlogPagination
+                  currentPage={activePage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                  className="mt-6 pt-4"
+                />
               </>
             )}
           </div>

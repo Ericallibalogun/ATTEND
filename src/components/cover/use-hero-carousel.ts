@@ -27,7 +27,7 @@ export function useHeroCarousel() {
     const timer = window.setInterval(tick, AUTO_ADVANCE_MS);
 
     return () => window.clearInterval(timer);
-  }, [total]);
+  }, [total, index]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {

@@ -17,6 +17,9 @@ export type BlogPost = {
   };
 };
 
+/** Desktop page 1 = 1 featured + 4 grid cards; later pages use the same count. */
+export const BLOG_POSTS_PER_PAGE = 5;
+
 export const BLOG_CATEGORIES = [
   "All",
   "Event Trends",

@@ -156,7 +156,7 @@ export function CoverHeader({
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 flex flex-col bg-[#f4f7f5] lg:hidden">
-          <div className="flex items-center justify-between px-6 py-6">
+          <div className="flex items-center justify-between px-6 pt-5 pb-2">
             <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -184,13 +184,13 @@ export function CoverHeader({
             </button>
           </div>
 
-          <nav className="flex flex-col px-8 pt-4">
+          <nav className="flex flex-col px-8 pt-1">
             {siteConfig.coverNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="py-4 text-[13px] font-medium text-zinc-900 transition-colors hover:text-primary"
+                className="py-3.5 text-[13px] font-medium text-zinc-900 transition-colors hover:text-primary"
               >
                 {item.label}
               </Link>
